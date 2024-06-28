@@ -1,10 +1,13 @@
 package classes;
 
+import java.sql.Blob;
+import java.util.*;
+
 public class Foto {
 
 	private long ID;
-	private string descrizione;
-	private picture foto;
+	private String descrizione;
+	private Blob foto;
 	private boolean approvazione;
 
 	public void foto() {

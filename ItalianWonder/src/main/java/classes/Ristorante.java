@@ -3,8 +3,8 @@ package classes;
 public class Ristorante {
 
 	private long ID;
-	private string nome;
-	private string numeroTelefono;
+	private String nome;
+	private String numeroTelefono;
 	private enumValutazione valutazione;
 	/**
 	 * inserito quando viene caricato il ristorante (no media)

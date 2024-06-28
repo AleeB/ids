@@ -5,7 +5,7 @@ package classes;
  */
 public class Provincia {
 
-	private string nomeProvincia;
+	private String nomeProvincia;
 	private char Sigla;
 
 	public void provincia() {

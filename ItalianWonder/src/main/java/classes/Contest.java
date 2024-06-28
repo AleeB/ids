@@ -1,4 +1,5 @@
 package classes;
+import java.util.*;
 
 public class Contest {
 
@@ -16,7 +17,7 @@ public class Contest {
 	 * 
 	 * @param idContest
 	 */
-	public list<Foto> mostraFotoContest(long idContest) {
+	public List<Foto> mostraFotoContest(long idContest) {
 		// TODO - implement Contest.mostraFotoContest
 		throw new UnsupportedOperationException();
 	}
@@ -25,7 +26,7 @@ public class Contest {
 	 * 
 	 * @param idContest
 	 */
-	public list<Foto> creaClassificaContest(long idContest) {
+	public List<Foto> creaClassificaContest(long idContest) {
 		// TODO - implement Contest.creaClassificaContest
 		throw new UnsupportedOperationException();
 	}

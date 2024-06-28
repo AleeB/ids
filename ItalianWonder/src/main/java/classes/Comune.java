@@ -1,8 +1,10 @@
 package classes;
 
+import java.util.*;
+
 public class Comune {
 
-	private string nome;
+	private String nome;
 
 	public void comune() {
 		// TODO - implement Comune.comune

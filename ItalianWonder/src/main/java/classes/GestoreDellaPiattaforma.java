@@ -11,7 +11,7 @@ public class GestoreDellaPiattaforma extends Curatore {
 	 * 
 	 * @param utente
 	 */
-	public boolean cambiaRuolo(object utente) {
+	public boolean cambiaRuolo(Object utente) {
 		// TODO - implement GestoreDellaPiattaforma.cambiaRuolo
 		throw new UnsupportedOperationException();
 	}

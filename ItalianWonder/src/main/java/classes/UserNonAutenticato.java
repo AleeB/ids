@@ -1,12 +1,14 @@
 package classes;
 
+import java.util.*;
+
 public class UserNonAutenticato {
 
 	/**
 	 * 
 	 * @param nome
 	 */
-	public list<Divertimento> ricercaDivertimenti(string nome) {
+	public List<Divertimento> ricercaDivertimenti(String nome) {
 		// TODO - implement UserNonAutenticato.ricercaDivertimenti
 		throw new UnsupportedOperationException();
 	}
@@ -15,7 +17,7 @@ public class UserNonAutenticato {
 	 * 
 	 * @param nome
 	 */
-	public list<Ristorante> ricercaRistorante(string nome) {
+	public List<Ristorante> ricercaRistorante(String nome) {
 		// TODO - implement UserNonAutenticato.ricercaRistorante
 		throw new UnsupportedOperationException();
 	}
@@ -24,12 +26,12 @@ public class UserNonAutenticato {
 	 * 
 	 * @param nome
 	 */
-	public list<Comune> ricercaComune(string nome) {
+	public List<Comune> ricercaComune(String nome) {
 		// TODO - implement UserNonAutenticato.ricercaComune
 		throw new UnsupportedOperationException();
 	}
 
-	public list<Itinerario> ricercaItinerario() {
+	public List<Itinerario> ricercaItinerario() {
 		// TODO - implement UserNonAutenticato.ricercaItinerario
 		throw new UnsupportedOperationException();
 	}
@@ -38,7 +40,7 @@ public class UserNonAutenticato {
 	 * 
 	 * @param comune
 	 */
-	public list<object> ricercaPuntiInteresseComune(Comune comune) {
+	public List<Object> ricercaPuntiInteresseComune(Comune comune) {
 		// TODO - implement UserNonAutenticato.ricercaPuntiInteresseComune
 		throw new UnsupportedOperationException();
 	}
@@ -47,7 +49,7 @@ public class UserNonAutenticato {
 	 * 
 	 * @param puntoDiInteresse
 	 */
-	public list<Recensione> leggereRecensioni(object puntoDiInteresse) {
+	public List<Recensione> leggereRecensioni(Object puntoDiInteresse) {
 		// TODO - implement UserNonAutenticato.leggereRecensioni
 		throw new UnsupportedOperationException();
 	}

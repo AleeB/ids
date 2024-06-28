@@ -1,5 +1,7 @@
 package classes;
 
+import java.util.*;
+
 public class Animatore extends ContributorAutorizzato {
 
 	public void assegnazioniPunteggiContest() {

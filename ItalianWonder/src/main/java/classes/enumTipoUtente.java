@@ -1,12 +1,12 @@
 package classes;
 
 public enum enumTipoUtente {
-	User Non Autenticato,
+	UserNonAutenticato,
 	Turista,
-	Turista Autorizzato,
+	TuristaAutorizzato,
 	Contributor,
-	Contributor Autorizzato,
+	ContributorAutorizzato,
 	Animatore,
 	Curatore,
-	Gestore della Piattaforma
+	GestoreDellaPiattaforma
 }

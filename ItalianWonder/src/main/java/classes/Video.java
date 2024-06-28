@@ -1,10 +1,13 @@
 package classes;
 
+import java.sql.Blob;
+import java.util.*;
+
 public class Video {
 
 	private long ID;
-	private string descrizione;
-	private video video;
+	private String descrizione;
+	private Blob video;
 	private boolean approvazione;
 
 	public void video() {

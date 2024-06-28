@@ -3,7 +3,7 @@ package classes;
 public class Recensione {
 
 	private long ID;
-	private string descrizione;
+	private String descrizione;
 	private enumValutazione valutazione;
 	private boolean verificata;
 

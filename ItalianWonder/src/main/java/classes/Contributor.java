@@ -1,5 +1,7 @@
 package classes;
 
+import java.util.*;
+
 public class Contributor extends Turista {
 
 	/**

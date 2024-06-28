@@ -1,14 +1,16 @@
 package classes;
 
+import java.util.*;
+
 public class Divertimento {
 
 	private long ID;
-	private string titolo;
+	private String titolo;
 	private float tipo;
-	private datetime dataInizio;
-	private datetime dataFine;
+	private Date dataInizio;
+	private Date dataFine;
 	private float costo;
-	private bool approvazione;
+	private Boolean approvazione;
 
 	public void divertimento() {
 		// TODO - implement Divertimento.divertimento

@@ -2,13 +2,13 @@ package classes;
 
 public class Turista extends UserNonAutenticato {
 
-	private string nome;
-	private string Cognome;
-	private string ID_UserName;
+	private String nome;
+	private String Cognome;
+	private String ID_UserName;
 	/**
 	 * la password sarà salvata nel db dopo aver eseguito l'hash
 	 */
-	private string Password;
+	private String Password;
 	private int punteggio;
 	private enumTipoUtente tipoUser;
 
@@ -67,7 +67,7 @@ public class Turista extends UserNonAutenticato {
 		throw new UnsupportedOperationException();
 	}
 
-	public object cambiaTipoOggetto() {
+	public Object cambiaTipoOggetto() {
 		// TODO - implement Turista.cambiaTipoOggetto
 		throw new UnsupportedOperationException();
 	}

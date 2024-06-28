@@ -1,13 +1,15 @@
 package classes;
 
+import java.util.*;
+
 public class Itinerario {
 
 	private long ID;
-	private string titolo;
+	private String titolo;
 	private float lunghezza;
 	private float costo;
-	private string descrizione;
-	private bool approvazione;
+	private String descrizione;
+	private boolean approvazione;
 	private enumDifficolta difficoltà;
 
 	public void itinerario() {
@@ -30,7 +32,7 @@ public class Itinerario {
 		throw new UnsupportedOperationException();
 	}
 
-	public list<Itinerario> mostraItinerarioComune() {
+	public List<Itinerario> mostraItinerarioComune() {
 		// TODO - implement Itinerario.mostraItinerarioComune
 		throw new UnsupportedOperationException();
 	}
