@@ -1,6 +1,6 @@
-package classes;
+package classes.users;
 
-import java.util.*;
+import classes.Segnalazione;
 
 public class Curatore extends ContributorAutorizzato {
 

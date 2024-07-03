@@ -1,6 +1,4 @@
-package classes;
-
-import java.util.*;
+package classes.users;
 
 public class Animatore extends ContributorAutorizzato {
 

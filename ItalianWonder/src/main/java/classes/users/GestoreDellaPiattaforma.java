@@ -1,4 +1,6 @@
-package classes;
+package classes.users;
+
+import classes.Segnalazione;
 
 public class GestoreDellaPiattaforma extends Curatore {
 

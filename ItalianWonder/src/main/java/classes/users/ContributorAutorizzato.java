@@ -1,6 +1,7 @@
-package classes;
+package classes.users;
 
-import java.util.*;
+import classes.Segnalazione;
+import classes.media.Video;
 
 public class ContributorAutorizzato extends Turista {
 

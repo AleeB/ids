@@ -1,22 +1,21 @@
-package classes;
+package classes.media;
 
 import java.sql.Blob;
-import java.util.*;
 
-public class Foto {
+public class Video {
 
 	private long ID;
 	private String descrizione;
-	private Blob foto;
+	private Blob video;
 	private boolean approvazione;
 
-	public void foto() {
-		// TODO - implement Foto.foto
+	public void video() {
+		// TODO - implement Video.video
 		throw new UnsupportedOperationException();
 	}
 
-	public boolean approvato() {
-		// TODO - implement Foto.approvato
+	public void approvato() {
+		// TODO - implement Video.approvato
 		throw new UnsupportedOperationException();
 	}
 

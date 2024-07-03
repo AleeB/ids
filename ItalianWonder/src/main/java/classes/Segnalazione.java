@@ -1,5 +1,7 @@
 package classes;
 
+import classes.enums.enumTipoSegnalazione;
+
 public class Segnalazione {
 
 	private long ID;

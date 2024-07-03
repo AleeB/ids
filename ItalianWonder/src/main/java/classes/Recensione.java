@@ -1,5 +1,7 @@
 package classes;
 
+import classes.enums.enumValutazione;
+
 public class Recensione {
 
 	private long ID;

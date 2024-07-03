@@ -1,4 +1,4 @@
-package classes;
+package classes.users;
 
 public class TuristaAutorizzato extends Turista {
 

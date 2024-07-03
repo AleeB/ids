@@ -1,14 +1,15 @@
-package classes;
+package classes.users;
+
+import classes.*;
+import classes.POI.Divertimento;
+import classes.POI.Itinerario;
+import classes.POI.Ristorante;
 
 import java.util.*;
 
 public class UserNonAutenticato {
 
-	/**
-	 * 
-	 * @param nome
-	 */
-	public List<Divertimento> ricercaDivertimenti(String nome) {
+	public List<Divertimento> ricercaDivertimenti(Comune comune, List<Divertimento> divertimenti) {
 		// TODO - implement UserNonAutenticato.ricercaDivertimenti
 		throw new UnsupportedOperationException();
 	}

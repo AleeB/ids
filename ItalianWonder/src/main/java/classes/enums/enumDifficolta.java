@@ -1,4 +1,4 @@
-package classes;
+package classes.enums;
 
 public enum enumDifficolta {
 	facile,

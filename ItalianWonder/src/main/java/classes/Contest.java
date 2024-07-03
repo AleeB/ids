@@ -1,4 +1,6 @@
 package classes;
+import classes.media.Foto;
+
 import java.util.*;
 
 public class Contest {
