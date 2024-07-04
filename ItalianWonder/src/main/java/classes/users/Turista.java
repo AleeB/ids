@@ -7,11 +7,73 @@ import classes.enums.enumTipoUtente;
 public class Turista extends UserNonAutenticato {
 
 	private String nome;
-	private String Cognome;
-	private String ID_UserName;
-	private String Password;
+	private String cognome;
+	private String userName;
+	private String password;
 	private int punteggio;
 	private enumTipoUtente tipoUser;
+
+	
+
+	public Turista() {
+		this.nome = "";
+		this.cognome = "";
+		this.userName = "";
+		this.password = "";
+		this.punteggio = 0;
+		tipoUser = enumTipoUtente.Turista;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getCognome() {
+		return cognome;
+	}
+
+	public void setCognome(String cognome) {
+		this.cognome = cognome;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setID_UserName(String ID_UserName) {
+		this.userName = ID_UserName;
+	}
+
+	/**
+	 * la password sarà salvata nel db dopo averne eseguito l'hash
+	 */
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public int getPunteggio() {
+		return punteggio;
+	}
+
+	public void setPunteggio(int punteggio) {
+		this.punteggio = punteggio;
+	}
+
+	public enumTipoUtente getTipoUser() {
+		return tipoUser;
+	}
+
+	public void setTipoUser(enumTipoUtente tipoUser) {
+		this.tipoUser = tipoUser;
+	}
 
 	/**
 	 * 
@@ -73,54 +135,5 @@ public class Turista extends UserNonAutenticato {
 		throw new UnsupportedOperationException();
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getCognome() {
-		return Cognome;
-	}
-
-	public void setCognome(String cognome) {
-		Cognome = cognome;
-	}
-
-	public String getID_UserName() {
-		return ID_UserName;
-	}
-
-	public void setID_UserName(String ID_UserName) {
-		this.ID_UserName = ID_UserName;
-	}
-
-	/**
-	 * la password sarà salvata nel db dopo averne eseguito l'hash
-	 */
-	public String getPassword() {
-		return Password;
-	}
-
-	public void setPassword(String password) {
-		Password = password;
-	}
-
-	public int getPunteggio() {
-		return punteggio;
-	}
-
-	public void setPunteggio(int punteggio) {
-		this.punteggio = punteggio;
-	}
-
-	public enumTipoUtente getTipoUser() {
-		return tipoUser;
-	}
-
-	public void setTipoUser(enumTipoUtente tipoUser) {
-		this.tipoUser = tipoUser;
-	}
+	
 }
