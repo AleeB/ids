@@ -5,6 +5,12 @@ import classes.media.Video;
 
 public class ContributorAutorizzato extends Turista {
 
+	public ContributorAutorizzato() {
+		super();
+	}
+
+	//region Methods
+
 	/**
 	 * 
 	 * @param segnalazione
@@ -23,9 +29,6 @@ public class ContributorAutorizzato extends Turista {
 		throw new UnsupportedOperationException();
 	}
 
-	public void contributorAutorizzato() {
-		// TODO - implement ContributorAutorizzato.contributorAutorizzato
-		throw new UnsupportedOperationException();
-	}
+	//endregion
 
 }

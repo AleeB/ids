@@ -4,6 +4,12 @@ import classes.Segnalazione;
 
 public class Curatore extends ContributorAutorizzato {
 
+	public Curatore() {
+		super();
+	}
+
+	//region Methods
+
 	/**
 	 * 
 	 * @param segnalazione
@@ -40,9 +46,6 @@ public class Curatore extends ContributorAutorizzato {
 		throw new UnsupportedOperationException();
 	}
 
-	public void curatore() {
-		// TODO - implement Curatore.curatore
-		throw new UnsupportedOperationException();
-	}
+	//endregion
 
 }

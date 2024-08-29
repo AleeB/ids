@@ -4,6 +4,12 @@ import classes.Segnalazione;
 
 public class Contributor extends Turista {
 
+	public Contributor() {
+		super();
+	}
+
+	//region Methods
+
 	/**
 	 * con la verifica impostata su true
 	 * @param recensione
@@ -17,5 +23,7 @@ public class Contributor extends Turista {
 		// TODO - implement Contributor.contributor
 		throw new UnsupportedOperationException();
 	}
+
+	//endregion
 
 }

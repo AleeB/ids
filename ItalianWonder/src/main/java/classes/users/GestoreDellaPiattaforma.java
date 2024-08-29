@@ -4,10 +4,11 @@ import classes.Segnalazione;
 
 public class GestoreDellaPiattaforma extends Curatore {
 
-	public void gestoreDellaPiattaforma() {
-		// TODO - implement GestoreDellaPiattaforma.gestoreDellaPiattaforma
-		throw new UnsupportedOperationException();
+	public GestoreDellaPiattaforma() {
+		super();
 	}
+
+	//region Methods
 
 	/**
 	 * 
@@ -26,5 +27,7 @@ public class GestoreDellaPiattaforma extends Curatore {
 		// TODO - implement GestoreDellaPiattaforma.segnalazioneBug
 		throw new UnsupportedOperationException();
 	}
+
+	//endregion
 
 }

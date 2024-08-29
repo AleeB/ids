@@ -37,23 +37,18 @@ public class Provincia {
 		return nomeProvincia;
 	}
 
-
-
 	public void setNomeProvincia(String nomeProvincia) {
 		this.nomeProvincia = nomeProvincia;
 	}
-
-
 
 	public String getSigla() {
 		return sigla;
 	}
 
-
-
 	public void setSigla(String sigla) {
 		this.sigla = sigla;
 	}
+
 
 	//endregion
 

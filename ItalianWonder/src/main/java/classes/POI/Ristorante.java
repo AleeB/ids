@@ -4,12 +4,18 @@ import classes.enums.enumValutazione;
 
 public class Ristorante {
 
+	//region Vars
+
 	private long ID;
 	private String nome;
 	private String numeroTelefono;
 	private enumValutazione valutazione;		//inserito quando viene caricato il ristorante (no media)
 	private float costoMedio;
 	private boolean approvazione;
+
+	//endregion
+
+	//region Constr
 
 	public Ristorante(long ID, String nome, String numeroTelefono, enumValutazione valutazione, float costoMedio, boolean approvazione) {
 		this.ID = ID;
@@ -19,6 +25,10 @@ public class Ristorante {
 		this.costoMedio = costoMedio;
 		this.approvazione = approvazione;
 	}
+
+	//endregion
+
+	//region Props
 
 	public long getID() {
 		return ID;
@@ -68,6 +78,9 @@ public class Ristorante {
 		this.approvazione = approvazione;
 	}
 
+	//endregion
+
+	//region Methods
 
 	public void ristorante() {
 		// TODO - implement Ristorante.ristorante
@@ -88,5 +101,7 @@ public class Ristorante {
 		// TODO - implement Ristorante.modificaCostoMedio
 		throw new UnsupportedOperationException();
 	}
+
+	//endregion
 
 }

@@ -6,6 +6,8 @@ import classes.enums.enumTipoUtente;
 
 public class Turista extends UserNonAutenticato {
 
+	//region Vars
+
 	private String nome;
 	private String cognome;
 	private String userName;
@@ -13,7 +15,18 @@ public class Turista extends UserNonAutenticato {
 	private int punteggio;
 	private enumTipoUtente tipoUser;
 
-	
+	//endregion
+
+	//region Constr
+
+	public Turista(String nome, String cognome, String userName, String password, int punteggio, enumTipoUtente tipoUser) {
+		this.nome = nome;
+		this.cognome = cognome;
+		this.userName = userName;
+		this.password = password;
+		this.punteggio = punteggio;
+		this.tipoUser = tipoUser;
+	}
 
 	public Turista() {
 		this.nome = "";
@@ -23,6 +36,11 @@ public class Turista extends UserNonAutenticato {
 		this.punteggio = 0;
 		tipoUser = enumTipoUtente.Turista;
 	}
+
+	//endregion
+
+
+	//region Prop
 
 	public String getNome() {
 		return nome;
@@ -74,6 +92,12 @@ public class Turista extends UserNonAutenticato {
 	public void setTipoUser(enumTipoUtente tipoUser) {
 		this.tipoUser = tipoUser;
 	}
+
+	//endregion
+
+
+
+	//region Methods
 
 	//hashcode password per crittografia
 	@Override
@@ -144,5 +168,6 @@ public class Turista extends UserNonAutenticato {
 		throw new UnsupportedOperationException();
 	}
 
+	//endregion
 	
 }

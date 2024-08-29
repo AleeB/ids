@@ -6,6 +6,8 @@ import java.util.*;
 
 public class Itinerario {
 
+	//region Vars
+
 	private long ID;
 	private String titolo;
 	private float lunghezza;
@@ -13,6 +15,10 @@ public class Itinerario {
 	private String descrizione;
 	private boolean approvazione;
 	private enumDifficolta difficolta;
+
+	//endregion
+
+	//region Constr
 
 	public Itinerario(long id, String tit, float lun, float costo, String descrizione, boolean approvazione, enumDifficolta difficolta) {
 		this.ID = id;
@@ -23,6 +29,10 @@ public class Itinerario {
 		this.approvazione = approvazione;
 		this.difficolta = difficolta;
 	}
+
+	//endregion
+
+	//region Props
 
 	public long getID() {
 		return ID;
@@ -80,6 +90,10 @@ public class Itinerario {
 		this.difficolta = difficolta;
 	}
 
+	//endregion
+
+	//region Methods
+
 	public void itinerario() {
 		// TODO - implement Itinerario.itinerario
 		throw new UnsupportedOperationException();
@@ -109,5 +123,7 @@ public class Itinerario {
 		// TODO - implement Itinerario.modificaDifficolta
 		throw new UnsupportedOperationException();
 	}
+
+	//endregion
 
 }

@@ -4,6 +4,8 @@ import java.util.*;
 
 public class Divertimento {
 
+	//region Vars
+
 	private long ID;
 	private String titolo;
 	private float tipo;
@@ -11,6 +13,10 @@ public class Divertimento {
 	private Date dataFine;
 	private float costo;
 	private Boolean approvazione;
+
+	//endregion
+
+	//region Constr
 
 	public Divertimento(long id, String tit, float type, Date start, Date end, float cost, Boolean app) {
 		this.ID = id;
@@ -21,6 +27,10 @@ public class Divertimento {
 		this.costo = cost;
 		this.approvazione = app;
 	}
+
+	//endregion
+
+	//region Props
 
 	public long getID() {
 		return ID;
@@ -78,6 +88,10 @@ public class Divertimento {
 		this.approvazione = approvazione;
 	}
 
+	//endregion
+
+	//region Methods
+
 	public void divertimento() {
 		// TODO - implement Divertimento.divertimento
 		throw new UnsupportedOperationException();
@@ -98,6 +112,6 @@ public class Divertimento {
 		throw new UnsupportedOperationException();
 	}
 
-
+	//endregion
 
 }

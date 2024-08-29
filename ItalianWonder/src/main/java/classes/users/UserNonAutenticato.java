@@ -9,6 +9,11 @@ import java.util.*;
 
 public class UserNonAutenticato {
 
+	public UserNonAutenticato() {
+	}
+
+	//region Methods
+
 	public List<Divertimento> ricercaDivertimenti(Comune comune, List<Divertimento> divertimenti) {
 		// TODO - implement UserNonAutenticato.ricercaDivertimenti
 		throw new UnsupportedOperationException();
@@ -55,9 +60,6 @@ public class UserNonAutenticato {
 		throw new UnsupportedOperationException();
 	}
 
-	public void userNonAutenticato() {
-		// TODO - implement UserNonAutenticato.userNonAutenticato
-		throw new UnsupportedOperationException();
-	}
+	//endregion
 
 }
