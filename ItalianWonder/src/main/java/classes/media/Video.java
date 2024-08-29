@@ -9,6 +9,8 @@ public class Video {
 	private Blob video;
 	private boolean approvazione;
 
+
+
 	public void video() {
 		// TODO - implement Video.video
 		throw new UnsupportedOperationException();

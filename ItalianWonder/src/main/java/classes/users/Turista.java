@@ -75,6 +75,15 @@ public class Turista extends UserNonAutenticato {
 		this.tipoUser = tipoUser;
 	}
 
+	//hashcode password per crittografia
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((password == null) ? 0 : password.hashCode());
+		return result;
+	}
+
 	/**
 	 * 
 	 * @param infoSegnalazione
