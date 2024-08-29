@@ -1,0 +1,845 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Class Diagram - CD IT2.0</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_top">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_bottom">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_left">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_right">
+	</div>
+	<canvas width="100" style="position:absolute; z-index:2; visibility:hidden" id="spotlight_c" height="100">
+	</canvas>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesTop">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesRight">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+			</tr>
+			<tr>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute;z-index:4;visibility:hidden" id="linkPopupMenuLayer">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="linkPopupMenuTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="referenceIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="subdiagramIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="transitorIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="documentationIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		idsBruttiTranquilli_AA_2324	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="referencedBys">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="referencedBysTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="vplink">
+		<table border="1" cellpadding="0" cellspacing="0" bordercolor="#A9BFD3">
+			<tr>
+				<td>
+					<table border="0" cellpadding="0" width="100%" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+								<select onchange="vpLinkToggleName()" id="vplink-linkType">
+	<option value="Project Link">Project Link</option>
+	<option value="Page URL">Page URL</option>
+</select>
+							</td>
+							<td style="font-size: 12px;" align="right">
+								<input onclick="javascript: vpLinkToggleName()" id="vplink-checkbox" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+<a href="Model_tiX9_fGD_AAAAQ1G.html" class="PageParentTitle">IT2 : Model</a><span class="PageParentTitle">&nbsp;.&nbsp;</span><a href="Model_pKvxR_GD_AAAAQ1f.html" class="PageParentTitle">class diagram : Model</a>	</p>
+	<p class="PageTitle">
+		<span id="PageTitleText">
+			Class Diagram - CD IT2.0		</span>
+<a onclick="javascript: showVpLink('idsBruttiTranquilli_AA_2324_IT_1.0.vpp://diagram/QD5JR_GD.AAAARB3', 'CD IT2.0\nidsBruttiTranquilli_AA_2324_IT_1.0.vpp://diagram/QD5JR_GD.AAAARB3', 'CD IT2.0', this); return false;" style="padding-left: 16px; font-size: 12px" href="#"><img src="../images/icons/link.png" border="0"> link</a>	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style="position: absolute; top: 0; left: 0; z-index: 20;" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),hideLinkPopup(),hideReferencedBys();">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin('diagram', this.value);hideLinkPopup();showSpotLight('diagram', this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|1778.0|1015.0|143.0|73.0|NARY_ELspt_GD_AAAARBs.html|NARY_ELspt_GD_AAAARBs.html|4Lspt_GD.AAAARBr" id="option4Lspt_GD.AAAARBr">salvare : NARY</option>
+<option value="shape|332.0|149.0|113.0|78.0|Class_mLsJt_GD_AAAARAw.html|Class_mLsJt_GD_AAAARAw.html|mLsJt_GD.AAAARAv" id="optionmLsJt_GD.AAAARAv">enumTipoPOI : Class</option>
+<option value="shape|92.0|1257.0|110.0|40.0|Class_uKHFF_GD_AAAARMM.html|Class_uKHFF_GD_AAAARMM.html|uKHFF_GD.AAAARML" id="optionuKHFF_GD.AAAARML">avereV : Class</option>
+<option value="shape|329.0|1217.0|110.0|40.0|Class_X8sFF_GD_AAAARIh.html|Class_X8sFF_GD_AAAARIh.html|n8sFF_GD.AAAARIg" id="optionn8sFF_GD.AAAARIg">avereF : Class</option>
+<option value="shape|461.0|149.0|113.0|148.0|Class_Ok4Ox_GD_AAAAQ9f.html|Class_Ok4Ox_GD_AAAAQ9f.html|Ok4Ox_GD.AAAAQ9e" id="optionOk4Ox_GD.AAAAQ9e">enumTipoSegnalazione : Class</option>
+<option value="shape|587.0|227.0|113.0|78.0|Class_wBX2x_GD_AAAAQ83.html|Class_wBX2x_GD_AAAAQ83.html|wBX2x_GD.AAAAQ82" id="optionwBX2x_GD.AAAAQ82">enumDifficolta : Class</option>
+<option value="shape|331.0|233.0|113.0|50.0|Class_7Vz2x_GD_AAAAQ8h.html|Class_7Vz2x_GD_AAAAQ8h.html|bVz2x_GD.AAAAQ8g" id="optionbVz2x_GD.AAAAQ8g">enumValutazione : Class</option>
+<option value="shape|588.0|149.0|142.0|64.0|Class_xRs2x_GD_AAAAQ7u.html|Class_xRs2x_GD_AAAAQ7u.html|RRs2x_GD.AAAAQ7t" id="optionRRs2x_GD.AAAAQ7t">enumTipoDivertimento : Class</option>
+<option value="shape|383.0|519.0|169.0|110.0|Class_X6TJR_GD_AAAARI0.html|Class_X6TJR_GD_AAAARI0.html|n6TJR_GD.AAAARIy" id="optionn6TJR_GD.AAAARIy">Segnalazione : Class</option>
+<option value="shape|223.0|1382.0|289.0|145.0|Class_r6TJR_GD_AAAARIr.html|Class_r6TJR_GD_AAAARIr.html|L6TJR_GD.AAAARIp" id="optionL6TJR_GD.AAAARIp">Contest : Class</option>
+<option value="shape|81.0|852.0|149.0|110.0|Class_96TJR_GD_AAAARIi.html|Class_96TJR_GD_AAAARIi.html|96TJR_GD.AAAARIg" id="option96TJR_GD.AAAARIg">Video : Class</option>
+<option value="shape|178.0|697.0|139.0|110.0|Class_l6TJR_GD_AAAARIZ.html|Class_l6TJR_GD_AAAARIZ.html|l6TJR_GD.AAAARIX" id="optionl6TJR_GD.AAAARIX">Foto : Class</option>
+<option value="shape|658.0|462.0|180.0|111.0|Class_J6TJR_GD_AAAARIR.html|Class_J6TJR_GD_AAAARIR.html|J6TJR_GD.AAAARIP" id="optionJ6TJR_GD.AAAARIP">Recensione : Class</option>
+<option value="shape|2216.0|292.0|133.0|68.0|Class_B6TJR_GD_AAAARIK.html|Class_B6TJR_GD_AAAARIK.html|B6TJR_GD.AAAARII" id="optionB6TJR_GD.AAAARII">Provincia : Class</option>
+<option value="shape|1873.0|669.0|246.0|219.0|Class_XaTJR_GD_AAAARH_.html|Class_XaTJR_GD_AAAARH_.html|XaTJR_GD.AAAARH9" id="optionXaTJR_GD.AAAARH9">Itinerario : Class</option>
+<option value="shape|1551.0|394.0|211.0|173.0|Class_raTJR_GD_AAAARH0.html|Class_raTJR_GD_AAAARH0.html|raTJR_GD.AAAARHy" id="optionraTJR_GD.AAAARHy">Ristorante : Class</option>
+<option value="shape|1423.0|84.0|198.0|188.0|Class_daTJR_GD_AAAARHo.html|Class_daTJR_GD_AAAARHo.html|daTJR_GD.AAAARHm" id="optiondaTJR_GD.AAAARHm">Divertimento : Class</option>
+<option value="shape|1778.0|204.0|157.0|68.0|Class_VaTJR_GD_AAAARHi.html|Class_VaTJR_GD_AAAARHi.html|laTJR_GD.AAAARHg" id="optionlaTJR_GD.AAAARHg">Comune : Class</option>
+<option value="shape|2263.0|479.0|102.0|83.0|Class_JaTJR_GD_AAAARHa.html|Class_JaTJR_GD_AAAARHa.html|xaTJR_GD.AAAARHY" id="optionxaTJR_GD.AAAARHY">localizzazione : Class</option>
+<option value="shape|1001.0|1452.0|344.0|64.0|Class_BaTJR_GD_AAAARHV.html|Class_BaTJR_GD_AAAARHV.html|BaTJR_GD.AAAARHT" id="optionBaTJR_GD.AAAARHT">GestoreDellaPiattaforma : Class</option>
+<option value="shape|1038.0|1297.0|366.0|94.0|Class_2aTJR_GD_AAAARHQ.html|Class_2aTJR_GD_AAAARHQ.html|2aTJR_GD.AAAARHO" id="option2aTJR_GD.AAAARHO">Curatore : Class</option>
+<option value="shape|1068.0|1217.0|235.0|50.0|Class_aaTJR_GD_AAAARHL.html|Class_aaTJR_GD_AAAARHL.html|qaTJR_GD.AAAARHJ" id="optionqaTJR_GD.AAAARHJ">Animatore : Class</option>
+<option value="shape|1086.0|1114.0|320.0|64.0|Class_iaTJR_GD_AAAARHG.html|Class_iaTJR_GD_AAAARHG.html|iaTJR_GD.AAAARHE" id="optioniaTJR_GD.AAAARHE">ContributorAutorizzato : Class</option>
+<option value="shape|866.0|1027.0|372.0|50.0|Class_MaTJR_GD_AAAARHB.html|Class_MaTJR_GD_AAAARHB.html|MaTJR_GD.AAAARG_" id="optionMaTJR_GD.AAAARG_">Contributor : Class</option>
+<option value="shape|1011.0|909.0|198.0|52.0|Class_EaTJR_GD_AAAARG8.html|Class_EaTJR_GD_AAAARG8.html|4aTJR_GD.AAAARG6" id="option4aTJR_GD.AAAARG6">TuristaAutorizzato : Class</option>
+<option value="shape|823.0|697.0|505.0|180.0|Class_PqTJR_GD_AAAARGx.html|Class_PqTJR_GD_AAAARGx.html|PqTJR_GD.AAAARGv" id="optionPqTJR_GD.AAAARGv">Turista : Class</option>
+<option value="shape|823.0|114.0|413.0|120.0|Class_dqTJR_GD_AAAARGs.html|Class_dqTJR_GD_AAAARGs.html|tqTJR_GD.AAAARGq" id="optiontqTJR_GD.AAAARGq">UserNonAutenticato : Class</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style="position: relative; top: 24;">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/CD_IT20.png" usemap="#diagram_map" class="Image" width="2369" height="1602"/>
+					<map name="diagram_map">
+<area imageId="diagram" coords="1103.0, 234.0, 1103.0, 697.0, 1117.0, 697.0, 1117.0, 234.0" coords2="1103.0, 234.0, 1103.0, 697.0, 1117.0, 697.0, 1117.0, 234.0" shape="poly" alt=":Generalization" id="areadiagram_map_f6TJR_GD.AAAARI6_default" href="Generalization__6TJR_GD_AAAARI8.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1074.0, 877.0, 1074.0, 909.0, 1088.0, 909.0, 1088.0, 877.0" coords2="1074.0, 877.0, 1074.0, 909.0, 1088.0, 909.0, 1088.0, 877.0" shape="poly" alt=":Generalization" id="areadiagram_map_QGTJR_GD.AAAARI__default" href="Generalization_QGTJR_GD_AAAARJB.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1229.0588, 877.0, 1229.9412, 1027.0, 1238.0, 1027.0, 1238.0, 1037.0, 1244.0, 1037.0, 1243.0588, 877.0" coords2="1229.0588, 877.0, 1229.9412, 1027.0, 1238.0, 1027.0, 1238.0, 1037.0, 1244.0, 1037.0, 1243.0588, 877.0" shape="poly" alt=":Generalization" id="areadiagram_map_IGTJR_GD.AAAARJE_default" href="Generalization_IGTJR_GD_AAAARJG.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1244.039, 877.0, 1244.961, 1114.0, 1258.961, 1114.0, 1258.039, 877.0" coords2="1244.039, 877.0, 1244.961, 1114.0, 1258.961, 1114.0, 1258.039, 877.0" shape="poly" alt=":Generalization" id="areadiagram_map_oGTJR_GD.AAAARJJ_default" href="Generalization_oGTJR_GD_AAAARJL.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1101.8167, 1178.0, 1101.1666, 1217.0, 1115.1666, 1217.0, 1115.8167, 1178.0" coords2="1101.8167, 1178.0, 1101.1666, 1217.0, 1115.1666, 1217.0, 1115.8167, 1178.0" shape="poly" alt=":Generalization" id="areadiagram_map_YGTJR_GD.AAAARJO_default" href="Generalization_4GTJR_GD_AAAARJQ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1348.0, 1178.0, 1348.0, 1297.0, 1362.0, 1297.0, 1362.0, 1178.0" coords2="1348.0, 1178.0, 1348.0, 1297.0, 1362.0, 1297.0, 1362.0, 1178.0" shape="poly" alt=":Generalization" id="areadiagram_map_EGTJR_GD.AAAARJT_default" href="Generalization_EGTJR_GD_AAAARJV.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1124.0, 1391.0, 1124.0, 1452.0, 1138.0, 1452.0, 1138.0, 1391.0" coords2="1124.0, 1391.0, 1124.0, 1452.0, 1138.0, 1452.0, 1138.0, 1391.0" shape="poly" alt=":Generalization" id="areadiagram_map_UGTJR_GD.AAAARJY_default" href="Generalization_UGTJR_GD_AAAARJa.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1236.0, 226.0, 1236.0, 234.0, 1226.0, 234.0, 1226.0, 240.0, 1423.0, 240.0, 1423.0, 226.0" coords2="1236.0, 226.0, 1236.0, 234.0, 1226.0, 234.0, 1226.0, 240.0, 1423.0, 240.0, 1423.0, 226.0" shape="poly" alt="ricercare:Association" id="areadiagram_map_CGTJR_GD.AAAARJd_default" href="Association_CGTJR_GD_AAAARJf.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1935.0, 266.10388, 1935.0, 272.0, 1918.0, 272.0, 1918.0, 279.0, 2216.0, 298.35065, 2216.0, 292.0, 2226.0, 292.0, 2226.0, 285.0, 1935.0, 266.10388" coords2="1935.0, 266.10388, 1935.0, 272.0, 1918.0, 272.0, 1918.0, 279.0, 2216.0, 298.35065, 2216.0, 292.0, 2226.0, 292.0, 2226.0, 285.0, 1935.0, 266.10388" shape="poly" alt="avere:Association" id="areadiagram_map_KGTJR_GD.AAAARJu_default" href="Association_KGTJR_GD_AAAARJw.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1935.0, 264.14868, 1935.0, 272.0, 1922.0, 272.0, 2263.0, 486.74054, 2263.0, 479.0, 2271.5454, 479.0, 2273.0, 477.0, 1935.0, 264.14868" coords2="1935.0, 264.14868, 1935.0, 272.0, 1922.0, 272.0, 2263.0, 486.74054, 2263.0, 479.0, 2271.5454, 479.0, 2273.0, 477.0, 1935.0, 264.14868" shape="poly" alt="essere:Association" id="areadiagram_map_GGTJR_GD.AAAARJ__default" href="Association_GGTJR_GD_AAAARKB.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1236.0, 225.0, 1236.0, 234.0, 1228.0863, 234.0, 1230.837, 521.0, 1228.0, 521.0, 1228.0, 535.0, 1230.9712, 535.0, 1231.0, 538.0, 1245.0, 538.0, 1244.9712, 535.0, 1551.0, 535.0, 1551.0, 521.0, 1244.837, 521.0, 1242.0, 225.0" coords2="1236.0, 225.0, 1236.0, 234.0, 1228.0863, 234.0, 1230.837, 521.0, 1228.0, 521.0, 1228.0, 535.0, 1230.9712, 535.0, 1231.0, 538.0, 1245.0, 538.0, 1244.9712, 535.0, 1551.0, 535.0, 1551.0, 521.0, 1244.837, 521.0, 1242.0, 225.0" shape="poly" alt="ricercare:Association" id="areadiagram_map_2GTJR_GD.AAAARKQ_default" href="Association_2GTJR_GD_AAAARKS.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1141.0, 234.0, 1141.0, 669.0, 1138.0, 669.0, 1138.0, 683.0, 1141.0, 683.0, 1141.0, 686.0, 1155.0, 686.0, 1155.0, 683.0, 1873.0, 683.0, 1873.0, 669.0, 1155.0, 669.0, 1155.0, 234.0" coords2="1141.0, 234.0, 1141.0, 669.0, 1138.0, 669.0, 1138.0, 683.0, 1141.0, 683.0, 1141.0, 686.0, 1155.0, 686.0, 1155.0, 683.0, 1873.0, 683.0, 1873.0, 669.0, 1155.0, 669.0, 1155.0, 234.0" shape="poly" alt="ricercare:Association" id="areadiagram_map_JGTJR_GD.AAAARKh_default" href="Association_pGTJR_GD_AAAARKj.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1621.0, 256.0, 1621.0, 270.0, 1778.0, 270.0, 1778.0, 256.0" coords2="1621.0, 256.0, 1621.0, 270.0, 1778.0, 270.0, 1778.0, 256.0" shape="poly" alt="essere:Association" id="areadiagram_map_FGTJR_GD.AAAARKy_default" href="Association_FGTJR_GD_AAAARK0.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1621.0, 264.8909, 1621.0, 272.0, 1609.1428, 272.0, 1608.0, 276.0, 2263.0, 486.07565, 2263.0, 479.0, 2270.9285, 479.0, 2272.0, 474.0, 1621.0, 264.8909" coords2="1621.0, 264.8909, 1621.0, 272.0, 1609.1428, 272.0, 1608.0, 276.0, 2263.0, 486.07565, 2263.0, 479.0, 2270.9285, 479.0, 2272.0, 474.0, 1621.0, 264.8909" shape="poly" alt="avere:Association" id="areadiagram_map_NGTJR_GD.AAAARLD_default" href="Association_NGTJR_GD_AAAARLF.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1771.0, 262.0, 1753.0857, 394.0, 1762.0, 394.0, 1762.0, 403.42856, 1766.0, 404.0, 1783.9143, 272.0, 1778.0, 272.0, 1778.0, 263.0, 1771.0, 262.0" coords2="1771.0, 262.0, 1753.0857, 394.0, 1762.0, 394.0, 1762.0, 403.42856, 1766.0, 404.0, 1783.9143, 272.0, 1778.0, 272.0, 1778.0, 263.0, 1771.0, 262.0" shape="poly" alt="essere:Association" id="areadiagram_map_9GTJR_GD.AAAARLU_default" href="Association_9GTJR_GD_AAAARLW.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1762.0, 535.0, 1762.0, 549.0, 2263.0, 549.0, 2263.0, 535.0" coords2="1762.0, 535.0, 1762.0, 549.0, 2263.0, 549.0, 2263.0, 535.0" shape="poly" alt="avere:Association" id="areadiagram_map_zGTJR_GD.AAAARLl_default" href="Association_zGTJR_GD_AAAARLn.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1908.0, 272.0, 1908.0, 669.0, 1922.0, 669.0, 1922.0, 272.0" coords2="1908.0, 272.0, 1908.0, 669.0, 1922.0, 669.0, 1922.0, 272.0" shape="poly" alt=":Association" id="areadiagram_map_bGTJR_GD.AAAARL2_default" href="Association_bGTJR_GD_AAAARL4.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="877.0, 234.0, 877.0, 391.0, 829.6667, 462.0, 838.0, 462.0, 838.0, 474.0, 884.6667, 404.0, 891.0, 404.0, 891.0, 394.5, 894.0, 390.0, 891.0, 387.81818, 891.0, 234.0" coords2="877.0, 234.0, 877.0, 391.0, 829.6667, 462.0, 838.0, 462.0, 838.0, 474.0, 884.6667, 404.0, 891.0, 404.0, 891.0, 394.5, 894.0, 390.0, 891.0, 387.81818, 891.0, 234.0" shape="poly" alt="leggere:Association" id="areadiagram_map_3GTJR_GD.AAAARMH_default" href="Association_3GTJR_GD_AAAARMJ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="742.0, 573.0, 742.0, 905.0, 737.0, 910.0, 742.0, 914.9231, 742.0, 922.0, 749.1875, 922.0, 866.0, 1037.0154, 866.0, 1027.0, 875.9844, 1027.0, 756.0, 908.8615, 756.0, 573.0" coords2="742.0, 573.0, 742.0, 905.0, 737.0, 910.0, 742.0, 914.9231, 742.0, 922.0, 749.1875, 922.0, 866.0, 1037.0154, 866.0, 1027.0, 875.9844, 1027.0, 756.0, 908.8615, 756.0, 573.0" shape="poly" alt="eliminare:Association" id="areadiagram_map__GTJR_GD.AAAARMY_default" href="Association__GTJR_GD_AAAARMa.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      l'animatore gestir&amp;#224; il contest:
+    &amp;lt;/p&amp;gt;
+    &amp;lt;ul class=&amp;quot;disc&amp;quot; margin-left-ltr=&amp;quot;50&amp;quot; margin-right-rtl=&amp;quot;50&amp;quot; style=&amp;quot;margin-left:40pt;list-style-type:none;margin-top:0px;margin-bottom:0px;&amp;quot;&amp;gt;
+      &amp;lt;li style=&amp;quot;margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;&amp;quot;&amp;gt;
+        creazione
+      &amp;lt;/li&amp;gt;
+      &amp;lt;li style=&amp;quot;margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;&amp;quot;&amp;gt;
+        validazione contenuti (che siano appropriati)
+      &amp;lt;/li&amp;gt;
+      &amp;lt;li style=&amp;quot;margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;&amp;quot;&amp;gt;
+        assegnazione punteggi (dopo aver stilato la classifica dei 
+        partecipanti)
+      &amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      &amp;nbsp;
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="1068.0, 1259.0333, 502.0, 1376.0, 502.85715, 1382.0, 512.0, 1382.0, 512.0, 1388.3468, 512.0, 1388.3468, 1075.0, 1272.0, 1074.2858, 1267.0, 1068.0, 1267.0, 1068.0, 1259.0333" coords2="1068.0, 1259.0333, 502.0, 1376.0, 502.85715, 1382.0, 512.0, 1382.0, 512.0, 1388.3468, 512.0, 1388.3468, 1075.0, 1272.0, 1074.2858, 1267.0, 1068.0, 1267.0, 1068.0, 1259.0333" shape="poly" alt="gestire:Association" id="areadiagram_map_wmTJR_GD.AAAARMp_default" href="Association_wmTJR_GD_AAAARMr.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" coords="552.0, 622.19586, 552.0, 629.0, 541.7143, 629.0, 541.0, 634.0, 823.0, 702.80414, 823.0, 702.80414, 823.0, 697.0, 833.1429, 697.0, 834.0, 691.0, 552.0, 622.19586, 823.0, 702.80414, 823.0, 702.80414, 823.0, 702.80414, 823.0, 702.80414" coords2="552.0, 622.19586, 552.0, 629.0, 541.7143, 629.0, 541.0, 634.0, 823.0, 702.80414, 823.0, 702.80414, 823.0, 697.0, 833.1429, 697.0, 834.0, 691.0, 552.0, 622.19586, 823.0, 702.80414, 823.0, 702.80414, 823.0, 702.80414, 823.0, 702.80414" shape="poly" alt="inviare:Association" id="areadiagram_map_4mTJR_GD.AAAARM6_default" href="Association_4mTJR_GD_AAAARM8.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="921.0, 532.0, 921.0, 535.0, 838.0, 535.0, 838.0, 549.0, 921.0, 549.0, 921.0, 697.0, 935.0, 697.0, 935.0, 549.0, 938.0, 549.0, 938.0, 535.0, 935.0, 535.0, 935.0, 532.0" coords2="921.0, 532.0, 921.0, 535.0, 838.0, 535.0, 838.0, 549.0, 921.0, 549.0, 921.0, 697.0, 935.0, 697.0, 935.0, 549.0, 938.0, 549.0, 938.0, 535.0, 935.0, 535.0, 935.0, 532.0" shape="poly" alt="scrivere:Association" id="areadiagram_map_0mTJR_GD.AAAARNL_default" href="Association_0mTJR_GD_AAAARNN.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      il turista potr&amp;#224; solo modificare le recensioni proprie
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="951.0, 507.0, 951.0, 510.0, 838.0, 510.0, 838.0, 524.0, 951.0, 524.0, 951.0, 697.0, 965.0, 697.0, 965.0, 524.0, 968.0, 524.0, 968.0, 510.0, 965.0, 510.0, 965.0, 507.0" coords2="951.0, 507.0, 951.0, 510.0, 838.0, 510.0, 838.0, 524.0, 951.0, 524.0, 951.0, 697.0, 965.0, 697.0, 965.0, 524.0, 968.0, 524.0, 968.0, 510.0, 965.0, 510.0, 965.0, 507.0" shape="poly" alt="modificare:Association" id="areadiagram_map_6mTJR_GD.AAAARNc_default" href="Association_6mTJR_GD_AAAARNe.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      il turista potr&amp;#224; solo eliminare le recensioni proprie
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="816.0, 573.0, 816.0, 707.0, 823.0, 707.0, 823.0, 697.0, 830.0, 697.0, 830.0, 573.0" coords2="816.0, 573.0, 816.0, 707.0, 823.0, 707.0, 823.0, 697.0, 830.0, 697.0, 830.0, 573.0" shape="poly" alt="eliminare:Association" id="areadiagram_map_OmTJR_GD.AAAARNt_default" href="Association_OmTJR_GD_AAAARNv.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" coords="951.0, 877.0, 951.0, 935.0, 872.3333, 935.0, 865.0, 929.0, 860.1974, 935.0, 855.0, 935.0, 855.0, 941.49316, 502.4013, 1382.0, 512.0, 1382.0, 512.0, 1392.7507, 512.0, 1392.7507, 867.1952, 949.0, 951.0, 949.0, 951.0, 952.0, 965.0, 952.0, 965.0, 949.0, 968.0, 949.0, 968.0, 935.0, 965.0, 935.0, 965.0, 877.0" coords2="951.0, 877.0, 951.0, 935.0, 872.3333, 935.0, 865.0, 929.0, 860.1974, 935.0, 855.0, 935.0, 855.0, 941.49316, 502.4013, 1382.0, 512.0, 1382.0, 512.0, 1392.7507, 512.0, 1392.7507, 867.1952, 949.0, 951.0, 949.0, 951.0, 952.0, 965.0, 952.0, 965.0, 949.0, 968.0, 949.0, 968.0, 935.0, 965.0, 935.0, 965.0, 877.0" shape="poly" alt="votare:Association" id="areadiagram_map_hmTJR_GD.AAAARN._default" href="Association_hmTJR_GD_AAAAROA.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      il turista autorizzato potr&amp;#224; caricare le foto previa l'approvazione del 
+      contributor autorizzato.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      il turista autorizzato potr&amp;#224; anche eliminare le foto che ha 
+      personalmente caricato senza autorizzazione
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="389.0, 685.0, 387.46155, 689.0, 307.0, 689.0, 307.0, 697.0, 317.0, 697.0, 317.0, 703.0, 395.12244, 703.0, 805.0, 887.2569, 805.0, 891.0, 816.16064, 892.27405, 816.16064, 892.27405, 820.0, 894.0, 820.4744, 892.7665, 820.4744, 892.7665, 820.4744, 892.7665, 820.4744, 892.7665, 820.4744, 892.7665, 820.4744, 892.7665, 1011.0, 914.516, 1011.0, 909.0, 1024.0, 909.0, 1024.0, 902.0, 819.88086, 878.6987, 819.88086, 878.6987, 406.0, 692.6422, 406.0, 692.6422, 406.0, 689.0, 397.89795, 689.0, 389.0, 685.0, 1011.0, 914.516, 1011.0, 914.516, 1011.0, 914.516, 1011.0, 914.516" coords2="389.0, 685.0, 387.46155, 689.0, 307.0, 689.0, 307.0, 697.0, 317.0, 697.0, 317.0, 703.0, 395.12244, 703.0, 805.0, 887.2569, 805.0, 891.0, 816.16064, 892.27405, 816.16064, 892.27405, 820.0, 894.0, 820.4744, 892.7665, 820.4744, 892.7665, 820.4744, 892.7665, 820.4744, 892.7665, 820.4744, 892.7665, 820.4744, 892.7665, 1011.0, 914.516, 1011.0, 909.0, 1024.0, 909.0, 1024.0, 902.0, 819.88086, 878.6987, 819.88086, 878.6987, 406.0, 692.6422, 406.0, 692.6422, 406.0, 689.0, 397.89795, 689.0, 389.0, 685.0, 1011.0, 914.516, 1011.0, 914.516, 1011.0, 914.516, 1011.0, 914.516" shape="poly" alt="caricare/eliminare:Association" id="areadiagram_map_ZmTJR_GD.AAAAROP_default" href="Association_ZmTJR_GD_AAAAROR.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      il turista autorizzato potr&amp;#224; caricare i video previa l'approvazione del 
+      contributor autorizzato.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      il turista autorizzato potr&amp;#224; anche eliminare i video che ha 
+      personalmente caricato senza autorizzazione
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="230.0, 910.0, 230.0, 924.0, 1011.0, 924.0, 1011.0, 910.0" coords2="230.0, 910.0, 230.0, 924.0, 1011.0, 924.0, 1011.0, 910.0" shape="poly" alt="caricare/eliminare:Association" id="areadiagram_map_VmTJR_GD.AAAAROg_default" href="Association_VmTJR_GD_AAAAROi.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      il contributor potr&amp;#224; caricare ed eliminare proprie foto senza bisogno di 
+      un'autorizzazione
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="378.0, 727.0, 375.0909, 731.0, 317.0, 731.0, 317.0, 745.0, 381.72147, 745.0, 866.0, 1034.2084, 866.0, 1027.0, 875.5455, 1027.0, 877.0, 1025.0, 392.0, 735.3607, 392.0, 735.3607, 392.0, 731.0, 384.698, 731.0, 378.0, 727.0" coords2="378.0, 727.0, 375.0909, 731.0, 317.0, 731.0, 317.0, 745.0, 381.72147, 745.0, 866.0, 1034.2084, 866.0, 1027.0, 875.5455, 1027.0, 877.0, 1025.0, 392.0, 735.3607, 392.0, 735.3607, 392.0, 731.0, 384.698, 731.0, 378.0, 727.0" shape="poly" alt="caricare/eliminare:Association" id="areadiagram_map_vmTJR_GD.AAAAROx_default" href="Association_fmTJR_GD_AAAAROz.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      il contributor potr&amp;#224; caricare ed eliminare propri video senza bisogno di 
+      un'autorizzazione
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="230.0, 935.1835, 230.0, 949.4465, 230.0, 949.4465, 866.0, 1033.0795, 866.0, 1033.0795, 866.0, 1027.0, 874.0, 1027.0, 875.0, 1020.0, 230.0, 935.1835" coords2="230.0, 935.1835, 230.0, 949.4465, 230.0, 949.4465, 866.0, 1033.0795, 866.0, 1033.0795, 866.0, 1027.0, 874.0, 1027.0, 875.0, 1020.0, 230.0, 935.1835" shape="poly" alt="caricare/eliminare:Association" id="areadiagram_map_QWTJR_GD.AAAARPC_default" href="Association_wWTJR_GD_AAAARPE.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      il contributor potr&amp;#224; aggiungere un divertimento solo dopo l'approvazione 
+      del curatore
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="1415.0, 262.0, 1399.3701, 833.4684, 1225.0, 1027.0, 1238.0, 1027.0, 1238.0, 1033.6703, 1406.1881, 847.0, 1413.0, 847.0, 1413.2133, 839.2029, 1417.0, 835.0, 1413.4259, 831.42596, 1428.7264, 272.0, 1423.0, 272.0, 1423.0, 262.0, 1238.0, 1033.6703, 1238.0, 1033.6703, 1238.0, 1033.6703, 1238.0, 1033.6703" coords2="1415.0, 262.0, 1399.3701, 833.4684, 1225.0, 1027.0, 1238.0, 1027.0, 1238.0, 1033.6703, 1406.1881, 847.0, 1413.0, 847.0, 1413.2133, 839.2029, 1417.0, 835.0, 1413.4259, 831.42596, 1428.7264, 272.0, 1423.0, 272.0, 1423.0, 262.0, 1238.0, 1033.6703, 1238.0, 1033.6703, 1238.0, 1033.6703, 1238.0, 1033.6703" shape="poly" alt="aggiungere:Association" id="areadiagram_map_4WTJR_GD.AAAARPT_default" href="Association_EWTJR_GD_AAAARPV.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      il contributor potr&amp;#224; aggiungere un ristorante solo dopo l'approvazione 
+      del curatore
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="1550.0, 555.0, 1228.0463, 1027.0, 1238.0, 1027.0, 1238.0, 1036.5339, 1558.2716, 567.0, 1551.0, 567.0, 1551.0, 555.7273, 1550.0, 555.0" coords2="1550.0, 555.0, 1228.0463, 1027.0, 1238.0, 1027.0, 1238.0, 1036.5339, 1558.2716, 567.0, 1551.0, 567.0, 1551.0, 555.7273, 1550.0, 555.0" shape="poly" alt="aggiungere:Association" id="areadiagram_map_sWTJR_GD.AAAARPk_default" href="Association_sWTJR_GD_AAAARPm.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      il contributor potr&amp;#224; aggiungere un itinerario solo dopo l'approvazione 
+      del curatore
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="1873.0, 847.608, 1226.0, 1021.0, 1227.7142, 1027.0, 1238.0, 1027.0, 1238.0, 1032.8528, 1238.0, 1032.8528, 1873.0, 862.41565, 1873.0, 847.608" coords2="1873.0, 847.608, 1226.0, 1021.0, 1227.7142, 1027.0, 1238.0, 1027.0, 1238.0, 1032.8528, 1238.0, 1032.8528, 1873.0, 862.41565, 1873.0, 847.608" shape="poly" alt="aggiungere:Association" id="areadiagram_map_iWTJR_GD.AAAARP1_default" href="Association_SWTJR_GD_AAAARP3.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      il contributor potr&amp;#224; gestire le esclusivamente le segnalazione di 
+      recensioni
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="513.0, 629.0, 513.0, 1064.0, 510.0, 1064.0, 510.0, 1078.0, 513.0, 1078.0, 513.0, 1081.0, 527.0, 1081.0, 527.0, 1078.0, 875.0, 1078.0, 875.0, 1077.0, 866.0, 1077.0, 866.0, 1064.0, 527.0, 1064.0, 527.0, 629.0" coords2="513.0, 629.0, 513.0, 1064.0, 510.0, 1064.0, 510.0, 1078.0, 513.0, 1078.0, 513.0, 1081.0, 527.0, 1081.0, 527.0, 1078.0, 875.0, 1078.0, 875.0, 1077.0, 866.0, 1077.0, 866.0, 1064.0, 527.0, 1064.0, 527.0, 629.0" shape="poly" alt="gestire:Association" id="areadiagram_map_6WTJR_GD.AAAARQG_default" href="Association_6WTJR_GD_AAAARQI.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" coords="1503.6714, 272.0, 1481.4065, 1017.3929, 1394.0, 1114.0, 1406.0, 1114.0, 1406.0, 1121.7894, 1488.1428, 1031.0, 1495.0, 1031.0, 1495.2341, 1023.1623, 1499.0, 1019.0, 1495.4641, 1015.46405, 1517.6714, 272.0" coords2="1503.6714, 272.0, 1481.4065, 1017.3929, 1394.0, 1114.0, 1406.0, 1114.0, 1406.0, 1121.7894, 1488.1428, 1031.0, 1495.0, 1031.0, 1495.2341, 1023.1623, 1499.0, 1019.0, 1495.4641, 1015.46405, 1517.6714, 272.0" shape="poly" alt="aggiungere:Association" id="areadiagram_map_2WTJR_GD.AAAARQX_default" href="Association_2WTJR_GD_AAAARQZ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1556.0, 567.0, 1556.0, 1033.1658, 1394.0, 1110.0, 1395.5385, 1114.0, 1406.0, 1114.0, 1406.0, 1119.68, 1406.0, 1119.68, 1557.1326, 1048.0, 1570.0, 1048.0, 1570.0, 1041.8971, 1574.0, 1040.0, 1570.0, 1029.6, 1570.0, 567.0" coords2="1556.0, 567.0, 1556.0, 1033.1658, 1394.0, 1110.0, 1395.5385, 1114.0, 1406.0, 1114.0, 1406.0, 1119.68, 1406.0, 1119.68, 1557.1326, 1048.0, 1570.0, 1048.0, 1570.0, 1041.8971, 1574.0, 1040.0, 1570.0, 1029.6, 1570.0, 567.0" shape="poly" alt="aggiungere:Association" id="areadiagram_map_.WTJR_GD.AAAARQo_default" href="Association__WTJR_GD_AAAARQq.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1470.0, 762.0, 1466.3966, 767.0, 1461.0, 767.0, 1461.0, 774.48804, 1270.369, 1039.0, 1265.0, 1039.0, 1265.0, 1046.4497, 1261.0, 1052.0, 1265.0, 1054.909, 1265.0, 1114.0, 1279.0, 1114.0, 1279.0, 1050.2871, 1473.0724, 781.0, 1873.0, 781.0, 1873.0, 767.0, 1476.875, 767.0, 1470.0, 762.0" coords2="1470.0, 762.0, 1466.3966, 767.0, 1461.0, 767.0, 1461.0, 774.48804, 1270.369, 1039.0, 1265.0, 1039.0, 1265.0, 1046.4497, 1261.0, 1052.0, 1265.0, 1054.909, 1265.0, 1114.0, 1279.0, 1114.0, 1279.0, 1050.2871, 1473.0724, 781.0, 1873.0, 781.0, 1873.0, 767.0, 1476.875, 767.0, 1470.0, 762.0" shape="poly" alt="aggiungere:Association" id="areadiagram_map_xWTJR_GD.AAAARQ5_default" href="Association_xWTJR_GD_AAAARQ7.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="321.0, 764.0, 317.0, 765.1429, 317.0, 765.1429, 317.0, 798.1299, 456.0, 1216.935, 456.0, 1229.0, 460.0043, 1229.0, 461.0, 1232.0, 475.0, 1229.0, 964.4286, 1229.0, 965.0, 1231.0, 970.46936, 1229.0, 982.0, 1229.0, 982.0, 1224.7836, 982.0, 1224.7836, 1099.0, 1182.0, 1098.1428, 1178.0, 1086.0, 1178.0, 1086.0, 1171.6296, 1086.0, 1171.6296, 966.5102, 1215.0, 470.36343, 1215.0, 321.0, 764.0" coords2="321.0, 764.0, 317.0, 765.1429, 317.0, 765.1429, 317.0, 798.1299, 456.0, 1216.935, 456.0, 1229.0, 460.0043, 1229.0, 461.0, 1232.0, 475.0, 1229.0, 964.4286, 1229.0, 965.0, 1231.0, 970.46936, 1229.0, 982.0, 1229.0, 982.0, 1224.7836, 982.0, 1224.7836, 1099.0, 1182.0, 1098.1428, 1178.0, 1086.0, 1178.0, 1086.0, 1171.6296, 1086.0, 1171.6296, 966.5102, 1215.0, 470.36343, 1215.0, 321.0, 764.0" shape="poly" alt="approvare/caricare/eliminare:Association" id="areadiagram_map_FWTJR_GD.AAAARRK_default" href="Association_FWTJR_GD_AAAARRM.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="202.0, 962.0, 202.0, 988.0, 197.0, 1001.0, 202.0, 1003.27057, 202.0, 1003.27057, 202.0, 1009.0, 214.61658, 1009.0, 607.0, 1187.1882, 607.0, 1187.1882, 607.0, 1191.0, 614.13763, 1190.4296, 622.0, 1194.0, 623.66614, 1189.6681, 623.66614, 1189.6681, 1086.0, 1152.7192, 1086.0, 1152.7192, 1086.0, 1138.7192, 1086.0, 1138.7192, 616.5169, 1176.2394, 616.5169, 1176.2394, 216.0, 994.35767, 216.0, 994.35767, 216.0, 962.0" coords2="202.0, 962.0, 202.0, 988.0, 197.0, 1001.0, 202.0, 1003.27057, 202.0, 1003.27057, 202.0, 1009.0, 214.61658, 1009.0, 607.0, 1187.1882, 607.0, 1187.1882, 607.0, 1191.0, 614.13763, 1190.4296, 622.0, 1194.0, 623.66614, 1189.6681, 623.66614, 1189.6681, 1086.0, 1152.7192, 1086.0, 1152.7192, 1086.0, 1138.7192, 1086.0, 1138.7192, 616.5169, 1176.2394, 616.5169, 1176.2394, 216.0, 994.35767, 216.0, 994.35767, 216.0, 962.0" shape="poly" alt="approvare/caricare/eliminare:Association" id="areadiagram_map_9WTJR_GD.AAAARRb_default" href="Association_9WTJR_GD_AAAARRd.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      il contributor autorizzato potr&amp;#224; gestire le segnalazioni di foto e video 
+      oltre a quelle di recensioni
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="1086.0, 1165.9146, 1086.0, 1165.9146, 1086.0, 1165.9146, 471.0151, 629.0, 471.97433, 1264.0, 469.0, 1264.0, 469.0, 1278.0, 471.99548, 1278.0, 472.0, 1281.0, 486.0, 1281.0, 485.99548, 1278.0, 976.0, 1278.0, 980.0, 1282.0, 984.37384, 1278.0, 992.0, 1278.0, 992.0, 1271.0256, 992.0, 1271.0256, 1093.7196, 1178.0, 1086.0, 1178.0, 1086.0, 1165.9146, 978.7477, 1264.0, 485.97433, 1264.0, 485.0151, 629.0" coords2="1086.0, 1165.9146, 1086.0, 1165.9146, 1086.0, 1165.9146, 471.0151, 629.0, 471.97433, 1264.0, 469.0, 1264.0, 469.0, 1278.0, 471.99548, 1278.0, 472.0, 1281.0, 486.0, 1281.0, 485.99548, 1278.0, 976.0, 1278.0, 980.0, 1282.0, 984.37384, 1278.0, 992.0, 1278.0, 992.0, 1271.0256, 992.0, 1271.0256, 1093.7196, 1178.0, 1086.0, 1178.0, 1086.0, 1165.9146, 978.7477, 1264.0, 485.97433, 1264.0, 485.0151, 629.0" shape="poly" alt="gestire:Association" id="areadiagram_map_zWTJR_GD.AAAARRs_default" href="Association_zWTJR_GD_AAAARRu.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      il curatore potr&amp;#224; gestire tutte le segnalazioni tranne quelle di bug. 
+      nello specifico quelle dei divertimenti/itinerari/ristoranti
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="438.0, 629.0, 438.0, 1318.0, 435.0, 1318.0, 435.0, 1332.0, 438.0, 1332.0, 438.0, 1335.0, 452.0, 1335.0, 452.0, 1332.0, 1038.0, 1332.0, 1038.0, 1318.0, 452.0, 1318.0, 452.0, 629.0" coords2="438.0, 629.0, 438.0, 1318.0, 435.0, 1318.0, 435.0, 1332.0, 438.0, 1332.0, 438.0, 1335.0, 452.0, 1335.0, 452.0, 1332.0, 1038.0, 1332.0, 1038.0, 1318.0, 452.0, 1318.0, 452.0, 629.0" shape="poly" alt="gestire:Association" id="areadiagram_map_HWTJR_GD.AAAARR9_default" href="Association_HWTJR_GD_AAAARR_.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" coords="1813.0, 272.0, 1813.0, 602.2827, 1582.9648, 1209.8862, 1393.0, 1294.0, 1394.1538, 1297.0, 1404.0, 1297.0, 1404.0, 1304.3433, 1584.5419, 1224.4019, 1584.5419, 1224.4019, 1584.5419, 1224.4019, 1584.5419, 1224.4019, 1584.5419, 1224.4019, 1584.5419, 1224.4019, 1592.0, 1226.0, 1594.2333, 1220.1106, 1594.2333, 1220.1106, 1599.0, 1218.0, 1597.0027, 1212.8071, 1597.0027, 1212.8071, 1822.5536, 618.0, 1827.0, 618.0, 1827.0, 606.2743, 1829.0, 601.0, 1827.0, 600.4286, 1827.0, 272.0, 1404.0, 1304.3433, 1404.0, 1304.3433, 1404.0, 1304.3433, 1404.0, 1304.3433" coords2="1813.0, 272.0, 1813.0, 602.2827, 1582.9648, 1209.8862, 1393.0, 1294.0, 1394.1538, 1297.0, 1404.0, 1297.0, 1404.0, 1304.3433, 1584.5419, 1224.4019, 1584.5419, 1224.4019, 1584.5419, 1224.4019, 1584.5419, 1224.4019, 1584.5419, 1224.4019, 1584.5419, 1224.4019, 1592.0, 1226.0, 1594.2333, 1220.1106, 1594.2333, 1220.1106, 1599.0, 1218.0, 1597.0027, 1212.8071, 1597.0027, 1212.8071, 1822.5536, 618.0, 1827.0, 618.0, 1827.0, 606.2743, 1829.0, 601.0, 1827.0, 600.4286, 1827.0, 272.0, 1404.0, 1304.3433, 1404.0, 1304.3433, 1404.0, 1304.3433, 1404.0, 1304.3433" shape="poly" alt="aggiungere:Association" id="areadiagram_map_PWTJR_GD.AAAARSO_default" href="Association_PWTJR_GD_AAAARSQ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      il gestore della piattaforma potr&amp;#224; gestire tutte le segnalazioni incluse 
+      quelle di bug
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="23.0, 598.0, 23.0, 601.0, 20.0, 601.0, 20.0, 615.0, 23.0, 615.0, 23.0, 1527.0, 20.0, 1527.0, 20.0, 1541.0, 23.0, 1541.0, 23.0, 1544.0, 37.0, 1544.0, 37.0, 1541.0, 1018.0, 1541.0, 1018.0, 1544.0, 1032.0, 1544.0, 1032.0, 1541.0, 1035.0, 1541.0, 1035.0, 1527.0, 1032.0, 1527.0, 1032.0, 1516.0, 1018.0, 1516.0, 1018.0, 1527.0, 37.0, 1527.0, 37.0, 615.0, 383.0, 615.0, 383.0, 601.0, 37.0, 601.0, 37.0, 598.0" coords2="23.0, 598.0, 23.0, 601.0, 20.0, 601.0, 20.0, 615.0, 23.0, 615.0, 23.0, 1527.0, 20.0, 1527.0, 20.0, 1541.0, 23.0, 1541.0, 23.0, 1544.0, 37.0, 1544.0, 37.0, 1541.0, 1018.0, 1541.0, 1018.0, 1544.0, 1032.0, 1544.0, 1032.0, 1541.0, 1035.0, 1541.0, 1035.0, 1527.0, 1032.0, 1527.0, 1032.0, 1516.0, 1018.0, 1516.0, 1018.0, 1527.0, 37.0, 1527.0, 37.0, 615.0, 383.0, 615.0, 383.0, 601.0, 37.0, 601.0, 37.0, 598.0" shape="poly" alt="gestire:Association" id="areadiagram_map_A2TJR_GD.AAAARSf_default" href="Association_A2TJR_GD_AAAARSh.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" coords="1778.0, 265.72, 1228.0, 309.72, 1228.0, 309.72, 1228.0, 309.72, 1228.0, 309.72, 1228.0, 309.72, 1228.0, 309.72, 1228.0, 308.0, 1214.0, 308.0, 1214.0, 310.84, 1214.0, 310.84, 1212.0, 311.0, 1212.0, 325.0, 1214.0, 324.84, 1214.0, 324.84, 1214.0, 697.0, 1228.0, 697.0, 1228.0, 323.72, 1228.0, 323.72, 1787.0, 279.0, 1787.0, 272.0, 1778.0, 272.0, 1778.0, 265.72" coords2="1778.0, 265.72, 1228.0, 309.72, 1228.0, 309.72, 1228.0, 309.72, 1228.0, 309.72, 1228.0, 309.72, 1228.0, 309.72, 1228.0, 308.0, 1214.0, 308.0, 1214.0, 310.84, 1214.0, 310.84, 1212.0, 311.0, 1212.0, 325.0, 1214.0, 324.84, 1214.0, 324.84, 1214.0, 697.0, 1228.0, 697.0, 1228.0, 323.72, 1228.0, 323.72, 1787.0, 279.0, 1787.0, 272.0, 1778.0, 272.0, 1778.0, 265.72" shape="poly" alt="provenire:Association" id="areadiagram_map_6cujx_GD.AAAARIv_default" href="Association_icujx_GD_AAAARIq.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1423.0, 264.09912, 764.0, 402.4315, 764.0, 402.0, 750.0, 402.0, 750.0, 405.37027, 750.0, 405.37027, 747.0, 406.0, 749.0, 420.0, 750.0, 419.7901, 750.0, 462.0, 764.0, 462.0, 764.0, 416.85132, 1435.0, 276.0, 1434.4286, 272.0, 1423.0, 272.0, 1423.0, 264.09912" coords2="1423.0, 264.09912, 764.0, 402.4315, 764.0, 402.0, 750.0, 402.0, 750.0, 405.37027, 750.0, 405.37027, 747.0, 406.0, 749.0, 420.0, 750.0, 419.7901, 750.0, 462.0, 764.0, 462.0, 764.0, 416.85132, 1435.0, 276.0, 1434.4286, 272.0, 1423.0, 272.0, 1423.0, 264.09912" shape="poly" alt="avere:Association" id="areadiagram_map_nj.N5_GD.AAAAQ6R_default" href="Association_Zj_N5_GD_AAAAQ6F.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="838.0, 471.0, 838.0, 485.0, 1551.0, 485.0, 1551.0, 471.0" coords2="838.0, 471.0, 838.0, 485.0, 1551.0, 485.0, 1551.0, 471.0" shape="poly" alt="avere:Association" id="areadiagram_map_MT5N5_GD.AAAAQ6r_default" href="Association_oT5N5_GD_AAAAQ6m.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="838.0, 565.5227, 838.0, 573.0, 826.0, 573.0, 826.0, 579.0, 1866.0, 624.30304, 1866.0, 624.30304, 1866.0, 677.0, 1873.0, 677.0, 1873.0, 669.0, 1880.0, 669.0, 1880.0, 624.9129, 1880.0, 624.9129, 1880.0, 624.9129, 1880.0, 624.9129, 1882.0, 625.0, 1882.0, 611.0, 1880.0, 610.9129, 1880.0, 610.9129, 1880.0, 608.0, 1866.0, 608.0, 1866.0, 610.30304, 1866.0, 610.30304, 838.0, 565.5227" coords2="838.0, 565.5227, 838.0, 573.0, 826.0, 573.0, 826.0, 579.0, 1866.0, 624.30304, 1866.0, 624.30304, 1866.0, 677.0, 1873.0, 677.0, 1873.0, 669.0, 1880.0, 669.0, 1880.0, 624.9129, 1880.0, 624.9129, 1880.0, 624.9129, 1880.0, 624.9129, 1882.0, 625.0, 1882.0, 611.0, 1880.0, 610.9129, 1880.0, 610.9129, 1880.0, 608.0, 1866.0, 608.0, 1866.0, 610.30304, 1866.0, 610.30304, 838.0, 565.5227" shape="poly" alt="avere:Association" id="areadiagram_map_VS9N5_GD.AAAAQ7D_default" href="Association_RS9N5_GD_AAAAQ6_.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="2263.0, 554.1698, 2107.0, 667.0, 2108.4546, 669.0, 2119.0, 669.0, 2119.0, 675.10693, 2274.0, 563.0, 2273.2727, 562.0, 2263.0, 562.0, 2263.0, 554.1698" coords2="2263.0, 554.1698, 2107.0, 667.0, 2108.4546, 669.0, 2119.0, 669.0, 2119.0, 675.10693, 2274.0, 563.0, 2273.2727, 562.0, 2263.0, 562.0, 2263.0, 554.1698" shape="poly" alt="avere:Association" id="areadiagram_map_Blvd5_GD.AAAARAO_default" href="Association_alvd5_GD_AAAARAJ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="290.0, 807.0, 290.0, 1382.0, 304.0, 1382.0, 304.0, 807.0" coords2="290.0, 807.0, 290.0, 1382.0, 304.0, 1382.0, 304.0, 807.0" shape="poly" alt=":Association" id="areadiagram_map_liqFF_GD.AAAARIt_default" href="Association_RiqFF_GD_AAAARIo.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="164.0, 962.0, 164.0, 1018.6667, 164.0, 1018.6667, 158.0, 1026.0, 164.0, 1031.096, 164.0, 1031.096, 164.0, 1037.0, 170.95161, 1037.0, 221.0, 1079.5068, 221.0, 1079.5068, 221.0, 1391.0, 223.0, 1391.0, 223.0, 1382.0, 235.0, 1382.0, 235.0, 1083.1111, 235.0, 1083.1111, 240.0, 1077.0, 235.0, 1072.7534, 235.0, 1072.7534, 235.0, 1067.0, 228.2258, 1067.0, 178.0, 1024.3424, 178.0, 1024.3424, 178.0, 962.0" coords2="164.0, 962.0, 164.0, 1018.6667, 164.0, 1018.6667, 158.0, 1026.0, 164.0, 1031.096, 164.0, 1031.096, 164.0, 1037.0, 170.95161, 1037.0, 221.0, 1079.5068, 221.0, 1079.5068, 221.0, 1391.0, 223.0, 1391.0, 223.0, 1382.0, 235.0, 1382.0, 235.0, 1083.1111, 235.0, 1083.1111, 240.0, 1077.0, 235.0, 1072.7534, 235.0, 1072.7534, 235.0, 1067.0, 228.2258, 1067.0, 178.0, 1024.3424, 178.0, 1024.3424, 178.0, 962.0" shape="poly" alt=":Association" id="areadiagram_map_JzeFF_GD.AAAARL7_default" href="Association_2zeFF_GD_AAAARL2.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="329.0, 1249.0, 285.0, 1260.0, 288.0, 1274.0, 340.0, 1261.0, 339.14285, 1257.0, 329.0, 1257.0, 329.0, 1249.0" coords2="329.0, 1249.0, 285.0, 1260.0, 288.0, 1274.0, 340.0, 1261.0, 339.14285, 1257.0, 329.0, 1257.0, 329.0, 1249.0" shape="poly" alt=":Association Class" id="areadiagram_map_9PpFF_GD.AAAARMB_default" href="AssociationClass_5PpFF_GD_AAAARMA.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="204.0, 1283.0, 202.0, 1283.7693, 202.0, 1283.7693, 202.0, 1297.0, 195.0685, 1297.0, 224.0, 1361.0, 237.0, 1356.0, 204.0, 1283.0" coords2="204.0, 1283.0, 202.0, 1283.7693, 202.0, 1283.7693, 202.0, 1297.0, 195.0685, 1297.0, 224.0, 1361.0, 237.0, 1356.0, 204.0, 1283.0" shape="poly" alt=":Association Class" id="areadiagram_map_DFPFF_GD.AAAARMa_default" href="AssociationClass_lFPFF_GD_AAAARMZ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1328.0, 804.20715, 1328.0, 819.498, 1778.0, 1025.6733, 1778.0, 1025.6733, 1778.0, 1015.0, 1788.0782, 1015.0, 1328.0, 804.20715" coords2="1328.0, 804.20715, 1328.0, 819.498, 1778.0, 1025.6733, 1778.0, 1025.6733, 1778.0, 1015.0, 1788.0782, 1015.0, 1328.0, 804.20715" shape="poly" alt=":Association" id="areadiagram_map__zXpt_GD.AAAARCf_default" href="Association_nzXpt_GD_AAAARCa.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1766.0, 557.0, 1762.0, 557.5714, 1762.0, 567.0, 1753.453, 567.0, 1834.8206, 1015.0, 1849.1837, 1015.0, 1766.0, 557.0" coords2="1766.0, 557.0, 1762.0, 557.5714, 1762.0, 567.0, 1753.453, 567.0, 1834.8206, 1015.0, 1849.1837, 1015.0, 1766.0, 557.0" shape="poly" alt=":Association" id="areadiagram_map_3yIZt_GD.AAAARC7_default" href="Association_zyIZt_GD_AAAARC2.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1866.0, 878.0, 1846.4286, 1015.0, 1860.7142, 1015.0, 1878.8572, 888.0, 1873.0, 888.0, 1873.0, 879.0, 1866.0, 878.0" coords2="1866.0, 878.0, 1846.4286, 1015.0, 1860.7142, 1015.0, 1878.8572, 888.0, 1873.0, 888.0, 1873.0, 879.0, 1866.0, 878.0" shape="poly" alt=":Association" id="areadiagram_map_ybsZt_GD.AAAARDd_default" href="Association_kbsZt_GD_AAAARDY.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1565.0, 272.0, 1565.0, 308.0, 1561.0, 322.0, 1565.0, 323.10345, 1565.0, 328.0, 1579.0, 328.0, 1579.0, 326.9655, 1840.0109, 398.9685, 2277.0, 724.54944, 2277.0, 1050.737, 2277.0, 1050.737, 1921.0, 1045.2319, 1921.0, 1045.2319, 1921.0, 1059.2319, 1921.0, 1059.2319, 2277.0, 1064.737, 2277.0, 1064.737, 2277.0, 1068.0, 2291.0, 1068.0, 2291.0, 1064.9536, 2291.0, 1064.9536, 2294.0, 1065.0, 2294.0, 1051.0, 2291.0, 1050.9536, 2291.0, 1050.9536, 2291.0, 726.5, 2295.0, 721.0, 2291.0, 718.0198, 2291.0, 712.0, 2282.9204, 712.0, 1853.1813, 391.82077, 1854.0, 388.0, 1844.5374, 385.38058, 1844.5374, 385.38058, 1840.0, 382.0, 1838.7137, 383.76852, 1838.7137, 383.76852, 1838.7137, 383.76852, 1838.7137, 383.76852, 1579.0, 311.87543, 1579.0, 272.0" coords2="1565.0, 272.0, 1565.0, 308.0, 1561.0, 322.0, 1565.0, 323.10345, 1565.0, 328.0, 1579.0, 328.0, 1579.0, 326.9655, 1840.0109, 398.9685, 2277.0, 724.54944, 2277.0, 1050.737, 2277.0, 1050.737, 1921.0, 1045.2319, 1921.0, 1045.2319, 1921.0, 1059.2319, 1921.0, 1059.2319, 2277.0, 1064.737, 2277.0, 1064.737, 2277.0, 1068.0, 2291.0, 1068.0, 2291.0, 1064.9536, 2291.0, 1064.9536, 2294.0, 1065.0, 2294.0, 1051.0, 2291.0, 1050.9536, 2291.0, 1050.9536, 2291.0, 726.5, 2295.0, 721.0, 2291.0, 718.0198, 2291.0, 712.0, 2282.9204, 712.0, 1853.1813, 391.82077, 1854.0, 388.0, 1844.5374, 385.38058, 1844.5374, 385.38058, 1840.0, 382.0, 1838.7137, 383.76852, 1838.7137, 383.76852, 1838.7137, 383.76852, 1838.7137, 383.76852, 1579.0, 311.87543, 1579.0, 272.0" shape="poly" alt=":Association" id="areadiagram_map_3qiZt_GD.AAAARDz_default" href="Association_zqiZt_GD_AAAARDu.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="299.0, 73.0, 299.0, 76.0, 296.0, 76.0, 296.0, 90.0, 299.0, 90.0, 299.0, 697.0, 313.0, 697.0, 313.0, 90.0, 1423.0, 90.0, 1423.0, 84.0, 1431.0, 84.0, 1431.0, 76.0, 313.0, 76.0, 313.0, 73.0" coords2="299.0, 73.0, 299.0, 76.0, 296.0, 76.0, 296.0, 90.0, 299.0, 90.0, 299.0, 697.0, 313.0, 697.0, 313.0, 90.0, 1423.0, 90.0, 1423.0, 84.0, 1431.0, 84.0, 1431.0, 76.0, 313.0, 76.0, 313.0, 73.0" shape="poly" alt="caricare:Association" id="areadiagram_map_b5VZt_GD.AAAARE3_default" href="Association_95VZt_GD_AAAAREy.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="2009.0, 24.0, 2009.0, 27.038246, 2009.0, 27.038246, 265.0, 30.961754, 265.0, 30.961754, 265.0, 30.961754, 265.0, 30.961754, 265.0, 28.0, 251.0, 28.0, 251.0, 30.99325, 251.0, 30.99325, 248.0, 31.0, 248.0, 45.0, 251.0, 44.99325, 251.0, 44.99325, 251.0, 697.0, 265.0, 697.0, 265.0, 44.961754, 265.0, 44.961754, 2009.0, 41.038246, 2009.0, 41.038246, 2009.0, 669.0, 2023.0, 669.0, 2023.0, 41.00675, 2023.0, 41.00675, 2026.0, 41.0, 2026.0, 27.0, 2023.0, 27.00675, 2023.0, 27.00675, 2023.0, 24.0" coords2="2009.0, 24.0, 2009.0, 27.038246, 2009.0, 27.038246, 265.0, 30.961754, 265.0, 30.961754, 265.0, 30.961754, 265.0, 30.961754, 265.0, 28.0, 251.0, 28.0, 251.0, 30.99325, 251.0, 30.99325, 248.0, 31.0, 248.0, 45.0, 251.0, 44.99325, 251.0, 44.99325, 251.0, 697.0, 265.0, 697.0, 265.0, 44.961754, 265.0, 44.961754, 2009.0, 41.038246, 2009.0, 41.038246, 2009.0, 669.0, 2023.0, 669.0, 2023.0, 41.00675, 2023.0, 41.00675, 2026.0, 41.0, 2026.0, 27.0, 2023.0, 27.00675, 2023.0, 27.00675, 2023.0, 24.0" shape="poly" alt="caricare:Association" id="areadiagram_map_2OLZt_GD.AAAARFT_default" href="Association_KOLZt_GD_AAAARFO.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="185.0, 402.0, 185.0, 405.0, 182.0, 405.0, 182.0, 419.0, 185.0, 419.0, 185.0, 697.0, 199.0, 697.0, 199.0, 419.0, 1551.0, 419.0, 1551.0, 405.0, 199.0, 405.0, 199.0, 402.0" coords2="185.0, 402.0, 185.0, 405.0, 182.0, 405.0, 182.0, 419.0, 185.0, 419.0, 185.0, 697.0, 199.0, 697.0, 199.0, 419.0, 1551.0, 419.0, 1551.0, 405.0, 199.0, 405.0, 199.0, 402.0" shape="poly" alt="caricare:Association" id="areadiagram_map_GNY5t_GD.AAAARF5_default" href="Association_SNY5t_GD_AAAARF0.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="108.0, 417.0, 108.0, 420.0, 105.0, 420.0, 105.0, 434.0, 108.0, 434.0, 108.0, 852.0, 122.0, 852.0, 122.0, 434.0, 1551.0, 434.0, 1551.0, 420.0, 122.0, 420.0, 122.0, 417.0" coords2="108.0, 417.0, 108.0, 420.0, 105.0, 420.0, 105.0, 434.0, 108.0, 434.0, 108.0, 852.0, 122.0, 852.0, 122.0, 434.0, 1551.0, 434.0, 1551.0, 420.0, 122.0, 420.0, 122.0, 417.0" shape="poly" alt="caricare:Association" id="areadiagram_map_kWy5t_GD.AAAARGf_default" href="Association_QWy5t_GD_AAAARGa.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="88.0, -8.0, 88.0, -5.0, 85.0, -5.0, 85.0, 9.0, 88.0, 9.0, 88.0, 852.0, 102.0, 852.0, 102.0, 9.0, 1471.0, 9.0, 1471.0, 84.0, 1485.0, 84.0, 1485.0, 9.0, 1488.0, 9.0, 1488.0, -5.0, 1485.0, -5.0, 1485.0, -8.0, 1471.0, -8.0, 1471.0, -5.0, 102.0, -5.0, 102.0, -8.0" coords2="88.0, -8.0, 88.0, -5.0, 85.0, -5.0, 85.0, 9.0, 88.0, 9.0, 88.0, 852.0, 102.0, 852.0, 102.0, 9.0, 1471.0, 9.0, 1471.0, 84.0, 1485.0, 84.0, 1485.0, 9.0, 1488.0, 9.0, 1488.0, -5.0, 1485.0, -5.0, 1485.0, -8.0, 1471.0, -8.0, 1471.0, -5.0, 102.0, -5.0, 102.0, -8.0" shape="poly" alt="caricare:Association" id="areadiagram_map_Lt25t_GD.AAAARHT_default" href="Association_9t25t_GD_AAAARHO.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="2062.0, 888.0, 2062.0, 1591.0, 87.0, 1591.0, 87.0, 962.0, 81.0, 962.0, 81.0, 952.0, 73.0, 952.0, 73.0, 1591.0, 70.0, 1591.0, 70.0, 1605.0, 73.0, 1605.0, 73.0, 1608.0, 87.0, 1608.0, 87.0, 1605.0, 2062.0, 1605.0, 2062.0, 1608.0, 2076.0, 1608.0, 2076.0, 1605.0, 2079.0, 1605.0, 2079.0, 1591.0, 2076.0, 1591.0, 2076.0, 888.0" coords2="2062.0, 888.0, 2062.0, 1591.0, 87.0, 1591.0, 87.0, 962.0, 81.0, 962.0, 81.0, 952.0, 73.0, 952.0, 73.0, 1591.0, 70.0, 1591.0, 70.0, 1605.0, 73.0, 1605.0, 73.0, 1608.0, 87.0, 1608.0, 87.0, 1605.0, 2062.0, 1605.0, 2062.0, 1608.0, 2076.0, 1608.0, 2076.0, 1605.0, 2079.0, 1605.0, 2079.0, 1591.0, 2076.0, 1591.0, 2076.0, 888.0" shape="poly" alt="caricare:Association" id="areadiagram_map_t2J5t_GD.AAAARHv_default" href="Association_Z2J5t_GD_AAAARHq.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1778, 1015, 1921, 1088" coords2="1778, 1015, 1921, 1088" shape="rect" alt="salvare:NARY" id="areadiagram_map_4Lspt_GD.AAAARBr_default" href="NARY_ELspt_GD_AAAARBs.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="332, 149, 445, 227" coords2="332, 149, 445, 227" shape="rect" alt="enumTipoPOI:Class" id="areadiagram_map_mLsJt_GD.AAAARAv_default" href="Class_mLsJt_GD_AAAARAw.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="92, 1257, 202, 1297" coords2="92, 1257, 202, 1297" shape="rect" alt="avereV:Class" id="areadiagram_map_uKHFF_GD.AAAARML_default" href="Class_uKHFF_GD_AAAARMM.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="329, 1217, 439, 1257" coords2="329, 1217, 439, 1257" shape="rect" alt="avereF:Class" id="areadiagram_map_n8sFF_GD.AAAARIg_default" href="Class_X8sFF_GD_AAAARIh.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="461, 149, 574, 297" coords2="461, 149, 574, 297" shape="rect" alt="enumTipoSegnalazione:Class" id="areadiagram_map_Ok4Ox_GD.AAAAQ9e_default" href="Class_Ok4Ox_GD_AAAAQ9f.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="587, 227, 700, 305" coords2="587, 227, 700, 305" shape="rect" alt="enumDifficolta:Class" id="areadiagram_map_wBX2x_GD.AAAAQ82_default" href="Class_wBX2x_GD_AAAAQ83.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="331, 233, 444, 283" coords2="331, 233, 444, 283" shape="rect" alt="enumValutazione:Class" id="areadiagram_map_bVz2x_GD.AAAAQ8g_default" href="Class_7Vz2x_GD_AAAAQ8h.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="588, 149, 730, 213" coords2="588, 149, 730, 213" shape="rect" alt="enumTipoDivertimento:Class" id="areadiagram_map_RRs2x_GD.AAAAQ7t_default" href="Class_xRs2x_GD_AAAAQ7u.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="383, 519, 552, 629" coords2="383, 519, 552, 629" shape="rect" alt="Segnalazione:Class" id="areadiagram_map_n6TJR_GD.AAAARIy_default" href="Class_X6TJR_GD_AAAARI0.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="223, 1382, 512, 1527" coords2="223, 1382, 512, 1527" shape="rect" alt="Contest:Class" id="areadiagram_map_L6TJR_GD.AAAARIp_default" href="Class_r6TJR_GD_AAAARIr.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="81, 852, 230, 962" coords2="81, 852, 230, 962" shape="rect" alt="Video:Class" id="areadiagram_map_96TJR_GD.AAAARIg_default" href="Class_96TJR_GD_AAAARIi.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="178, 697, 317, 807" coords2="178, 697, 317, 807" shape="rect" alt="Foto:Class" id="areadiagram_map_l6TJR_GD.AAAARIX_default" href="Class_l6TJR_GD_AAAARIZ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="658, 462, 838, 573" coords2="658, 462, 838, 573" shape="rect" alt="Recensione:Class" id="areadiagram_map_J6TJR_GD.AAAARIP_default" href="Class_J6TJR_GD_AAAARIR.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      le province verranno caricate in modo statico
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="2216, 292, 2349, 360" coords2="2216, 292, 2349, 360" shape="rect" alt="Provincia:Class" id="areadiagram_map_B6TJR_GD.AAAARII_default" href="Class_B6TJR_GD_AAAARIK.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" coords="1873, 669, 2119, 888" coords2="1873, 669, 2119, 888" shape="rect" alt="Itinerario:Class" id="areadiagram_map_XaTJR_GD.AAAARH9_default" href="Class_XaTJR_GD_AAAARH_.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1551, 394, 1762, 567" coords2="1551, 394, 1762, 567" shape="rect" alt="Ristorante:Class" id="areadiagram_map_raTJR_GD.AAAARHy_default" href="Class_raTJR_GD_AAAARH0.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1423, 84, 1621, 272" coords2="1423, 84, 1621, 272" shape="rect" alt="Divertimento:Class" id="areadiagram_map_daTJR_GD.AAAARHm_default" href="Class_daTJR_GD_AAAARHo.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1778, 204, 1935, 272" coords2="1778, 204, 1935, 272" shape="rect" alt="Comune:Class" id="areadiagram_map_laTJR_GD.AAAARHg_default" href="Class_VaTJR_GD_AAAARHi.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="2263, 479, 2365, 562" coords2="2263, 479, 2365, 562" shape="rect" alt="localizzazione:Class" id="areadiagram_map_xaTJR_GD.AAAARHY_default" href="Class_JaTJR_GD_AAAARHa.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1001, 1452, 1345, 1516" coords2="1001, 1452, 1345, 1516" shape="rect" alt="GestoreDellaPiattaforma:Class" id="areadiagram_map_BaTJR_GD.AAAARHT_default" href="Class_BaTJR_GD_AAAARHV.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1038, 1297, 1404, 1391" coords2="1038, 1297, 1404, 1391" shape="rect" alt="Curatore:Class" id="areadiagram_map_2aTJR_GD.AAAARHO_default" href="Class_2aTJR_GD_AAAARHQ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1068, 1217, 1303, 1267" coords2="1068, 1217, 1303, 1267" shape="rect" alt="Animatore:Class" id="areadiagram_map_qaTJR_GD.AAAARHJ_default" href="Class_aaTJR_GD_AAAARHL.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1086, 1114, 1406, 1178" coords2="1086, 1114, 1406, 1178" shape="rect" alt="ContributorAutorizzato:Class" id="areadiagram_map_iaTJR_GD.AAAARHE_default" href="Class_iaTJR_GD_AAAARHG.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="866, 1027, 1238, 1077" coords2="866, 1027, 1238, 1077" shape="rect" alt="Contributor:Class" id="areadiagram_map_MaTJR_GD.AAAARG__default" href="Class_MaTJR_GD_AAAARHB.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="1011, 909, 1209, 961" coords2="1011, 909, 1209, 961" shape="rect" alt="TuristaAutorizzato:Class" id="areadiagram_map_4aTJR_GD.AAAARG6_default" href="Class_EaTJR_GD_AAAARG8.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="823, 697, 1328, 877" coords2="823, 697, 1328, 877" shape="rect" alt="Turista:Class" id="areadiagram_map_PqTJR_GD.AAAARGv_default" href="Class_PqTJR_GD_AAAARGx.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="823, 114, 1236, 234" coords2="823, 114, 1236, 234" shape="rect" alt="UserNonAutenticato:Class" id="areadiagram_map_tqTJR_GD.AAAARGq_default" href="Class_dqTJR_GD_AAAARGs.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+				Model Elements			</td>
+		</tr>
+		<tr>
+			<td style="height: 5px">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="4" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="30%">
+<span class="TableHeaderText">Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td>
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Nary.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Nary.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="NARY_ELspt_GD_AAAARBs.html" class="ItemLink">salvare : NARY</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_mLsJt_GD_AAAARAw.html" class="ItemLink">enumTipoPOI : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_uKHFF_GD_AAAARMM.html" class="ItemLink">avereV : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_X8sFF_GD_AAAARIh.html" class="ItemLink">avereF : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_Ok4Ox_GD_AAAAQ9f.html" class="ItemLink">enumTipoSegnalazione : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_wBX2x_GD_AAAAQ83.html" class="ItemLink">enumDifficolta : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_7Vz2x_GD_AAAAQ8h.html" class="ItemLink">enumValutazione : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_xRs2x_GD_AAAAQ7u.html" class="ItemLink">enumTipoDivertimento : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_X6TJR_GD_AAAARI0.html" class="ItemLink">Segnalazione : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_r6TJR_GD_AAAARIr.html" class="ItemLink">Contest : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_96TJR_GD_AAAARIi.html" class="ItemLink">Video : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_l6TJR_GD_AAAARIZ.html" class="ItemLink">Foto : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_J6TJR_GD_AAAARIR.html" class="ItemLink">Recensione : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_B6TJR_GD_AAAARIK.html" class="ItemLink">Provincia : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      le province verranno caricate in modo statico
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_XaTJR_GD_AAAARH_.html" class="ItemLink">Itinerario : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_raTJR_GD_AAAARH0.html" class="ItemLink">Ristorante : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_daTJR_GD_AAAARHo.html" class="ItemLink">Divertimento : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_VaTJR_GD_AAAARHi.html" class="ItemLink">Comune : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_JaTJR_GD_AAAARHa.html" class="ItemLink">localizzazione : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_BaTJR_GD_AAAARHV.html" class="ItemLink">GestoreDellaPiattaforma : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_2aTJR_GD_AAAARHQ.html" class="ItemLink">Curatore : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_aaTJR_GD_AAAARHL.html" class="ItemLink">Animatore : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_iaTJR_GD_AAAARHG.html" class="ItemLink">ContributorAutorizzato : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_MaTJR_GD_AAAARHB.html" class="ItemLink">Contributor : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_EaTJR_GD_AAAARG8.html" class="ItemLink">TuristaAutorizzato : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_PqTJR_GD_AAAARGx.html" class="ItemLink">Turista : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Class.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Class.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Class_dqTJR_GD_AAAARGs.html" class="ItemLink">UserNonAutenticato : Class</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<div style="height: 20px">
+	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		idsBruttiTranquilli_AA_2324	</div>
+</body>
+</html>

@@ -1,0 +1,1804 @@
+<html>
+<head>
+	<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<link rel="stylesheet" href="report.css" type="text/css"/>
+	<title>Use Case Diagram - UC IT2.0</title>
+	<script type="text/javascript" src="report.js"></script>
+	<script type="text/javascript" src="link_popup.js"></script>
+	<script type="text/javascript" src="tooltip.js"></script>
+</head>
+<body style="margin-left: 10px; margin-right: 10px; margin-top: 10px; margin-bottom: 10px;" onload="initPage();initDiagram();initGridDiagram();">
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_top">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-top: 2px #FF0000 solid;" id="spotlight_bottom">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_left">
+	</div>
+	<div style="position:absolute; z-index:2; visibility:hidden;border-left: 2px #FF0000 solid;" id="spotlight_right">
+	</div>
+	<canvas width="100" style="position:absolute; z-index:2; visibility:hidden" id="spotlight_c" height="100">
+	</canvas>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesTop">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; width:100px; height:100px; z-index:1; visibility:hidden" id="spotLightResourcesRight">
+		<table border="0" cellpadding="0" cellspacing="0">
+			<tr>
+				<td>
+<a href="#top"><img style="border:none" src="../images/icons/BackToTop.gif" alt="Back to top"/></a>				</td>
+			</tr>
+			<tr>
+				<td>
+<a href="javascript:clearSpotLightFromOpenSpecButton();"><img style="border:none" src="../images/icons/OpenSpecification.gif" alt="Open specification"/></a>				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute;z-index:4;visibility:hidden" id="linkPopupMenuLayer">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="linkPopupMenuTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="referenceIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Ref.gif" style="border:none" onclick="movePopupPositionToReferenceIconPosition();resetPopupForReference();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="subdiagramIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Subdiagram.gif" style="border:none" onclick="movePopupPositionToSubdiagramIconPosition();resetPopupForSubdiagram();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="transitorIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Transitor.gif" style="border:none" onclick="movePopupPositionToTransitorIconPosition();resetPopupForTransitor();switchPopupShowHideStatus();" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div style="position:absolute; z-index:1; visibility:hidden; " id="documentationIconLayer">
+		<table border="0" cellpadding="3" cellspacing="0" style="font-size:1;">
+			<tr>
+				<td>
+					<img src="../images/icons/Documentation.png" style="border:none" />				</td>
+			</tr>
+		</table>
+	</div>
+	<div class="HeaderText">
+		idsBruttiTranquilli_AA_2324	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="HeaderLine1">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine2">
+			</td>
+		</tr>
+		<tr>
+			<td class="HeaderLine3">
+			</td>
+		</tr>
+	</table>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="referencedBys">
+		<table border="0" width="100%" style="border-style:solid; border-width:1px; border-color:#000000; background:#FFFFFF; width:250px" id="referencedBysTable">
+		</table>
+	</div>
+	<div style="position:absolute; z-index:21; visibility:hidden" id="vplink">
+		<table border="1" cellpadding="0" cellspacing="0" bordercolor="#A9BFD3">
+			<tr>
+				<td>
+					<table border="0" cellpadding="0" width="100%" cellspacing="0">
+						<tr style="background:#DDDDDD">
+							<td style="font-size: 12px;" align="left">
+								<select onchange="vpLinkToggleName()" id="vplink-linkType">
+	<option value="Project Link">Project Link</option>
+	<option value="Page URL">Page URL</option>
+</select>
+							</td>
+							<td style="font-size: 12px;" align="right">
+								<input onclick="javascript: vpLinkToggleName()" id="vplink-checkbox" type="checkbox" />
+								<label for="vplink-checkbox">with Name</label>							</td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<textarea id="vplink-text" style="width: 348px; height: 60px; border-color: #7EADD9; outline: none;"></textarea>				</td>
+			</tr>
+		</table>
+	</div>
+	<p>
+<a href="Model_tiX9_fGD_AAAAQ1G.html" class="PageParentTitle">IT2 : Model</a><span class="PageParentTitle">&nbsp;.&nbsp;</span><a href="Model_crwJR_GD_AAAAQ1p.html" class="PageParentTitle">use case diagram : Model</a>	</p>
+	<p class="PageTitle">
+		<span id="PageTitleText">
+			Use Case Diagram - UC IT2.0		</span>
+<a onclick="javascript: showVpLink('idsBruttiTranquilli_AA_2324_IT_1.0.vpp://diagram/bWoD.fGD.AAAAQ1f', 'UC IT2.0\nidsBruttiTranquilli_AA_2324_IT_1.0.vpp://diagram/bWoD.fGD.AAAAQ1f', 'UC IT2.0', this); return false;" style="padding-left: 16px; font-size: 12px" href="#"><img src="../images/icons/link.png" border="0"> link</a>	</p>
+	<div style="position: relative; padding-bottom: 20px;">
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style="position: absolute; top: 0; left: 0; z-index: 20;" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),hideLinkPopup(),hideReferencedBys();">
+			<tr>
+				<td>
+<span class="TableContent">Jump to:</span>					<select id="SelectShape" class="TableContent" onChange="scrollWin('diagram', this.value);hideLinkPopup();showSpotLight('diagram', this.value)">
+<option value="">Please select a model element</option>
+<option value="shape|110.0|112.0|30.0|60.0|Actor_RV1D_fGD_AAAAQ8G.html|Actor_RV1D_fGD_AAAAQ8G.html|hV1D.fGD.AAAAQ8E" id="optionhV1D.fGD.AAAAQ8E">User non autenticato : Actor</option>
+<option value="shape|110.0|376.0|30.0|60.0|Actor_C11D_fGD_AAAAQ81.html|Actor_C11D_fGD_AAAAQ81.html|C11D.fGD.AAAAQ8z" id="optionC11D.fGD.AAAAQ8z">Turista : Actor</option>
+<option value="shape|109.0|633.0|30.0|60.0|Actor_B11D_fGD_AAAAQ9W.html|Actor_B11D_fGD_AAAAQ9W.html|B11D.fGD.AAAAQ9U" id="optionB11D.fGD.AAAAQ9U">Turista autorizzato : Actor</option>
+<option value="shape|109.0|846.0|30.0|60.0|Actor_N11D_fGD_AAAAQ93.html|Actor_N11D_fGD_AAAAQ93.html|N11D.fGD.AAAAQ91" id="optionN11D.fGD.AAAAQ91">Contributor : Actor</option>
+<option value="shape|116.0|1212.0|30.0|60.0|Actor_X11D_fGD_AAAAQ_Y.html|Actor_X11D_fGD_AAAAQ_Y.html|X11D.fGD.AAAAQ.W" id="optionX11D.fGD.AAAAQ.W">Contributor autorizzati : Actor</option>
+<option value="shape|135.0|1605.0|30.0|60.0|Actor_gN1D_fGD_AAAAQ_r.html|Actor_gN1D_fGD_AAAAQ_r.html|gN1D.fGD.AAAAQ.p" id="optiongN1D.fGD.AAAAQ.p">Animatore : Actor</option>
+<option value="shape|141.0|1727.0|30.0|60.0|Actor_8N1D_fGD_AAAAQ_M.html|Actor_8N1D_fGD_AAAAQ_M.html|8N1D.fGD.AAAAQ_K" id="option8N1D.fGD.AAAAQ_K">Curatore : Actor</option>
+<option value="shape|141.0|1970.0|30.0|60.0|Actor_aN1D_fGD_AAAAQ_f.html|Actor_aN1D_fGD_AAAAQ_f.html|qN1D.fGD.AAAAQ_d" id="optionqN1D.fGD.AAAAQ_d">Gestore della piattaforma : Actor</option>
+<option value="shape|351.0|62.0|80.0|40.0|UseCase_dV1D_fGD_AAAAQ8L.html|UseCase_dV1D_fGD_AAAAQ8L.html|tV1D.fGD.AAAAQ8J" id="optiontV1D.fGD.AAAAQ8J">Ricerca per itinerario : Use Case</option>
+<option value="shape|307.0|112.0|160.0|40.0|UseCase_nV1D_fGD_AAAAQ8Z.html|UseCase_nV1D_fGD_AAAAQ8Z.html|HV1D.fGD.AAAAQ8X" id="optionHV1D.fGD.AAAAQ8X">Interazione con mappa OSM : Use Case</option>
+<option value="shape|332.0|163.0|111.0|40.0|UseCase_k11D_fGD_AAAAQ8n.html|UseCase_k11D_fGD_AAAAQ8n.html|A11D.fGD.AAAAQ8l" id="optionA11D.fGD.AAAAQ8l">Leggere recensioni : Use Case</option>
+<option value="shape|312.0|238.0|117.0|40.0|UseCase_K11D_fGD_AAAAQ86.html|UseCase_K11D_fGD_AAAAQ86.html|K11D.fGD.AAAAQ84" id="optionK11D.fGD.AAAAQ84">Inviare segnalazioni : Use Case</option>
+<option value="shape|317.0|295.0|110.0|40.0|UseCase_W11D_fGD_AAAAQ9I.html|UseCase_W11D_fGD_AAAAQ9I.html|W11D.fGD.AAAAQ9G" id="optionW11D.fGD.AAAAQ9G">Scrivere recensioni : Use Case</option>
+<option value="shape|351.0|749.0|80.0|40.0|UseCase_x11D_fGD_AAAAQ9b.html|UseCase_x11D_fGD_AAAAQ9b.html|x11D.fGD.AAAAQ9Z" id="optionx11D.fGD.AAAAQ9Z">Salvare informazioni : Use Case</option>
+<option value="shape|293.0|555.0|180.0|46.0|UseCase_F11D_fGD_AAAAQ9p.html|UseCase_F11D_fGD_AAAAQ9p.html|F11D.fGD.AAAAQ9n" id="optionF11D.fGD.AAAAQ9n">Caricamento foto (previa autorizzazione Contributor autorizzato) : Use Case</option>
+<option value="shape|342.0|998.0|240.0|40.0|UseCase_L11D_fGD_AAAAQ_K.html|UseCase_L11D_fGD_AAAAQ_K.html|L11D.fGD.AAAAQ.I" id="optionL11D.fGD.AAAAQ.I">Caricamento foto (senza autorizzazione) : Use Case</option>
+<option value="shape|371.0|1530.0|88.0|40.0|UseCase_YN1D_fGD_AAAAQ_w.html|UseCase_YN1D_fGD_AAAAQ_w.html|YN1D.fGD.AAAAQ.u" id="optionYN1D.fGD.AAAAQ.u">Indirre contest : Use Case</option>
+<option value="shape|361.0|1706.0|145.0|40.0|UseCase_iN1D_fGD_AAAAQ_R.html|UseCase_iN1D_fGD_AAAAQ_R.html|iN1D.fGD.AAAAQ_P" id="optioniN1D.fGD.AAAAQ_P">gestione segnalazioni itinerari/divertimenti/ristoranti : Use Case</option>
+<option value="shape|383.0|1929.0|105.0|60.0|UseCase_GN1D_fGD_AAAAQ_k.html|UseCase_GN1D_fGD_AAAAQ_k.html|GN1D.fGD.AAAAQ_i" id="optionGN1D.fGD.AAAAQ_i">Gestione ruoli : Use Case</option>
+<option value="shape|292.0|350.0|167.0|40.0|UseCase_xLhT_fGD_AAAARFD.html|UseCase_xLhT_fGD_AAAARFD.html|xLhT.fGD.AAAARFC" id="optionxLhT.fGD.AAAARFC">Modificare recensioni proprie : Use Case</option>
+<option value="shape|299.0|405.0|160.0|40.0|UseCase_mfNT_fGD_AAAARFV.html|UseCase_mfNT_fGD_AAAARFV.html|GfNT.fGD.AAAARFU" id="optionGfNT.fGD.AAAARFU">Eliminare recensioni proprie : Use Case</option>
+<option value="shape|279.0|607.0|240.0|40.0|UseCase_W2XT_fGD_AAAARGE.html|UseCase_W2XT_fGD_AAAARGE.html|W2XT.fGD.AAAARGD" id="optionW2XT.fGD.AAAARGD">Caricamento video (previa autorizzazione Contributor autorizzato) : Use Case</option>
+<option value="shape|292.0|655.0|214.0|40.0|UseCase_mF4z_fGD_AAAARGs.html|UseCase_mF4z_fGD_AAAARGs.html|mF4z.fGD.AAAARGr" id="optionmF4z.fGD.AAAARGr">Eliminazione foto proprie : Use Case</option>
+<option value="shape|292.0|702.0|220.0|40.0|UseCase_XC0z_fGD_AAAARG_.html|UseCase_XC0z_fGD_AAAARG_.html|nC0z.fGD.AAAARG9" id="optionnC0z.fGD.AAAARG9">Eliminazione video propri : Use Case</option>
+<option value="shape|348.0|1048.0|234.0|40.0|UseCase_u7pz_fGD_AAAARII.html|UseCase_u7pz_fGD_AAAARII.html|u7pz.fGD.AAAARIH" id="optionu7pz.fGD.AAAARIH">Caricamento video (senza autorizzazione) : Use Case</option>
+<option value="shape|369.0|1098.0|187.0|40.0|UseCase_Sinz_fGD_AAAARI0.html|UseCase_Sinz_fGD_AAAARI0.html|Sinz.fGD.AAAARIz" id="optionSinz.fGD.AAAARIz">Gestione segnalazioni recensioni : Use Case</option>
+<option value="shape|308.0|1340.0|218.0|40.0|UseCase_xLWL_fGD_AAAARJc.html|UseCase_xLWL_fGD_AAAARJc.html|xLWL.fGD.AAAARJb" id="optionxLWL.fGD.AAAARJb">Approvazione foto (turista autorizzato) : Use Case</option>
+<option value="shape|308.0|1296.0|225.0|40.0|UseCase_ZqZL_fGD_AAAARJu.html|UseCase_ZqZL_fGD_AAAARJu.html|ZqZL.fGD.AAAARJt" id="optionZqZL.fGD.AAAARJt">Approvazione video (turista autorizzato) : Use Case</option>
+<option value="shape|341.0|1387.0|153.0|40.0|UseCase_vQbL_fGD_AAAARKa.html|UseCase_vQbL_fGD_AAAARKa.html|vQbL.fGD.AAAARKZ" id="optionvQbL.fGD.AAAARKZ">Gestione segnalazioni foto : Use Case</option>
+<option value="shape|341.0|1435.0|160.0|40.0|UseCase_0q3L_fGD_AAAARKx.html|UseCase_0q3L_fGD_AAAARKx.html|Uq3L.fGD.AAAARKw" id="optionUq3L.fGD.AAAARKw">Gestione segnalazioni video : Use Case</option>
+<option value="shape|348.0|1655.0|127.0|40.0|UseCase_1WU7_fGD_AAAARLl.html|UseCase_1WU7_fGD_AAAARLl.html|1WU7.fGD.AAAARLk" id="option1WU7.fGD.AAAARLk">Assegnazione punteggi contest : Use Case</option>
+<option value="shape|361.0|2005.0|153.0|40.0|UseCase_y1yH_fGD_AAAARMn.html|UseCase_y1yH_fGD_AAAARMn.html|y1yH.fGD.AAAARMm" id="optiony1yH.fGD.AAAARMm">Gestione segnalazioni BUG : Use Case</option>
+<option value="shape|346.0|12.0|116.0|40.0|UseCase_AwjSBfGD_AAAARQ2.html|UseCase_AwjSBfGD_AAAARQ2.html|AwjSBfGD.AAAARQ1" id="optionAwjSBfGD.AAAARQ1">Ricerca per comune : Use Case</option>
+<option value="shape|207.0|12.0|125.0|40.0|UseCase_2tCqBfGD_AAAARRV.html|UseCase_2tCqBfGD_AAAARRV.html|2tCqBfGD.AAAARRU" id="option2tCqBfGD.AAAARRU">Ricerca per ristorante : Use Case</option>
+<option value="shape|56.0|2.0|137.0|40.0|UseCase_W4tGBfGD_AAAARTL.html|UseCase_W4tGBfGD_AAAARTL.html|m4tGBfGD.AAAARTK" id="optionm4tGBfGD.AAAARTK">Ricerca per divertimenti : Use Case</option>
+<option value="shape|442.0|460.0|106.0|40.0|UseCase_QdF_pfGD_AAAARa7.html|UseCase_QdF_pfGD_AAAARa7.html|AdF.pfGD.AAAARa6" id="optionAdF.pfGD.AAAARa6">Votazione contest : Use Case</option>
+<option value="shape|361.0|1757.0|151.0|52.0|UseCase_n83BpfGD_AAAARb5.html|UseCase_n83BpfGD_AAAARb5.html|783BpfGD.AAAARb4" id="option783BpfGD.AAAARb4">approvazione nuovi posti/itinerari aggiunti dal Contributor : Use Case</option>
+<option value="shape|408.0|846.0|187.0|41.0|UseCase_jJPpffGD_AAAARgo.html|UseCase_jJPpffGD_AAAARgo.html|jJPpffGD.AAAARgn" id="optionjJPpffGD.AAAARgn">Aggiunta divertimenti (previa approvazione del curatore) : Use Case</option>
+<option value="shape|369.0|948.0|190.0|40.0|UseCase_pFAZffGD_AAAARhA.html|UseCase_pFAZffGD_AAAARhA.html|pFAZffGD.AAAARg_" id="optionpFAZffGD.AAAARg_">Aggiunta itinerario (previa approvazione del curatore) : Use Case</option>
+<option value="shape|422.0|898.0|185.0|40.0|UseCase_RuwZffGD_AAAARhU.html|UseCase_RuwZffGD_AAAARhU.html|RuwZffGD.AAAARhT" id="optionRuwZffGD.AAAARhT">Aggiunta ristorante (previa approvazione del curatore) : Use Case</option>
+<option value="shape|375.0|1830.0|105.0|40.0|UseCase_mtA5ffGD_AAAARjg.html|UseCase_mtA5ffGD_AAAARjg.html|mtA5ffGD.AAAARjf" id="optionmtA5ffGD.AAAARjf">Aggiunta comune : Use Case</option>
+<option value="shape|354.0|1157.0|160.0|47.0|UseCase_23_FffGD_AAAARm1.html|UseCase_23_FffGD_AAAARm1.html|23_FffGD.AAAARm0" id="option23_FffGD.AAAARm0">Aggiunta divertimenti (senza approvazione del curatore) : Use Case</option>
+<option value="shape|318.0|1208.0|240.0|40.0|UseCase_L9IlffGD_AAAARnT.html|UseCase_L9IlffGD_AAAARnT.html|L9IlffGD.AAAARnS" id="optionL9IlffGD.AAAARnS">Aggiunta ristorante (senza approvazione del curatore) : Use Case</option>
+<option value="shape|308.0|1252.0|240.0|40.0|UseCase_PA4lffGD_AAAARnp.html|UseCase_PA4lffGD_AAAARnp.html|3A4lffGD.AAAARno" id="option3A4lffGD.AAAARno">Aggiunta itinerario (senza approvazione del curatore) : Use Case</option>
+<option value="shape|397.0|788.0|161.0|40.0|UseCase_OB1m_fGD_AAAAVCN.html|UseCase_OB1m_fGD_AAAAVCN.html|OB1m_fGD.AAAAVCM" id="optionOB1m_fGD.AAAAVCM">Elimina informazioni salvate : Use Case</option>
+<option value="shape|331.0|1592.0|168.0|40.0|UseCase_qfgB_fGD_AAAAVGr.html|UseCase_qfgB_fGD_AAAAVGr.html|KfgB_fGD.AAAAVGq" id="optionKfgB_fGD.AAAAVGq">Validazione materiale contest : Use Case</option>
+</select>				</td>
+			</tr>
+		</table>
+		<table border="0" cellpadding="0" width="100%" cellspacing="0" style="position: relative; top: 24;">
+			<tr>
+				<td>
+					<img id="diagram" src="../images/UC_IT20.png" usemap="#diagram_map" class="Image" width="611" height="2050"/>
+					<map name="diagram_map">
+<area imageId="diagram" coords="351.0, 96.0, 129.0, 108.0, 129.0, 112.0, 140.0, 112.0, 140.0, 121.4054, 140.0, 121.4054, 388.0, 108.0, 388.0, 102.0, 351.0, 102.0, 351.0, 96.0" coords2="351.0, 96.0, 129.0, 108.0, 129.0, 112.0, 140.0, 112.0, 140.0, 121.4054, 140.0, 121.4054, 388.0, 108.0, 388.0, 102.0, 351.0, 102.0, 351.0, 96.0" shape="poly" alt=":Association" id="areadiagram_map_ON1D.fGD.AAAAQ_w_default" href="Association_ON1D_fGD_AAAAQ_y.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="140.0, 144.0, 140.0, 158.0, 372.0, 158.0, 372.0, 152.0, 307.0, 152.0, 307.0, 144.0" coords2="140.0, 144.0, 140.0, 158.0, 372.0, 158.0, 372.0, 152.0, 307.0, 152.0, 307.0, 144.0" shape="poly" alt=":Association" id="areadiagram_map_.N1D.fGD.AAAAQ___default" href="Association__N1D_fGD_AAAARAB.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="183.0, 181.0, 183.0, 195.0, 332.0, 195.92546, 332.0, 195.92546, 332.0, 181.92546, 332.0, 181.92546, 183.0, 181.0" coords2="183.0, 181.0, 183.0, 195.0, 332.0, 195.92546, 332.0, 195.92546, 332.0, 181.92546, 332.0, 181.92546, 183.0, 181.0" shape="poly" alt=":Association" id="areadiagram_map_RN1D.fGD.AAAARAO_default" href="Association_RN1D_fGD_AAAARAQ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="122.0, 177.0, 122.0, 376.0, 136.0, 376.0, 136.0, 177.0" coords2="122.0, 177.0, 122.0, 376.0, 136.0, 376.0, 136.0, 177.0" shape="poly" alt=":Realization" id="areadiagram_map_JN1D.fGD.AAAARAd_default" href="Realization_pN1D_fGD_AAAARAf.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="312.0, 269.375, 140.0, 376.875, 140.0, 392.875, 323.8, 278.0, 312.0, 278.0, 312.0, 269.375" coords2="312.0, 269.375, 140.0, 376.875, 140.0, 392.875, 323.8, 278.0, 312.0, 278.0, 312.0, 269.375" shape="poly" alt=":Association" id="areadiagram_map_ZN1D.fGD.AAAARAi_default" href="Association_ZN1D_fGD_AAAARAk.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="317.0, 327.43924, 129.0, 374.0, 129.28572, 376.0, 140.0, 376.0, 140.0, 385.77103, 140.0, 385.77103, 345.0, 335.0, 317.0, 335.0, 317.0, 327.43924, 140.0, 385.77103, 140.0, 385.77103, 140.0, 385.77103, 140.0, 385.77103" coords2="317.0, 327.43924, 129.0, 374.0, 129.28572, 376.0, 140.0, 376.0, 140.0, 385.77103, 140.0, 385.77103, 345.0, 335.0, 317.0, 335.0, 317.0, 327.43924, 140.0, 385.77103, 140.0, 385.77103, 140.0, 385.77103, 140.0, 385.77103" shape="poly" alt=":Association" id="areadiagram_map_lN1D.fGD.AAAARAx_default" href="Association_lN1D_fGD_AAAARAz.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="178.0, 700.0, 176.0, 714.0, 351.0, 755.33167, 351.0, 755.33167, 351.0, 749.0, 376.7143, 749.0, 377.0, 747.0, 178.0, 700.0" coords2="178.0, 700.0, 176.0, 714.0, 351.0, 755.33167, 351.0, 755.33167, 351.0, 749.0, 376.7143, 749.0, 377.0, 747.0, 178.0, 700.0" shape="poly" alt=":Association" id="areadiagram_map_1N1D.fGD.AAAARBA_default" href="Association_1N1D_fGD_AAAARBC.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="293.0, 592.0769, 139.0, 638.6718, 139.0, 653.87115, 312.84744, 601.0, 293.0, 601.0, 293.0, 592.0769" coords2="293.0, 592.0769, 139.0, 638.6718, 139.0, 653.87115, 312.84744, 601.0, 293.0, 601.0, 293.0, 592.0769" shape="poly" alt=":Association" id="areadiagram_map_st1D.fGD.AAAARBP_default" href="Association_st1D_fGD_AAAARBR.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="118.0, 442.0, 118.0, 633.0, 132.0, 633.0, 132.0, 442.0" coords2="118.0, 442.0, 118.0, 633.0, 132.0, 633.0, 132.0, 442.0" shape="poly" alt=":Realization" id="areadiagram_map_Ct1D.fGD.AAAARBe_default" href="Realization_Ct1D_fGD_AAAARBg.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="90.0, 439.0, 41.10082, 588.4142, 41.10082, 588.4142, 37.0, 589.0, 38.16721, 597.378, 38.16721, 597.378, 36.0, 604.0, 39.184864, 604.6825, 39.184864, 604.6825, 82.0, 912.0, 96.0, 910.0, 52.660625, 598.9196, 52.660625, 598.9196, 104.0, 443.0, 90.0, 439.0" coords2="90.0, 439.0, 41.10082, 588.4142, 41.10082, 588.4142, 37.0, 589.0, 38.16721, 597.378, 38.16721, 597.378, 36.0, 604.0, 39.184864, 604.6825, 39.184864, 604.6825, 82.0, 912.0, 96.0, 910.0, 52.660625, 598.9196, 52.660625, 598.9196, 104.0, 443.0, 90.0, 439.0" shape="poly" alt=":Realization" id="areadiagram_map_it1D.fGD.AAAARBj_default" href="Realization_it1D_fGD_AAAARBl.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="160.0, 911.0, 155.0, 924.0, 342.0, 1005.26636, 342.0, 1005.26636, 342.0, 998.0, 360.19354, 998.0, 160.0, 911.0" coords2="160.0, 911.0, 155.0, 924.0, 342.0, 1005.26636, 342.0, 1005.26636, 342.0, 998.0, 360.19354, 998.0, 160.0, 911.0" shape="poly" alt=":Association" id="areadiagram_map_Wt1D.fGD.AAAARB3_default" href="Association_Wt1D_fGD_AAAARB5.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="349.0, 766.0, 176.0, 1277.0, 190.0, 1280.0, 356.5549, 789.0, 351.0, 789.0, 351.0, 766.5714, 351.0, 766.5714, 349.0, 766.0" coords2="349.0, 766.0, 176.0, 1277.0, 190.0, 1280.0, 356.5549, 789.0, 351.0, 789.0, 351.0, 766.5714, 351.0, 766.5714, 349.0, 766.0" shape="poly" alt=":Association" id="areadiagram_map_Ot1D.fGD.AAAARCG_default" href="Association_Ot1D_fGD_AAAARCI.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="92.0, 440.0, -0.5, 588.0, -5.0, 588.0, -4.4591293, 594.3346, -4.4591293, 594.3346, -8.0, 600.0, -3.6803355, 603.45575, -3.6803355, 603.45575, 54.0, 1279.0, 68.0, 1279.0, 9.670192, 595.8492, 9.670192, 595.8492, 103.0, 448.0, 92.0, 440.0" coords2="92.0, 440.0, -0.5, 588.0, -5.0, 588.0, -4.4591293, 594.3346, -4.4591293, 594.3346, -8.0, 600.0, -3.6803355, 603.45575, -3.6803355, 603.45575, 54.0, 1279.0, 68.0, 1279.0, 9.670192, 595.8492, 9.670192, 595.8492, 103.0, 448.0, 92.0, 440.0" shape="poly" alt=":Realization" id="areadiagram_map_et1D.fGD.AAAARCV_default" href="Realization_et1D_fGD_AAAARCX.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="342.0, 1025.4828, 148.0, 1273.0, 159.0, 1281.0, 349.45947, 1038.0, 342.0, 1038.0, 342.0, 1025.4828" coords2="342.0, 1025.4828, 148.0, 1273.0, 159.0, 1281.0, 349.45947, 1038.0, 342.0, 1038.0, 342.0, 1025.4828" shape="poly" alt=":Association" id="areadiagram_map_ht1D.fGD.AAAARCp_default" href="Association_ht1D_fGD_AAAARCr.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="146.0, 1277.0, 146.0, 1605.0, 160.0, 1605.0, 160.0, 1277.0" coords2="146.0, 1277.0, 146.0, 1605.0, 160.0, 1605.0, 160.0, 1277.0" shape="poly" alt=":Realization" id="areadiagram_map_xt1D.fGD.AAAARC4_default" href="Realization_xt1D_fGD_AAAARC6.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="371.0, 1563.1111, 155.0, 1604.0, 155.14285, 1605.0, 165.0, 1605.0, 165.0, 1616.4856, 165.0, 1616.4856, 400.0, 1572.0, 399.7143, 1570.0, 371.0, 1570.0, 371.0, 1563.1111" coords2="371.0, 1563.1111, 155.0, 1604.0, 155.14285, 1605.0, 165.0, 1605.0, 165.0, 1616.4856, 165.0, 1616.4856, 400.0, 1572.0, 399.7143, 1570.0, 371.0, 1570.0, 371.0, 1563.1111" shape="poly" alt=":Association" id="areadiagram_map_Jt1D.fGD.AAAARC9_default" href="Association_Jt1D_fGD_AAAARC_.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="55.0, 1277.0, 55.0, 1471.7142, 55.0, 1471.7142, 53.0, 1472.0, 55.0, 1480.8219, 55.0, 1480.8219, 55.0, 1490.0, 57.080746, 1490.0, 126.0, 1794.0, 140.0, 1792.0, 69.0, 1478.8219, 69.0, 1478.8219, 69.0, 1277.0" coords2="55.0, 1277.0, 55.0, 1471.7142, 55.0, 1471.7142, 53.0, 1472.0, 55.0, 1480.8219, 55.0, 1480.8219, 55.0, 1490.0, 57.080746, 1490.0, 126.0, 1794.0, 140.0, 1792.0, 69.0, 1478.8219, 69.0, 1478.8219, 69.0, 1277.0" shape="poly" alt=":Realization" id="areadiagram_map_lt1D.fGD.AAAARDb_default" href="Realization_lt1D_fGD_AAAARDd.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="161.0, 1722.0, 161.0, 1727.0, 171.0, 1727.0, 171.0, 1736.0, 361.0, 1736.0, 361.0, 1722.0" coords2="161.0, 1722.0, 161.0, 1727.0, 171.0, 1727.0, 171.0, 1736.0, 361.0, 1736.0, 361.0, 1722.0" shape="poly" alt=":Association" id="areadiagram_map_1t1D.fGD.AAAARDg_default" href="Association_1t1D_fGD_AAAARDi.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="154.0, 1791.0, 154.0, 1970.0, 168.0, 1970.0, 168.0, 1791.0" coords2="154.0, 1791.0, 154.0, 1970.0, 168.0, 1970.0, 168.0, 1791.0" shape="poly" alt=":Realization" id="areadiagram_map_tt1D.fGD.AAAARDv_default" href="Realization_tt1D_fGD_AAAARDx.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="171.0, 1982.0431, 171.0, 1996.0431, 171.0, 1996.0431, 393.0, 1997.0, 393.0, 1989.0, 383.0, 1989.0, 383.0, 1982.9569, 383.0, 1982.9569, 171.0, 1982.0431" coords2="171.0, 1982.0431, 171.0, 1996.0431, 171.0, 1996.0431, 393.0, 1997.0, 393.0, 1989.0, 383.0, 1989.0, 383.0, 1982.9569, 383.0, 1982.9569, 171.0, 1982.0431" shape="poly" alt=":Association" id="areadiagram_map_9t1D.fGD.AAAARD0_default" href="Association_9t1D_fGD_AAAARD2.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="129.0, 374.0, 129.0, 376.0, 140.0, 376.0, 140.0, 388.0, 292.0, 388.0, 292.0, 374.0" coords2="129.0, 374.0, 129.0, 376.0, 140.0, 376.0, 140.0, 388.0, 292.0, 388.0, 292.0, 374.0" shape="poly" alt=":Association" id="areadiagram_map_tCTT.fGD.AAAARFv_default" href="Association_hCTT_fGD_AAAARFq.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="146.0, 428.0, 146.0, 442.0, 299.0, 442.0, 299.0, 428.0" coords2="146.0, 428.0, 146.0, 442.0, 299.0, 442.0, 299.0, 428.0" shape="poly" alt=":Association" id="areadiagram_map_sDzT.fGD.AAAARF3_default" href="Association_YDzT_fGD_AAAARFy.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="129.0, 630.0, 129.0, 633.0, 139.0, 633.0, 139.0, 644.0, 279.0, 644.0, 279.0, 630.0" coords2="129.0, 630.0, 129.0, 633.0, 139.0, 633.0, 139.0, 644.0, 279.0, 644.0, 279.0, 630.0" shape="poly" alt=":Association" id="areadiagram_map_ptfT.fGD.AAAARGf_default" href="Association_OtfT_fGD_AAAARGa.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="139.0, 656.0, 139.0, 670.0, 292.0, 670.0, 292.0, 656.0" coords2="139.0, 656.0, 139.0, 670.0, 292.0, 670.0, 292.0, 656.0" shape="poly" alt=":Association" id="areadiagram_map_VUaz.fGD.AAAARHx_default" href="Association_xUaz_fGD_AAAARHs.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="176.0, 702.0, 176.0, 716.0, 292.0, 716.0, 292.0, 702.0" coords2="176.0, 702.0, 176.0, 716.0, 292.0, 716.0, 292.0, 702.0" shape="poly" alt=":Association" id="areadiagram_map_6Y6z.fGD.AAAARH5_default" href="Association_qY6z_fGD_AAAARH0.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="163.0, 910.0, 155.0, 921.0, 348.0, 1055.4597, 348.0, 1055.4597, 348.0, 1048.0, 361.08163, 1048.0, 163.0, 910.0" coords2="163.0, 910.0, 155.0, 921.0, 348.0, 1055.4597, 348.0, 1055.4597, 348.0, 1048.0, 361.08163, 1048.0, 163.0, 910.0" shape="poly" alt=":Association" id="areadiagram_map_9Olz.fGD.AAAARIb_default" href="Association_FOlz_fGD_AAAARIW.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="351.0, 780.7347, 137.8, 846.0, 139.0, 846.0, 139.0, 860.8484, 139.0, 860.8484, 372.74667, 789.0, 351.0, 789.0, 351.0, 780.7347" coords2="351.0, 780.7347, 137.8, 846.0, 139.0, 846.0, 139.0, 860.8484, 139.0, 860.8484, 372.74667, 789.0, 351.0, 789.0, 351.0, 780.7347" shape="poly" alt=":Association" id="areadiagram_map__U1z.fGD.AAAARIj_default" href="Association_HU1z_fGD_AAAARIe.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="348.0, 1078.7142, 146.0, 1251.8572, 146.0, 1270.5714, 146.0, 1270.5714, 359.0, 1088.0, 348.0, 1088.0, 348.0, 1078.7142, 146.0, 1270.5714, 146.0, 1270.5714, 146.0, 1270.5714, 146.0, 1270.5714, 140.36363, 1272.0, 142.0, 1274.0, 144.33333, 1272.0" coords2="348.0, 1078.7142, 146.0, 1251.8572, 146.0, 1270.5714, 146.0, 1270.5714, 359.0, 1088.0, 348.0, 1088.0, 348.0, 1078.7142, 146.0, 1270.5714, 146.0, 1270.5714, 146.0, 1270.5714, 146.0, 1270.5714, 140.36363, 1272.0, 142.0, 1274.0, 144.33333, 1272.0" shape="poly" alt=":Association" id="areadiagram_map_CmNz.fGD.AAAARIr_default" href="Association_4mNz_fGD_AAAARIm.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="163.0, 909.0, 154.0, 920.0, 369.0, 1106.0217, 369.0, 1098.0, 381.4422, 1098.0, 163.0, 909.0" coords2="163.0, 909.0, 154.0, 920.0, 369.0, 1106.0217, 369.0, 1098.0, 381.4422, 1098.0, 163.0, 909.0" shape="poly" alt=":Association" id="areadiagram_map_ayvz.fGD.AAAARJH_default" href="Association_8yvz_fGD_AAAARJC.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="369.0, 1129.749, 146.0, 1229.6255, 146.0, 1229.6255, 146.0, 1244.8649, 146.0, 1244.8649, 384.60345, 1138.0, 369.0, 1138.0, 369.0, 1129.749" coords2="369.0, 1129.749, 146.0, 1229.6255, 146.0, 1229.6255, 146.0, 1244.8649, 146.0, 1244.8649, 384.60345, 1138.0, 369.0, 1138.0, 369.0, 1129.749" shape="poly" alt=":Association" id="areadiagram_map_si0L.fGD.AAAARJV_default" href="Association_Qi0L_fGD_AAAARJQ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="197.0, 1279.0, 192.0, 1292.0, 308.0, 1346.6857, 308.0, 1346.6857, 308.0, 1340.0, 326.39395, 1340.0, 197.0, 1279.0" coords2="197.0, 1279.0, 192.0, 1292.0, 308.0, 1346.6857, 308.0, 1346.6857, 308.0, 1340.0, 326.39395, 1340.0, 197.0, 1279.0" shape="poly" alt=":Association" id="areadiagram_map_XvNL.fGD.AAAARKN_default" href="Association_cvNL_fGD_AAAARKI.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="196.0, 1283.0, 196.0, 1297.0, 308.0, 1302.091, 308.0, 1302.091, 308.0, 1296.0, 372.0, 1296.0, 372.0, 1291.0, 196.0, 1283.0" coords2="196.0, 1283.0, 196.0, 1297.0, 308.0, 1302.091, 308.0, 1302.091, 308.0, 1296.0, 372.0, 1296.0, 372.0, 1291.0, 196.0, 1283.0" shape="poly" alt=":Association" id="areadiagram_map_XWdL.fGD.AAAARKV_default" href="Association_jWdL_fGD_AAAARKQ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="202.0, 1276.0, 194.0, 1287.0, 341.0, 1394.7391, 341.0, 1394.7391, 341.0, 1387.0, 353.44916, 1387.0, 202.0, 1276.0" coords2="202.0, 1276.0, 194.0, 1287.0, 341.0, 1394.7391, 341.0, 1394.7391, 341.0, 1387.0, 353.44916, 1387.0, 202.0, 1276.0" shape="poly" alt=":Association" id="areadiagram_map_nRfL.fGD.AAAARLI_default" href="Association_DRfL_fGD_AAAARLD.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="204.0, 1275.0, 194.0, 1285.0, 341.0, 1445.1083, 341.0, 1435.0, 350.90057, 1435.0, 204.0, 1275.0" coords2="204.0, 1275.0, 194.0, 1285.0, 341.0, 1445.1083, 341.0, 1435.0, 350.90057, 1435.0, 204.0, 1275.0" shape="poly" alt=":Association" id="areadiagram_map_M0Ar.fGD.AAAARLQ_default" href="Association_Y0Ar_fGD_AAAARLL.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="348.0, 1673.1333, 180.0, 1675.0, 180.0, 1689.0, 348.0, 1687.1333, 348.0, 1687.1333, 348.0, 1673.1333" coords2="348.0, 1673.1333, 180.0, 1675.0, 180.0, 1689.0, 348.0, 1687.1333, 348.0, 1687.1333, 348.0, 1673.1333" shape="poly" alt=":Association" id="areadiagram_map_efr7.fGD.AAAARL4_default" href="Association_Kfr7_fGD_AAAARLz.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="361.0, 2038.069, 226.0, 2039.0, 226.0, 2053.0, 371.0, 2052.0, 371.0, 2045.0, 361.0, 2045.0, 361.0, 2038.069" coords2="361.0, 2038.069, 226.0, 2039.0, 226.0, 2053.0, 371.0, 2052.0, 371.0, 2045.0, 361.0, 2045.0, 361.0, 2038.069" shape="poly" alt=":Association" id="areadiagram_map_w1aH.fGD.AAAARM6_default" href="Association_PVaH_fGD_AAAARM1.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="346.0, 44.684647, 140.0, 122.46888, 140.0, 122.46888, 140.0, 137.96666, 366.72528, 52.0, 346.0, 52.0, 346.0, 44.684647" coords2="346.0, 44.684647, 140.0, 122.46888, 140.0, 122.46888, 140.0, 137.96666, 366.72528, 52.0, 346.0, 52.0, 346.0, 44.684647" shape="poly" alt=":Association" id="areadiagram_map_bWaqBfGD.AAAARRo_default" href="Association_zWaqBfGD_AAAARRj.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="207.0, 42.634617, 117.0, 111.0, 117.72727, 112.0, 138.16455, 112.0, 217.1519, 52.0, 207.0, 52.0, 207.0, 42.634617" coords2="207.0, 42.634617, 117.0, 111.0, 117.72727, 112.0, 138.16455, 112.0, 217.1519, 52.0, 207.0, 52.0, 207.0, 42.634617" shape="poly" alt=":Association" id="areadiagram_map_Bs6qBfGD.AAAARRw_default" href="Association_2s6qBfGD_AAAARRr.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="112.0, 42.0, 112.0, 112.0, 126.0, 112.0, 126.0, 42.0" coords2="112.0, 42.0, 112.0, 112.0, 126.0, 112.0, 126.0, 42.0" shape="poly" alt=":Association" id="areadiagram_map_PorGBfGD.AAAARTe_default" href="Association_zorGBfGD_AAAARTZ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="292.0, 731.3481, 139.0, 857.29834, 139.0, 875.70715, 139.0, 875.70715, 301.42282, 742.0, 292.0, 742.0, 292.0, 731.3481" coords2="292.0, 731.3481, 139.0, 857.29834, 139.0, 875.70715, 139.0, 875.70715, 301.42282, 742.0, 292.0, 742.0, 292.0, 731.3481" shape="poly" alt=":Association" id="areadiagram_map_Du5.BfGD.AAAARW1_default" href="Association_5u5_BfGD_AAAARWw.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="292.0, 681.0172, 139.0, 868.31036, 139.0, 868.31036, 139.0, 890.7759, 139.0, 890.7759, 298.92957, 695.0, 292.0, 695.0, 292.0, 681.0172" coords2="292.0, 681.0172, 139.0, 868.31036, 139.0, 868.31036, 139.0, 890.7759, 139.0, 890.7759, 298.92957, 695.0, 292.0, 695.0, 292.0, 681.0172" shape="poly" alt=":Association" id="areadiagram_map_ZDF.BfGD.AAAARW9_default" href="Association_hDF_BfGD_AAAARW4.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="146.0, 445.0, 146.0, 459.0, 442.0, 466.78946, 442.0, 466.78946, 442.0, 460.0, 488.0, 460.0, 488.0, 454.0, 146.0, 445.0" coords2="146.0, 445.0, 146.0, 459.0, 442.0, 466.78946, 442.0, 466.78946, 442.0, 460.0, 488.0, 460.0, 488.0, 454.0, 146.0, 445.0" shape="poly" alt=":Association" id="areadiagram_map_r4N.pfGD.AAAARbO_default" href="Association_l4N_pfGD_AAAARbJ.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="183.0, 1795.0, 183.0, 1809.0, 361.0, 1809.0, 361.0, 1795.0" coords2="183.0, 1795.0, 183.0, 1809.0, 361.0, 1809.0, 361.0, 1795.0" shape="poly" alt=":Association" id="areadiagram_map__v4hpfGD.AAAARcS_default" href="Association_Lv4hpfGD_AAAARcN.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="180.0, 1795.0, 178.0, 1809.0, 375.0, 1836.5284, 375.0, 1836.5284, 375.0, 1830.0, 408.57144, 1830.0, 409.0, 1827.0, 180.0, 1795.0" coords2="180.0, 1795.0, 178.0, 1809.0, 375.0, 1836.5284, 375.0, 1836.5284, 375.0, 1830.0, 408.57144, 1830.0, 409.0, 1827.0, 180.0, 1795.0" shape="poly" alt=":Association" id="areadiagram_map_BRw5ffGD.AAAARj5_default" href="Association_6Rw5ffGD_AAAARj0.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="128.0, 839.0, 128.0, 846.0, 139.0, 846.0, 139.0, 853.0, 408.0, 853.0, 408.0, 846.0, 418.0, 846.0, 418.0, 839.0" coords2="128.0, 839.0, 128.0, 846.0, 139.0, 846.0, 139.0, 853.0, 408.0, 853.0, 408.0, 846.0, 418.0, 846.0, 418.0, 839.0" shape="poly" alt=":Association" id="areadiagram_map_OwTFffGD.AAAARlk_default" href="Association_KwTFffGD_AAAARlf.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="139.0, 891.0, 139.0, 905.0, 422.0, 905.0, 422.0, 898.0, 432.0, 898.0, 432.0, 891.0" coords2="139.0, 891.0, 139.0, 905.0, 422.0, 905.0, 422.0, 898.0, 432.0, 898.0, 432.0, 891.0" shape="poly" alt=":Association" id="areadiagram_map_U3TFffGD.AAAARls_default" href="Association_I3TFffGD_AAAARln.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="158.0, 915.0, 158.0, 929.0, 369.0, 953.5349, 369.0, 953.5349, 369.0, 948.0, 416.0, 948.0, 416.0, 945.0, 158.0, 915.0" coords2="158.0, 915.0, 158.0, 929.0, 369.0, 953.5349, 369.0, 953.5349, 369.0, 948.0, 416.0, 948.0, 416.0, 945.0, 158.0, 915.0" shape="poly" alt=":Association" id="areadiagram_map_VjzFffGD.AAAARl0_default" href="Association_RjzFffGD_AAAARlv.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="354.0, 1197.6946, 136.0, 1208.0, 136.0, 1212.0, 146.0, 1212.0, 146.0, 1221.5272, 146.0, 1221.5272, 411.0, 1209.0, 411.0, 1204.0, 354.0, 1204.0, 354.0, 1197.6946" coords2="354.0, 1197.6946, 136.0, 1208.0, 136.0, 1212.0, 146.0, 1212.0, 146.0, 1221.5272, 146.0, 1221.5272, 411.0, 1209.0, 411.0, 1204.0, 354.0, 1204.0, 354.0, 1197.6946" shape="poly" alt=":Association" id="areadiagram_map_lNKlffGD.AAAARob_default" href="Association_BNKlffGD_AAAARoW.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="146.0, 1218.0, 146.0, 1232.0, 318.0, 1232.0, 318.0, 1218.0" coords2="146.0, 1218.0, 146.0, 1232.0, 318.0, 1232.0, 318.0, 1218.0" shape="poly" alt=":Association" id="areadiagram_map_3jqlffGD.AAAARoj_default" href="Association_bjqlffGD_AAAARoe.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="146.0, 1259.0, 146.0, 1272.0, 136.0, 1272.0, 136.0, 1273.0, 308.0, 1273.0, 308.0, 1259.0" coords2="146.0, 1259.0, 146.0, 1272.0, 136.0, 1272.0, 136.0, 1273.0, 308.0, 1273.0, 308.0, 1259.0" shape="poly" alt=":Association" id="areadiagram_map_qE6lffGD.AAAARor_default" href="Association_ME6lffGD_AAAARom.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="179.0, 700.0, 175.0, 714.0, 397.0, 794.24097, 397.0, 788.0, 421.4889, 788.0, 179.0, 700.0" coords2="179.0, 700.0, 175.0, 714.0, 397.0, 794.24097, 397.0, 788.0, 421.4889, 788.0, 179.0, 700.0" shape="poly" alt=":Association" id="areadiagram_map_3.zm_fGD.AAAAVC4_default" href="Association_d_zm_fGD_AAAAVCz.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="397.0, 822.29156, 128.0, 840.0, 128.0, 846.0, 139.0, 846.0, 139.0, 853.2759, 139.0, 853.2759, 447.0, 833.0, 447.0, 828.0, 397.0, 828.0, 397.0, 822.29156" coords2="397.0, 822.29156, 128.0, 840.0, 128.0, 846.0, 139.0, 846.0, 139.0, 853.2759, 139.0, 853.2759, 447.0, 833.0, 447.0, 828.0, 397.0, 828.0, 397.0, 822.29156" shape="poly" alt=":Association" id="areadiagram_map_HNLm_fGD.AAAAVDA_default" href="Association_DNLm_fGD_AAAAVC7.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="397.0, 810.0513, 166.0, 1276.0, 179.0, 1281.0, 403.5805, 828.0, 397.0, 828.0, 397.0, 810.0513" coords2="397.0, 810.0513, 166.0, 1276.0, 179.0, 1281.0, 403.5805, 828.0, 397.0, 828.0, 397.0, 810.0513" shape="poly" alt=":Association" id="areadiagram_map_UCbm_fGD.AAAAVDI_default" href="Association_ICbm_fGD_AAAAVDD.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="331.0, 1609.0588, 165.0, 1609.9465, 165.0, 1609.9465, 165.0, 1623.9465, 165.0, 1623.9465, 331.0, 1623.0588, 331.0, 1623.0588, 331.0, 1609.0588" coords2="331.0, 1609.0588, 165.0, 1609.9465, 165.0, 1609.9465, 165.0, 1623.9465, 165.0, 1623.9465, 331.0, 1623.0588, 331.0, 1623.0588, 331.0, 1609.0588" shape="poly" alt=":Association" id="areadiagram_map_KBcB_fGD.AAAAVHn_default" href="Association_UBcB_fGD_AAAAVHi.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      l'animatore valider&amp;#224; le foto caricate che siano pertinenti all'oggetto 
+      del contest
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="331, 1592, 499, 1632" coords2="331, 1592, 499, 1632" shape="rect" alt="Validazione materiale contest:Use Case" id="areadiagram_map_KfgB_fGD.AAAAVGq_default" href="UseCase_qfgB_fGD_AAAAVGr.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potranno eliminare le preferenze salvate dei punti di interesse
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="397, 788, 558, 828" coords2="397, 788, 558, 828" shape="rect" alt="Elimina informazioni salvate:Use Case" id="areadiagram_map_OB1m_fGD.AAAAVCM_default" href="UseCase_OB1m_fGD_AAAAVCN.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" coords="308, 1252, 548, 1292" coords2="308, 1252, 548, 1292" shape="rect" alt="Aggiunta itinerario (senza approvazione del curatore):Use Case" id="areadiagram_map_3A4lffGD.AAAARno_default" href="UseCase_PA4lffGD_AAAARnp.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="318, 1208, 558, 1248" coords2="318, 1208, 558, 1248" shape="rect" alt="Aggiunta ristorante (senza approvazione del curatore):Use Case" id="areadiagram_map_L9IlffGD.AAAARnS_default" href="UseCase_L9IlffGD_AAAARnT.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="354, 1157, 514, 1204" coords2="354, 1157, 514, 1204" shape="rect" alt="Aggiunta divertimenti (senza approvazione del curatore):Use Case" id="areadiagram_map_23_FffGD.AAAARm0_default" href="UseCase_23_FffGD_AAAARm1.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potranno aggiungere nuovi comuni
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="375, 1830, 480, 1870" coords2="375, 1830, 480, 1870" shape="rect" alt="Aggiunta comune:Use Case" id="areadiagram_map_mtA5ffGD.AAAARjf_default" href="UseCase_mtA5ffGD_AAAARjg.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" coords="422, 898, 607, 938" coords2="422, 898, 607, 938" shape="rect" alt="Aggiunta ristorante (previa approvazione del curatore):Use Case" id="areadiagram_map_RuwZffGD.AAAARhT_default" href="UseCase_RuwZffGD_AAAARhU.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="369, 948, 559, 988" coords2="369, 948, 559, 988" shape="rect" alt="Aggiunta itinerario (previa approvazione del curatore):Use Case" id="areadiagram_map_pFAZffGD.AAAARg__default" href="UseCase_pFAZffGD_AAAARhA.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" coords="408, 846, 595, 887" coords2="408, 846, 595, 887" shape="rect" alt="Aggiunta divertimenti (previa approvazione del curatore):Use Case" id="areadiagram_map_jJPpffGD.AAAARgn_default" href="UseCase_jJPpffGD_AAAARgo.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon()" onmousedown="clearSpotLight();"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potranno approvare (o meno) le richieste di aggiunta di 
+      posti/itinerari fatte dai Contributor
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="361, 1757, 512, 1809" coords2="361, 1757, 512, 1809" shape="rect" alt="approvazione nuovi posti/itinerari aggiunti dal Contributor:Use Case" id="areadiagram_map_783BpfGD.AAAARb4_default" href="UseCase_n83BpfGD_AAAARb5.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      tutta l'intera community potr&amp;#224; votare le foto/video preferite per ogni 
+      contest indetto (ovviamente non si potranno votare il proprio materiale)
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="442, 460, 548, 500" coords2="442, 460, 548, 500" shape="rect" alt="Votazione contest:Use Case" id="areadiagram_map_AdF.pfGD.AAAARa6_default" href="UseCase_QdF_pfGD_AAAARa7.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      filtro di ricerca per spettacoli, feste, sagre
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="56, 2, 193, 42" coords2="56, 2, 193, 42" shape="rect" alt="Ricerca per divertimenti:Use Case" id="areadiagram_map_m4tGBfGD.AAAARTK_default" href="UseCase_W4tGBfGD_AAAARTL.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      filtro di ricerca per punti di ristoro
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="207, 12, 332, 52" coords2="207, 12, 332, 52" shape="rect" alt="Ricerca per ristorante:Use Case" id="areadiagram_map_2tCqBfGD.AAAARRU_default" href="UseCase_2tCqBfGD_AAAARRV.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      ricerca di punti di interesse per uno specifico comune
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="346, 12, 462, 52" coords2="346, 12, 462, 52" shape="rect" alt="Ricerca per comune:Use Case" id="areadiagram_map_AwjSBfGD.AAAARQ1_default" href="UseCase_AwjSBfGD_AAAARQ2.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potranno gestire le segnalazioni di BUG riportate dagli utenti (non 
+      user non autenticato).
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      la segnalazione verr&amp;#224; gestita dal gestore della piattaforma solo in caso 
+      in cui essa arrivi ad almeno 5 segnalazioni. questo per evitare che 
+      utenti segnalino bug inesistenti, cos&amp;#236; da evitare lavoro inutile.
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="361, 2005, 514, 2045" coords2="361, 2005, 514, 2045" shape="rect" alt="Gestione segnalazioni BUG:Use Case" id="areadiagram_map_y1yH.fGD.AAAARMm_default" href="UseCase_y1yH_fGD_AAAARMn.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si assegnano i punteggi relativi alla classifica stilata. I punti 
+      verranno assegnati ai primi 5 classificati:
+    &amp;lt;/p&amp;gt;
+    &amp;lt;ul class=&amp;quot;disc&amp;quot; margin-left-ltr=&amp;quot;50&amp;quot; margin-right-rtl=&amp;quot;50&amp;quot; style=&amp;quot;margin-left:40pt;list-style-type:none;margin-top:0px;margin-bottom:0px;&amp;quot;&amp;gt;
+      &amp;lt;li style=&amp;quot;margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;&amp;quot;&amp;gt;
+        il primo ricever&amp;#224; 50 punti
+      &amp;lt;/li&amp;gt;
+      &amp;lt;li style=&amp;quot;margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;&amp;quot;&amp;gt;
+        il secondo ricever&amp;#224; 40 punti
+      &amp;lt;/li&amp;gt;
+      &amp;lt;li style=&amp;quot;margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;&amp;quot;&amp;gt;
+        il terzo ricever&amp;#224; 30 punti
+      &amp;lt;/li&amp;gt;
+      &amp;lt;li style=&amp;quot;margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;&amp;quot;&amp;gt;
+        il quarto ricever&amp;#224; 20 punti
+      &amp;lt;/li&amp;gt;
+      &amp;lt;li style=&amp;quot;margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;&amp;quot;&amp;gt;
+        il quinto ricever&amp;#224; 10 punti
+      &amp;lt;/li&amp;gt;
+    &amp;lt;/ul&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      &amp;nbsp;
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="348, 1655, 475, 1695" coords2="348, 1655, 475, 1695" shape="rect" alt="Assegnazione punteggi contest:Use Case" id="areadiagram_map_1WU7.fGD.AAAARLk_default" href="UseCase_1WU7_fGD_AAAARLl.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potranno gestire (approvare o meno) le segnalazioni di video caricati.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      la segnalazione verr&amp;#224; gestita dal contributor autorizzato solo in caso 
+      in cui essa arrivi ad almeno 5 segnalazioni. questo per evitare che 
+      utenti segnalino video che potrebbero essere idonei, cos&amp;#236; da evitare 
+      lavoro inutile
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="341, 1435, 501, 1475" coords2="341, 1435, 501, 1475" shape="rect" alt="Gestione segnalazioni video:Use Case" id="areadiagram_map_Uq3L.fGD.AAAARKw_default" href="UseCase_0q3L_fGD_AAAARKx.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potranno gestire (approvare o meno) le segnalazioni di foto caricate.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      la segnalazione verr&amp;#224; gestita dal contributor autorizzato solo in caso 
+      in cui essa arrivi ad almeno 5 segnalazioni. questo per evitare che 
+      utenti segnalino foto che potrebbero essere idonee, cos&amp;#236; da evitare 
+      lavoro inutile
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="341, 1387, 494, 1427" coords2="341, 1387, 494, 1427" shape="rect" alt="Gestione segnalazioni foto:Use Case" id="areadiagram_map_vQbL.fGD.AAAARKZ_default" href="UseCase_vQbL_fGD_AAAARKa.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potranno approvare (o meno) video caricati da turista autorizzato
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="308, 1296, 533, 1336" coords2="308, 1296, 533, 1336" shape="rect" alt="Approvazione video (turista autorizzato):Use Case" id="areadiagram_map_ZqZL.fGD.AAAARJt_default" href="UseCase_ZqZL_fGD_AAAARJu.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potranno approvare (o meno) le foto caricate da turisti autorizzato
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="308, 1340, 526, 1380" coords2="308, 1340, 526, 1380" shape="rect" alt="Approvazione foto (turista autorizzato):Use Case" id="areadiagram_map_xLWL.fGD.AAAARJb_default" href="UseCase_xLWL_fGD_AAAARJc.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potranno gestire (approvare o meno) le segnalazioni di recensioni.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      la segnalazione verr&amp;#224; gestita dal contributor solo in caso in cui essa 
+      arrivi ad almeno 5 segnalazioni. questo per evitare che utenti segnalino 
+      recensioni che potrebbero essere idonee, cos&amp;#236; da evitare lavoro inutile
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="369, 1098, 556, 1138" coords2="369, 1098, 556, 1138" shape="rect" alt="Gestione segnalazioni recensioni:Use Case" id="areadiagram_map_Sinz.fGD.AAAARIz_default" href="UseCase_Sinz_fGD_AAAARI0.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potranno caricare video di punti di interesse nella piattaforma senza 
+      avere l'autorizzazione del Contributor Autorizzato
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="348, 1048, 582, 1088" coords2="348, 1048, 582, 1088" shape="rect" alt="Caricamento video (senza autorizzazione):Use Case" id="areadiagram_map_u7pz.fGD.AAAARIH_default" href="UseCase_u7pz_fGD_AAAARII.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potranno eliminare le proprie video caricate in piattaforma
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="292, 702, 512, 742" coords2="292, 702, 512, 742" shape="rect" alt="Eliminazione video propri:Use Case" id="areadiagram_map_nC0z.fGD.AAAARG9_default" href="UseCase_XC0z_fGD_AAAARG_.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potranno eliminare le proprie foto caricate in piattaforma
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="292, 655, 506, 695" coords2="292, 655, 506, 695" shape="rect" alt="Eliminazione foto proprie:Use Case" id="areadiagram_map_mF4z.fGD.AAAARGr_default" href="UseCase_mF4z_fGD_AAAARGs.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potranno caricare video di punti di interesse sulla piattaforma che 
+      andranno poi approvate dal Contributor autorizzato per verificare la 
+      loro idoneit&amp;#224;
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="279, 607, 519, 647" coords2="279, 607, 519, 647" shape="rect" alt="Caricamento video (previa autorizzazione Contributor autorizzato):Use Case" id="areadiagram_map_W2XT.fGD.AAAARGD_default" href="UseCase_W2XT_fGD_AAAARGE.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potranno eliminare le recensioni proprie
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="299, 405, 459, 445" coords2="299, 405, 459, 445" shape="rect" alt="Eliminare recensioni proprie:Use Case" id="areadiagram_map_GfNT.fGD.AAAARFU_default" href="UseCase_mfNT_fGD_AAAARFV.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potranno modificare le recensioni proprie
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="292, 350, 459, 390" coords2="292, 350, 459, 390" shape="rect" alt="Modificare recensioni proprie:Use Case" id="areadiagram_map_xLhT.fGD.AAAARFC_default" href="UseCase_xLhT_fGD_AAAARFD.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      il gestore potr&amp;#224; modificare i ruoli assegnati agli utenti
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="383, 1929, 488, 1989" coords2="383, 1929, 488, 1989" shape="rect" alt="Gestione ruoli:Use Case" id="areadiagram_map_GN1D.fGD.AAAAQ_i_default" href="UseCase_GN1D_fGD_AAAAQ_k.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      utente con tutti i permessi della piattaforma
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="141, 1970, 171, 2030" coords2="141, 1970, 171, 2030" shape="rect" alt="Gestore della piattaforma:Actor" id="areadiagram_map_qN1D.fGD.AAAAQ_d_default" href="Actor_aN1D_fGD_AAAAQ_f.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potranno gestire (approvare o meno) le segnalazioni di 
+      itinerari/divertimenti/ristoranti
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="361, 1706, 506, 1746" coords2="361, 1706, 506, 1746" shape="rect" alt="gestione segnalazioni itinerari/divertimenti/ristoranti:Use Case" id="areadiagram_map_iN1D.fGD.AAAAQ_P_default" href="UseCase_iN1D_fGD_AAAAQ_R.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      approvazione di posti ed itinerari nel territorio.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      la posizione sar&amp;#224; ricoperta da un dipendente comunale (anche all'interno 
+      della giunta) e gestir&amp;#224; i punti di interesse e materiali pubblicati del 
+      proprio comune
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="141, 1727, 171, 1787" coords2="141, 1727, 171, 1787" shape="rect" alt="Curatore:Actor" id="areadiagram_map_8N1D.fGD.AAAAQ_K_default" href="Actor_8N1D_fGD_AAAAQ_M.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      ci potranno essere due tipologie di contest:
+    &amp;lt;/p&amp;gt;
+    &amp;lt;ol class=&amp;quot;decimal&amp;quot; margin-left-ltr=&amp;quot;50&amp;quot; margin-right-rtl=&amp;quot;50&amp;quot; style=&amp;quot;margin-left:40pt;list-style-type:none;margin-top:0px;margin-bottom:0px;&amp;quot;&amp;gt;
+      &amp;lt;li style=&amp;quot;margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;&amp;quot;&amp;gt;
+        i contest aperti a tutti, dove tutti gli account di categoria turista, 
+        turista autorizzato, contributor e contributor autorizzato potranno 
+        entrare a farne parte;
+      &amp;lt;/li&amp;gt;
+      &amp;lt;li style=&amp;quot;margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;&amp;quot;&amp;gt;
+        i contest solo su invito, dove sar&amp;#224; l'animatore a scegliere quale 
+        tipologia di account potr&amp;#224; entrare a farne parte.
+      &amp;lt;/li&amp;gt;
+    &amp;lt;/ol&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      &amp;nbsp;la tematica dei contest sar&amp;#224; sempre diversa, pertanto sar&amp;#224; pressoch&amp;#233; 
+      inutile caricare foto gi&amp;#224; inviate in precedenza.
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="371, 1530, 459, 1570" coords2="371, 1530, 459, 1570" shape="rect" alt="Indirre contest:Use Case" id="areadiagram_map_YN1D.fGD.AAAAQ.u_default" href="UseCase_YN1D_fGD_AAAAQ_w.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      avanzamento da Contributor Autorizzati dopo aver accumulato un certo 
+      quantitativo di punti (tramite contest proposti all'interno della 
+      piattaforma).
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      ultima classe raggiungibile tramite sistema a punti
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potr&amp;#224; avanzare a questo ruolo conseguendo un totale di 1000 punti.
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="135, 1605, 165, 1665" coords2="135, 1605, 165, 1665" shape="rect" alt="Animatore:Actor" id="areadiagram_map_gN1D.fGD.AAAAQ.p_default" href="Actor_gN1D_fGD_AAAAQ_r.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      avanzamento da Contributor dopo aver accumulato un certo quantitativo di 
+      punti (tramite contest proposti all'interno della piattaforma).
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potr&amp;#224; avanzare a questo ruolo conseguendo un totale di 500 punti.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      al passaggio di ruolo verranno sottratti 500 punti.
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="116, 1212, 146, 1272" coords2="116, 1212, 146, 1272" shape="rect" alt="Contributor autorizzati:Actor" id="areadiagram_map_X11D.fGD.AAAAQ.W_default" href="Actor_X11D_fGD_AAAAQ_Y.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potranno caricare foto di punti di interesse nella piattaforma senza 
+      avere l'autorizzazione del Contributor Autorizzato
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="342, 998, 582, 1038" coords2="342, 998, 582, 1038" shape="rect" alt="Caricamento foto (senza autorizzazione):Use Case" id="areadiagram_map_L11D.fGD.AAAAQ.I_default" href="UseCase_L11D_fGD_AAAAQ_K.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      avanzamento da turista autorizzato dopo aver accumulato un certo 
+      quantitativo di punti (tramite contest proposti all'interno della 
+      piattaforma).
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potr&amp;#224; avanzare a questo ruolo conseguendo un totale di 250 punti.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      al passaggio di ruolo verranno sottratti 250 punti.
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="109, 846, 139, 906" coords2="109, 846, 139, 906" shape="rect" alt="Contributor:Actor" id="areadiagram_map_N11D.fGD.AAAAQ91_default" href="Actor_N11D_fGD_AAAAQ93.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potranno caricare foto di punti di interesse sulla piattaforma che 
+      andranno poi approvate dal Contributor autorizzato per verificare la 
+      loro idoneit&amp;#224;
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="293, 555, 473, 601" coords2="293, 555, 473, 601" shape="rect" alt="Caricamento foto (previa autorizzazione Contributor autorizzato):Use Case" id="areadiagram_map_F11D.fGD.AAAAQ9n_default" href="UseCase_F11D_fGD_AAAAQ9p.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potranno salvare dei punti di interesse preferiti
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="351, 749, 431, 789" coords2="351, 749, 431, 789" shape="rect" alt="Salvare informazioni:Use Case" id="areadiagram_map_x11D.fGD.AAAAQ9Z_default" href="UseCase_x11D_fGD_AAAAQ9b.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      avanzamento da turista dopo aver accumulato un certo quantitativo di 
+      punti (tramite contest proposti all'interno della piattaforma)
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potr&amp;#224; avanzare a questo ruolo conseguendo un totale di 100 punti.
+    &amp;lt;/p&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      al passaggio di ruolo verranno sottratti 100 punti.
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="109, 633, 139, 693" coords2="109, 633, 139, 693" shape="rect" alt="Turista autorizzato:Actor" id="areadiagram_map_B11D.fGD.AAAAQ9U_default" href="Actor_B11D_fGD_AAAAQ9W.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si potranno scrivere recensioni dei punti di interesse visitati
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="317, 295, 427, 335" coords2="317, 295, 427, 335" shape="rect" alt="Scrivere recensioni:Use Case" id="areadiagram_map_W11D.fGD.AAAAQ9G_default" href="UseCase_W11D_fGD_AAAAQ9I.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      si possono inviare segnalazioni di:
+    &amp;lt;/p&amp;gt;
+    &amp;lt;ol class=&amp;quot;decimal&amp;quot; margin-left-ltr=&amp;quot;50&amp;quot; margin-right-rtl=&amp;quot;50&amp;quot; style=&amp;quot;margin-left:40pt;list-style-type:none;margin-top:0px;margin-bottom:0px;&amp;quot;&amp;gt;
+      &amp;lt;li style=&amp;quot;margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;&amp;quot;&amp;gt;
+        recensioni, ovvero per recensioni sbagliate o non idonee;
+      &amp;lt;/li&amp;gt;
+      &amp;lt;li style=&amp;quot;margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;&amp;quot;&amp;gt;
+        foto e video, ovvero per materiale non idoneo alla piattaforma;
+      &amp;lt;/li&amp;gt;
+      &amp;lt;li style=&amp;quot;margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;&amp;quot;&amp;gt;
+        punti di interesse, ovvero per informazioni sbagliate o non conformi 
+        alla piattaforma;
+      &amp;lt;/li&amp;gt;
+      &amp;lt;li style=&amp;quot;margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;&amp;quot;&amp;gt;
+        bug, ovvero per bug di sistema riscontrati durante l'uso di essa.
+      &amp;lt;/li&amp;gt;
+    &amp;lt;/ol&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      &amp;nbsp;
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="312, 238, 429, 278" coords2="312, 238, 429, 278" shape="rect" alt="Inviare segnalazioni:Use Case" id="areadiagram_map_K11D.fGD.AAAAQ84_default" href="UseCase_K11D_fGD_AAAAQ86.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      specializzazione di user non autenticato, ma differisce da quest'ultimo 
+      per essersi registrato alla piattaforma
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="110, 376, 140, 436" coords2="110, 376, 140, 436" shape="rect" alt="Turista:Actor" id="areadiagram_map_C11D.fGD.AAAAQ8z_default" href="Actor_C11D_fGD_AAAAQ81.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      leggere le recensioni dei punti di interesse
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="332, 163, 443, 203" coords2="332, 163, 443, 203" shape="rect" alt="Leggere recensioni:Use Case" id="areadiagram_map_A11D.fGD.AAAAQ8l_default" href="UseCase_k11D_fGD_AAAAQ8n.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      database OpenStreetMap dove si potranno consultare i punti di interesse 
+      cercati.
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="307, 112, 467, 152" coords2="307, 112, 467, 152" shape="rect" alt="Interazione con mappa OSM:Use Case" id="areadiagram_map_HV1D.fGD.AAAAQ8X_default" href="UseCase_nV1D_fGD_AAAAQ8Z.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      filtro di ricerca per escursioni, percorsi
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="351, 62, 431, 102" coords2="351, 62, 431, 102" shape="rect" alt="Ricerca per itinerario:Use Case" id="areadiagram_map_tV1D.fGD.AAAAQ8J_default" href="UseCase_dV1D_fGD_AAAAQ8L.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+<area imageId="diagram" docContent="&amp;lt;head&amp;gt;
+    
+  &amp;lt;/head&amp;gt;
+  &amp;lt;body style=&amp;quot;color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;&amp;quot;&amp;gt;
+    &amp;lt;p style=&amp;quot;margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;&amp;quot;&amp;gt;
+      user che non effettua il login ma pu&amp;#242; consultare la piattaforma
+    &amp;lt;/p&amp;gt;
+  &amp;lt;/body&amp;gt;" coords="110, 112, 140, 172" coords2="110, 112, 140, 172" shape="rect" alt="User non autenticato:Actor" id="areadiagram_map_hV1D.fGD.AAAAQ8E_default" href="Actor_RV1D_fGD_AAAAQ8G.html" onmouseover="hideReferenceIcon(),hideSubdiagramIcon(),hideTransitorIcon(),showTooltip(this)" onmousedown="clearSpotLight();" onmouseout="hideTooltip()"/>
+</map>
+				</td>
+			</tr>
+		</table>
+		<p>
+		</p>
+	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="Category">
+				Model Elements			</td>
+		</tr>
+		<tr>
+			<td style="height: 5px">
+			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td colSpan="4" class="TableHeaderLine">
+			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine1">
+			</td>
+		</tr>
+		<tr class="TableHeader">
+			<td class="TableCellSpaceHolder10Px">
+			</td>
+			<td width="30%">
+<span class="TableHeaderText">Name</span>			</td>
+			<td class="TableCellSpaceHolder20Px">
+			</td>
+			<td>
+<span class="TableHeaderText">Description</span>			</td>
+		</tr>
+		<tr>
+			<td colSpan="4" class="TableHeaderLine2">
+			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Actor.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Actor.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Actor_RV1D_fGD_AAAAQ8G.html" class="ItemLink">User non autenticato : Actor</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      user che non effettua il login ma pu&#242; consultare la piattaforma
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Actor.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Actor.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Actor_C11D_fGD_AAAAQ81.html" class="ItemLink">Turista : Actor</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      specializzazione di user non autenticato, ma differisce da quest'ultimo 
+      per essersi registrato alla piattaforma
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Actor.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Actor.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Actor_B11D_fGD_AAAAQ9W.html" class="ItemLink">Turista autorizzato : Actor</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      avanzamento da turista dopo aver accumulato un certo quantitativo di 
+      punti (tramite contest proposti all'interno della piattaforma)
+    </p>
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potr&#224; avanzare a questo ruolo conseguendo un totale di 100 punti.
+    </p>
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      al passaggio di ruolo verranno sottratti 100 punti.
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Actor.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Actor.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Actor_N11D_fGD_AAAAQ93.html" class="ItemLink">Contributor : Actor</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      avanzamento da turista autorizzato dopo aver accumulato un certo 
+      quantitativo di punti (tramite contest proposti all'interno della 
+      piattaforma).
+    </p>
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potr&#224; avanzare a questo ruolo conseguendo un totale di 250 punti.
+    </p>
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      al passaggio di ruolo verranno sottratti 250 punti.
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Actor.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Actor.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Actor_X11D_fGD_AAAAQ_Y.html" class="ItemLink">Contributor autorizzati : Actor</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      avanzamento da Contributor dopo aver accumulato un certo quantitativo di 
+      punti (tramite contest proposti all'interno della piattaforma).
+    </p>
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potr&#224; avanzare a questo ruolo conseguendo un totale di 500 punti.
+    </p>
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      al passaggio di ruolo verranno sottratti 500 punti.
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Actor.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Actor.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Actor_gN1D_fGD_AAAAQ_r.html" class="ItemLink">Animatore : Actor</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      avanzamento da Contributor Autorizzati dopo aver accumulato un certo 
+      quantitativo di punti (tramite contest proposti all'interno della 
+      piattaforma).
+    </p>
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      ultima classe raggiungibile tramite sistema a punti
+    </p>
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potr&#224; avanzare a questo ruolo conseguendo un totale di 1000 punti.
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Actor.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Actor.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Actor_8N1D_fGD_AAAAQ_M.html" class="ItemLink">Curatore : Actor</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      approvazione di posti ed itinerari nel territorio.
+    </p>
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      la posizione sar&#224; ricoperta da un dipendente comunale (anche all'interno 
+      della giunta) e gestir&#224; i punti di interesse e materiali pubblicati del 
+      proprio comune
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/Actor.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/Actor.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="Actor_aN1D_fGD_AAAAQ_f.html" class="ItemLink">Gestore della piattaforma : Actor</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      utente con tutti i permessi della piattaforma
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_dV1D_fGD_AAAAQ8L.html" class="ItemLink">Ricerca per itinerario : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      filtro di ricerca per escursioni, percorsi
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_nV1D_fGD_AAAAQ8Z.html" class="ItemLink">Interazione con mappa OSM : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      database OpenStreetMap dove si potranno consultare i punti di interesse 
+      cercati.
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_k11D_fGD_AAAAQ8n.html" class="ItemLink">Leggere recensioni : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      leggere le recensioni dei punti di interesse
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_K11D_fGD_AAAAQ86.html" class="ItemLink">Inviare segnalazioni : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si possono inviare segnalazioni di:
+    </p>
+    <ol class="decimal" margin-left-ltr="50" margin-right-rtl="50" style="margin-left:40pt;list-style-type:none;margin-top:0px;margin-bottom:0px;">
+      <li style="margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;">
+        recensioni, ovvero per recensioni sbagliate o non idonee;
+      </li>
+      <li style="margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;">
+        foto e video, ovvero per materiale non idoneo alla piattaforma;
+      </li>
+      <li style="margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;">
+        punti di interesse, ovvero per informazioni sbagliate o non conformi 
+        alla piattaforma;
+      </li>
+      <li style="margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;">
+        bug, ovvero per bug di sistema riscontrati durante l'uso di essa.
+      </li>
+    </ol>
+    <p style="margin-left:0pt;margin-top:0;margin-bottom:.0001pt;margin-right:0pt;">
+      &nbsp;
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_W11D_fGD_AAAAQ9I.html" class="ItemLink">Scrivere recensioni : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potranno scrivere recensioni dei punti di interesse visitati
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_x11D_fGD_AAAAQ9b.html" class="ItemLink">Salvare informazioni : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potranno salvare dei punti di interesse preferiti
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_F11D_fGD_AAAAQ9p.html" class="ItemLink">Caricamento foto (previa autorizzazione Contributor autorizzato) : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potranno caricare foto di punti di interesse sulla piattaforma che 
+      andranno poi approvate dal Contributor autorizzato per verificare la 
+      loro idoneit&#224;
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_L11D_fGD_AAAAQ_K.html" class="ItemLink">Caricamento foto (senza autorizzazione) : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potranno caricare foto di punti di interesse nella piattaforma senza 
+      avere l'autorizzazione del Contributor Autorizzato
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_YN1D_fGD_AAAAQ_w.html" class="ItemLink">Indirre contest : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      ci potranno essere due tipologie di contest:
+    </p>
+    <ol class="decimal" margin-left-ltr="50" margin-right-rtl="50" style="margin-left:40pt;list-style-type:none;margin-top:0px;margin-bottom:0px;">
+      <li style="margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;">
+        i contest aperti a tutti, dove tutti gli account di categoria turista, 
+        turista autorizzato, contributor e contributor autorizzato potranno 
+        entrare a farne parte;
+      </li>
+      <li style="margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;">
+        i contest solo su invito, dove sar&#224; l'animatore a scegliere quale 
+        tipologia di account potr&#224; entrare a farne parte.
+      </li>
+    </ol>
+    <p style="margin-left:0pt;margin-top:0;margin-bottom:.0001pt;margin-right:0pt;">
+      &nbsp;la tematica dei contest sar&#224; sempre diversa, pertanto sar&#224; pressoch&#233; 
+      inutile caricare foto gi&#224; inviate in precedenza.
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_iN1D_fGD_AAAAQ_R.html" class="ItemLink">gestione segnalazioni itinerari/divertimenti/ristoranti : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potranno gestire (approvare o meno) le segnalazioni di 
+      itinerari/divertimenti/ristoranti
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_GN1D_fGD_AAAAQ_k.html" class="ItemLink">Gestione ruoli : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      il gestore potr&#224; modificare i ruoli assegnati agli utenti
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_xLhT_fGD_AAAARFD.html" class="ItemLink">Modificare recensioni proprie : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potranno modificare le recensioni proprie
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_mfNT_fGD_AAAARFV.html" class="ItemLink">Eliminare recensioni proprie : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potranno eliminare le recensioni proprie
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_W2XT_fGD_AAAARGE.html" class="ItemLink">Caricamento video (previa autorizzazione Contributor autorizzato) : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potranno caricare video di punti di interesse sulla piattaforma che 
+      andranno poi approvate dal Contributor autorizzato per verificare la 
+      loro idoneit&#224;
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_mF4z_fGD_AAAARGs.html" class="ItemLink">Eliminazione foto proprie : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potranno eliminare le proprie foto caricate in piattaforma
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_XC0z_fGD_AAAARG_.html" class="ItemLink">Eliminazione video propri : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potranno eliminare le proprie video caricate in piattaforma
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_u7pz_fGD_AAAARII.html" class="ItemLink">Caricamento video (senza autorizzazione) : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potranno caricare video di punti di interesse nella piattaforma senza 
+      avere l'autorizzazione del Contributor Autorizzato
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_Sinz_fGD_AAAARI0.html" class="ItemLink">Gestione segnalazioni recensioni : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potranno gestire (approvare o meno) le segnalazioni di recensioni.
+    </p>
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      la segnalazione verr&#224; gestita dal contributor solo in caso in cui essa 
+      arrivi ad almeno 5 segnalazioni. questo per evitare che utenti segnalino 
+      recensioni che potrebbero essere idonee, cos&#236; da evitare lavoro inutile
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_xLWL_fGD_AAAARJc.html" class="ItemLink">Approvazione foto (turista autorizzato) : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potranno approvare (o meno) le foto caricate da turisti autorizzato
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_ZqZL_fGD_AAAARJu.html" class="ItemLink">Approvazione video (turista autorizzato) : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potranno approvare (o meno) video caricati da turista autorizzato
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_vQbL_fGD_AAAARKa.html" class="ItemLink">Gestione segnalazioni foto : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potranno gestire (approvare o meno) le segnalazioni di foto caricate.
+    </p>
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      la segnalazione verr&#224; gestita dal contributor autorizzato solo in caso 
+      in cui essa arrivi ad almeno 5 segnalazioni. questo per evitare che 
+      utenti segnalino foto che potrebbero essere idonee, cos&#236; da evitare 
+      lavoro inutile
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_0q3L_fGD_AAAARKx.html" class="ItemLink">Gestione segnalazioni video : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potranno gestire (approvare o meno) le segnalazioni di video caricati.
+    </p>
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      la segnalazione verr&#224; gestita dal contributor autorizzato solo in caso 
+      in cui essa arrivi ad almeno 5 segnalazioni. questo per evitare che 
+      utenti segnalino video che potrebbero essere idonei, cos&#236; da evitare 
+      lavoro inutile
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_1WU7_fGD_AAAARLl.html" class="ItemLink">Assegnazione punteggi contest : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si assegnano i punteggi relativi alla classifica stilata. I punti 
+      verranno assegnati ai primi 5 classificati:
+    </p>
+    <ul class="disc" margin-left-ltr="50" margin-right-rtl="50" style="margin-left:40pt;list-style-type:none;margin-top:0px;margin-bottom:0px;">
+      <li style="margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;">
+        il primo ricever&#224; 50 punti
+      </li>
+      <li style="margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;">
+        il secondo ricever&#224; 40 punti
+      </li>
+      <li style="margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;">
+        il terzo ricever&#224; 30 punti
+      </li>
+      <li style="margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;">
+        il quarto ricever&#224; 20 punti
+      </li>
+      <li style="margin-left:0;margin-top:0;margin-bottom:0;margin-right:0;">
+        il quinto ricever&#224; 10 punti
+      </li>
+    </ul>
+    <p style="margin-left:0pt;margin-top:0;margin-bottom:.0001pt;margin-right:0pt;">
+      &nbsp;
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_y1yH_fGD_AAAARMn.html" class="ItemLink">Gestione segnalazioni BUG : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potranno gestire le segnalazioni di BUG riportate dagli utenti (non 
+      user non autenticato).
+    </p>
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      la segnalazione verr&#224; gestita dal gestore della piattaforma solo in caso 
+      in cui essa arrivi ad almeno 5 segnalazioni. questo per evitare che 
+      utenti segnalino bug inesistenti, cos&#236; da evitare lavoro inutile.
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_AwjSBfGD_AAAARQ2.html" class="ItemLink">Ricerca per comune : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      ricerca di punti di interesse per uno specifico comune
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_2tCqBfGD_AAAARRV.html" class="ItemLink">Ricerca per ristorante : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      filtro di ricerca per punti di ristoro
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_W4tGBfGD_AAAARTL.html" class="ItemLink">Ricerca per divertimenti : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      filtro di ricerca per spettacoli, feste, sagre
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_QdF_pfGD_AAAARa7.html" class="ItemLink">Votazione contest : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      tutta l'intera community potr&#224; votare le foto/video preferite per ogni 
+      contest indetto (ovviamente non si potranno votare il proprio materiale)
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_n83BpfGD_AAAARb5.html" class="ItemLink">approvazione nuovi posti/itinerari aggiunti dal Contributor : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potranno approvare (o meno) le richieste di aggiunta di 
+      posti/itinerari fatte dai Contributor
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_jJPpffGD_AAAARgo.html" class="ItemLink">Aggiunta divertimenti (previa approvazione del curatore) : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_pFAZffGD_AAAARhA.html" class="ItemLink">Aggiunta itinerario (previa approvazione del curatore) : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_RuwZffGD_AAAARhU.html" class="ItemLink">Aggiunta ristorante (previa approvazione del curatore) : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_mtA5ffGD_AAAARjg.html" class="ItemLink">Aggiunta comune : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potranno aggiungere nuovi comuni
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_23_FffGD_AAAARm1.html" class="ItemLink">Aggiunta divertimenti (senza approvazione del curatore) : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_L9IlffGD_AAAARnT.html" class="ItemLink">Aggiunta ristorante (senza approvazione del curatore) : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_PA4lffGD_AAAARnp.html" class="ItemLink">Aggiunta itinerario (senza approvazione del curatore) : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"></span>			</td>
+		</tr>
+		<tr class="TableRow1">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_OB1m_fGD_AAAAVCN.html" class="ItemLink">Elimina informazioni salvate : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      si potranno eliminare le preferenze salvate dei punti di interesse
+    </p>
+  </body></span>			</td>
+		</tr>
+		<tr class="TableRow2">
+			<td>
+			</td>
+			<td>
+				<span class="TableContent">
+					<div style="float: left; width: 18px !important;height: 18px !important;background-image:url(../images/icons/UseCase.png) !important; background-image:url(''); filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../images/icons/UseCase.png'); background-repeat: no-repeat; background-size: contain;">
+					</div>
+					&nbsp; <a href="UseCase_qfgB_fGD_AAAAVGr.html" class="ItemLink">Validazione materiale contest : Use Case</a>				</span>
+			</td>
+			<td>
+			</td>
+			<td style="padding: 5px 0">
+<span class="TableContent Documentation"><head>
+    
+  </head>
+  <body style="color:#000000;margin-left:0;font-weight:normal;font-size:12px;font-family:Dialog;margin-right:0;">
+    <p style="margin-left:0pt;margin-top:0pt;margin-bottom:.0001pt;margin-right:0pt;">
+      l'animatore valider&#224; le foto caricate che siano pertinenti all'oggetto 
+      del contest
+    </p>
+  </body></span>			</td>
+		</tr>
+	</table>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="TableCellSpaceHolder1PxTall">
+			</td>
+		</tr>
+		<tr>
+			<td class="TableFooter">
+			</td>
+		</tr>
+	</table>
+	<div style="height: 20px">
+	</div>
+	<table border="0" cellpadding="0" width="100%" cellspacing="0">
+		<tr>
+			<td class="FooterLine">
+			</td>
+		</tr>
+	</table>
+	<div class="HeaderText">
+		idsBruttiTranquilli_AA_2324	</div>
+</body>
+</html>
