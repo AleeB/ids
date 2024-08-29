@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * le province verranno caricate in modo statico
+ * le province verranno caricate in modo statico, si potranno aggiornare tramite metodi
  */
 public class Provincia {
 
