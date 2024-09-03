@@ -1,6 +1,16 @@
 package classes.users;
 
+import classes.enums.enumTipoUtente;
+import jakarta.persistence.*;
+
+
 public class Animatore extends ContributorAutorizzato {
+
+
+
+	public Animatore(String nome, String cognome, String userName, String password, int punteggio, enumTipoUtente tipoUser){
+		super(nome, cognome, userName, password, punteggio, tipoUser);
+	}
 
 	public Animatore() {
 		super();

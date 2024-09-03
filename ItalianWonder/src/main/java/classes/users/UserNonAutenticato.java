@@ -4,12 +4,36 @@ import classes.*;
 import classes.POI.Divertimento;
 import classes.POI.Itinerario;
 import classes.POI.Ristorante;
+import jakarta.persistence.*;
 
 import java.util.*;
-
+/*
+@Entity
+@Table */
 public class UserNonAutenticato {
+/*
+	@Id
+
+	@SequenceGenerator(
+			name = "usernonautenticato_sequence",
+			sequenceName = "usernonautenticato_sequence",
+			allocationSize = 1
+	)
+
+	@GeneratedValue(
+			strategy = GenerationType.IDENTITY,
+			generator = "usernonautenticato_sequence"
+	)
+*/
+	private Long id;
+	private final String ip;
 
 	public UserNonAutenticato() {
+		this.ip = "";
+	}
+
+	public UserNonAutenticato(String ip) {
+		this.ip = ip;
 	}
 
 	//region Methods

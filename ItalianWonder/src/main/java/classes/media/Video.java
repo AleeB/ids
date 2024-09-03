@@ -1,14 +1,35 @@
 package classes.media;
 
+import jakarta.persistence.*;
+
 import java.io.File;
 import java.sql.Blob;
 
+@Entity
+@Table
 public class Video {
+
+	@Id
+
+	@SequenceGenerator(
+			name = "video_sequence",
+			sequenceName = "video_sequence",
+			allocationSize = 1
+	)
+
+	@GeneratedValue(
+			strategy = GenerationType.SEQUENCE,
+			generator = "video_sequence"
+	)
+
+	//region Vars
 
 	private long ID;
 	private String descrizione;
 	private File video;
 	private boolean approvazione;
+
+	//endregion
 
 	//region Props
 
@@ -47,6 +68,23 @@ public class Video {
 
 	//endregion
 
+	//region Constr
+
+	public Video() {
+		this.approvazione = false;
+		this.video = null;
+		this.descrizione = null;
+	}
+
+	public Video(String descrizione, File video, boolean approvazione) {
+		this.descrizione = descrizione;
+		this.video = video;
+		this.approvazione = approvazione;
+	}
+
+	//endregion
+
+	//region Methods
 
 	public void video() {
 		// TODO - implement Video.video
@@ -57,5 +95,7 @@ public class Video {
 		// TODO - implement Video.approvato
 		throw new UnsupportedOperationException();
 	}
+
+	//endregion
 
 }

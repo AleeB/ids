@@ -1,8 +1,25 @@
 package classes.media;
 
+import jakarta.persistence.*;
+
 import java.io.File;
 
+@Entity
+@Table
 public class Foto {
+
+	@Id
+
+	@SequenceGenerator(
+			name = "foto_sequence",
+			sequenceName = "foto_sequence",
+			allocationSize = 1
+	)
+
+	@GeneratedValue(
+			strategy = GenerationType.SEQUENCE,
+			generator = "foto_sequence"
+	)
 
 	//region Vars
 
@@ -39,7 +56,7 @@ public class Foto {
 		this.foto = foto;
 	}
 
-	public boolean isApprovazione() {
+	public boolean isApprovato() {
 		return approvazione;
 	}
 
@@ -53,14 +70,12 @@ public class Foto {
 	//region Constuctors
 
 	public Foto() {
-		this.ID = Integer.MAX_VALUE;
 		this.descrizione = "";
 		this.foto = null;
 		this.approvazione = false;
 	}
 
 	public Foto(long ID, String descrizione, File foto, boolean approvazione) {
-		this.ID = ID;
 		this.descrizione = descrizione;
 		this.foto = foto;
 		this.approvazione = approvazione;

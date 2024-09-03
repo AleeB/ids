@@ -1,15 +1,31 @@
 package classes.POI;
 
 import classes.enums.enumValutazione;
+import jakarta.persistence.*;
 
+@Entity
+@Table
 public class Ristorante {
+
+	@Id
+
+	@SequenceGenerator(
+			name = "ristorante_sequence",
+			sequenceName = "ristorante_sequence",
+			allocationSize = 1
+	)
+
+	@GeneratedValue(
+			strategy = GenerationType.SEQUENCE,
+			generator = "ristorante_sequence"
+	)
 
 	//region Vars
 
 	private long ID;
 	private String nome;
 	private String numeroTelefono;
-	private enumValutazione valutazione;		//inserito quando viene caricato il ristorante (no media)
+	private int valutazione;		//inserito quando viene caricato il ristorante (no media)
 	private float costoMedio;
 	private boolean approvazione;
 
@@ -17,13 +33,21 @@ public class Ristorante {
 
 	//region Constr
 
-	public Ristorante(long ID, String nome, String numeroTelefono, enumValutazione valutazione, float costoMedio, boolean approvazione) {
+	public Ristorante(long ID, String nome, String numeroTelefono, int valutazione, float costoMedio, boolean approvazione) {
 		this.ID = ID;
 		this.nome = nome;
 		this.numeroTelefono = numeroTelefono;
 		this.valutazione = valutazione;
 		this.costoMedio = costoMedio;
 		this.approvazione = approvazione;
+	}
+
+	public Ristorante(){
+		this.nome = "";
+		this.numeroTelefono = "";
+		this.valutazione = 0;
+		this.costoMedio = 0;
+		this.approvazione = false;
 	}
 
 	//endregion
@@ -54,11 +78,11 @@ public class Ristorante {
 		this.numeroTelefono = numeroTelefono;
 	}
 
-	public enumValutazione getValutazione() {
+	public int getValutazione() {
 		return valutazione;
 	}
 
-	public void setValutazione(enumValutazione valutazione) {
+	public void setValutazione(int valutazione) {
 		this.valutazione = valutazione;
 	}
 

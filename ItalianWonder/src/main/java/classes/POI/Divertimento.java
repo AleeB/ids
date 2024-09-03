@@ -1,16 +1,35 @@
 package classes.POI;
 
+import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.*;
 
+@Entity
+@Table
 public class Divertimento {
+
+	@Id
+
+	@SequenceGenerator(
+			name = "divertimento_sequence",
+			sequenceName = "divertimento_sequence",
+			allocationSize = 1
+	)
+
+	@GeneratedValue(
+			strategy = GenerationType.SEQUENCE,
+			generator = "divertimento_sequence"
+	)
+
 
 	//region Vars
 
 	private long ID;
 	private String titolo;
 	private float tipo;
-	private Date dataInizio;
-	private Date dataFine;
+	private LocalDateTime dataInizio;
+	private LocalDateTime dataFine;
 	private float costo;
 	private Boolean approvazione;
 
@@ -18,14 +37,22 @@ public class Divertimento {
 
 	//region Constr
 
-	public Divertimento(long id, String tit, float type, Date start, Date end, float cost, Boolean app) {
-		this.ID = id;
+	public Divertimento(String tit, float type, LocalDateTime start, LocalDateTime end, float cost, Boolean app) {
 		this.titolo = tit;
 		this.tipo = type;
 		this.dataInizio = start;
 		this.dataFine = end;
 		this.costo = cost;
 		this.approvazione = app;
+	}
+
+	public Divertimento() {
+		this.titolo = "";
+		this.tipo = 0;
+		this.dataInizio = LocalDateTime.now();
+		this.dataFine = LocalDateTime.now();
+		this.costo = 0;
+		this.approvazione = false;
 	}
 
 	//endregion
@@ -44,11 +71,11 @@ public class Divertimento {
 		return tipo;
 	}
 
-	public Date getDataInizio() {
+	public LocalDateTime getDataInizio() {
 		return dataInizio;
 	}
 
-	public Date getDataFine() {
+	public LocalDateTime getDataFine() {
 		return dataFine;
 	}
 
@@ -72,11 +99,11 @@ public class Divertimento {
 		this.tipo = tipo;
 	}
 
-	public void setDataInizio(Date dataInizio) {
+	public void setDataInizio(LocalDateTime dataInizio) {
 		this.dataInizio = dataInizio;
 	}
 
-	public void setDataFine(Date dataFine) {
+	public void setDataFine(LocalDateTime dataFine) {
 		this.dataFine = dataFine;
 	}
 

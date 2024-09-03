@@ -1,9 +1,15 @@
 package classes.users;
 
+import classes.enums.enumTipoUtente;
+
 public class TuristaAutorizzato extends Turista {
 
 	public TuristaAutorizzato() {
 		super();
+	}
+
+	public TuristaAutorizzato(String nome, String cognome, String userName, String password, int punteggio, enumTipoUtente tipoUser){
+		super(nome, cognome, userName, password, punteggio, tipoUser);
 	}
 
 	//region Methods

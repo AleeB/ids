@@ -1,10 +1,26 @@
 package classes.POI;
 
 import classes.enums.enumDifficolta;
+import jakarta.persistence.*;
 
 import java.util.*;
 
+@Entity
+@Table
 public class Itinerario {
+
+	@Id
+
+	@SequenceGenerator(
+			name = "itinerario_sequence",
+			sequenceName = "itinerario_sequence",
+			allocationSize = 1
+	)
+
+	@GeneratedValue(
+			strategy = GenerationType.SEQUENCE,
+			generator = "itinerario_sequence"
+	)
 
 	//region Vars
 
@@ -20,14 +36,22 @@ public class Itinerario {
 
 	//region Constr
 
-	public Itinerario(long id, String tit, float lun, float costo, String descrizione, boolean approvazione, enumDifficolta difficolta) {
-		this.ID = id;
+	public Itinerario(String tit, float lun, float costo, String descrizione, boolean approvazione, enumDifficolta difficolta) {
 		this.titolo = tit;
 		this.lunghezza = lun;
 		this.costo = costo;
 		this.descrizione = descrizione;
 		this.approvazione = approvazione;
 		this.difficolta = difficolta;
+	}
+
+	public Itinerario() {
+		this.titolo = "";
+		this.lunghezza = 0;
+		this.costo = 0;
+		this.descrizione = "";
+		this.approvazione = false;
+		this.difficolta = enumDifficolta.facile;
 	}
 
 	//endregion

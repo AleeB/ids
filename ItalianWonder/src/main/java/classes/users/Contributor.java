@@ -1,11 +1,16 @@
 package classes.users;
 
 import classes.Segnalazione;
+import classes.enums.enumTipoUtente;
 
 public class Contributor extends Turista {
 
 	public Contributor() {
 		super();
+	}
+
+	public Contributor(String nome, String cognome, String userName, String password, int punteggio, enumTipoUtente tipoUser) {
+		super(nome, cognome, userName, password, punteggio, tipoUser);
 	}
 
 	//region Methods
