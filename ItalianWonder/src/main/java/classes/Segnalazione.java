@@ -1,20 +1,30 @@
 package classes;
 
 import classes.enums.enumTipoSegnalazione;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table
 public class Segnalazione {
 
+	@Id
 
+	@SequenceGenerator(
+			name = "segnalazione_sequence",
+			sequenceName = "segnalazione_sequence",
+			allocationSize = 1
+
+	)
+
+	@GeneratedValue(
+			strategy = GenerationType.SEQUENCE,
+			generator = "segnalazione_sequence"
+	)
 
 	//region Vars
 
 	private long ID;
 	private enumTipoSegnalazione tipo;
-	private long idContenuto;
 	private boolean verificata;
 
 	//endregion
@@ -37,14 +47,6 @@ public class Segnalazione {
 		this.tipo = tipo;
 	}
 
-	public long getIdContenuto() {
-		return idContenuto;
-	}
-
-	public void setIdContenuto(long idContenuto) {
-		this.idContenuto = idContenuto;
-	}
-
 	public boolean isVerificata() {
 		return verificata;
 	}
@@ -61,14 +63,12 @@ public class Segnalazione {
 	public Segnalazione() {
 		this.ID = 0;
 		this.tipo = enumTipoSegnalazione.foto;
-		this.idContenuto = 0;
 		this.verificata = false;
 	}
 
 	public Segnalazione(long ID, enumTipoSegnalazione tipo, long idContenuto, boolean verificata) {
 		this.ID = ID;
 		this.tipo = tipo;
-		this.idContenuto = idContenuto;
 		this.verificata = verificata;
 	}
 
