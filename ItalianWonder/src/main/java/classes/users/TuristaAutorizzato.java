@@ -1,8 +1,15 @@
 package classes.users;
 
 import classes.enums.enumTipoUtente;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
+import jakarta.persistence.Table;
 
+@Entity
 public class TuristaAutorizzato extends Turista {
+
+
 
 	public TuristaAutorizzato() {
 		super();

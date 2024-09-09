@@ -1,24 +1,32 @@
 package classes;
 
+import jakarta.persistence.*;
+
 //design pattern mediator
+@Entity
+@Table
 public class avereV {
+
+	@Id
+
+	@SequenceGenerator(
+			name = "averev_sequence",
+			sequenceName = "averev_sequence",
+			allocationSize = 1
+	)
+
+	@GeneratedValue(
+			generator = "averev_sequence",
+			strategy = GenerationType.SEQUENCE
+	)
 
 	//region Vars
 
 	private long numeroVoti;
-	private long idVideo;
 
 	//endregion
 
 	//region Props
-
-	public long getIdVideo() {
-		return idVideo;
-	}
-
-	public void setIdVideo(long idVideo) {
-		this.idVideo = idVideo;
-	}
 
 	public long getNumeroVoti() {
 		return numeroVoti;
@@ -36,14 +44,8 @@ public class avereV {
 
 	//region Constr
 
-	public avereV(long numeroVoti, long idFoto) {
-		this.numeroVoti = numeroVoti;
-		this.idVideo = idFoto;
-	}
-
 	public avereV(){
 		this.numeroVoti = 0;
-		this.idVideo = 0;
 	}
 
 	//endregion

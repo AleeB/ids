@@ -1,8 +1,24 @@
 package classes;
 
 import classes.enums.enumValutazione;
+import jakarta.persistence.*;
 
+@Entity
+@Table
 public class Recensione {
+
+	@Id
+
+	@SequenceGenerator(
+			name = "recensione_sequence",
+			sequenceName = "recensione_sequence",
+			allocationSize = 1
+	)
+
+	@GeneratedValue(
+			strategy = GenerationType.SEQUENCE,
+			generator = "recensione_sequence"
+	)
 
 	//region Vars
 

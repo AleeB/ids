@@ -3,7 +3,9 @@ package classes.users;
 import classes.Segnalazione;
 import classes.enums.enumTipoUtente;
 import classes.media.Video;
+import jakarta.persistence.Entity;
 
+@Entity
 public class ContributorAutorizzato extends Turista {
 
 	public ContributorAutorizzato() {

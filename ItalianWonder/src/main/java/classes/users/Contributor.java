@@ -2,7 +2,9 @@ package classes.users;
 
 import classes.Segnalazione;
 import classes.enums.enumTipoUtente;
+import jakarta.persistence.Entity;
 
+@Entity
 public class Contributor extends Turista {
 
 	public Contributor() {

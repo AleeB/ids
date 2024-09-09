@@ -1,5 +1,7 @@
 package classes;
 
+import jakarta.persistence.*;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
@@ -8,7 +10,23 @@ import java.util.List;
 /**
  * le province verranno caricate in modo statico, si potranno aggiornare tramite metodi
  */
+@Entity
+@Table
 public class Provincia {
+
+
+	@Id
+
+	@SequenceGenerator(
+			name = "provincia_sequence",
+			sequenceName = "provincia_sequence",
+			allocationSize = 1
+	)
+
+	@GeneratedValue(
+			generator = "provincia_sequence",
+			strategy = GenerationType.SEQUENCE
+	)
 
 	//region Vars
 

@@ -1,6 +1,23 @@
 package classes;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table
 public class Localizzazione {
+
+	@Id
+
+	@SequenceGenerator(
+			name = "localizzazione_sequence",
+			sequenceName = "localizzazione_sequence",
+			allocationSize = 1
+	)
+
+	@GeneratedValue(
+			strategy = GenerationType.SEQUENCE,
+			generator = "localizzazione_sequence"
+	)
 
 	//region Vars
 

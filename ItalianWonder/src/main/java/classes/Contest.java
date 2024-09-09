@@ -1,14 +1,30 @@
 package classes;
 import classes.media.Foto;
+import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.*;
 
+@Entity
+@Table
 public class Contest {
+
+	@Id
+
+	@SequenceGenerator(
+			name = "contest_sequence",
+			sequenceName = "contest_sequence",
+			allocationSize = 1
+	)
+
+	@GeneratedValue(
+			generator = "contest_sequence",
+			strategy = GenerationType.SEQUENCE
+	)
 
 	//region Vars
 
-	private long ID;
+	private long Id;
 	private LocalDateTime dataInizio;
 	private LocalDateTime dataFine;
 	private String titolo;
@@ -17,12 +33,12 @@ public class Contest {
 
 	//region Props
 
-	public long getID() {
-		return ID;
+	public long getId() {
+		return Id;
 	}
 
-	public void setID(long ID) {
-		this.ID = ID;
+	public void setId(long id) {
+		this.Id = id;
 	}
 
 	public LocalDateTime getDataInizio() {
@@ -54,14 +70,14 @@ public class Contest {
 	//region Constr
 
 	public Contest() {
-		this.ID = Integer.MAX_VALUE;
+		this.Id = Integer.MAX_VALUE;
 		this.dataInizio = LocalDateTime.now();
 		this.dataFine = LocalDateTime.now();
 		this.titolo = "";
 	}
 
 	public Contest(long id ,LocalDateTime dataInizio, LocalDateTime dataFine, String titolo) {
-		this.ID = id;
+		this.Id = id;
 		this.dataInizio = dataInizio;
 		this.dataFine = dataFine;
 		this.titolo = titolo;

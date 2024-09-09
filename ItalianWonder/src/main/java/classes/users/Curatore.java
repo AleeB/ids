@@ -1,7 +1,9 @@
 package classes.users;
 
 import classes.Segnalazione;
+import jakarta.persistence.Entity;
 
+@Entity
 public class Curatore extends ContributorAutorizzato {
 
 	public Curatore() {

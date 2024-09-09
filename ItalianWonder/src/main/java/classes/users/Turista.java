@@ -4,26 +4,10 @@ import classes.Recensione;
 import classes.Segnalazione;
 import classes.enums.enumTipoUtente;
 import jakarta.persistence.*;
-/*
+
 @Entity
-@Table */
 public class Turista extends UserNonAutenticato {
 
-	/*
-
-	@Id
-
-	@SequenceGenerator(
-			name = "turista_sequence",
-			sequenceName = "turista_sequence",
-			allocationSize = 1
-	)
-
-	@GeneratedValue(
-			strategy = GenerationType.SEQUENCE,
-			generator = "turista_sequence"
-	)
-*/
 	//region Vars
 
 	private String userName;

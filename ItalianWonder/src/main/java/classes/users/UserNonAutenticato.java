@@ -7,11 +7,11 @@ import classes.POI.Ristorante;
 import jakarta.persistence.*;
 
 import java.util.*;
-/*
+
 @Entity
-@Table */
+@Inheritance(strategy = InheritanceType.JOINED)
 public class UserNonAutenticato {
-/*
+
 	@Id
 
 	@SequenceGenerator(
@@ -24,7 +24,7 @@ public class UserNonAutenticato {
 			strategy = GenerationType.IDENTITY,
 			generator = "usernonautenticato_sequence"
 	)
-*/
+
 	private Long id;
 	private final String ip;
 

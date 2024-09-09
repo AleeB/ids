@@ -3,7 +3,7 @@ package classes.users;
 import classes.enums.enumTipoUtente;
 import jakarta.persistence.*;
 
-
+@Entity
 public class Animatore extends ContributorAutorizzato {
 
 
