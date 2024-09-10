@@ -2,8 +2,6 @@ package classes;
 
 import jakarta.persistence.*;
 
-import java.util.*;
-
 //design pattern mediator
 @Entity
 @Table
