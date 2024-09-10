@@ -1,4 +1,4 @@
-package classes.repositories.media;
+package repositories.media;
 
 import classes.media.Foto;
 import org.springframework.data.jpa.repository.JpaRepository;
