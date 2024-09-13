@@ -1,5 +1,13 @@
 package classes.media;
 
+import classes.Contest;
+import classes.POI.Divertimento;
+import classes.POI.Itinerario;
+import classes.POI.Ristorante;
+import classes.avereF;
+import classes.users.Contributor;
+import classes.users.ContributorAutorizzato;
+import classes.users.TuristaAutorizzato;
 import jakarta.persistence.*;
 
 import java.io.File;
@@ -27,6 +35,38 @@ public class Foto {
 	private String descrizione;
 	private File foto;
 	private boolean approvazione;
+
+	@ManyToOne
+	@JoinColumn(name = "itinerario_id")
+	private Itinerario itinerario;
+
+	@ManyToOne
+	@JoinColumn(name = "divertimento_id")
+	private Divertimento divertimento;
+
+	@ManyToOne
+	@JoinColumn(name = "ristorante_id")
+	private Ristorante ristorante;
+
+	@ManyToOne
+	@JoinColumn(name = "turistaAutorizzato_id")
+	private TuristaAutorizzato turistaAutorizzato;
+
+	@ManyToOne
+	@JoinColumn(name = "contributor_id")
+	private Contributor contributor;
+
+	@ManyToOne
+	@JoinColumn(name = "contributorAutorizzato_id")
+	private ContributorAutorizzato contributorAutorizzato;
+
+	@ManyToOne
+	@JoinColumn(name = "contest_id")
+	private Contest contest;
+
+	@OneToOne
+	@JoinColumn(name = "af_id")
+	private avereF af;
 
 	//endregion
 
@@ -64,23 +104,70 @@ public class Foto {
 		this.approvazione = approvazione;
 	}
 
+	public Ristorante getRistorante() {
+		return ristorante;
+	}
+
+	public void setRistorante(Ristorante ristorante) {
+		this.ristorante = ristorante;
+	}
+
+	public Divertimento getDivertimento() {
+		return divertimento;
+	}
+
+	public void setDivertimento(Divertimento divertimento) {
+		this.divertimento = divertimento;
+	}
+
+	public Itinerario getItinerario() {
+		return itinerario;
+	}
+
+	public void setItinerario(Itinerario itinerario) {
+		this.itinerario = itinerario;
+	}
+
+	public TuristaAutorizzato getTuristaAutorizzato() {
+		return turistaAutorizzato;
+	}
+
+	public void setTuristaAutorizzato(TuristaAutorizzato turistaAutorizzato) {
+		this.turistaAutorizzato = turistaAutorizzato;
+	}
+
+	public Contributor getContributor() {
+		return contributor;
+	}
+
+	public void setContributor(Contributor contributor) {
+		this.contributor = contributor;
+	}
+
+	public ContributorAutorizzato getContributorAutorizzato() {
+		return contributorAutorizzato;
+	}
+
+	public void setContributorAutorizzato(ContributorAutorizzato contributorAutorizzatico) {
+		this.contributorAutorizzato = contributorAutorizzatico;
+	}
+
+	public Contest getContest() {
+		return contest;
+	}
+
+	public void setContest(Contest contest) {
+		this.contest = contest;
+	}
 
 	//endregion
 
 	//region Constuctors
 
 	public Foto() {
-		this.descrizione = "";
-		this.foto = null;
-		this.approvazione = false;
 	}
 
-	public Foto(long ID, String descrizione, File foto, boolean approvazione) {
-		this.descrizione = descrizione;
-		this.foto = foto;
-		this.approvazione = approvazione;
-	}
-	
+
 	//endregion
 
 	public boolean approvato(int idFoto) {

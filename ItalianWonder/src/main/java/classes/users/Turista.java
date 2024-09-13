@@ -1,9 +1,13 @@
 package classes.users;
 
+import classes.Comune;
+import classes.Contest;
 import classes.Recensione;
 import classes.Segnalazione;
 import classes.enums.enumTipoUtente;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Turista extends UserNonAutenticato {
@@ -17,26 +21,36 @@ public class Turista extends UserNonAutenticato {
 	private int punteggio;
 	private enumTipoUtente tipoUser;
 
+
+	@ManyToMany
+	@JoinTable(
+			name = "turista_contest",
+			joinColumns = @JoinColumn(name = "turista_id"),
+			inverseJoinColumns = @JoinColumn(name = "contest_id")
+	)
+	private List<Contest> contest;
+
+	@ManyToMany
+	@JoinTable(
+			name = "turista_segnalazione",
+			joinColumns = @JoinColumn(name = "turista_id"),
+			inverseJoinColumns = @JoinColumn(name = "segnalazione_id")
+	)
+	private List<Segnalazione> segnalazioni;
+
+	@OneToMany(mappedBy = "turista")
+	private List<Recensione> recensioni;
+
+	@OneToOne
+	@JoinColumn(name = "comune_id")
+	private Comune comune;
+
 	//endregion
 
 	//region Constr
 
-	public Turista(String nome, String cognome, String userName, String password, int punteggio, enumTipoUtente tipoUser) {
-		this.nome = nome;
-		this.cognome = cognome;
-		this.userName = userName;
-		this.password = password;
-		this.punteggio = punteggio;
-		this.tipoUser = tipoUser;
-	}
-
 	public Turista() {
-		this.nome = "";
-		this.cognome = "";
-		this.userName = "";
-		this.password = "";
-		this.punteggio = 0;
-		tipoUser = enumTipoUtente.Turista;
+
 	}
 
 	//endregion
@@ -94,6 +108,20 @@ public class Turista extends UserNonAutenticato {
 	public void setTipoUser(enumTipoUtente tipoUser) {
 		this.tipoUser = tipoUser;
 	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public List<Contest> getContest() {
+		return contest;
+	}
+
+	public void setContest(List<Contest> contest) {
+		this.contest = contest;
+	}
+
+
 
 	//endregion
 

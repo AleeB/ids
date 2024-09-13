@@ -1,22 +1,48 @@
 package classes.users;
 
+import classes.Salvare;
 import classes.enums.enumTipoUtente;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
-import jakarta.persistence.Table;
+import classes.media.Foto;
+import classes.media.Video;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class TuristaAutorizzato extends Turista {
 
+	@OneToMany(mappedBy = "turistaAutorizzato")
+	private List<Foto> foto;
+
+	@OneToMany(mappedBy = "turistaAutorizzato")
+	private List<Video> video;
+
+	@OneToMany(mappedBy = "turistaAutorizzato")
+	private List<Salvare> salvare;
+
+	//region Props
+
+	public List<Foto> getFoto() {
+		return foto;
+	}
+
+	public void setFoto(List<Foto> foto) {
+		this.foto = foto;
+	}
+
+	public List<Video> getVideo() {
+		return video;
+	}
+
+	public void setVideo(List<Video> video) {
+		this.video = video;
+	}
+
+	//endregion
 
 
 	public TuristaAutorizzato() {
 		super();
-	}
-
-	public TuristaAutorizzato(String nome, String cognome, String userName, String password, int punteggio, enumTipoUtente tipoUser){
-		super(nome, cognome, userName, password, punteggio, tipoUser);
 	}
 
 	//region Methods

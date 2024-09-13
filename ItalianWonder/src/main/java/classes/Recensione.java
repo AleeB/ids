@@ -1,7 +1,14 @@
 package classes;
 
+import classes.POI.Divertimento;
+import classes.POI.Itinerario;
+import classes.POI.Ristorante;
 import classes.enums.enumValutazione;
+import classes.users.Turista;
+import classes.users.UserNonAutenticato;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table
@@ -26,6 +33,27 @@ public class Recensione {
 	private String descrizione;
 	private int valutazione;	//da 1 a 5
 	private boolean verificata;
+
+	@ManyToOne
+	@JoinColumn(name = "divertimento_id")
+	private Divertimento divertimento;
+
+	@ManyToOne
+	@JoinColumn(name = "itinerario_id")
+	private Itinerario itinerario;
+
+	@ManyToOne
+	@JoinColumn(name = "ristorante_id")
+	private Ristorante ristorante;
+
+	@ManyToOne
+	@JoinColumn(name = "turista_id")
+	private Turista turista;
+
+	@ManyToMany(mappedBy = "recensioni")
+	private List<UserNonAutenticato> una;
+
+
 
 	//endregion
 
@@ -63,22 +91,44 @@ public class Recensione {
 		this.verificata = verificata;
 	}
 
+	public Divertimento getDivertimento() {
+		return divertimento;
+	}
+
+	public void setDivertimento(Divertimento divertimento) {
+		this.divertimento = divertimento;
+	}
+
+	public Itinerario getItinerario() {
+		return itinerario;
+	}
+
+	public void setItinerario(Itinerario itinerario) {
+		this.itinerario = itinerario;
+	}
+
+	public Ristorante getRistorante() {
+		return ristorante;
+	}
+
+	public void setRistorante(Ristorante ristorante) {
+		this.ristorante = ristorante;
+	}
+
+	public Turista getTurista() {
+		return turista;
+	}
+
+	public void setTurista(Turista turista) {
+		this.turista = turista;
+	}
+
 	//endregion
 
 	//region Constr
 
 	public Recensione() {
-		this.ID = Long.MAX_VALUE;
-		this.descrizione = "";
-		this.valutazione = 0;
-		this.verificata = false;
-	}
 
-	public Recensione(long ID, String descrizione, int valutazione, boolean verificata) {
-		this.ID = ID;
-		this.descrizione = descrizione;
-		this.valutazione = valutazione;
-		this.verificata = verificata;
 	}
 
 	//endregion

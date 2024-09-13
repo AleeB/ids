@@ -33,6 +33,9 @@ public class Provincia {
 	private String nomeProvincia;
 	private String sigla;
 
+	@OneToOne(mappedBy = "provincia")
+	private Comune comune;
+
 	//endregion
 
 	//region Constructors

@@ -1,5 +1,6 @@
 package classes;
 
+import classes.users.Turista;
 import jakarta.persistence.*;
 
 import java.util.*;
@@ -24,6 +25,17 @@ public class Comune {
 	//region Vars
 
 	private String nome;
+
+	@OneToOne(mappedBy = "comune")
+	private Turista turista;
+
+	@OneToOne
+	@JoinColumn(name = "provincia_id")
+	private Provincia provincia;
+
+	@ManyToOne
+	@JoinColumn(name = "localizzazione_id")
+	private Localizzazione localizzazione;
 
 	//endregion
 
