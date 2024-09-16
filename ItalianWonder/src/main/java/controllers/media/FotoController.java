@@ -2,9 +2,7 @@ package controllers.media;
 
 import classes.media.Foto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import services.media.FotoService;
 
 @RestController
@@ -16,6 +14,13 @@ public class FotoController {
     @Autowired
     public FotoController(FotoService fotoService) {
         this.fotoService = fotoService;
+    }
+
+
+    //esempio
+    @PostMapping
+    public void saveFoto(@RequestBody Foto foto) throws Exception {
+        fotoService.addNewFoto(foto);
     }
 
 }

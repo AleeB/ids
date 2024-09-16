@@ -8,7 +8,9 @@ import services.POI.DivertimentoService;
 @RequestMapping(path = "api/v1/divertimento")
 
 public class DivertimentoController {
+
     private final DivertimentoService divertimentoService;
+
     public DivertimentoController(DivertimentoService divertimentoService) {
         this.divertimentoService = divertimentoService;
     }
