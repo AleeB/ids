@@ -1,7 +1,12 @@
 package classes;
 
 import classes.enums.enumTipoSegnalazione;
+import classes.users.Contributor;
+import classes.users.ContributorAutorizzato;
+import classes.users.Turista;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table
@@ -26,6 +31,17 @@ public class Segnalazione {
 	private long ID;
 	private enumTipoSegnalazione tipo;
 	private boolean verificata;
+
+	@ManyToMany(mappedBy = "segnalazioni")
+	private List<Contributor> contributors;
+
+	@ManyToMany(mappedBy = "segnalazioni")
+	private List<ContributorAutorizzato> contributorAutorizzati;
+
+	@ManyToMany(mappedBy = "segnalazioni")
+	private	List<Turista> turisti;
+
+
 
 	//endregion
 
@@ -55,21 +71,36 @@ public class Segnalazione {
 		this.verificata = verificata;
 	}
 
+	public List<Contributor> getContributors() {
+		return contributors;
+	}
+
+	public void setContributors(List<Contributor> contributors) {
+		this.contributors = contributors;
+	}
+
+	public List<ContributorAutorizzato> getContributorAutorizzati() {
+		return contributorAutorizzati;
+	}
+
+	public void setContributorAutorizzati(List<ContributorAutorizzato> contributorAutorizzati) {
+		this.contributorAutorizzati = contributorAutorizzati;
+	}
+
+	public List<Turista> getTuristi() {
+		return turisti;
+	}
+
+	public void setTuristi(List<Turista> turisti) {
+		this.turisti = turisti;
+	}
 
 	//endregion
 
 	//region Constr
 
 	public Segnalazione() {
-		this.ID = 0;
-		this.tipo = enumTipoSegnalazione.foto;
-		this.verificata = false;
-	}
 
-	public Segnalazione(long ID, enumTipoSegnalazione tipo, long idContenuto, boolean verificata) {
-		this.ID = ID;
-		this.tipo = tipo;
-		this.verificata = verificata;
 	}
 
 	//endregion

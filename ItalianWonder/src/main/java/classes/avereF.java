@@ -1,5 +1,7 @@
 package classes;
 
+import classes.media.Foto;
+import classes.media.Video;
 import jakarta.persistence.*;
 
 //design pattern mediator
@@ -23,6 +25,9 @@ public class avereF {
 	//region Vars
 
 	private long numeroVoti;
+
+	@OneToOne(mappedBy = "af")
+	private Foto foto;
 
 	//endregion
 

@@ -1,6 +1,14 @@
 package classes.POI;
 
+import classes.Localizzazione;
+import classes.Recensione;
+import classes.Salvare;
 import classes.enums.enumDifficolta;
+import classes.media.Foto;
+import classes.media.Video;
+import classes.users.Contributor;
+import classes.users.ContributorAutorizzato;
+import classes.users.UserNonAutenticato;
 import jakarta.persistence.*;
 
 import java.util.*;
@@ -32,26 +40,43 @@ public class Itinerario {
 	private boolean approvazione;
 	private enumDifficolta difficolta;
 
+	@OneToMany(mappedBy = "itinerario")
+	private List<Foto> foto;
+
+	@OneToMany(mappedBy = "itinerario")
+	private List<Video> video;
+
+	@OneToMany(mappedBy = "itinerario")
+	private List<Recensione> recensioni;
+
+	@ManyToOne
+	@JoinColumn(name = "contributor_id")
+	private Contributor contributor;
+
+	@ManyToOne
+	@JoinColumn(name = "contributorAutorizzato_id")
+	private ContributorAutorizzato contributorAutorizzato;
+
+	@OneToOne
+	@JoinColumn(name = "localizzazione_id")
+	private Localizzazione localizzazione;
+
+	@OneToMany(mappedBy = "itinerario")
+	private List<Salvare> salvare;
+
+	@ManyToMany
+	@JoinTable(
+			name = "userNonAutenticato_itinerario",
+			joinColumns = @JoinColumn(name = "itinerario_id"),
+			inverseJoinColumns = @JoinColumn(name = "userNonAutenticato_id")
+	)
+	private List<UserNonAutenticato> una;
+
 	//endregion
 
 	//region Constr
 
-	public Itinerario(String tit, float lun, float costo, String descrizione, boolean approvazione, enumDifficolta difficolta) {
-		this.titolo = tit;
-		this.lunghezza = lun;
-		this.costo = costo;
-		this.descrizione = descrizione;
-		this.approvazione = approvazione;
-		this.difficolta = difficolta;
-	}
-
 	public Itinerario() {
-		this.titolo = "";
-		this.lunghezza = 0;
-		this.costo = 0;
-		this.descrizione = "";
-		this.approvazione = false;
-		this.difficolta = enumDifficolta.facile;
 	}
 
 	//endregion
@@ -112,6 +137,70 @@ public class Itinerario {
 
 	public void setDifficolta(enumDifficolta difficolta) {
 		this.difficolta = difficolta;
+	}
+
+	public List<Foto> getFoto() {
+		return foto;
+	}
+
+	public void setFoto(List<Foto> foto) {
+		this.foto = foto;
+	}
+
+	public List<Video> getVideo() {
+		return video;
+	}
+
+	public void setVideo(List<Video> video) {
+		this.video = video;
+	}
+
+	public Contributor getContributor() {
+		return contributor;
+	}
+
+	public void setContributor(Contributor contributor) {
+		this.contributor = contributor;
+	}
+
+	public ContributorAutorizzato getContributorAutorizzato() {
+		return contributorAutorizzato;
+	}
+
+	public void setContributorAutorizzato(ContributorAutorizzato contributorAutorizzato) {
+		this.contributorAutorizzato = contributorAutorizzato;
+	}
+
+	public Localizzazione getLocalizzazione() {
+		return localizzazione;
+	}
+
+	public void setLocalizzazione(Localizzazione localizzazione) {
+		this.localizzazione = localizzazione;
+	}
+
+	public List<Salvare> getSalvare() {
+		return salvare;
+	}
+
+	public void setSalvare(List<Salvare> salvare) {
+		this.salvare = salvare;
+	}
+
+	public List<UserNonAutenticato> getUna() {
+		return una;
+	}
+
+	public void setUna(List<UserNonAutenticato> una) {
+		this.una = una;
+	}
+
+	public List<Recensione> getRecensioni() {
+		return recensioni;
+	}
+
+	public void setRecensioni(List<Recensione> recensioni) {
+		this.recensioni = recensioni;
 	}
 
 	//endregion

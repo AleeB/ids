@@ -1,5 +1,8 @@
 package classes;
 import classes.media.Foto;
+import classes.media.Video;
+import classes.users.Animatore;
+import classes.users.Turista;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -28,6 +31,19 @@ public class Contest {
 	private LocalDateTime dataInizio;
 	private LocalDateTime dataFine;
 	private String titolo;
+
+	@OneToMany(mappedBy = "contest")
+	private List<Foto> foto;
+
+	@OneToMany(mappedBy = "contest")
+	private List<Video> video;
+
+	@ManyToOne
+	@JoinColumn(name = "animatore_id")
+	private Animatore animatore;
+
+	@ManyToMany(mappedBy = "contest")
+	private List<Turista> turisti;
 
 	//endregion
 
@@ -65,23 +81,35 @@ public class Contest {
 		this.titolo = titolo;
 	}
 
+	public List<Foto> getFoto() {
+		return foto;
+	}
+
+	public void setFoto(List<Foto> foto) {
+		this.foto = foto;
+	}
+
+	public List<Video> getVideo() {
+		return video;
+	}
+
+	public void setVideo(List<Video> video) {
+		this.video = video;
+	}
+
+	public Animatore getAnimatore() {
+		return animatore;
+	}
+
+	public void setAnimatore(Animatore animatore) {
+		this.animatore = animatore;
+	}
+
 	//endregion
 
 	//region Constr
 
-	public Contest() {
-		this.Id = Integer.MAX_VALUE;
-		this.dataInizio = LocalDateTime.now();
-		this.dataFine = LocalDateTime.now();
-		this.titolo = "";
-	}
 
-	public Contest(long id ,LocalDateTime dataInizio, LocalDateTime dataFine, String titolo) {
-		this.Id = id;
-		this.dataInizio = dataInizio;
-		this.dataFine = dataFine;
-		this.titolo = titolo;
-	}
 
 	//endregion
 

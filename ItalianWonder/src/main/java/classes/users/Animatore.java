@@ -1,19 +1,27 @@
 package classes.users;
 
+import classes.Contest;
 import classes.enums.enumTipoUtente;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Animatore extends ContributorAutorizzato {
 
-
-
-	public Animatore(String nome, String cognome, String userName, String password, int punteggio, enumTipoUtente tipoUser){
-		super(nome, cognome, userName, password, punteggio, tipoUser);
-	}
+	@OneToMany(mappedBy = "animatore")
+	private List<Contest> contest;
 
 	public Animatore() {
 		super();
+	}
+
+	public List<Contest> getContest() {
+		return contest;
+	}
+
+	public void setContest(List<Contest> contest) {
+		this.contest = contest;
 	}
 
 	//region Methods

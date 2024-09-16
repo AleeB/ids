@@ -1,6 +1,11 @@
 package classes;
 
+import classes.POI.Divertimento;
+import classes.POI.Itinerario;
+import classes.POI.Ristorante;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table
@@ -24,6 +29,18 @@ public class Localizzazione {
 	private long ID;
 	private String lat;
 	private String lon;
+
+	@OneToOne(mappedBy = "localizzazione")
+	private Divertimento divertimento;
+
+	@OneToOne(mappedBy = "localizzazione")
+	private Itinerario itinerario;
+
+	@OneToOne(mappedBy = "localizzazione")
+	private Ristorante ristorante;
+
+	@OneToMany(mappedBy = "localizzazione")
+	private List<Comune> comuni;
 
 	//endregion
 
@@ -67,6 +84,30 @@ public class Localizzazione {
 
 	public void setLon(String lon) {
 		this.lon = lon;
+	}
+
+	public Divertimento getDivertimento() {
+		return divertimento;
+	}
+
+	public void setDivertimento(Divertimento divertimento) {
+		this.divertimento = divertimento;
+	}
+
+	public Itinerario getItinerario() {
+		return itinerario;
+	}
+
+	public void setItinerario(Itinerario itinerario) {
+		this.itinerario = itinerario;
+	}
+
+	public Ristorante getRistorante() {
+		return ristorante;
+	}
+
+	public void setRistorante(Ristorante ristorante) {
+		this.ristorante = ristorante;
 	}
 
 	//endregion

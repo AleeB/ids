@@ -1,7 +1,16 @@
 package classes.POI;
 
-import classes.enums.enumValutazione;
+import classes.Localizzazione;
+import classes.Recensione;
+import classes.Salvare;
+import classes.media.Foto;
+import classes.media.Video;
+import classes.users.Contributor;
+import classes.users.ContributorAutorizzato;
+import classes.users.UserNonAutenticato;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 @Table
@@ -29,25 +38,43 @@ public class Ristorante {
 	private float costoMedio;
 	private boolean approvazione;
 
+	@OneToMany(mappedBy = "ristorante")
+	private List<Foto> foto;
+
+	@OneToMany(mappedBy = "ristorante")
+	private List<Video> video;
+
+	@OneToMany(mappedBy = "ristorante")
+	private List<Recensione> recensioni;
+
+	@ManyToOne
+	@JoinColumn(name = "contributor_id")
+	private Contributor contributor;
+
+	@ManyToOne
+	@JoinColumn(name = "contributorAutorizzato_id")
+	private ContributorAutorizzato contributorAutorizzato;
+
+	@OneToOne
+	@JoinColumn(name = "localizzazione_id")
+	private Localizzazione localizzazione;
+
+	@OneToMany(mappedBy = "ristorante")
+	private List<Salvare> salvare;
+
+	@ManyToMany
+	@JoinTable(
+			name = "userNonAutenticato_ristorante",
+			joinColumns = @JoinColumn(name = "ristorante_id"),
+			inverseJoinColumns = @JoinColumn(name = "userNonAutenticato_id")
+	)
+	private List<UserNonAutenticato> una;
+
 	//endregion
 
 	//region Constr
 
-	public Ristorante(long ID, String nome, String numeroTelefono, int valutazione, float costoMedio, boolean approvazione) {
-		this.ID = ID;
-		this.nome = nome;
-		this.numeroTelefono = numeroTelefono;
-		this.valutazione = valutazione;
-		this.costoMedio = costoMedio;
-		this.approvazione = approvazione;
-	}
-
-	public Ristorante(){
-		this.nome = "";
-		this.numeroTelefono = "";
-		this.valutazione = 0;
-		this.costoMedio = 0;
-		this.approvazione = false;
+	public Ristorante() {
 	}
 
 	//endregion
@@ -100,6 +127,70 @@ public class Ristorante {
 
 	public void setApprovazione(boolean approvazione) {
 		this.approvazione = approvazione;
+	}
+
+	public List<Foto> getFoto() {
+		return foto;
+	}
+
+	public void setFoto(List<Foto> foto_id) {
+		this.foto = foto_id;
+	}
+
+	public List<Video> getVideo() {
+		return video;
+	}
+
+	public void setVideo(List<Video> video) {
+		this.video = video;
+	}
+
+	public List<Recensione> getRecensioni() {
+		return recensioni;
+	}
+
+	public void setRecensioni(List<Recensione> recensioni) {
+		this.recensioni = recensioni;
+	}
+
+	public Contributor getContributor() {
+		return contributor;
+	}
+
+	public void setContributor(Contributor contributor) {
+		this.contributor = contributor;
+	}
+
+	public ContributorAutorizzato getContributorAutorizzato() {
+		return contributorAutorizzato;
+	}
+
+	public void setContributorAutorizzato(ContributorAutorizzato contributorAutorizzato) {
+		this.contributorAutorizzato = contributorAutorizzato;
+	}
+
+	public Localizzazione getLocalizzazione() {
+		return localizzazione;
+	}
+
+	public void setLocalizzazione(Localizzazione localizzazione) {
+		this.localizzazione = localizzazione;
+	}
+
+	public List<Salvare> getSalvare() {
+		return salvare;
+	}
+
+	public void setSalvare(List<Salvare> salvare) {
+		this.salvare = salvare;
+	}
+
+	public List<UserNonAutenticato> getUna() {
+		return una;
+	}
+
+	public void setUna(List<UserNonAutenticato> una) {
+		this.una = una;
 	}
 
 	//endregion
