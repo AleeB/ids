@@ -3,7 +3,6 @@ package classes;
 import classes.POI.Divertimento;
 import classes.POI.Itinerario;
 import classes.POI.Ristorante;
-import classes.enums.enumValutazione;
 import classes.users.Turista;
 import classes.users.UserNonAutenticato;
 import jakarta.persistence.*;

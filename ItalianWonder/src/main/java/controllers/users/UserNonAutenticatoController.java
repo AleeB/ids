@@ -10,7 +10,6 @@ import services.users.UserNonAutenticatoService;
 
 @RestController
 @RequestMapping(path = "api/v1/userNA")
-
 public class UserNonAutenticatoController {
     private final UserNonAutenticatoService userNonAutenticatoService;
 
