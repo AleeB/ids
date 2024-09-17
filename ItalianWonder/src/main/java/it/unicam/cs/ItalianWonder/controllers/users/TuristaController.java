@@ -28,7 +28,8 @@ public class TuristaController {
         return turistaService.login(username, password);
     }
     @RequestMapping(value = "/newUser", method = RequestMethod.POST)
-    public ResponseEntity<Boolean> createUser(@RequestParam Turista turista){
+    public ResponseEntity<Boolean> createUser(@RequestBody Turista turista){
+        turista.setPassword(Integer.toString(turista.hashCode()));
         turistaService.addNewTurista(turista);
         return ResponseEntity.ok(true);
     }

@@ -20,17 +20,6 @@ public class Turista{
 
 	@Id
 
-	@SequenceGenerator(
-			name = "turista_sequence",
-			sequenceName = "turista_sequence",
-			allocationSize = 1
-	)
-
-	@GeneratedValue(
-			generator = "turista_sequence",
-			strategy = GenerationType.SEQUENCE
-	)
-
 	private String userName;
 	private String nome;
 	private String cognome;
