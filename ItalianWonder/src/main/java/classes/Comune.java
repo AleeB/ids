@@ -1,5 +1,8 @@
 package classes;
 
+import classes.POI.Divertimento;
+import classes.POI.Itinerario;
+import classes.POI.Ristorante;
 import classes.users.Turista;
 import jakarta.persistence.*;
 
@@ -29,7 +32,7 @@ public class Comune {
 	@OneToOne(mappedBy = "comune")
 	private Turista turista;
 
-	@OneToOne
+	@ManyToOne
 	@JoinColumn(name = "provincia_id")
 	private Provincia provincia;
 

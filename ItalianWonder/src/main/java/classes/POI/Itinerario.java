@@ -1,5 +1,6 @@
 package classes.POI;
 
+import classes.Comune;
 import classes.Localizzazione;
 import classes.Recensione;
 import classes.Salvare;
@@ -8,6 +9,7 @@ import classes.media.Foto;
 import classes.media.Video;
 import classes.users.Contributor;
 import classes.users.ContributorAutorizzato;
+import classes.users.Turista;
 import classes.users.UserNonAutenticato;
 import jakarta.persistence.*;
 
@@ -57,9 +59,13 @@ public class Itinerario {
 	@JoinColumn(name = "contributorAutorizzato_id")
 	private ContributorAutorizzato contributorAutorizzato;
 
-	@OneToOne
-	@JoinColumn(name = "localizzazione_id")
-	private Localizzazione localizzazione;
+	@ManyToMany
+	@JoinTable(
+			name = "itinerario_localizzazione",
+			joinColumns = @JoinColumn(name = "itinerario_id"),
+			inverseJoinColumns = @JoinColumn(name = "localizzazione_id")
+	)
+	private List<Localizzazione> localizzazioni;
 
 	@OneToMany(mappedBy = "itinerario")
 	private List<Salvare> salvare;
@@ -71,6 +77,14 @@ public class Itinerario {
 			inverseJoinColumns = @JoinColumn(name = "userNonAutenticato_id")
 	)
 	private List<UserNonAutenticato> una;
+
+	@ManyToMany
+	@JoinTable(
+			name = "turista_itinerario",
+			joinColumns = @JoinColumn(name = "itinerario_id"),
+			inverseJoinColumns = @JoinColumn(name = "turista_id")
+	)
+	private List<Turista> turisti;
 
 	//endregion
 
@@ -171,12 +185,12 @@ public class Itinerario {
 		this.contributorAutorizzato = contributorAutorizzato;
 	}
 
-	public Localizzazione getLocalizzazione() {
-		return localizzazione;
+	public List<Localizzazione> getLocalizzazione() {
+		return localizzazioni;
 	}
 
-	public void setLocalizzazione(Localizzazione localizzazione) {
-		this.localizzazione = localizzazione;
+	public void setLocalizzazione(List<Localizzazione> localizzazioni) {
+		this.localizzazioni = localizzazioni;
 	}
 
 	public List<Salvare> getSalvare() {

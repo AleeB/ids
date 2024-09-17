@@ -1,5 +1,6 @@
 package classes.POI;
 
+import classes.Comune;
 import classes.Localizzazione;
 import classes.Recensione;
 import classes.Salvare;
@@ -7,6 +8,7 @@ import classes.media.Foto;
 import classes.media.Video;
 import classes.users.Contributor;
 import classes.users.ContributorAutorizzato;
+import classes.users.Turista;
 import classes.users.UserNonAutenticato;
 import jakarta.persistence.*;
 
@@ -69,6 +71,14 @@ public class Ristorante {
 			inverseJoinColumns = @JoinColumn(name = "userNonAutenticato_id")
 	)
 	private List<UserNonAutenticato> una;
+
+	@ManyToMany
+	@JoinTable(
+			name = "turista_ristorante",
+			joinColumns = @JoinColumn(name = "ristorante_id"),
+			inverseJoinColumns = @JoinColumn(name = "turista_id")
+	)
+	private List<Turista> turisti;
 
 	//endregion
 

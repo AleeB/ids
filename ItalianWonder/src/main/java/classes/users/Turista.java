@@ -2,6 +2,9 @@ package classes.users;
 
 import classes.Comune;
 import classes.Contest;
+import classes.POI.Divertimento;
+import classes.POI.Itinerario;
+import classes.POI.Ristorante;
 import classes.Recensione;
 import classes.Segnalazione;
 import classes.enums.enumTipoUtente;
@@ -10,9 +13,23 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class Turista extends UserNonAutenticato {
+@Inheritance(strategy = InheritanceType.JOINED)
+public class Turista{
 
 	//region Vars
+
+	@Id
+
+	@SequenceGenerator(
+			name = "turista_sequence",
+			sequenceName = "turista_sequence",
+			allocationSize = 1
+	)
+
+	@GeneratedValue(
+			generator = "turista_sequence",
+			strategy = GenerationType.SEQUENCE
+	)
 
 	private String userName;
 	private String nome;
@@ -44,6 +61,15 @@ public class Turista extends UserNonAutenticato {
 	@OneToOne
 	@JoinColumn(name = "comune_id")
 	private Comune comune;
+
+	@ManyToMany(mappedBy = "turisti")
+	private List<Divertimento> divertimenti;
+
+	@ManyToMany(mappedBy = "turisti")
+	private List<Itinerario> itinerario;
+
+	@ManyToMany(mappedBy = "turisti")
+	private List<Ristorante> ristoranti;
 
 	//endregion
 

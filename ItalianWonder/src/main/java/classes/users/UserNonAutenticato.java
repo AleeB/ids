@@ -9,7 +9,7 @@ import jakarta.persistence.*;
 import java.util.*;
 
 @Entity
-@Inheritance(strategy = InheritanceType.JOINED)
+@Table
 public class UserNonAutenticato {
 
 	@Id

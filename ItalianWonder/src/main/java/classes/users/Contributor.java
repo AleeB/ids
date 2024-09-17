@@ -72,12 +72,10 @@ public class Contributor extends Turista {
 		this.video = video;
 	}
 
-	@Override
 	public List<Divertimento> getDivertimenti() {
 		return divertimenti;
 	}
 
-	@Override
 	public void setDivertimenti(List<Divertimento> divertimenti) {
 		this.divertimenti = divertimenti;
 	}

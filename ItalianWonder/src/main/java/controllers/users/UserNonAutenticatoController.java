@@ -1,8 +1,11 @@
 package controllers.users;
 
+import classes.users.Turista;
+import classes.users.UserNonAutenticato;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import repositories.users.TuristaRepository;
 import services.users.UserNonAutenticatoService;
 
 @RestController
@@ -15,6 +18,6 @@ public class UserNonAutenticatoController {
     public UserNonAutenticatoController(UserNonAutenticatoService userNonAutenticatoService) {
         this.userNonAutenticatoService = userNonAutenticatoService;
     }
-    
+
 
 }

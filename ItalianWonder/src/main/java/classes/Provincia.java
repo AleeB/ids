@@ -33,8 +33,8 @@ public class Provincia {
 	private String nomeProvincia;
 	private String sigla;
 
-	@OneToOne(mappedBy = "provincia")
-	private Comune comune;
+	@OneToMany(mappedBy = "provincia")
+	private List<Comune> comuni;
 
 	//endregion
 

@@ -3,6 +3,7 @@ package classes;
 import classes.enums.enumTipoSegnalazione;
 import classes.users.Contributor;
 import classes.users.ContributorAutorizzato;
+import classes.users.GestoreDellaPiattaforma;
 import classes.users.Turista;
 import jakarta.persistence.*;
 
@@ -40,6 +41,9 @@ public class Segnalazione {
 
 	@ManyToMany(mappedBy = "segnalazioni")
 	private	List<Turista> turisti;
+
+	@ManyToMany(mappedBy = "segnalazioni")
+	private List<GestoreDellaPiattaforma> gestoriDellaPiattaforma;
 
 
 

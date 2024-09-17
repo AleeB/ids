@@ -33,8 +33,8 @@ public class Localizzazione {
 	@OneToOne(mappedBy = "localizzazione")
 	private Divertimento divertimento;
 
-	@OneToOne(mappedBy = "localizzazione")
-	private Itinerario itinerario;
+	@ManyToMany(mappedBy = "localizzazioni")
+	private List<Itinerario> itinerari;
 
 	@OneToOne(mappedBy = "localizzazione")
 	private Ristorante ristorante;
@@ -94,12 +94,12 @@ public class Localizzazione {
 		this.divertimento = divertimento;
 	}
 
-	public Itinerario getItinerario() {
-		return itinerario;
+	public List<Itinerario> getItinerario() {
+		return this.itinerari;
 	}
 
-	public void setItinerario(Itinerario itinerario) {
-		this.itinerario = itinerario;
+	public void setItinerario(List<Itinerario> itinerari) {
+		this.itinerari = itinerari;
 	}
 
 	public Ristorante getRistorante() {

@@ -13,7 +13,13 @@ public class GestoreDellaPiattaforma extends Curatore {
 
 	//region Vars
 
-
+	@ManyToMany
+	@JoinTable(
+			name = "gestoreDellaPiattaforma_segnalazione",
+			joinColumns = @JoinColumn(name = "gestoreDellaPiattaforma_id"),
+			inverseJoinColumns = @JoinColumn(name = "segnalazione_id")
+	)
+	private List<Segnalazione> segnalazioni;
 
 	//endregion
 

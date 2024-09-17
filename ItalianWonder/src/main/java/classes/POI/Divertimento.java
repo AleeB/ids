@@ -1,5 +1,6 @@
 package classes.POI;
 
+import classes.Comune;
 import classes.Localizzazione;
 import classes.Recensione;
 import classes.Salvare;
@@ -7,6 +8,7 @@ import classes.media.Foto;
 import classes.media.Video;
 import classes.users.Contributor;
 import classes.users.ContributorAutorizzato;
+import classes.users.Turista;
 import classes.users.UserNonAutenticato;
 import jakarta.persistence.*;
 import org.apache.catalina.User;
@@ -73,6 +75,14 @@ public class Divertimento {
 			inverseJoinColumns = @JoinColumn(name = "userNonAutenticato_id")
 	)
 	private List<UserNonAutenticato> una;
+
+	@ManyToMany
+	@JoinTable(
+			name = "turista_divertimento",
+			joinColumns = @JoinColumn(name = "divertimento_id"),
+			inverseJoinColumns = @JoinColumn(name = "turista_id")
+	)
+	private List<Turista> turisti;
 
 	//endregion
 
