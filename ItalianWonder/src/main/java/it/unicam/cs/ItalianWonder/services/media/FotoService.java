@@ -17,16 +17,16 @@ public class FotoService {
         this.fotoRepository = fotoRepository;
     }
 
-    public void addNewFoto(Foto foto) throws Exception {
-        Optional<Foto> optFoto = fotoRepository.findFotoByFoto(foto);
+    public boolean addNewFoto(Foto foto) throws Exception {
+        Optional<Foto> optFoto = fotoRepository.findByFoto(foto);
 
         if (optFoto.isPresent()) {
-            throw new Exception("foto already in");
+            return false;
         }
 
-        System.out.println(foto);
+        fotoRepository.save(foto);
+        return true;
     }
 
-    //classe dove andranno inseriti metodi api
 
 }

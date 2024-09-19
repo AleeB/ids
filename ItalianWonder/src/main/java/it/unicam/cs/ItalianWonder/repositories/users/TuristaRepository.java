@@ -9,4 +9,8 @@ public interface TuristaRepository extends JpaRepository<Turista, Long> {
 
     Optional<Turista> findByUserNameAndPassword(String username, String password);
 
+    Optional<Turista> findByUserName(String username);
+
+
+
 }

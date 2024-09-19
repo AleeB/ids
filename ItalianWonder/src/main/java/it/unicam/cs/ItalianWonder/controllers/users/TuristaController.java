@@ -1,11 +1,13 @@
 package it.unicam.cs.ItalianWonder.controllers.users;
 
+import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import it.unicam.cs.ItalianWonder.services.users.TuristaService;
 
+import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -22,15 +24,25 @@ public class TuristaController {
     //login, inviare segnalazione, scrivere recensione(modifica ed eliminazione di essa), votazione contest
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public Optional<Turista> getUser(@RequestParam String[] credentials){
-        String username = credentials[0];
-        String password = credentials[1];
-        return turistaService.login(username, password);
+    public ResponseEntity<Optional<Turista>> getUser(@RequestBody Map<String, Object> body){
+        String username = body.get("userName").toString();
+        String password = Integer.toString(body.get("password").hashCode());
+        Optional<Turista> tur = turistaService.login(username, password);
+        if(tur.isEmpty()){
+            return ResponseEntity.badRequest().body(tur);
+        }
+        return ResponseEntity.ok().body(tur);
     }
+
     @RequestMapping(value = "/newUser", method = RequestMethod.POST)
-    public ResponseEntity<Boolean> createUser(@RequestBody Turista turista){
-        turista.setPassword(Integer.toString(turista.hashCode()));
-        turistaService.addNewTurista(turista);
-        return ResponseEntity.ok(true);
+    public ResponseEntity<String> createUser(@RequestBody Turista turista){
+        turista.setPassword(Integer.toString(turista.getPassword().hashCode()));
+        turista.setTipoUser(enumTipoUtente.Turista);
+        if(turistaService.addNewTurista(turista)){
+            return ResponseEntity.ok("Turista added");
+        }
+        return ResponseEntity.badRequest().body("Turista not added");
     }
+
+
 }

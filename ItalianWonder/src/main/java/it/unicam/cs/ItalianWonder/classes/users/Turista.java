@@ -11,6 +11,7 @@ import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
 import jakarta.persistence.*;
 
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -151,6 +152,13 @@ public class Turista{
 		int result = 1;
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		return result;
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (!(o instanceof Turista turista)) return false;
+        return Objects.equals(userName, turista.userName) && Objects.equals(password, turista.password) && tipoUser == turista.tipoUser;
 	}
 
 	/**

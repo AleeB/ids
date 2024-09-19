@@ -39,8 +39,9 @@ public class Segnalazione {
 	@ManyToMany(mappedBy = "segnalazioni")
 	private List<ContributorAutorizzato> contributorAutorizzati;
 
-	@ManyToMany(mappedBy = "segnalazioni")
-	private	List<Turista> turisti;
+	@ManyToOne
+	@JoinColumn(name = "turista_id")
+	private	Turista turista;
 
 	@ManyToMany(mappedBy = "segnalazioni")
 	private List<GestoreDellaPiattaforma> gestoriDellaPiattaforma;
@@ -91,12 +92,12 @@ public class Segnalazione {
 		this.contributorAutorizzati = contributorAutorizzati;
 	}
 
-	public List<Turista> getTuristi() {
-		return turisti;
+	public Turista getTurista() {
+		return turista;
 	}
 
-	public void setTuristi(List<Turista> turisti) {
-		this.turisti = turisti;
+	public void setTurista(Turista turista) {
+		this.turista = turista;
 	}
 
 	//endregion

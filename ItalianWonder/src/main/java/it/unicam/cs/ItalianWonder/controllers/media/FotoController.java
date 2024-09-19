@@ -2,6 +2,7 @@ package it.unicam.cs.ItalianWonder.controllers.media;
 
 import it.unicam.cs.ItalianWonder.classes.media.Foto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import it.unicam.cs.ItalianWonder.services.media.FotoService;
 
@@ -19,8 +20,11 @@ public class FotoController {
 
     //esempio
     @PostMapping
-    public void saveFoto(@RequestBody Foto foto) throws Exception {
-        fotoService.addNewFoto(foto);
+    public ResponseEntity<String> saveFoto(@RequestBody Foto foto) throws Exception {
+        if(fotoService.addNewFoto(foto)){
+            return ResponseEntity.ok("Foto added");
+        }
+        return ResponseEntity.badRequest().build();
     }
 
 }

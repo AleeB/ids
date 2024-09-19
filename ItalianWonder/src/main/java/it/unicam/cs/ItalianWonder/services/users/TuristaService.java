@@ -26,6 +26,9 @@ public class TuristaService {
         if(turista == null){
             return false;
         }
+        if(turistaRepository.findByUserName(turista.getUserName()).isPresent()){
+            return false;
+        }
         turistaRepository.save(turista);
         return true;
     }

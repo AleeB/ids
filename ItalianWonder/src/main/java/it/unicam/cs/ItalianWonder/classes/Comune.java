@@ -23,6 +23,7 @@ public class Comune {
 	//region Vars
 
 	private String nome;
+	private String cap;
 
 	@OneToOne(mappedBy = "comune")
 	private Turista turista;
@@ -45,6 +46,14 @@ public class Comune {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+
+	public String getCap() {
+		return cap;
+	}
+
+	public void setCap(String cap) {
+		this.cap = cap;
 	}
 
 	//endregion
