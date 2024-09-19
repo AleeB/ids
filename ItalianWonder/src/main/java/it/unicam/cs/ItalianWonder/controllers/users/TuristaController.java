@@ -38,6 +38,7 @@ public class TuristaController {
     public ResponseEntity<String> createUser(@RequestBody Turista turista){
         turista.setPassword(Integer.toString(turista.getPassword().hashCode()));
         turista.setTipoUser(enumTipoUtente.Turista);
+        turista.setPunteggio(0);
         if(turistaService.addNewTurista(turista)){
             return ResponseEntity.ok("Turista added");
         }

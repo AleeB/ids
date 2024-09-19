@@ -31,6 +31,7 @@ public class RecensioneController {
         this.turistaService = turistaService;
     }
 
+    //da modificare per FK sui POI
     @RequestMapping(value = "/newRecensione", method = RequestMethod.POST)
     public ResponseEntity<String> addNewRecensione(@RequestBody Recensione recensione) {
         if(turistaService.login(recensione.getTurista().getUserName(), recensione.getTurista().getPassword()).isEmpty()){
@@ -41,11 +42,14 @@ public class RecensioneController {
     }
 
     @RequestMapping(value = "/deleteRecensione", method = RequestMethod.POST)
-    public ResponseEntity<String> deleteRecensione(@RequestBody Recensione recensione, Turista turista) {
+    public ResponseEntity<String> deleteRecensione(@RequestBody Map<String, Map<String, Object>> map) {
+        Recensione recensione = new Recensione();
+        recensione.setID(((Long) map.get("recensione").get("id")));
+        Turista turista = mapValueTurista(map.get("currentTurista"));
         return switch (((recensione.getTurista().getTipoUser()))) {
             case Turista, TuristaAutorizzato -> {
                 if (recensione.getTurista() == turista) {
-                    if(recensioneService.deleteRecensione(recensione)){
+                    if(recensioneService.deleteRecensione(recensione.getID())){
                         yield ResponseEntity.ok("Recensione deleted");
                     }else{
                         yield ResponseEntity.badRequest().build();
@@ -54,7 +58,7 @@ public class RecensioneController {
                 yield ResponseEntity.badRequest().body("permission denied");
             }
             case Contributor, ContributorAutorizzato, Animatore, Curatore, GestoreDellaPiattaforma -> {
-                if(recensioneService.deleteRecensione(recensione)){
+                if(recensioneService.deleteRecensione(recensione.getID())){
                     yield ResponseEntity.ok("Recensione deleted");
                 }else{
                     yield ResponseEntity.badRequest().body("permission denied");
@@ -64,7 +68,17 @@ public class RecensioneController {
         };
     }
 
-    @RequestMapping(value = "/getRecensioni", method = RequestMethod.POST)
+    @RequestMapping(value = "/getRecensione", method = RequestMethod.POST)
+    public ResponseEntity<Recensione> getRecensioneById(@RequestBody Map<String, Object> id) {
+        Long recensione_id =  Long.valueOf(id.get("id").toString());
+        Optional<Recensione> rec = recensioneService.getRecensioneByID(recensione_id);
+        if(rec.isPresent()){
+            return ResponseEntity.ok().body(rec.get());
+        }
+        return ResponseEntity.badRequest().body(null);
+    }
+
+    @RequestMapping(value = "/getRecensioniPOI", method = RequestMethod.POST)
     public ResponseEntity<Optional<Recensione>> getRecensioneByPOI(@RequestBody Object POI){
         if (POI instanceof Divertimento) {
             Optional<Recensione> rec = recensioneService.getRecensioneByDivertimento(((Divertimento) POI));
@@ -88,6 +102,7 @@ public class RecensioneController {
         return ResponseEntity.badRequest().body(Optional.empty());
     }
 
+    //da modificare per aggiunta FK POI
     @RequestMapping(value = "/updateRecensione", method = RequestMethod.POST)
     public ResponseEntity<String> updateRecensione(@RequestBody Map<String, Map<String, Object>> map){
         Recensione recensione = mapValueRecensione(map.get("recensione"));
@@ -113,12 +128,14 @@ public class RecensioneController {
 
     private Recensione mapValueRecensione(Map<String,Object> recensione) {
         Recensione rec = new Recensione();
-        rec.setID(((int) recensione.get("id")));
+        rec.setID(Long.parseLong(recensione.get("id").toString()));
         rec.setDescrizione(recensione.get("descrizione").toString());
         rec.setTurista(mapValueTurista((Map) recensione.get("turista")));
         rec.setValutazione(((int) recensione.get("valutazione")));
         rec.setVerificata(((Boolean) recensione.get("verificata")));
         return rec;
     }
+
+
 
 }

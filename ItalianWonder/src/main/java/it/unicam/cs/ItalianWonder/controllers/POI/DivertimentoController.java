@@ -6,7 +6,6 @@ import it.unicam.cs.ItalianWonder.services.POI.DivertimentoService;
 
 @RestController
 @RequestMapping(path = "api/v1/divertimento")
-
 public class DivertimentoController {
 
     private final DivertimentoService divertimentoService;
@@ -14,4 +13,7 @@ public class DivertimentoController {
     public DivertimentoController(DivertimentoService divertimentoService) {
         this.divertimentoService = divertimentoService;
     }
+
+
+
 }

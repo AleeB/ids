@@ -26,12 +26,17 @@ public class RecensioneService {
         recensioneRepository.saveAndFlush(recensione);
     }
 
-    public boolean deleteRecensione(Recensione recensione) {
-        if(recensioneRepository.findById(recensione.getID()).isEmpty()){
+    public boolean deleteRecensione(Long recensione_id) {
+        Optional<Recensione> recensione = getRecensioneByID(recensione_id);
+        if(recensione.isEmpty()){
             return false;
         }
-        recensioneRepository.delete(recensione);
+        recensioneRepository.delete(recensione.get());
         return true;
+    }
+
+    public Optional<Recensione> getRecensioneByID(Long recensioneId) {
+        return recensioneRepository.findById(recensioneId);
     }
 
     public Optional<Recensione> getRecensioneByDivertimento(Divertimento divertimento) {

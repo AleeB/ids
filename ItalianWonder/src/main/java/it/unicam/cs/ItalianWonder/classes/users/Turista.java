@@ -137,8 +137,6 @@ public class Turista{
 		this.contest = contest;
 	}
 
-
-
 	//endregion
 
 

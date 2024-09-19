@@ -15,4 +15,7 @@ public interface RecensioneRepository extends JpaRepository<Recensione, Long> {
     Optional<Recensione> findByItinerario(Itinerario itinerario);
 
     Optional<Recensione> findByRistorante(Ristorante ristorante);
+
+    Optional<Recensione> findByID(Long id);
+
 }
