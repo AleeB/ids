@@ -1,6 +1,10 @@
 package it.unicam.cs.ItalianWonder.services;
 
 import it.unicam.cs.ItalianWonder.classes.Comune;
+import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
+import it.unicam.cs.ItalianWonder.classes.users.Turista;
+import jakarta.transaction.Transactional;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import it.unicam.cs.ItalianWonder.repositories.ComuneRepository;
@@ -18,7 +22,23 @@ public class ComuneService {
         this.comuneRepository = comuneRepository;
     }
 
-    public Optional<Comune> getAllComuni() {
-        return Optional.of((Comune) comuneRepository.findAll());
+    public List<Comune> getAllComuni() {
+        return (comuneRepository.findAll());
+    }
+
+    public void aggiungiComune(Comune comune, Turista utente) {
+        if(utente.getTipoUser() == enumTipoUtente.Curatore)
+            comuneRepository.save(comune);
+    }
+
+    @Transactional
+    public void modificaComune(Comune comune, Turista turista) {
+        comuneRepository.save(comune);
+    }
+
+    public void eliminaComune(String nomeComune, Turista utente) {
+        if(comuneRepository.existsById(nomeComune) && utente.getTipoUser().equals(enumTipoUtente.Curatore)) {
+            comuneRepository.deleteById(nomeComune);
+        }
     }
 }

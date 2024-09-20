@@ -8,18 +8,6 @@ import jakarta.persistence.*;
 public class Comune {
 
 	@Id
-
-	@SequenceGenerator(
-			name = "averef_sequence",
-			sequenceName = "averef_sequence",
-			allocationSize = 1
-	)
-
-	@GeneratedValue(
-			generator = "averef_sequence",
-			strategy = GenerationType.SEQUENCE
-	)
-
 	//region Vars
 
 	private String nome;
