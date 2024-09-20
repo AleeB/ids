@@ -52,15 +52,6 @@ public class Turista{
 	@JoinColumn(name = "comune_id")
 	private Comune comune;
 
-	@ManyToMany(mappedBy = "turisti")
-	private List<Divertimento> divertimenti;
-
-	@ManyToMany(mappedBy = "turisti")
-	private List<Itinerario> itinerario;
-
-	@ManyToMany(mappedBy = "turisti")
-	private List<Ristorante> ristoranti;
-
 	//endregion
 
 	//region Constr

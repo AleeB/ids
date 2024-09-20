@@ -47,9 +47,6 @@ public class Localizzazione {
 	//region Constr
 
 	public Localizzazione() {
-		this.ID = Integer.MAX_VALUE;
-		this.lat = "";
-		this.lon = "";
 	}
 
 	public Localizzazione(long ID, String lon, String lat) {
@@ -94,20 +91,28 @@ public class Localizzazione {
 		this.divertimento = divertimento;
 	}
 
-	public List<Itinerario> getItinerario() {
-		return this.itinerari;
-	}
-
-	public void setItinerario(List<Itinerario> itinerari) {
-		this.itinerari = itinerari;
-	}
-
 	public Ristorante getRistorante() {
 		return ristorante;
 	}
 
 	public void setRistorante(Ristorante ristorante) {
 		this.ristorante = ristorante;
+	}
+
+	public List<Itinerario> getItinerari() {
+		return itinerari;
+	}
+
+	public void setItinerari(List<Itinerario> itinerari) {
+		this.itinerari = itinerari;
+	}
+
+	public List<Comune> getComuni() {
+		return comuni;
+	}
+
+	public void setComuni(List<Comune> comuni) {
+		this.comuni = comuni;
 	}
 
 	//endregion

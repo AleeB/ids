@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import it.unicam.cs.ItalianWonder.repositories.RecensioneRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -39,15 +40,15 @@ public class RecensioneService {
         return recensioneRepository.findById(recensioneId);
     }
 
-    public Optional<Recensione> getRecensioneByDivertimento(Divertimento divertimento) {
+    public Optional<List<Recensione>> getRecensioneByDivertimento(Divertimento divertimento) {
         return recensioneRepository.findByDivertimento(divertimento);
     }
 
-    public Optional<Recensione> getRecensioneByItinerario(Itinerario itinerario) {
+    public Optional<List<Recensione>> getRecensioneByItinerario(Itinerario itinerario) {
         return recensioneRepository.findByItinerario(itinerario);
     }
 
-    public Optional<Recensione> getRecensioneByRistorante(Ristorante ristorante) {
+    public Optional<List<Recensione>> getRecensioneByRistorante(Ristorante ristorante) {
         return recensioneRepository.findByRistorante(ristorante);
     }
 

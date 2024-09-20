@@ -69,22 +69,6 @@ public class Itinerario {
 	@OneToMany(mappedBy = "itinerario")
 	private List<Salvare> salvare;
 
-	@ManyToMany
-	@JoinTable(
-			name = "userNonAutenticato_itinerario",
-			joinColumns = @JoinColumn(name = "itinerario_id"),
-			inverseJoinColumns = @JoinColumn(name = "userNonAutenticato_id")
-	)
-	private List<UserNonAutenticato> una;
-
-	@ManyToMany
-	@JoinTable(
-			name = "turista_itinerario",
-			joinColumns = @JoinColumn(name = "itinerario_id"),
-			inverseJoinColumns = @JoinColumn(name = "turista_id")
-	)
-	private List<Turista> turisti;
-
 	//endregion
 
 	//region Constr
@@ -198,14 +182,6 @@ public class Itinerario {
 
 	public void setSalvare(List<Salvare> salvare) {
 		this.salvare = salvare;
-	}
-
-	public List<UserNonAutenticato> getUna() {
-		return una;
-	}
-
-	public void setUna(List<UserNonAutenticato> una) {
-		this.una = una;
 	}
 
 	public List<Recensione> getRecensioni() {

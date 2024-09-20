@@ -49,11 +49,6 @@ public class Recensione {
 	@JoinColumn(name = "turista_id")
 	private Turista turista;
 
-	@ManyToMany(mappedBy = "recensioni")
-	private List<UserNonAutenticato> una;
-
-
-
 	//endregion
 
 	//region Props

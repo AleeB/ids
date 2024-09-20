@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import it.unicam.cs.ItalianWonder.services.RecensioneService;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -79,21 +80,21 @@ public class RecensioneController {
     }
 
     @RequestMapping(value = "/getRecensioniPOI", method = RequestMethod.POST)
-    public ResponseEntity<Optional<Recensione>> getRecensioneByPOI(@RequestBody Object POI){
+    public ResponseEntity<Optional<List<Recensione>>> getRecensioneByPOI(@RequestBody Object POI){
         if (POI instanceof Divertimento) {
-            Optional<Recensione> rec = recensioneService.getRecensioneByDivertimento(((Divertimento) POI));
+            Optional<List<Recensione>> rec = recensioneService.getRecensioneByDivertimento(((Divertimento) POI));
             if(rec.isPresent()){
                 return ResponseEntity.ok(rec);
             }
             return ResponseEntity.badRequest().body(Optional.empty());
         } else if (POI instanceof Itinerario) {
-            Optional<Recensione> rec = recensioneService.getRecensioneByItinerario(((Itinerario) POI));
+            Optional<List<Recensione>> rec = recensioneService.getRecensioneByItinerario(((Itinerario) POI));
             if(rec.isPresent()){
                 return ResponseEntity.ok(rec);
             }
             return ResponseEntity.badRequest().body(Optional.empty());
         } else if (POI instanceof Ristorante) {
-            Optional<Recensione> rec = recensioneService.getRecensioneByRistorante(((Ristorante) POI));
+            Optional<List<Recensione>> rec = recensioneService.getRecensioneByRistorante(((Ristorante) POI));
             if(rec.isPresent()){
                 return ResponseEntity.ok(rec);
             }

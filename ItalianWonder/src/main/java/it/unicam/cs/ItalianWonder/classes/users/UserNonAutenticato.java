@@ -31,23 +31,6 @@ public class UserNonAutenticato {
 	private Long id;
 	private final String ip;
 
-	@ManyToMany(mappedBy = "una")
-	private List<Divertimento> divertimenti;
-
-	@ManyToMany(mappedBy = "una")
-	private List<Itinerario> itinerario;
-
-	@ManyToMany(mappedBy = "una")
-	private List<Ristorante> ristoranti;
-
-	@ManyToMany
-	@JoinTable(
-			name = "userNonAutenticato_recensione",
-			joinColumns = @JoinColumn(name = "userNonAutenticato_id"),
-			inverseJoinColumns = @JoinColumn(name = "recensione_id")
-	)
-	private List<Recensione> recensioni;
-
 	//endregion
 
 	//region Props
@@ -62,30 +45,6 @@ public class UserNonAutenticato {
 
 	public String getIp() {
 		return ip;
-	}
-
-	public List<Divertimento> getDivertimenti() {
-		return divertimenti;
-	}
-
-	public void setDivertimenti(List<Divertimento> divertimenti) {
-		this.divertimenti = divertimenti;
-	}
-
-	public List<Itinerario> getItinerario() {
-		return itinerario;
-	}
-
-	public void setItinerario(List<Itinerario> itinerario) {
-		this.itinerario = itinerario;
-	}
-
-	public List<Ristorante> getRistoranti() {
-		return ristoranti;
-	}
-
-	public void setRistoranti(List<Ristorante> ristoranti) {
-		this.ristoranti = ristoranti;
 	}
 
 	//endregion

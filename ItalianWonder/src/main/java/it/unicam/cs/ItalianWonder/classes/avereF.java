@@ -49,7 +49,6 @@ public class avereF {
 	//region Constr
 
 	public avereF(){
-		this.numeroVoti = 0;
 	}
 
 	//endregion

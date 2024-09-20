@@ -63,22 +63,6 @@ public class Ristorante {
 	@OneToMany(mappedBy = "ristorante")
 	private List<Salvare> salvare;
 
-	@ManyToMany
-	@JoinTable(
-			name = "userNonAutenticato_ristorante",
-			joinColumns = @JoinColumn(name = "ristorante_id"),
-			inverseJoinColumns = @JoinColumn(name = "userNonAutenticato_id")
-	)
-	private List<UserNonAutenticato> una;
-
-	@ManyToMany
-	@JoinTable(
-			name = "turista_ristorante",
-			joinColumns = @JoinColumn(name = "ristorante_id"),
-			inverseJoinColumns = @JoinColumn(name = "turista_id")
-	)
-	private List<Turista> turisti;
-
 	//endregion
 
 	//region Constr
@@ -192,14 +176,6 @@ public class Ristorante {
 
 	public void setSalvare(List<Salvare> salvare) {
 		this.salvare = salvare;
-	}
-
-	public List<UserNonAutenticato> getUna() {
-		return una;
-	}
-
-	public void setUna(List<UserNonAutenticato> una) {
-		this.una = una;
 	}
 
 	//endregion
