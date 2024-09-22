@@ -10,7 +10,9 @@ import it.unicam.cs.ItalianWonder.classes.Segnalazione;
 import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
 import jakarta.persistence.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 
 @Entity
@@ -58,6 +60,16 @@ public class Turista{
 
 	public Turista() {
 
+	}
+
+	public Turista(Map<String, Object> data){
+		this.userName = (String) data.get("userName");
+		this.nome = (String) data.get("nome");
+		this.cognome = (String) data.get("cognome");
+		this.password = (String) data.get("password");
+		this.punteggio = (int) data.get("punteggio");
+		this.tipoUser = (enumTipoUtente) data.get("tipoUser");
+		this.contest = (List<Contest>) data.get("contest");
 	}
 
 	//endregion

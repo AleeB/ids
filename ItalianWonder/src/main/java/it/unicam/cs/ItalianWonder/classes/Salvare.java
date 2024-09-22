@@ -1,116 +1,52 @@
 package it.unicam.cs.ItalianWonder.classes;
 
-import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
-import it.unicam.cs.ItalianWonder.classes.POI.Itinerario;
-import it.unicam.cs.ItalianWonder.classes.POI.Ristorante;
-import it.unicam.cs.ItalianWonder.classes.users.Contributor;
-import it.unicam.cs.ItalianWonder.classes.users.ContributorAutorizzato;
-import it.unicam.cs.ItalianWonder.classes.users.TuristaAutorizzato;
-import jakarta.persistence.*;
+import it.unicam.cs.ItalianWonder.classes.mediator.ServiceMediator;
+import it.unicam.cs.ItalianWonder.services.POI.DivertimentoService;
+import it.unicam.cs.ItalianWonder.services.POI.ItinerarioService;
+import it.unicam.cs.ItalianWonder.services.POI.RistoranteService;
+import java.util.List;
+import java.util.Map;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
-@Entity
-@Table
-public class Salvare {
+@Component
+public class Salvare implements ServiceMediator {
+    private final DivertimentoService divertimentoService;
+    private final ItinerarioService itinerarioService;
+    private final RistoranteService ristoranteService;
 
-    @Id
-
-
-    @SequenceGenerator(
-            name = "salvare_sequence",
-            sequenceName = "salvare_sequence",
-            allocationSize = 1
-    )
-
-    @GeneratedValue(
-            generator = "salvare_sequence",
-            strategy = GenerationType.SEQUENCE
-    )
-
-    //region Vars
-
-    private int id;
-
-    @ManyToOne
-    @JoinColumn(name = "divertimento_id")
-    private Divertimento divertimento;
-
-    @ManyToOne
-    @JoinColumn(name = "itinerario_id")
-    private Itinerario itinerario;
-
-    @ManyToOne
-    @JoinColumn(name = "ristorante_id")
-    private Ristorante ristorante;
-
-    @ManyToOne
-    @JoinColumn(name = "contributor_id")
-    private Contributor contributor;
-
-    @ManyToOne
-    @JoinColumn(name = "contributorAutorizzato_id")
-    private ContributorAutorizzato contributorAutorizzato;
-
-    @ManyToOne
-    @JoinColumn(name = "turistaAutorizzato_id")
-    private TuristaAutorizzato turistaAutorizzato;
-
-    //endregion
-
-    //region Props
-
-    public int getId() {
-        return id;
+    @Autowired
+    public Salvare(DivertimentoService divertimentoService,
+        ItinerarioService itinerarioService,
+        RistoranteService ristoranteService) {
+        this.divertimentoService = divertimentoService;
+        this.itinerarioService = itinerarioService;
+        this.ristoranteService = ristoranteService;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    @Override
+    public List<Object> get(Map<String, Object> data) {
+        if(data == null) return get();
+        return List.of();
     }
 
-    public Divertimento getDivertimento() {
-        return divertimento;
+    @Override
+    public List<Object> get() {
+        return List.of();
     }
 
-    public void setDivertimento(Divertimento divertimenti) {
-        this.divertimento = divertimenti;
+    @Override
+    public void post(Object data) {
+
     }
 
-    public Itinerario getItinerario() {
-        return itinerario;
+    @Override
+    public void update(Object data) {
+
     }
 
-    public void setItinerario(Itinerario itinerario) {
-        this.itinerario = itinerario;
+    @Override
+    public void delete(Object data) {
+
     }
-
-    public Ristorante getRistorante() {
-        return ristorante;
-    }
-
-    public void setRistorante(Ristorante ristorante) {
-        this.ristorante = ristorante;
-    }
-
-    public Contributor getContributor() {
-        return contributor;
-    }
-
-    public void setContributor(Contributor contributor) {
-        this.contributor = contributor;
-    }
-
-    public ContributorAutorizzato getContributorAutorizzato() {
-        return contributorAutorizzato;
-    }
-
-    public void setContributorAutorizzato(ContributorAutorizzato contributorAutorizzato) {
-        this.contributorAutorizzato = contributorAutorizzato;
-    }
-
-    //endregion
-
-    public Salvare() {
-    }
-
-
-
 }
