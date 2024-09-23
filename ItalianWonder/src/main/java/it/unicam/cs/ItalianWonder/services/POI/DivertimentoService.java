@@ -21,15 +21,15 @@ public class DivertimentoService {
       return divertimentoRepository.findAll();
   }
 
-  public void aggiungiDivertimento(Divertimento divertimento, Turista turista) {
+  public void aggiungiDivertimento(Divertimento divertimento) {
       divertimentoRepository.save(divertimento);
   }
 
-  public void modificaDivertimento(Divertimento divertimento, Turista turista) {
+  public void modificaDivertimento(Divertimento divertimento) {
       divertimentoRepository.save(divertimento);
   }
 
-  public void eliminaDivertimento(Long id, Turista utente) {
+  public void eliminaDivertimento(Long id) {
       divertimentoRepository.deleteById(id);
   }
 }

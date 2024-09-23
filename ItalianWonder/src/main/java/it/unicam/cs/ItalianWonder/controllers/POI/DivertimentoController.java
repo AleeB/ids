@@ -5,6 +5,7 @@ import it.unicam.cs.ItalianWonder.classes.BodyTemplate;
 import it.unicam.cs.ItalianWonder.classes.Salvare;
 import it.unicam.cs.ItalianWonder.classes.mediator.ServiceMediator;
 import it.unicam.cs.ItalianWonder.classes.users.Contributor;
+import it.unicam.cs.ItalianWonder.classes.users.Turista;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -42,18 +43,19 @@ public class DivertimentoController {
     @RequestMapping(value = "/getDivertimenti", method = RequestMethod.POST)
     public ResponseEntity<List<Divertimento>> getAllDivertimenti() {
         return ResponseEntity.ok(
-            mediator.get(null).stream()
+            mediator.get(Divertimento.class).stream()
                 .map(item-> (Divertimento)item).toList()
         );
     }
 
     @RequestMapping(value = "/postDivertimento", method = RequestMethod.POST)
     public ResponseEntity<String> aggiungiDivertimento(@RequestBody BodyTemplate<Divertimento> body) {
-        /*if(!body.containsKey("user")) return ResponseEntity.status(401).body("Accesso non autorizzato");
-        Map<String, Object> user = (Map<String, Object>) body.get("user");
-        if()
-        mediator.post(body);*/
-        Divertimento tmp = body.getData();
+        /*Turista user = (Turista) mediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
+        switch (user.getTipoUser()){
+            case Contributor -> body.getData().setApprovazione(false);
+            case ContributorAutorizzato,Curatore -> body.getData().setApprovazione(true);
+        }*/
+        mediator.post(body.getData());
         return ResponseEntity.ok("Divertimento Aggiunto");
     }
 
@@ -65,7 +67,7 @@ public class DivertimentoController {
 
     @RequestMapping(value = "/eliminaDivertimento", method = RequestMethod.POST)
     public ResponseEntity<String> eliminaDivertimento(@RequestBody Map<String, Map<String, Object>> body) {
-        mediator.delete(body);//Cambiare in ID
+        mediator.delete(body,Divertimento.class);//Cambiare in ID
         return ResponseEntity.ok("Divertimento Eliminato");
     }
 }
