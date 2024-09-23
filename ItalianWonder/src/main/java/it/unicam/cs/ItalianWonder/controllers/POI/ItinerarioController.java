@@ -1,7 +1,6 @@
 package it.unicam.cs.ItalianWonder.controllers.POI;
 
 import it.unicam.cs.ItalianWonder.classes.POI.Itinerario;
-import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
 import it.unicam.cs.ItalianWonder.repositories.POI.ItinerarioRepository;
 import it.unicam.cs.ItalianWonder.services.users.TuristaService;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import it.unicam.cs.ItalianWonder.services.POI.ItinerarioService;
 
-import java.lang.invoke.MethodType;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -25,13 +23,11 @@ public class ItinerarioController {
 
     private final ItinerarioService itinerarioService;
     private final TuristaService turistaService;
-    private final ItinerarioRepository itinerarioRepository;
 
     @Autowired
     public ItinerarioController(ItinerarioService itinerarioService, TuristaService turistaService, ItinerarioRepository itinerarioRepository) {
         this.itinerarioService = itinerarioService;
         this.turistaService = turistaService;
-        this.itinerarioRepository = itinerarioRepository;
     }
 
     @RequestMapping(value = "/addItinerario", method = RequestMethod.POST)

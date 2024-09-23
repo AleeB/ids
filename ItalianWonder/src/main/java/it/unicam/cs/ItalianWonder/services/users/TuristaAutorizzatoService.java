@@ -1,5 +1,7 @@
 package it.unicam.cs.ItalianWonder.services.users;
 
+import it.unicam.cs.ItalianWonder.classes.users.Turista;
+import it.unicam.cs.ItalianWonder.classes.users.TuristaAutorizzato;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import it.unicam.cs.ItalianWonder.repositories.users.TuristaAutorizzatoRepository;
@@ -15,4 +17,7 @@ public class TuristaAutorizzatoService {
         this.turistaAutorizzatoRepository = turistaAutorizzatoRepository;
     }
 
+    public void save(Turista user) {
+        turistaAutorizzatoRepository.save(((TuristaAutorizzato) user));
+    }
 }

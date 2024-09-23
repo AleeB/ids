@@ -1,5 +1,6 @@
 package it.unicam.cs.ItalianWonder.services.users;
 
+import it.unicam.cs.ItalianWonder.classes.users.Curatore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import it.unicam.cs.ItalianWonder.repositories.users.CuratoreRepository;
@@ -15,4 +16,7 @@ public class CuratoreService {
         this.curatoreRepository = curatoreRepository;
     }
 
+    public void save(Curatore user) {
+        curatoreRepository.save(user);
+    }
 }

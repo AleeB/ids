@@ -32,4 +32,8 @@ public class TuristaService {
         turistaRepository.save(turista);
         return true;
     }
+
+    public void save(Turista turista) {
+        turistaRepository.save(turista);
+    }
 }
