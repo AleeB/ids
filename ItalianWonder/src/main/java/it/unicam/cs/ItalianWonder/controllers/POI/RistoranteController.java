@@ -1,7 +1,11 @@
 package it.unicam.cs.ItalianWonder.controllers.POI;
 
+import it.unicam.cs.ItalianWonder.classes.BodyTemplate;
 import it.unicam.cs.ItalianWonder.classes.Comune;
 import it.unicam.cs.ItalianWonder.classes.POI.Ristorante;
+import it.unicam.cs.ItalianWonder.classes.Salvare;
+import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
+import it.unicam.cs.ItalianWonder.classes.mediator.ServiceMediator;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,36 +26,54 @@ import it.unicam.cs.ItalianWonder.services.POI.RistoranteService;
 @RestController
 @RequestMapping(path = "api/v1/ristorante")
 public class RistoranteController {
-    private final RistoranteService ristoranteService;
+    private final ServiceMediator serviceMediator;
 
     @Autowired
-    public RistoranteController(RistoranteService ristoranteService) {
-        this.ristoranteService = ristoranteService;
+    public RistoranteController(Salvare serviceMediator) {
+      this.serviceMediator = serviceMediator;
+    }
+
+    @RequestMapping(value = "/test", method = RequestMethod.POST)
+    public ResponseEntity<Ristorante> test() {
+        return ResponseEntity.ok(new Ristorante());
     }
 
     @RequestMapping(value = "/getRistoranti", method = RequestMethod.POST)
     public ResponseEntity<List<Ristorante>> getAllComuni() {
-        return ResponseEntity.ok(ristoranteService.getAllRistoranti());
+        return ResponseEntity.ok(serviceMediator.get(Ristorante.class).stream().map(
+            item->(Ristorante)item
+        ).toList());
     }
 
-    @RequestMapping(value = "/postComune", method = RequestMethod.POST)
-    public ResponseEntity<String> aggiungiRistorante(@RequestBody Map<String, Map<String, Object>> body) {
-        ristoranteService.aggiungiRistorante((Ristorante) body.get("ristorante").get("ristorante"),
-            (Turista)body.get("utente").get("utente"));
+    @RequestMapping(value = "/postRistorante", method = RequestMethod.POST)
+    public ResponseEntity<String> aggiungiRistorante(@RequestBody BodyTemplate<Ristorante> body) {
+        Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
+        switch (user.getTipoUser()){
+            case Contributor -> body.getData().setApprovazione(false);
+            case ContributorAutorizzato,Curatore -> body.getData().setApprovazione(true);
+            default -> {
+                return ResponseEntity.status(401).body("Non Autorizzato");
+            }
+        }
+        serviceMediator.post(body.getData());
         return ResponseEntity.ok("Ristorante Aggiunto");
     }
 
-    @RequestMapping(value = "/modificaComune", method = RequestMethod.POST)
-    public ResponseEntity<String> modificaRistorante(@RequestBody Map<String, Map<String, Object>> body) {
-        ristoranteService.modificaRistorante((Ristorante) body.get("ristorante").get("ristorante"),
-            (Turista)body.get("utente").get("utente"));
+    @RequestMapping(value = "/modificaRistorante", method = RequestMethod.POST)
+    public ResponseEntity<String> modificaRistorante(@RequestBody BodyTemplate<Ristorante> body) {
+        Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
+        if(user.getTipoUser() != enumTipoUtente.Curatore)
+            return ResponseEntity.status(401).body("Non Autorizzato");
+        serviceMediator.update(body.getData());
         return ResponseEntity.ok("Ristorante Modificato");
     }
 
     @RequestMapping(value = "/eliminaRistorante", method = RequestMethod.POST)
-    public ResponseEntity<String> eliminaRistorante(@RequestBody Map<String, Map<String, Object>> body) {
-        ristoranteService.eliminaRistorante((Long) body.get("nomeComune").get("nomeComune"),
-            (Turista) body.get("utente"));
+    public ResponseEntity<String> eliminaRistorante(@RequestBody BodyTemplate<Ristorante> body) {
+        Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
+        if(user.getTipoUser() != enumTipoUtente.Curatore)
+            return ResponseEntity.status(401).body("Non Autorizzato");
+        serviceMediator.delete(body.getData().getID(), Ristorante.class);
         return ResponseEntity.ok("Ristorante Eliminato");
     }
 }

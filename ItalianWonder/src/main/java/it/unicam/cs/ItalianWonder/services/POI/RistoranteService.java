@@ -21,15 +21,15 @@ public class RistoranteService {
       return ristoranteRepository.findAll();
   }
 
-  public void aggiungiRistorante(Ristorante ristorante, Turista turista) {
+  public void aggiungiRistorante(Ristorante ristorante) {
       ristoranteRepository.save(ristorante);
   }
 
-  public void modificaRistorante(Ristorante ristorante, Turista turista) {
+  public void modificaRistorante(Ristorante ristorante) {
       ristoranteRepository.save(ristorante);
   }
 
-  public void eliminaRistorante(Long id, Turista turista) {
+  public void eliminaRistorante(Long id) {
       ristoranteRepository.deleteById(id);
   }
 }

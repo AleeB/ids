@@ -26,19 +26,16 @@ public class ComuneService {
         return (comuneRepository.findAll());
     }
 
-    public void aggiungiComune(Comune comune, Turista utente) {
-        if(utente.getTipoUser() == enumTipoUtente.Curatore)
-            comuneRepository.save(comune);
-    }
-
-    @Transactional
-    public void modificaComune(Comune comune, Turista turista) {
+    public void aggiungiComune(Comune comune) {
         comuneRepository.save(comune);
     }
 
-    public void eliminaComune(String nomeComune, Turista utente) {
-        if(comuneRepository.existsById(nomeComune) && utente.getTipoUser().equals(enumTipoUtente.Curatore)) {
-            comuneRepository.deleteById(nomeComune);
-        }
+    @Transactional
+    public void modificaComune(Comune comune) {
+        comuneRepository.save(comune);
+    }
+
+    public void eliminaComune(String nomeComune) {
+        comuneRepository.deleteById(nomeComune);
     }
 }

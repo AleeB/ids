@@ -19,11 +19,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping(path = "api/v1/divertimento")
 public class DivertimentoController {
-    private final ServiceMediator mediator;
+    private final ServiceMediator serviceMediator;
 
     @Autowired
     public DivertimentoController(Salvare salvareService) {
-      this.mediator = salvareService;
+      this.serviceMediator = salvareService;
     }
 
     @RequestMapping(value = "/test", method = RequestMethod.POST)
@@ -43,31 +43,34 @@ public class DivertimentoController {
     @RequestMapping(value = "/getDivertimenti", method = RequestMethod.POST)
     public ResponseEntity<List<Divertimento>> getAllDivertimenti() {
         return ResponseEntity.ok(
-            mediator.get(Divertimento.class).stream()
+            serviceMediator.get(Divertimento.class).stream()
                 .map(item-> (Divertimento)item).toList()
         );
     }
 
     @RequestMapping(value = "/postDivertimento", method = RequestMethod.POST)
     public ResponseEntity<String> aggiungiDivertimento(@RequestBody BodyTemplate<Divertimento> body) {
-        /*Turista user = (Turista) mediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
+        Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
         switch (user.getTipoUser()){
             case Contributor -> body.getData().setApprovazione(false);
             case ContributorAutorizzato,Curatore -> body.getData().setApprovazione(true);
-        }*/
-        mediator.post(body.getData());
+            default -> {
+                return ResponseEntity.status(401).body("Non Autorizzato");
+            }
+        }
+        serviceMediator.post(body.getData());
         return ResponseEntity.ok("Divertimento Aggiunto");
     }
 
     @RequestMapping(value = "/modificaDivertimento", method = RequestMethod.POST)
     public ResponseEntity<String> modificaDivertimento(@RequestBody Map<String, Map<String, Object>> body) {
-        mediator.update(body);
+        serviceMediator.update(body);
         return ResponseEntity.ok("Divertimento Modificato");
     }
 
     @RequestMapping(value = "/eliminaDivertimento", method = RequestMethod.POST)
     public ResponseEntity<String> eliminaDivertimento(@RequestBody Map<String, Map<String, Object>> body) {
-        mediator.delete(body,Divertimento.class);//Cambiare in ID
+        serviceMediator.delete(body,Divertimento.class);//Cambiare in ID
         return ResponseEntity.ok("Divertimento Eliminato");
     }
 }

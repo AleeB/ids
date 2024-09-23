@@ -1,8 +1,10 @@
 package it.unicam.cs.ItalianWonder.classes;
 
 import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
+import it.unicam.cs.ItalianWonder.classes.POI.Ristorante;
 import it.unicam.cs.ItalianWonder.classes.mediator.ServiceMediator;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
+import it.unicam.cs.ItalianWonder.services.ComuneService;
 import it.unicam.cs.ItalianWonder.services.POI.DivertimentoService;
 import it.unicam.cs.ItalianWonder.services.POI.ItinerarioService;
 import it.unicam.cs.ItalianWonder.services.POI.RistoranteService;
@@ -19,51 +21,73 @@ public class Salvare implements ServiceMediator {
     private final DivertimentoService divertimentoService;
     private final ItinerarioService itinerarioService;
     private final RistoranteService ristoranteService;
+    private final ComuneService comuneService;
 
     @Autowired
     public Salvare(TuristaService turistaService, DivertimentoService divertimentoService,
         ItinerarioService itinerarioService,
-        RistoranteService ristoranteService) {
+        RistoranteService ristoranteService, ComuneService comuneService) {
       this.turistaService = turistaService;
       this.divertimentoService = divertimentoService;
         this.itinerarioService = itinerarioService;
         this.ristoranteService = ristoranteService;
+        this.comuneService = comuneService;
     }
 
     @Override
-    public List<Object> get(Map<String, Object> data, Class<?> type) {
+    public List<?> get(Map<String, Object> data, Class<?> type) {
         if(data == null) return get(type);
         if(data.isEmpty()) return get(type);
 
         if(type == Turista.class){
             Turista credenziali = (Turista) data.get("userCredentials");
-            return Collections.singletonList(
-                turistaService.login(credenziali.getUserName(), credenziali.getPassword()));
+            return turistaService.login(credenziali.getUserName(), credenziali.getPassword()).stream().toList();
         }
 
+        System.err.println(type.toString() + " Get(..) Mediator Not Implemented");
         return List.of();
     }
 
     @Override
-    public List<Object> get(Class<?> type) {
-        if(type==Divertimento.class) return Collections.singletonList(
-            divertimentoService.getAllDivertimenti());
+    public List<?> get(Class<?> type) {
+        if(type==Divertimento.class) return divertimentoService.getAllDivertimenti();
+        if(type==Ristorante.class) return ristoranteService.getAllRistoranti();
 
+        System.err.println(type.toString() + " GET Mediator Not Implemented");
         return List.of();
     }
 
     @Override
     public void post(Object data) {
-        if(data instanceof Divertimento) divertimentoService.aggiungiDivertimento((Divertimento) data);
+        //Utenti
+        if(data instanceof Turista tmp) turistaService.save(tmp);
+        //POI
+        if(data instanceof Divertimento tmp) divertimentoService.aggiungiDivertimento(tmp);
+        if(data instanceof Ristorante tmp) ristoranteService.aggiungiRistorante(tmp);
+        if(data instanceof Comune tmp) comuneService.aggiungiComune(tmp);
+
+        //System.err.println(data.getClass() + " POST Mediator Not Implemented");
     }
 
     @Override
     public void update(Object data) {
+        //Utenti
+        if(data instanceof Turista tmp) turistaService.save(tmp);
+        //POI
+        if(data instanceof Divertimento tmp) divertimentoService.modificaDivertimento(tmp);
+        if(data instanceof Ristorante tmp) ristoranteService.modificaRistorante(tmp);
+        if(data instanceof Comune tmp) comuneService.modificaComune(tmp);
 
+        //System.err.println(data.getClass() + " UPDATE Mediator Not Implemented");
     }
 
     @Override
     public void delete(Object data, Class<?> type) {
+        //POI
+        if(type==Divertimento.class) divertimentoService.eliminaDivertimento((Long) data);
+        if(type==Ristorante.class) ristoranteService.eliminaRistorante((Long) data);
+        if(type==Comune.class) comuneService.eliminaComune((String) data);
 
+        //System.err.println(type.toString() + " DELETE Mediator Not Implemented");
     }
 }
