@@ -3,6 +3,7 @@ package it.unicam.cs.ItalianWonder.classes.POI;
 import it.unicam.cs.ItalianWonder.classes.Localizzazione;
 import it.unicam.cs.ItalianWonder.classes.Recensione;
 import it.unicam.cs.ItalianWonder.classes.Salvare;
+import it.unicam.cs.ItalianWonder.classes.enums.enumTipoDivertimento;
 import it.unicam.cs.ItalianWonder.classes.media.Foto;
 import it.unicam.cs.ItalianWonder.classes.media.Video;
 import it.unicam.cs.ItalianWonder.classes.users.Contributor;
@@ -36,11 +37,15 @@ public class Divertimento {
 
 	private long ID;
 	private String titolo;
-	private float tipo;
+	private enumTipoDivertimento tipo;
 	private LocalDateTime dataInizio;
 	private LocalDateTime dataFine;
 	private float costo;
 	private Boolean approvazione;
+
+	public Divertimento(Map<String, Object> tmp){
+		//Copio le robe della mappa
+	}
 
 	@OneToMany(mappedBy = "divertimento")
 	private List<Foto> foto;
@@ -63,9 +68,6 @@ public class Divertimento {
 	@JoinColumn(name = "localizzazione_id")
 	private Localizzazione localizzazione;
 
-	@OneToMany(mappedBy = "divertimento")
-	private List<Salvare> salvare;
-
 	//endregion
 
 	//region Constr
@@ -85,7 +87,7 @@ public class Divertimento {
 		return titolo;
 	}
 
-	public float getTipo() {
+	public enumTipoDivertimento getTipo() {
 		return tipo;
 	}
 
@@ -113,7 +115,7 @@ public class Divertimento {
 		this.titolo = titolo;
 	}
 
-	public void setTipo(float tipo) {
+	public void setTipo(enumTipoDivertimento tipo) {
 		this.tipo = tipo;
 	}
 
@@ -180,15 +182,6 @@ public class Divertimento {
 	public void setLocalizzazione(Localizzazione localizzazione) {
 		this.localizzazione = localizzazione;
 	}
-
-	public List<Salvare> getSalvare() {
-		return salvare;
-	}
-
-	public void setSalvare(List<Salvare> salvare) {
-		this.salvare = salvare;
-	}
-
 	//endregion
 
 	//region Methods
