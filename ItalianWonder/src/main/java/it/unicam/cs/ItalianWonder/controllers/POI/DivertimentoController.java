@@ -46,14 +46,14 @@ public class DivertimentoController {
         );
     }
 
-    @RequestMapping(value = "/postDivertimento", method = RequestMethod.POST)
-    public ResponseEntity<String> aggiungiDivertimento(@RequestBody Map<String, Object> body) {
-        if(!body.containsKey("user")) return ResponseEntity.status(401).body("Accesso non autorizzato");
-        Map<String, Object> user = (Map<String, Object>) body.get("user");
-        if()
-        mediator.post(body);
-        return ResponseEntity.ok("Divertimento Aggiunto");
-    }
+//    @RequestMapping(value = "/postDivertimento", method = RequestMethod.POST)
+//    public ResponseEntity<String> aggiungiDivertimento(@RequestBody Map<String, Object> body) {
+//        if(!body.containsKey("user")) return ResponseEntity.status(401).body("Accesso non autorizzato");
+//        Map<String, Object> user = (Map<String, Object>) body.get("user");
+//        if()
+//        mediator.post(body);
+//        return ResponseEntity.ok("Divertimento Aggiunto");
+//    }
 
     @RequestMapping(value = "/modificaDivertimento", method = RequestMethod.POST)
     public ResponseEntity<String> modificaDivertimento(@RequestBody Map<String, Map<String, Object>> body) {
