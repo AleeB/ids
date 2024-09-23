@@ -16,9 +16,6 @@ public class TuristaAutorizzato extends Turista {
 	@OneToMany(mappedBy = "turistaAutorizzato")
 	private List<Video> video;
 
-	@OneToMany(mappedBy = "turistaAutorizzato")
-	private List<Salvare> salvare;
-
 	//region Props
 
 	public List<Foto> getFoto() {

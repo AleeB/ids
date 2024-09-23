@@ -4,6 +4,8 @@ import it.unicam.cs.ItalianWonder.classes.mediator.ServiceMediator;
 import it.unicam.cs.ItalianWonder.services.POI.DivertimentoService;
 import it.unicam.cs.ItalianWonder.services.POI.ItinerarioService;
 import it.unicam.cs.ItalianWonder.services.POI.RistoranteService;
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;

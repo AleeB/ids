@@ -66,9 +66,6 @@ public class Itinerario {
 	)
 	private List<Localizzazione> localizzazioni;
 
-	@OneToMany(mappedBy = "itinerario")
-	private List<Salvare> salvare;
-
 	//endregion
 
 	//region Constr
@@ -174,14 +171,6 @@ public class Itinerario {
 
 	public void setLocalizzazione(List<Localizzazione> localizzazioni) {
 		this.localizzazioni = localizzazioni;
-	}
-
-	public List<Salvare> getSalvare() {
-		return salvare;
-	}
-
-	public void setSalvare(List<Salvare> salvare) {
-		this.salvare = salvare;
 	}
 
 	public List<Recensione> getRecensioni() {

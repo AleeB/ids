@@ -60,9 +60,6 @@ public class Ristorante {
 	@JoinColumn(name = "localizzazione_id")
 	private Localizzazione localizzazione;
 
-	@OneToMany(mappedBy = "ristorante")
-	private List<Salvare> salvare;
-
 	//endregion
 
 	//region Constr
@@ -168,14 +165,6 @@ public class Ristorante {
 
 	public void setLocalizzazione(Localizzazione localizzazione) {
 		this.localizzazione = localizzazione;
-	}
-
-	public List<Salvare> getSalvare() {
-		return salvare;
-	}
-
-	public void setSalvare(List<Salvare> salvare) {
-		this.salvare = salvare;
 	}
 
 	//endregion

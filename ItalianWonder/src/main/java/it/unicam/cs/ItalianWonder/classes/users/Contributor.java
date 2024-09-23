@@ -46,8 +46,6 @@ public class Contributor extends Turista {
 	)
 	private List<Recensione> recensioni;
 
-	@OneToMany(mappedBy = "contributor")
-	private List<Salvare> salvare;
 
 	public Contributor() {
 		super();
@@ -110,14 +108,6 @@ public class Contributor extends Turista {
 
 	public void setRecensioni(List<Recensione> recensioni) {
 		this.recensioni = recensioni;
-	}
-
-	public List<Salvare> getSalvare() {
-		return salvare;
-	}
-
-	public void setSalvare(List<Salvare> salvare) {
-		this.salvare = salvare;
 	}
 
 	//endregion

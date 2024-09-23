@@ -39,9 +39,6 @@ public class ContributorAutorizzato extends Turista {
 	)
 	private List<Segnalazione> segnalazioni;
 
-	@OneToMany(mappedBy = "contributorAutorizzato")
-	private List<Salvare> salvare;
-
 	//endregion
 
 	//region Constr
@@ -100,14 +97,6 @@ public class ContributorAutorizzato extends Turista {
 
 	public void setSegnalazioni(List<Segnalazione> segnalazioni) {
 		this.segnalazioni = segnalazioni;
-	}
-
-	public List<Salvare> getSalvare() {
-		return salvare;
-	}
-
-	public void setSalvare(List<Salvare> salvare) {
-		this.salvare = salvare;
 	}
 
 	//endregion
