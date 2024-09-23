@@ -3,7 +3,6 @@ import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
 import it.unicam.cs.ItalianWonder.classes.POI.Itinerario;
 import it.unicam.cs.ItalianWonder.classes.POI.Ristorante;
 import it.unicam.cs.ItalianWonder.classes.Recensione;
-import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
 import it.unicam.cs.ItalianWonder.services.users.TuristaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +15,6 @@ import it.unicam.cs.ItalianWonder.services.RecensioneService;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.Optional;
 
 @RestController
@@ -45,8 +43,11 @@ public class RecensioneController {
     @RequestMapping(value = "/deleteRecensione", method = RequestMethod.POST)
     public ResponseEntity<String> deleteRecensione(@RequestBody Map<String, Map<String, Object>> map) {
         Recensione recensione = new Recensione();
-        recensione.setID(((Long) map.get("recensione").get("id")));
-        Turista turista = mapValueTurista(map.get("currentTurista"));
+        recensione.setID(Long.parseLong(map.get("recensione").get("id").toString()));
+        recensione.setTurista(getTurista(((Map<String, Object>) map.get("recensione").get("turista")).get("userName").toString(),
+                ((Map<String, Object>) map.get("recensione").get("turista")).get("password").toString()));
+        Turista turista = getTurista(map.get("currentTurista").get("userName").toString(),
+                map.get("currentTurista").get("password").toString());
         return switch (((recensione.getTurista().getTipoUser()))) {
             case Turista, TuristaAutorizzato -> {
                 if (recensione.getTurista() == turista) {
@@ -106,8 +107,12 @@ public class RecensioneController {
     //da modificare per aggiunta FK POI
     @RequestMapping(value = "/updateRecensione", method = RequestMethod.POST)
     public ResponseEntity<String> updateRecensione(@RequestBody Map<String, Map<String, Object>> map){
-        Recensione recensione = mapValueRecensione(map.get("recensione"));
-        Turista turista = mapValueTurista(map.get("currentTurista"));
+        Map<String, Object> user = ((Map) map.get("recensione").get("turista"));
+        Recensione recensione = new Recensione();
+        recensione.setID(Long.parseLong(map.get("recensione").get("id").toString()));
+        recensione.setTurista(getTurista(user.get("userName").toString(), user.get("password").toString()));
+        Turista turista = getTurista(map.get("currentTurista").get("userName").toString(),
+                map.get("currentTurista").get("password").toString());
         return switch (recensione.getTurista().getTipoUser()) {
             case Turista, TuristaAutorizzato -> {
                 if (recensione.getTurista().equals(turista)) {
@@ -123,15 +128,16 @@ public class RecensioneController {
         };
     }
 
-    private Turista mapValueTurista(Map<String,Object> map) {
-       return turistaService.login(map.get("userName").toString(), map.get("password").toString()).get();
+    private Turista getTurista(String userName, String password) {
+       return turistaService.login(userName, password).get();
     }
 
     private Recensione mapValueRecensione(Map<String,Object> recensione) {
         Recensione rec = new Recensione();
         rec.setID(Long.parseLong(recensione.get("id").toString()));
         rec.setDescrizione(recensione.get("descrizione").toString());
-        rec.setTurista(mapValueTurista((Map) recensione.get("turista")));
+        Map<String, Object> temp = ((Map<String, Object>) recensione.get("turista"));
+        rec.setTurista(getTurista(temp.get("userName").toString(), temp.get("password").toString()));
         rec.setValutazione(((int) recensione.get("valutazione")));
         rec.setVerificata(((Boolean) recensione.get("verificata")));
         return rec;
