@@ -2,6 +2,7 @@ package it.unicam.cs.ItalianWonder.controllers.POI;
 
 import it.unicam.cs.ItalianWonder.classes.BodyTemplate;
 import it.unicam.cs.ItalianWonder.classes.Comune;
+import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
 import it.unicam.cs.ItalianWonder.classes.POI.Ristorante;
 import it.unicam.cs.ItalianWonder.classes.Salvare;
 import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
@@ -75,5 +76,16 @@ public class RistoranteController {
             return ResponseEntity.status(401).body("Non Autorizzato");
         serviceMediator.delete(body.getData().getID(), Ristorante.class);
         return ResponseEntity.ok("Ristorante Eliminato");
+    }
+
+    @RequestMapping(value = "/approvaRistorante", method = RequestMethod.POST)
+    public ResponseEntity<String> approvaDivertimento(@RequestBody BodyTemplate<Ristorante> body) {
+        Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
+        if (user.getTipoUser() != enumTipoUtente.Curatore)
+            return ResponseEntity.status(401).body("Non Autorizzato");
+
+        body.getData().setApprovazione(true);
+        serviceMediator.update(body.getData());
+        return ResponseEntity.ok("Ristorante Approvato! (Buon pranzo :) )");
     }
 }
