@@ -52,6 +52,7 @@ public class Salvare implements ServiceMediator {
     public List<?> get(Class<?> type) {
         if(type==Divertimento.class) return divertimentoService.getAllDivertimenti();
         if(type==Ristorante.class) return ristoranteService.getAllRistoranti();
+        if(type==Comune.class) return comuneService.getAllComuni();
 
         System.err.println(type.toString() + " GET Mediator Not Implemented");
         return List.of();

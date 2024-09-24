@@ -3,6 +3,7 @@ package it.unicam.cs.ItalianWonder.controllers.POI;
 import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
 import it.unicam.cs.ItalianWonder.classes.BodyTemplate;
 import it.unicam.cs.ItalianWonder.classes.Salvare;
+import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
 import it.unicam.cs.ItalianWonder.classes.mediator.ServiceMediator;
 import it.unicam.cs.ItalianWonder.classes.users.Contributor;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
@@ -63,14 +64,20 @@ public class DivertimentoController {
     }
 
     @RequestMapping(value = "/modificaDivertimento", method = RequestMethod.POST)
-    public ResponseEntity<String> modificaDivertimento(@RequestBody Map<String, Map<String, Object>> body) {
+    public ResponseEntity<String> modificaDivertimento(@RequestBody BodyTemplate<Divertimento> body) {
+        Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
+        if(user.getTipoUser() != enumTipoUtente.Curatore)
+            return ResponseEntity.status(401).body("Non Autorizzato");
         serviceMediator.update(body);
         return ResponseEntity.ok("Divertimento Modificato");
     }
 
     @RequestMapping(value = "/eliminaDivertimento", method = RequestMethod.POST)
-    public ResponseEntity<String> eliminaDivertimento(@RequestBody Map<String, Map<String, Object>> body) {
-        serviceMediator.delete(body,Divertimento.class);//Cambiare in ID
+    public ResponseEntity<String> eliminaDivertimento(@RequestBody BodyTemplate<Divertimento> body) {
+        Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
+        if(user.getTipoUser() != enumTipoUtente.Curatore)
+            return ResponseEntity.status(401).body("Non Autorizzato");
+        serviceMediator.delete(body.getData().getID(),Divertimento.class);//Cambiare in ID
         return ResponseEntity.ok("Divertimento Eliminato");
     }
 }

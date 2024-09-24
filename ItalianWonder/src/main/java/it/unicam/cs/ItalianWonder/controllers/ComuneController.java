@@ -6,6 +6,7 @@ import it.unicam.cs.ItalianWonder.classes.Salvare;
 import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
 import it.unicam.cs.ItalianWonder.classes.mediator.ServiceMediator;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
+import java.util.Collections;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -36,19 +37,27 @@ public class ComuneController {
     @RequestMapping(value = "/postComune", method = RequestMethod.POST)
     public ResponseEntity<String> aggiungiComune(@RequestBody BodyTemplate<Comune> body) {
         Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
-        if(user.getTipoUser() != enumTipoUtente.Contributor)
+        if(user.getTipoUser() != enumTipoUtente.Curatore)
             return ResponseEntity.status(401).body("Non Autorizzato");
         serviceMediator.post(body.getData());
         return ResponseEntity.ok("Comune Aggiunto");
     }
 
     @RequestMapping(value = "/modificaComune", method = RequestMethod.POST)
-    public ResponseEntity<String> modificaComune(@RequestBody Map<String, Map<String, Object>> body) {
+    public ResponseEntity<String> modificaComune(@RequestBody BodyTemplate<Comune> body) {
+        Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
+        if(user.getTipoUser() != enumTipoUtente.Curatore)
+            return ResponseEntity.status(401).body("Non Autorizzato");
+        serviceMediator.update(body.getData());
         return ResponseEntity.ok("Comune Modificato");
     }
 
     @RequestMapping(value = "/eliminaComune", method = RequestMethod.POST)
-    public ResponseEntity<String> eliminaComune(@RequestBody Map<String, Map<String, Object>> body) {
+    public ResponseEntity<String> eliminaComune(@RequestBody BodyTemplate<Comune> body) {
+        Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
+        if(user.getTipoUser() != enumTipoUtente.Curatore)
+            return ResponseEntity.status(401).body("Non Autorizzato");
+        serviceMediator.delete(body.getData().getNome(), Comune.class);
         return ResponseEntity.ok("Comune Eliminato");
     }
 }

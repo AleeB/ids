@@ -17,7 +17,7 @@ public class InitializerController {
 
   private final ServiceMediator serviceMediator;
 
-  Turista turista1, turistaAutorizzato1, contributor1, contributorAutorizzato1;
+  Turista turista1, turistaAutorizzato1, contributor1, contributorAutorizzato1, curatore1;
 
   public InitializerController(ServiceMediator serviceMediator) {
     this.serviceMediator = serviceMediator;
@@ -63,9 +63,18 @@ public class InitializerController {
     contributorAutorizzato1.setID_UserName("UsernameContributorAutorizzato1");
     contributorAutorizzato1.setTipoUser(enumTipoUtente.ContributorAutorizzato);
 
+    curatore1 = new Turista();
+    curatore1.setNome("NomeCuratore1");
+    curatore1.setCognome("CognomeCuratore1");
+    curatore1.setPassword("");
+    curatore1.setPunteggio(0);
+    curatore1.setID_UserName("UsernameCuratore1");
+    curatore1.setTipoUser(enumTipoUtente.Curatore);
+
     serviceMediator.post(turista1);
     serviceMediator.post(turistaAutorizzato1);
     serviceMediator.post(contributor1);
     serviceMediator.post(contributorAutorizzato1);
+    serviceMediator.post(curatore1);
   }
 }
