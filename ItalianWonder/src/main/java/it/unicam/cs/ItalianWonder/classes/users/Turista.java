@@ -10,10 +10,7 @@ import it.unicam.cs.ItalianWonder.classes.Segnalazione;
 import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
 import jakarta.persistence.*;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
@@ -70,6 +67,20 @@ public class Turista{
 		this.punteggio = (int) data.get("punteggio");
 		this.tipoUser = (enumTipoUtente) data.get("tipoUser");
 		this.contest = (List<Contest>) data.get("contest");
+	}
+
+	public Turista(Turista tur){
+		this.userName = tur.getUserName();
+		this.nome = tur.getNome();
+		this.cognome = tur.getCognome();
+		this.password = tur.getPassword();
+		this.punteggio = tur.getPunteggio();
+		this.tipoUser = tur.getTipoUser();
+		this.contest = tur.getContest();
+		this.segnalazioni = tur.getSegnalazioni();
+		this.contest = tur.getContest();
+		this.recensioni = tur.getRecensioni();
+		this.comune = tur.getComune();
 	}
 
 	//endregion
@@ -138,6 +149,30 @@ public class Turista{
 
 	public void setContest(List<Contest> contest) {
 		this.contest = contest;
+	}
+
+	public List<Segnalazione> getSegnalazioni() {
+		return segnalazioni;
+	}
+
+	public void setSegnalazioni(List<Segnalazione> segnalazioni) {
+		this.segnalazioni = segnalazioni;
+	}
+
+	public List<Recensione> getRecensioni() {
+		return recensioni;
+	}
+
+	public void setRecensioni(List<Recensione> recensioni) {
+		this.recensioni = recensioni;
+	}
+
+	public Comune getComune() {
+		return comune;
+	}
+
+	public void setComune(Comune comune) {
+		this.comune = comune;
 	}
 
 	//endregion

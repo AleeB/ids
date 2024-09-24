@@ -15,6 +15,10 @@ public class Animatore extends ContributorAutorizzato {
 		super();
 	}
 
+	public Animatore(Turista tur){
+		super(tur);
+	}
+
 	public List<Contest> getContest() {
 		return contest;
 	}
@@ -23,18 +27,5 @@ public class Animatore extends ContributorAutorizzato {
 		this.contest = contest;
 	}
 
-	//region Methods
-
-	public void assegnazioniPunteggiContest() {
-		// TODO - implement Animatore.assegnazioniPunteggiContest
-		throw new UnsupportedOperationException();
-	}
-
-	public void animatore() {
-		// TODO - implement Animatore.animatore
-		throw new UnsupportedOperationException();
-	}
-
-	//endregion
 
 }

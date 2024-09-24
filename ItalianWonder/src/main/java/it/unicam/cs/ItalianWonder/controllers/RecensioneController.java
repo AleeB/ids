@@ -1,4 +1,5 @@
 package it.unicam.cs.ItalianWonder.controllers;
+import it.unicam.cs.ItalianWonder.classes.BodyTemplate;
 import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
 import it.unicam.cs.ItalianWonder.classes.POI.Itinerario;
 import it.unicam.cs.ItalianWonder.classes.POI.Ristorante;
@@ -7,10 +8,7 @@ import it.unicam.cs.ItalianWonder.classes.users.Turista;
 import it.unicam.cs.ItalianWonder.services.users.TuristaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import it.unicam.cs.ItalianWonder.services.RecensioneService;
 
 import java.util.List;
@@ -31,7 +29,7 @@ public class RecensioneController {
     }
 
     //da modificare per FK sui POI
-    @RequestMapping(value = "/newRecensione", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResponseEntity<String> addNewRecensione(@RequestBody Recensione recensione) {
         if(turistaService.login(recensione.getTurista().getUserName(), recensione.getTurista().getPassword()).isEmpty()){
             return ResponseEntity.badRequest().body("couldn't find user");
@@ -40,14 +38,11 @@ public class RecensioneController {
         return ResponseEntity.ok("Recensione added");
     }
 
-    @RequestMapping(value = "/deleteRecensione", method = RequestMethod.POST)
-    public ResponseEntity<String> deleteRecensione(@RequestBody Map<String, Map<String, Object>> map) {
-        Recensione recensione = new Recensione();
-        recensione.setID(Long.parseLong(map.get("recensione").get("id").toString()));
-        recensione.setTurista(getTurista(((Map<String, Object>) map.get("recensione").get("turista")).get("userName").toString(),
-                ((Map<String, Object>) map.get("recensione").get("turista")).get("password").toString()));
-        Turista turista = getTurista(map.get("currentTurista").get("userName").toString(),
-                map.get("currentTurista").get("password").toString());
+    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    public ResponseEntity<String> deleteRecensione(@RequestBody BodyTemplate<Recensione> body) {
+        Recensione recensione = body.getData();
+        recensione.setTurista(getTurista(recensione.getTurista().getUserName(), recensione.getTurista().getPassword()));
+        Turista turista = getTurista(body.getUser().getUserName(), body.getUser().getPassword());
         return switch (((recensione.getTurista().getTipoUser()))) {
             case Turista, TuristaAutorizzato -> {
                 if (recensione.getTurista() == turista) {
@@ -70,14 +65,10 @@ public class RecensioneController {
         };
     }
 
-    @RequestMapping(value = "/getRecensione", method = RequestMethod.POST)
-    public ResponseEntity<Recensione> getRecensioneById(@RequestBody Map<String, Object> id) {
-        Long recensione_id =  Long.valueOf(id.get("id").toString());
-        Optional<Recensione> rec = recensioneService.getRecensioneByID(recensione_id);
-        if(rec.isPresent()){
-            return ResponseEntity.ok().body(rec.get());
-        }
-        return ResponseEntity.badRequest().body(null);
+    @RequestMapping(value = "/get/{id}", method = RequestMethod.GET)
+    public ResponseEntity<Recensione> getRecensioneById(@PathVariable Long id) {
+        Optional<Recensione> rec = recensioneService.getRecensioneByID(id);
+        return rec.map(recensione -> ResponseEntity.ok().body(recensione)).orElseGet(() -> ResponseEntity.badRequest().body(null));
     }
 
     @RequestMapping(value = "/getRecensioniPOI", method = RequestMethod.POST)
@@ -105,18 +96,14 @@ public class RecensioneController {
     }
 
     //da modificare per aggiunta FK POI
-    @RequestMapping(value = "/updateRecensione", method = RequestMethod.POST)
-    public ResponseEntity<String> updateRecensione(@RequestBody Map<String, Map<String, Object>> map){
-        Map<String, Object> user = ((Map) map.get("recensione").get("turista"));
-        Recensione recensione = new Recensione();
-        recensione.setID(Long.parseLong(map.get("recensione").get("id").toString()));
-        recensione.setTurista(getTurista(user.get("userName").toString(), user.get("password").toString()));
-        Turista turista = getTurista(map.get("currentTurista").get("userName").toString(),
-                map.get("currentTurista").get("password").toString());
-        return switch (recensione.getTurista().getTipoUser()) {
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    public ResponseEntity<String> updateRecensione(@RequestBody BodyTemplate<Recensione> body){
+        Turista turista = getTurista(body.getUser().getUserName(), body.getUser().getPassword());
+        body.getData().setTurista(getTurista(body.getUser().getUserName(), body.getUser().getPassword()));
+        return switch (body.getData().getTurista().getTipoUser()) {
             case Turista, TuristaAutorizzato -> {
-                if (recensione.getTurista().equals(turista)) {
-                    if (recensioneService.updateRecensione(recensione)) {
+                if (body.getData().getTurista().equals(turista)) {
+                    if (recensioneService.updateRecensione(body.getData())) {
                         yield ResponseEntity.ok("Recensione updated");
                     } else {
                         yield ResponseEntity.badRequest().build();
@@ -131,18 +118,6 @@ public class RecensioneController {
     private Turista getTurista(String userName, String password) {
        return turistaService.login(userName, password).get();
     }
-
-    private Recensione mapValueRecensione(Map<String,Object> recensione) {
-        Recensione rec = new Recensione();
-        rec.setID(Long.parseLong(recensione.get("id").toString()));
-        rec.setDescrizione(recensione.get("descrizione").toString());
-        Map<String, Object> temp = ((Map<String, Object>) recensione.get("turista"));
-        rec.setTurista(getTurista(temp.get("userName").toString(), temp.get("password").toString()));
-        rec.setValutazione(((int) recensione.get("valutazione")));
-        rec.setVerificata(((Boolean) recensione.get("verificata")));
-        return rec;
-    }
-
 
 
 }

@@ -1,7 +1,9 @@
 package it.unicam.cs.ItalianWonder.controllers;
 
+import it.unicam.cs.ItalianWonder.classes.BodyTemplate;
 import it.unicam.cs.ItalianWonder.classes.Segnalazione;
 import it.unicam.cs.ItalianWonder.classes.enums.enumTipoSegnalazione;
+import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
 import it.unicam.cs.ItalianWonder.controllers.users.TuristaController;
 import it.unicam.cs.ItalianWonder.services.users.TuristaService;
@@ -38,7 +40,7 @@ public class SegnalazioneController {
         return ResponseEntity.ok("Segnalazione added");
     }
 
-    @RequestMapping(value = "/getSegnalazioniByTipo", method = RequestMethod.POST)
+    @RequestMapping(value = "/getSegnalazioniByTipo", method = RequestMethod.GET)
     public ResponseEntity<List<Segnalazione>> getAllSegnalazione(@RequestBody Turista turista) {
         Turista user = new Turista();
         try {
@@ -66,9 +68,16 @@ public class SegnalazioneController {
         };
     }
 
-    @RequestMapping(value = "/approveSegnalazione", method = RequestMethod.POST)
-    public ResponseEntity<String> approveSegnalazione(@RequestBody Long idSegnalazione){
-        segnalazioneService.delete(idSegnalazione);
+    @RequestMapping(value = "/approva", method = RequestMethod.POST)
+    public ResponseEntity<String> approveSegnalazione(@RequestBody BodyTemplate<Segnalazione> body){
+        if(segnalazioneService.getSegnalazioneById(body.getData().getID())){
+            return ResponseEntity.badRequest().body("segnalazione does not exist");
+        }
+        Turista tur = turistaService.login(body.getUser().getUserName(), body.getUser().getPassword()).orElse(null);
+        if (tur == null || tur.getTipoUser() != enumTipoUtente.Animatore) {
+            return ResponseEntity.badRequest().body("couldn't find user or you do not have sufficient permission");
+        }
+        segnalazioneService.delete(body.getData().getID());
         return ResponseEntity.ok().body("Segnalazione deleted");
     }
 

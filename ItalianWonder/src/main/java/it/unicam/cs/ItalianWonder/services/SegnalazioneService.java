@@ -31,4 +31,8 @@ public class SegnalazioneService {
     public void delete(Long idSegnalazione) {
         segnalazioneRepository.deleteById(idSegnalazione);
     }
+
+    public boolean getSegnalazioneById(Long idSegnalazione) {
+        return segnalazioneRepository.existsById(idSegnalazione);
+    }
 }

@@ -36,4 +36,8 @@ public class TuristaService {
     public void save(Turista turista) {
         turistaRepository.save(turista);
     }
+
+    public void delete(Turista user) {
+        turistaRepository.delete(user);
+    }
 }

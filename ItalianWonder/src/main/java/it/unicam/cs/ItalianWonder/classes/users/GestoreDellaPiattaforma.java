@@ -33,6 +33,10 @@ public class GestoreDellaPiattaforma extends Curatore {
 		super();
 	}
 
+	public GestoreDellaPiattaforma(Turista tur) {
+		super(tur);
+	}
+
 	//region Methods
 
 	/**

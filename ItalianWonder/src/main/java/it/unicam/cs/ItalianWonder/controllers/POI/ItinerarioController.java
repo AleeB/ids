@@ -46,7 +46,7 @@ public class ItinerarioController {
         };
     }
 
-    @RequestMapping(value = "/getItinerarioByApprovazione", method = RequestMethod.POST)
+    @RequestMapping(value = "/getItinerarioByApprovazione", method = RequestMethod.GET)
     public ResponseEntity<Optional<List<Itinerario>>> getItinerarioByApprovazione(@RequestBody Map<String, Map<String, Object>> map){
         //se approvazione == true
         if(map.get("itinerario").get("approvazione").toString().equals("true")){

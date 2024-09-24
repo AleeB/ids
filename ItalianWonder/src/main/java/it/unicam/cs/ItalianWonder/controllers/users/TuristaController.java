@@ -1,8 +1,10 @@
 package it.unicam.cs.ItalianWonder.controllers.users;
 
+import it.unicam.cs.ItalianWonder.classes.BodyTemplate;
 import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
 import it.unicam.cs.ItalianWonder.classes.users.*;
 import it.unicam.cs.ItalianWonder.services.users.*;
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -46,7 +48,7 @@ public class TuristaController {
         return ResponseEntity.ok().body(tur);
     }
 
-    @RequestMapping(value = "/newUser", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResponseEntity<String> createUser(@RequestBody Turista turista){
         turista.setPassword(Integer.toString(turista.getPassword().hashCode()));
         turista.setTipoUser(enumTipoUtente.Turista);
@@ -58,39 +60,37 @@ public class TuristaController {
     }
 
     @RequestMapping(value = "/changeTypeUser", method = RequestMethod.POST)
-    public ResponseEntity<String> changeTypeOfUser(@RequestBody Map<String, Object> map){
-        try{
-            Turista user = new Turista();
-            enumTipoUtente tipoUtente = enumTipoUtente.valueOf(map.get("tipoUtente").toString());
-            user = turistaService.login(((Map) map.get("currentUser")).get("userName").toString(),
-                    String.valueOf(((Map) map.get("currentUser")).get("password").hashCode())).get();
-            user.setTipoUser(tipoUtente);
-            turistaService.save(user);
-            return switch (tipoUtente){
-                case TuristaAutorizzato:
-                    turistaAutorizzatoService.save(((TuristaAutorizzato) user));
-                    yield ResponseEntity.ok("Turista Autorizzato saved");
-                case Contributor:
-                    contributorService.save(((Contributor) user));
-                    yield ResponseEntity.ok("Contributor saved");
-                case ContributorAutorizzato:
-                    contributorAutorizzatoService.save(((ContributorAutorizzato) user));
-                    yield ResponseEntity.ok("Contributor Autorizzato saved");
-                case Animatore:
-                    animatoreService.save(((Animatore) user));
-                    yield ResponseEntity.ok("Animatore saved");
-                case Curatore:
-                    curatoreService.save(((Curatore) user));
-                    yield ResponseEntity.ok("Curatore saved");
-                case GestoreDellaPiattaforma:
-                    gestoreDellaPiattaformaService.save(((GestoreDellaPiattaforma) user));
-                    yield ResponseEntity.ok("Gestore Della Piattaforma saved");
-                default:
-                    yield ResponseEntity.badRequest().body("invalid user's type");
-            };
-        }catch (Exception e){
-            return ResponseEntity.badRequest().body(e.getMessage());
-        }
+    public ResponseEntity<String> changeTypeOfUser(@RequestBody BodyTemplate<enumTipoUtente> body){
+        Turista user = new Turista();
+        enumTipoUtente tipoUtente = enumTipoUtente.valueOf(body.getData().name());
+        user = turistaService.login(body.getUser().getUserName(), body.getUser().getPassword()).get();
+        turistaService.delete(user);
+        user.setTipoUser(tipoUtente);
+        return switch (tipoUtente){
+            case Turista:
+                turistaService.save(user);
+                yield ResponseEntity.ok("Turista saved");
+            case TuristaAutorizzato:
+                turistaAutorizzatoService.save(new TuristaAutorizzato(user));
+                yield ResponseEntity.ok("Turista Autorizzato saved");
+            case Contributor:
+                contributorService.save(new Contributor(user));
+                yield ResponseEntity.ok("Contributor saved");
+            case ContributorAutorizzato:
+                contributorAutorizzatoService.save(new ContributorAutorizzato(user));
+                yield ResponseEntity.ok("Contributor Autorizzato saved");
+            case Animatore:
+                animatoreService.save(new Animatore(user));
+                yield ResponseEntity.ok("Animatore saved");
+            case Curatore:
+                curatoreService.save(new Curatore(user));
+                yield ResponseEntity.ok("Curatore saved");
+            case GestoreDellaPiattaforma:
+                gestoreDellaPiattaformaService.save(new GestoreDellaPiattaforma(user));
+                yield ResponseEntity.ok("Gestore Della Piattaforma saved");
+            default:
+                yield ResponseEntity.badRequest().body("invalid user's type");
+        };
 
     }
 

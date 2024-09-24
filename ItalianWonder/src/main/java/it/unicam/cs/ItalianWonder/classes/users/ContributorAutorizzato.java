@@ -47,6 +47,10 @@ public class ContributorAutorizzato extends Turista {
 		super();
 	}
 
+	public ContributorAutorizzato(Turista tur) {
+		super(tur);
+	}
+
 	//endregion
 
 	//region Props
@@ -97,28 +101,6 @@ public class ContributorAutorizzato extends Turista {
 
 	public void setSegnalazioni(List<Segnalazione> segnalazioni) {
 		this.segnalazioni = segnalazioni;
-	}
-
-	//endregion
-
-	//region Methods
-
-	/**
-	 * 
-	 * @param segnalazione
-	 */
-	public boolean segnalazioneFoto(Segnalazione segnalazione) {
-		// TODO - implement ContributorAutorizzato.segnalazioneFoto
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * 
-	 * @param segnalazione
-	 */
-	public boolean segnalazioneVideo(Video segnalazione) {
-		// TODO - implement ContributorAutorizzato.segnalazioneVideo
-		throw new UnsupportedOperationException();
 	}
 
 	//endregion

@@ -31,6 +31,7 @@ public class Contest {
 	private LocalDateTime dataInizio;
 	private LocalDateTime dataFine;
 	private String titolo;
+	private String descrizione;
 
 	@OneToMany(mappedBy = "contest")
 	private List<Foto> foto;
@@ -103,6 +104,14 @@ public class Contest {
 
 	public void setAnimatore(Animatore animatore) {
 		this.animatore = animatore;
+	}
+
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
 	}
 
 	//endregion

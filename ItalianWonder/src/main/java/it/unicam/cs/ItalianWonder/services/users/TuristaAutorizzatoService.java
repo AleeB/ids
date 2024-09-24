@@ -17,7 +17,7 @@ public class TuristaAutorizzatoService {
         this.turistaAutorizzatoRepository = turistaAutorizzatoRepository;
     }
 
-    public void save(Turista user) {
-        turistaAutorizzatoRepository.save(((TuristaAutorizzato) user));
+    public void save(TuristaAutorizzato user) {
+        turistaAutorizzatoRepository.save(user);
     }
 }

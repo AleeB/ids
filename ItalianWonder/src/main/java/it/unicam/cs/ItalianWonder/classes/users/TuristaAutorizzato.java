@@ -41,6 +41,10 @@ public class TuristaAutorizzato extends Turista {
 		super();
 	}
 
+	public TuristaAutorizzato(Turista tur){
+		super(tur);
+	}
+
 	//region Methods
 
 	public boolean salvaInformazione() {
