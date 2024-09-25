@@ -1,0 +1,331 @@
+{
+	"info": {
+		"_postman_id": "f5ea12fa-b526-46ce-8b06-9968a62f41bc",
+		"name": "ItalianWonder",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "35295146"
+	},
+	"item": [
+		{
+			"name": "Divertimento",
+			"item": [
+				{
+					"name": "getDivertimenti",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": "{{baseurl}}/divertimento/getDivertimenti"
+					},
+					"response": []
+				},
+				{
+					"name": "postDivertimento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {{contributor}},\r\n    \"data\": {\r\n        \"titolo\": \"Divertimento Test\",\r\n        \"tipo\": null,\r\n        \"dataInizio\": null,\r\n        \"dataFine\": null,\r\n        \"costo\": 0.0,\r\n        \"approvazione\": null,\r\n        \"foto\": null,\r\n        \"video\": null,\r\n        \"recensioni\": null,\r\n        \"contributor\": null,\r\n        \"contributorAutorizzato\": null,\r\n        \"localizzazione\": null,\r\n        \"salvare\": null,\r\n        \"id\": 0\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseurl}}/divertimento/postDivertimento"
+					},
+					"response": []
+				},
+				{
+					"name": "modificaDivertimento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {{curatore}},\r\n    \"data\": {\r\n        \"titolo\": \"Divertimento Test Modificato\",\r\n        \"tipo\": null,\r\n        \"dataInizio\": null,\r\n        \"dataFine\": null,\r\n        \"costo\": 0.0,\r\n        \"approvazione\": null,\r\n        \"foto\": null,\r\n        \"video\": null,\r\n        \"recensioni\": null,\r\n        \"contributor\": null,\r\n        \"contributorAutorizzato\": null,\r\n        \"localizzazione\": null,\r\n        \"salvare\": null,\r\n        \"id\": 0\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseurl}}/divertimento/modificaDivertimento"
+					},
+					"response": []
+				},
+				{
+					"name": "eliminaDivertimento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {{curatore}},\r\n    \"data\": {\r\n        \"titolo\": \"Divertimento Test\",\r\n        \"tipo\": null,\r\n        \"dataInizio\": null,\r\n        \"dataFine\": null,\r\n        \"costo\": 0.0,\r\n        \"approvazione\": null,\r\n        \"foto\": null,\r\n        \"video\": null,\r\n        \"recensioni\": null,\r\n        \"contributor\": null,\r\n        \"contributorAutorizzato\": null,\r\n        \"localizzazione\": null,\r\n        \"salvare\": null,\r\n        \"id\": 2\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseurl}}/divertimento/eliminaDivertimento"
+					},
+					"response": []
+				},
+				{
+					"name": "approvaDivertimento",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {{curatore}},\r\n    \"data\": {\r\n        \"titolo\": \"Divertimento Test\",\r\n        \"tipo\": null,\r\n        \"dataInizio\": null,\r\n        \"dataFine\": null,\r\n        \"costo\": 0.0,\r\n        \"approvazione\": null,\r\n        \"foto\": null,\r\n        \"video\": null,\r\n        \"recensioni\": null,\r\n        \"contributor\": null,\r\n        \"contributorAutorizzato\": null,\r\n        \"localizzazione\": null,\r\n        \"salvare\": null,\r\n        \"id\": 2\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseurl}}/divertimento/approvaDivertimento"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ristorante",
+			"item": [
+				{
+					"name": "getRistoranti",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {{turista}},\r\n    \"data\": {\r\n        \"nome\": null,\r\n        \"numeroTelefono\": null,\r\n        \"valutazione\": 0,\r\n        \"costoMedio\": 0.0,\r\n        \"approvazione\": false,\r\n        \"foto\": null,\r\n        \"video\": null,\r\n        \"recensioni\": null,\r\n        \"contributor\": null,\r\n        \"contributorAutorizzato\": null,\r\n        \"localizzazione\": {\r\n            \"lat\":10,\r\n            \"lon\":20\r\n        },\r\n        \"id\": 0\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseurl}}/ristorante/getRistoranti"
+					},
+					"response": []
+				},
+				{
+					"name": "postRistorante",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {{contributor}},\r\n    \"data\": {\r\n        \"nome\": \"Testorante\",\r\n        \"numeroTelefono\": null,\r\n        \"valutazione\": 0,\r\n        \"costoMedio\": 0.0,\r\n        \"approvazione\": false,\r\n        \"foto\": null,\r\n        \"video\": null,\r\n        \"recensioni\": null,\r\n        \"contributor\": null,\r\n        \"contributorAutorizzato\": null,\r\n                \"localizzazione\": {\r\n                    \"id\":0,\r\n            \"lat\":\"1\",\r\n            \"lon\":\"2\"\r\n        },\r\n        \"id\": 0\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseurl}}/ristorante/postRistorante"
+					},
+					"response": []
+				},
+				{
+					"name": "modificaRistorante",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {{curatore}},\r\n    \"data\": {\r\n        \"nome\": \"Modificato\",\r\n        \"numeroTelefono\": null,\r\n        \"valutazione\": 0,\r\n        \"costoMedio\": 0.0,\r\n        \"approvazione\": false,\r\n        \"foto\": null,\r\n        \"video\": null,\r\n        \"recensioni\": null,\r\n        \"contributor\": null,\r\n        \"contributorAutorizzato\": null,\r\n        \"localizzazione\": null,\r\n        \"id\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseurl}}/ristorante/modificaRistorante"
+					},
+					"response": []
+				},
+				{
+					"name": "eliminaRIstorante",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {{curatore}},\r\n    \"data\": {\r\n        \"nome\": null,\r\n        \"numeroTelefono\": null,\r\n        \"valutazione\": 0,\r\n        \"costoMedio\": 0.0,\r\n        \"approvazione\": false,\r\n        \"foto\": null,\r\n        \"video\": null,\r\n        \"recensioni\": null,\r\n        \"contributor\": null,\r\n        \"contributorAutorizzato\": null,\r\n        \"localizzazione\": null,\r\n        \"id\": 1\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseurl}}/ristorante/eliminaRistorante"
+					},
+					"response": []
+				},
+				{
+					"name": "approvaRistorante",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {{curatore}},\r\n    \"data\": {\r\n        \"nome\": null,\r\n        \"numeroTelefono\": null,\r\n        \"valutazione\": 0,\r\n        \"costoMedio\": 0.0,\r\n        \"approvazione\": false,\r\n        \"foto\": null,\r\n        \"video\": null,\r\n        \"recensioni\": null,\r\n        \"contributor\": null,\r\n        \"contributorAutorizzato\": null,\r\n        \"localizzazione\": null,\r\n        \"id\": 2\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseurl}}/ristorante/approvaRistorante"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Comune",
+			"item": [
+				{
+					"name": "getComuni",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {{turista}},\r\n    \"data\":     {\r\n        \"nome\": \"\",\r\n        \"cap\": null\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseurl}}/comune/getComuni"
+					},
+					"response": []
+				},
+				{
+					"name": "postComune",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {{curatore}},\r\n    \"data\":     {\r\n        \"nome\": \"TestComune\",\r\n        \"cap\": null\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseurl}}/comune/postComune"
+					},
+					"response": []
+				},
+				{
+					"name": "modificaComune",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {{curatore}},\r\n    \"data\":     {\r\n        \"nome\": \"TestComune\",\r\n        \"cap\": 42069\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseurl}}/comune/modificaComune"
+					},
+					"response": []
+				},
+				{
+					"name": "eliminaComune",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {{curatore}},\r\n    \"data\":     {\r\n        \"nome\": \"TestComune\",\r\n        \"cap\": null\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseurl}}/comune/eliminaComune"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "initialize",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "{{baseurl}}/initialize"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseurl",
+			"value": "http://localhost:8080/api/v1",
+			"type": "string"
+		},
+		{
+			"key": "turista",
+			"value": "{\"userName\": \"UsernameTurista1\",\n\"password\": \"\"}",
+			"type": "string"
+		},
+		{
+			"key": "turistaAutorizzato",
+			"value": "{\"userName\": \"UsernameTuristaAutorizzato1\",\n\"password\": \"\"}",
+			"type": "string"
+		},
+		{
+			"key": "contributor",
+			"value": "{\"userName\": \"UsernameContributor1\",\n\"password\": \"\"}",
+			"type": "string"
+		},
+		{
+			"key": "contributoAutorizzato",
+			"value": "{\"userName\": \"UsernameContributorAutorizzato1\",\n\"password\": \"\"}",
+			"type": "string"
+		},
+		{
+			"key": "curatore",
+			"value": "{\"userName\": \"UsernameCuratore1\",\n\"password\": \"\"}",
+			"type": "string"
+		}
+	]
+}
