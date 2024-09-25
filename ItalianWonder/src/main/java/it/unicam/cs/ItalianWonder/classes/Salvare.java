@@ -1,6 +1,7 @@
 package it.unicam.cs.ItalianWonder.classes;
 
 import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
+import it.unicam.cs.ItalianWonder.classes.POI.Itinerario;
 import it.unicam.cs.ItalianWonder.classes.POI.Ristorante;
 import it.unicam.cs.ItalianWonder.classes.mediator.ServiceMediator;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
@@ -52,6 +53,7 @@ public class Salvare implements ServiceMediator {
     public List<?> get(Class<?> type) {
         if(type==Divertimento.class) return divertimentoService.getAllDivertimenti();
         if(type==Ristorante.class) return ristoranteService.getAllRistoranti();
+        if(type== Itinerario.class) return itinerarioService.getAllItinerari();
         if(type==Comune.class) return comuneService.getAllComuni();
 
         System.err.println(type.toString() + " GET Mediator Not Implemented");
@@ -65,6 +67,7 @@ public class Salvare implements ServiceMediator {
         //POI
         if(data instanceof Divertimento tmp) divertimentoService.aggiungiDivertimento(tmp);
         if(data instanceof Ristorante tmp) ristoranteService.aggiungiRistorante(tmp);
+        if(data instanceof Itinerario tmp) itinerarioService.addItinerario(tmp);
         if(data instanceof Comune tmp) comuneService.aggiungiComune(tmp);
 
         //System.err.println(data.getClass() + " POST Mediator Not Implemented");
@@ -77,6 +80,7 @@ public class Salvare implements ServiceMediator {
         //POI
         if(data instanceof Divertimento tmp) divertimentoService.modificaDivertimento(tmp);
         if(data instanceof Ristorante tmp) ristoranteService.modificaRistorante(tmp);
+        if(data instanceof Itinerario tmp) itinerarioService.updateItinerario(tmp);
         if(data instanceof Comune tmp) comuneService.modificaComune(tmp);
 
         //System.err.println(data.getClass() + " UPDATE Mediator Not Implemented");
@@ -87,6 +91,7 @@ public class Salvare implements ServiceMediator {
         //POI
         if(type==Divertimento.class) divertimentoService.eliminaDivertimento((Long) data);
         if(type==Ristorante.class) ristoranteService.eliminaRistorante((Long) data);
+        if(type==Itinerario.class) itinerarioService.deleteItinerario(((Long) data));
         if(type==Comune.class) comuneService.eliminaComune((String) data);
 
         //System.err.println(type.toString() + " DELETE Mediator Not Implemented");

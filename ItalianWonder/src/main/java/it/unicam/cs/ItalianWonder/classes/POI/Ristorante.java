@@ -169,28 +169,5 @@ public class Ristorante {
 
 	//endregion
 
-	//region Methods
-
-	public void ristorante() {
-		// TODO - implement Ristorante.ristorante
-		throw new UnsupportedOperationException();
-	}
-
-	public boolean approvazione() {
-		// TODO - implement Ristorante.approvazione
-		throw new UnsupportedOperationException();
-	}
-
-	public boolean modificaNumeroTelefono() {
-		// TODO - implement Ristorante.modificaNumeroTelefono
-		throw new UnsupportedOperationException();
-	}
-
-	public boolean modificaCostoMedio() {
-		// TODO - implement Ristorante.modificaCostoMedio
-		throw new UnsupportedOperationException();
-	}
-
-	//endregion
 
 }

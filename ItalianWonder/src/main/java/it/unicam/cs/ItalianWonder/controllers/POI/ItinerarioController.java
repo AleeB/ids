@@ -1,6 +1,10 @@
 package it.unicam.cs.ItalianWonder.controllers.POI;
 
+import it.unicam.cs.ItalianWonder.classes.BodyTemplate;
 import it.unicam.cs.ItalianWonder.classes.POI.Itinerario;
+import it.unicam.cs.ItalianWonder.classes.POI.Ristorante;
+import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
+import it.unicam.cs.ItalianWonder.classes.mediator.ServiceMediator;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
 import it.unicam.cs.ItalianWonder.repositories.POI.ItinerarioRepository;
 import it.unicam.cs.ItalianWonder.services.users.TuristaService;
@@ -21,49 +25,61 @@ import java.util.Optional;
 
 public class ItinerarioController {
 
-    private final ItinerarioService itinerarioService;
-    private final TuristaService turistaService;
+    private final ServiceMediator serviceMediator;
 
     @Autowired
-    public ItinerarioController(ItinerarioService itinerarioService, TuristaService turistaService, ItinerarioRepository itinerarioRepository) {
-        this.itinerarioService = itinerarioService;
-        this.turistaService = turistaService;
+    public ItinerarioController(ServiceMediator serviceMediator) {
+        this.serviceMediator = serviceMediator;
     }
 
-    @RequestMapping(value = "/addItinerario", method = RequestMethod.POST)
-    public ResponseEntity<String> addNewItinerario(@RequestBody Itinerario itinerario){
-        Turista user = turistaService.login(itinerario.getContributor().getUserName(),
-                itinerario.getContributor().getPassword()).get();
-        return switch (user.getTipoUser()){
-            case Contributor:
-                itinerario.setApprovazione(false);
-                yield ResponseEntity.ok(itinerarioService.addItinerario(itinerario).toString());
-            case ContributorAutorizzato, Curatore:
-                itinerario.setApprovazione(true);
-                yield ResponseEntity.ok(itinerarioService.addItinerario(itinerario).toString());
-            default:
-                yield ResponseEntity.badRequest().body("itinerario not added. Probably it is already in");
-        };
+    @RequestMapping(value = "/get", method = RequestMethod.POST)
+    public ResponseEntity<List<Itinerario>> getAllComuni() {
+        return ResponseEntity.ok(serviceMediator.get(Itinerario.class).stream().map(
+                item->(Itinerario)item
+        ).toList());
     }
 
-    @RequestMapping(value = "/getItinerarioByApprovazione", method = RequestMethod.GET)
-    public ResponseEntity<Optional<List<Itinerario>>> getItinerarioByApprovazione(@RequestBody Map<String, Map<String, Object>> map){
-        //se approvazione == true
-        if(map.get("itinerario").get("approvazione").toString().equals("true")){
-            return ResponseEntity.ok().body((itinerarioService.getItinerariByApprovazione(true)));
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
+    public ResponseEntity<String> addItinerario(@RequestBody BodyTemplate<Itinerario> body) {
+        Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
+        switch (user.getTipoUser()){
+            case Contributor -> body.getData().setApprovazione(false);
+            case ContributorAutorizzato,Curatore -> body.getData().setApprovazione(true);
+            default -> {
+                return ResponseEntity.status(401).body("Non Autorizzato");
+            }
         }
-        //se approvazione == false
-        Turista user = ((Turista) map.get("currentUser"));
-        Optional<Turista> foundUser = turistaService.login(user.getUserName(), user.getPassword());
-        if(foundUser.isEmpty()){
-            return ResponseEntity.badRequest().body(Optional.empty());
-        }
-        return switch (foundUser.get().getTipoUser()){
-            case Contributor, ContributorAutorizzato, Animatore, Curatore, GestoreDellaPiattaforma:
-                yield ResponseEntity.ok().body(itinerarioService.getItinerariByApprovazione(true));
-            default:
-                yield ResponseEntity.badRequest().body(Optional.empty());
-        };
+        serviceMediator.post(body.getData());
+        return ResponseEntity.ok("Itinerario Aggiunto");
+    }
+
+    @RequestMapping(value = "/update", method = RequestMethod.POST)
+    public ResponseEntity<String> updateItinerario(@RequestBody BodyTemplate<Ristorante> body) {
+        Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
+        if(user.getTipoUser() != enumTipoUtente.Curatore)
+            return ResponseEntity.status(401).body("Non Autorizzato");
+        serviceMediator.update(body.getData());
+        return ResponseEntity.ok("Itinerario Modificato");
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.POST)
+    public ResponseEntity<String> deleteItinerario(@RequestBody BodyTemplate<Itinerario> body) {
+        Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
+        if(user.getTipoUser() != enumTipoUtente.Curatore)
+            return ResponseEntity.status(401).body("Non Autorizzato");
+        serviceMediator.delete(body.getData().getID(), Ristorante.class);
+        return ResponseEntity.ok("Itinerario Eliminato");
+    }
+
+    @RequestMapping(value = "/approve", method = RequestMethod.POST)
+    public ResponseEntity<String> approveItinerario(@RequestBody BodyTemplate<Itinerario> body) {
+        Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
+        if (user.getTipoUser() != enumTipoUtente.Curatore)
+            return ResponseEntity.status(401).body("Non Autorizzato");
+
+        body.getData().setApprovazione(true);
+        serviceMediator.update(body.getData());
+        return ResponseEntity.ok("Itinerario Approvato! (Buon pranzo :) )");
     }
 
 }
