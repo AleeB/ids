@@ -32,7 +32,11 @@ public class SegnalazioneService {
         segnalazioneRepository.deleteById(idSegnalazione);
     }
 
-    public boolean getSegnalazioneById(Long idSegnalazione) {
+    public boolean existSegnalazioneById(Long idSegnalazione) {
         return segnalazioneRepository.existsById(idSegnalazione);
+    }
+
+    public Optional<Segnalazione> getSegnalazioneById(long id) {
+        return segnalazioneRepository.findById(id);
     }
 }

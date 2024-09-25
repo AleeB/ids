@@ -1,5 +1,6 @@
 package it.unicam.cs.ItalianWonder.services.users;
 
+import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -39,5 +40,9 @@ public class TuristaService {
 
     public void delete(Turista user) {
         turistaRepository.delete(user);
+    }
+
+    public void updateChanges(Turista user) {
+        turistaRepository.saveType(user.getTipoUser().toString(), user.getTipoUser(), user.getUserName());
     }
 }
