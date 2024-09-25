@@ -64,33 +64,10 @@ public class TuristaController {
         Turista user = new Turista();
         enumTipoUtente tipoUtente = enumTipoUtente.valueOf(body.getData().name());
         user = turistaService.login(body.getUser().getUserName(), body.getUser().getPassword()).get();
-        turistaService.delete(user);
         user.setTipoUser(tipoUtente);
-        return switch (tipoUtente){
-            case Turista:
-                turistaService.save(user);
-                yield ResponseEntity.ok("Turista saved");
-            case TuristaAutorizzato:
-                turistaAutorizzatoService.save(new TuristaAutorizzato(user));
-                yield ResponseEntity.ok("Turista Autorizzato saved");
-            case Contributor:
-                contributorService.save(new Contributor(user));
-                yield ResponseEntity.ok("Contributor saved");
-            case ContributorAutorizzato:
-                contributorAutorizzatoService.save(new ContributorAutorizzato(user));
-                yield ResponseEntity.ok("Contributor Autorizzato saved");
-            case Animatore:
-                animatoreService.save(new Animatore(user));
-                yield ResponseEntity.ok("Animatore saved");
-            case Curatore:
-                curatoreService.save(new Curatore(user));
-                yield ResponseEntity.ok("Curatore saved");
-            case GestoreDellaPiattaforma:
-                gestoreDellaPiattaformaService.save(new GestoreDellaPiattaforma(user));
-                yield ResponseEntity.ok("Gestore Della Piattaforma saved");
-            default:
-                yield ResponseEntity.badRequest().body("invalid user's type");
-        };
+        turistaService.updateChanges(user);
+
+        return ResponseEntity.ok("Turista changed");
 
     }
 

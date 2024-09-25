@@ -32,6 +32,7 @@ public class Segnalazione {
 	private long ID;
 	private enumTipoSegnalazione tipo;
 	private boolean verificata;
+	private String descrizione;
 
 	@ManyToMany(mappedBy = "segnalazioni")
 	private List<Contributor> contributors;
@@ -98,6 +99,14 @@ public class Segnalazione {
 
 	public void setTurista(Turista turista) {
 		this.turista = turista;
+	}
+
+	public String getDescrizione() {
+		return descrizione;
+	}
+
+	public void setDescrizione(String descrizione) {
+		this.descrizione = descrizione;
 	}
 
 	//endregion

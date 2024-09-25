@@ -3,9 +3,7 @@ package it.unicam.cs.ItalianWonder.controllers;
 import it.unicam.cs.ItalianWonder.classes.BodyTemplate;
 import it.unicam.cs.ItalianWonder.classes.Segnalazione;
 import it.unicam.cs.ItalianWonder.classes.enums.enumTipoSegnalazione;
-import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
-import it.unicam.cs.ItalianWonder.controllers.users.TuristaController;
 import it.unicam.cs.ItalianWonder.services.users.TuristaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 import it.unicam.cs.ItalianWonder.services.SegnalazioneService;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RestController
 @RequestMapping(path = "api/v1/segnalazione")
@@ -31,7 +27,7 @@ public class SegnalazioneController {
         this.turistaService = turistaService;
     }
 
-    @RequestMapping(value = "/newSegnalazione", method = RequestMethod.POST)
+    @RequestMapping(value = "/add", method = RequestMethod.POST)
     public ResponseEntity<String> addSegnalazione(@RequestBody Segnalazione segnalazione) {
         if(turistaService.login(segnalazione.getTurista().getUserName(), segnalazione.getTurista().getPassword()).isEmpty()){
             return ResponseEntity.badRequest().body("couldn't find user");
@@ -70,15 +66,43 @@ public class SegnalazioneController {
 
     @RequestMapping(value = "/approva", method = RequestMethod.POST)
     public ResponseEntity<String> approveSegnalazione(@RequestBody BodyTemplate<Segnalazione> body){
-        if(segnalazioneService.getSegnalazioneById(body.getData().getID())){
+        Segnalazione segnalazione = segnalazioneService.getSegnalazioneById(body.getData().getID()).orElse(null);
+        if(segnalazione == null){
             return ResponseEntity.badRequest().body("segnalazione does not exist");
         }
         Turista tur = turistaService.login(body.getUser().getUserName(), body.getUser().getPassword()).orElse(null);
-        if (tur == null || tur.getTipoUser() != enumTipoUtente.Animatore) {
-            return ResponseEntity.badRequest().body("couldn't find user or you do not have sufficient permission");
+        if (tur == null) {
+            return ResponseEntity.badRequest().body("couldn't find user");
         }
-        segnalazioneService.delete(body.getData().getID());
-        return ResponseEntity.ok().body("Segnalazione deleted");
+        return switch(tur.getTipoUser()){
+            case Contributor:
+                if(segnalazione.getTipo().equals(enumTipoSegnalazione.recensione)){
+                    segnalazioneService.delete(body.getData().getID());
+                    yield ResponseEntity.ok().body("Segnalazione deleted");
+                }
+                yield ResponseEntity.badRequest().body("this user does not have sufficient permissions");
+            case ContributorAutorizzato:
+                if(segnalazione.getTipo().equals(enumTipoSegnalazione.foto) || segnalazione.getTipo().equals(enumTipoSegnalazione.video)){
+                    segnalazioneService.delete(body.getData().getID());
+                    yield ResponseEntity.ok().body("Segnalazione deleted");
+                }
+                yield ResponseEntity.badRequest().body("this user does not have sufficient permissions");
+            case Curatore:
+                if(segnalazione.getTipo().equals(enumTipoSegnalazione.divertimento) || segnalazione.getTipo().equals(enumTipoSegnalazione.itinerario) || segnalazione.getTipo().equals(enumTipoSegnalazione.ristorante)){
+                    segnalazioneService.delete(body.getData().getID());
+                    yield ResponseEntity.ok().body("Segnalazione deleted");
+                }
+                yield ResponseEntity.badRequest().body("this user does not have sufficient permissions");
+            case GestoreDellaPiattaforma:
+                if(segnalazione.getTipo().equals(enumTipoSegnalazione.bug)){
+                    segnalazioneService.delete(body.getData().getID());
+                    yield ResponseEntity.ok().body("Segnalazione deleted");
+                }
+                yield ResponseEntity.badRequest().body("this user does not have sufficient permissions");
+            default:
+                yield ResponseEntity.badRequest().body("this user does not have sufficient permissions");
+        };
+
     }
 
 }
