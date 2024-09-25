@@ -63,8 +63,8 @@ public class Divertimento {
 	private ContributorAutorizzato contributorAutorizzato;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(referencedColumnName = "ID")
-	@JsonManagedReference
+	@JoinColumn(referencedColumnName = "ID", name = "loc_div")
+	@JsonManagedReference(value = "jdivertimento")
 	private Localizzazione localizzazione;
 
 	//endregion

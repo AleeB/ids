@@ -1,5 +1,6 @@
 package it.unicam.cs.ItalianWonder.classes;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
 import jakarta.persistence.*;
@@ -22,8 +23,8 @@ public class Comune {
 	private Provincia provincia;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(referencedColumnName = "ID")
-	@JsonManagedReference
+	@JoinColumn(referencedColumnName = "ID", name = "loc_com")
+	@JsonBackReference(value = "jcomune")
 	private Localizzazione localizzazione;
 
 	//endregion

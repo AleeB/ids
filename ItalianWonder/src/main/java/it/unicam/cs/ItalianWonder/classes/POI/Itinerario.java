@@ -1,5 +1,6 @@
 package it.unicam.cs.ItalianWonder.classes.POI;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import it.unicam.cs.ItalianWonder.classes.Localizzazione;
 import it.unicam.cs.ItalianWonder.classes.Recensione;
 import it.unicam.cs.ItalianWonder.classes.Salvare;
@@ -64,6 +65,7 @@ public class Itinerario {
 			joinColumns = @JoinColumn(name = "itinerario_id"),
 			inverseJoinColumns = @JoinColumn(name = "localizzazione_id")
 	)
+	//@JsonManagedReference(value = "jitinerari")
 	private List<Localizzazione> localizzazioni;
 
 	//endregion

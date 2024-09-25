@@ -58,8 +58,8 @@ public class Ristorante {
 	private ContributorAutorizzato contributorAutorizzato;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(referencedColumnName = "ID")
-	@JsonManagedReference
+	@JoinColumn(referencedColumnName = "ID", name = "loc_ris")
+	@JsonManagedReference(value = "jristorante")
 	private Localizzazione localizzazione;
 
 	//endregion

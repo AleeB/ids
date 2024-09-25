@@ -32,19 +32,19 @@ public class Localizzazione {
 	private String lon;
 
 	@OneToOne(mappedBy = "localizzazione", fetch = FetchType.LAZY)
-	@JsonBackReference
+	@JsonBackReference(value = "jdivertimento")
 	private Divertimento divertimento;
 
 	@ManyToMany(mappedBy = "localizzazioni")
-	@JsonBackReference
+	@JsonBackReference(value = "jitinerari")
 	private List<Itinerario> itinerari;
 
 	@OneToOne(mappedBy = "localizzazione")
-	@JsonBackReference
+	@JsonBackReference(value = "jristorante")
 	private Ristorante ristorante;
 
 	@OneToOne(mappedBy = "localizzazione")
-	@JsonBackReference
+	@JsonBackReference(value = "jcomune")
 	private Comune comune;
 
 	//endregion
