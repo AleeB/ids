@@ -25,7 +25,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user\": {{contributor}},\r\n    \"data\": {\r\n        \"titolo\": \"Divertimento Test\",\r\n        \"tipo\": null,\r\n        \"dataInizio\": null,\r\n        \"dataFine\": null,\r\n        \"costo\": 0.0,\r\n        \"approvazione\": null,\r\n        \"foto\": null,\r\n        \"video\": null,\r\n        \"recensioni\": null,\r\n        \"contributor\": null,\r\n        \"contributorAutorizzato\": null,\r\n        \"localizzazione\": null,\r\n        \"salvare\": null,\r\n        \"id\": 0\r\n    }\r\n}",
+							"raw": "{\r\n    \"user\": {{contributor}},\r\n    \"data\": {\r\n        \"titolo\": \"Divertimento Test\",\r\n        \"tipo\": null,\r\n        \"dataInizio\": null,\r\n        \"dataFine\": null,\r\n        \"costo\": 0.0,\r\n        \"approvazione\": null,\r\n        \"foto\": null,\r\n        \"video\": null,\r\n        \"recensioni\": null,\r\n        \"contributor\": null,\r\n        \"contributorAutorizzato\": null,\r\n        \"localizzazione\": {\r\n            \"lat\": \"1\",\r\n            \"lon\": \"3\"\r\n        },\r\n        \"salvare\": null,\r\n        \"id\": 0\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -215,7 +215,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user\": {{curatore}},\r\n    \"data\":     {\r\n        \"nome\": \"TestComune\",\r\n        \"cap\": null\r\n    }\r\n}",
+							"raw": "{\r\n    \"user\": {{curatore}},\r\n    \"data\": {\r\n        \"nome\": \"TestComune\",\r\n        \"cap\": null,\r\n        \"localizzazione\": {\r\n            \"lat\": \"1\",\r\n            \"lon\": \"3\",\r\n            \"id\": 1\r\n        }\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -259,6 +259,337 @@
 							}
 						},
 						"url": "{{baseurl}}/comune/eliminaComune"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "segnalazione",
+			"item": [
+				{
+					"name": "newSegnalazione",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"tipo\": \"recensione\",\n  \"descrizione\": \"ciao ciccio\",\n  \"verificata\": false,\n  \"contributors\": [],\n  \"contributorAutorizzati\": [],\n  \"turista\": {\n    \"userName\": \"mario.rossi\",\n    \"nome\": \"Mario\",\n    \"cognome\": \"Rossi\",\n    \"password\": \"3053332\",\n    \"punteggio\": 100\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/segnalazione/add"
+					},
+					"response": []
+				},
+				{
+					"name": "getSegnalazioniByTipo",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"userName\": \"mario.rossi\",\r\n    \"password\": \"3053332\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/segnalazione/getSegnalazioniByTipo"
+					},
+					"response": []
+				},
+				{
+					"name": "approva",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\":{\n        \"id\": 1\n    },\n    \"user\":{\n        \"userName\": \"mario.rossi\",\n        \"password\": \"3053332\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}segnalazione/approva"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"userName\": \"mario.rossi\",\n    \"password\": \"ciao\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/turista/login"
+					},
+					"response": []
+				},
+				{
+					"name": "addNewUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"userName\": \"mario.rossi\",\n  \"nome\": \"Mario\",\n  \"cognome\": \"Rossi\",\n  \"password\": \"ciao\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/turista/add"
+					},
+					"response": []
+				},
+				{
+					"name": "changeTypeUser",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": \"Contributor\",\n    \"user\": {\n        \"userName\": \"mario.rossi\",\n        \"password\": \"3053332\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/turista/changeTypeUser"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "recensione",
+			"item": [
+				{
+					"name": "newRecensione",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"descrizione\": \"\",\n  \"valutazione\": 0,\n  \"verificata\": false,\n  \"turista\": {\n    \"userName\": \"mario.rossi\",\n    \"nome\": \"Mario\",\n    \"cognome\": \"Rossi\",\n    \"password\": \"3053332\",\n    \"punteggio\": 100\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/recensione/add"
+					},
+					"response": []
+				},
+				{
+					"name": "updateRecensione",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"data\":{\n        \"id\": 1,\n        \"descrizione\": \"ciao\",\n        \"valutazione\": 0,\n        \"verificata\": false,\n        \"turista\": {\n            \"userName\": \"mario.rossi\",\n            \"password\": \"3053332\"\n        }\n    },\n    \"user\": {\n        \"userName\": \"mario.rossi\",\n        \"password\": \"3053332\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/recensione/update"
+					},
+					"response": []
+				},
+				{
+					"name": "deleteRecensione",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"data\":{\n        \"id\": 1,\n        \"turista\": {\n            \"userName\": \"mario.rossi\",\n            \"password\": \"3053332\"\n        }\n    },\n    \"user\": {\n        \"userName\": \"mario.rossi\",\n        \"password\": \"3053332\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/recensione/delete"
+					},
+					"response": []
+				},
+				{
+					"name": "getRecensione",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:8080/api/v1/recensione/get/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "itinerario",
+			"item": [
+				{
+					"name": "addNewItinerario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"itinerario\":{\n        \"turista\": {\n            \"userName\": \"mario.rossi\",\n            \"password\": \"3053332\"\n        }\n    },\n    \"currentTurista\": {\n        \"userName\": \"mario.rossi\",\n        \"password\": \"3053332\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/Itinerario/add"
+					},
+					"response": []
+				},
+				{
+					"name": "addItinerario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"titolo\": \"tempio del valadier\",\n    \"lunghezza\": 1.25,\n    \"costo\": \"5\",\n    \"descrizione\": \"semplice camminata che sfocia in un bellissimo tempio scavato sulla roccia\",\n    \"approvazione\": false,\n    \"difficolta\": \"facile\",\n    \"contributor\":{\n        \"userName\": \"mario.rossi\",\n        \"password\": \"ciao\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/itinerario/add"
+					},
+					"response": []
+				},
+				{
+					"name": "getItinerarioByApprovazione",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/itinerario/getItinerarioByApprovazione"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contest",
+			"item": [
+				{
+					"name": "contestUpdate",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\":{\n        \"id\":1,\n        \"dataInizio\": \"2024-09-25T00:00:00.000000\",\n        \"dataFine\": \"2024-09-27T00:00:00.000000\",\n        \"titolo\": \"tech house\",\n        \"descrizione\": \"foto varie\",\n        \"animatore\": {\n            \"userName\": \"mario.rossi\",\n            \"password\": \"3053332\"\n        }\n    },\n    \"user\": {\n        \"userName\": \"mario.rossi\",\n        \"password\": \"3053332\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/contest/update"
+					},
+					"response": []
+				},
+				{
+					"name": "contestDelete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\":{\n        \"id\": 1\n    },\n    \"user\": {\n        \"userName\": \"mario.rossi\",\n        \"password\": \"3053332\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/contest/delete"
+					},
+					"response": []
+				},
+				{
+					"name": "contestGetById",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"data\": {\n        \"id\": 1\n    },\n    \"user\": {\n        \"userName\": \"mario.rossi\",\n        \"password\": \"3053332\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseUrl}}contest/getById"
+					},
+					"response": []
+				},
+				{
+					"name": "addContest",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"dataInizio\": \"2024-09-25T00:00:00.000000\",\n  \"dataFine\": \"2024-09-26T00:00:00.000000\",\n  \"titolo\": \"grimGAY\",\n  \"descrizione\":\"\",\n  \"animatore\": {\n    \"userName\": \"mario.rossi\",\n    \"password\": \"3053332\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/contest/add"
 					},
 					"response": []
 				}
