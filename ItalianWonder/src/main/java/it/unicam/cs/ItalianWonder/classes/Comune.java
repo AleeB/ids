@@ -1,5 +1,6 @@
 package it.unicam.cs.ItalianWonder.classes;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
 import jakarta.persistence.*;
 
@@ -20,8 +21,9 @@ public class Comune {
 	@JoinColumn(name = "provincia_id")
 	private Provincia provincia;
 
-	@ManyToOne
-	@JoinColumn(name = "localizzazione_id")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(referencedColumnName = "ID")
+	@JsonManagedReference
 	private Localizzazione localizzazione;
 
 	//endregion

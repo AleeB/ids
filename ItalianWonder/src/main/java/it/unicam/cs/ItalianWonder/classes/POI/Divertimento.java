@@ -1,5 +1,6 @@
 package it.unicam.cs.ItalianWonder.classes.POI;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import it.unicam.cs.ItalianWonder.classes.Localizzazione;
 import it.unicam.cs.ItalianWonder.classes.Recensione;
 import it.unicam.cs.ItalianWonder.classes.Salvare;
@@ -14,6 +15,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.*;
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table
@@ -43,10 +45,6 @@ public class Divertimento {
 	private float costo;
 	private Boolean approvazione;
 
-	public Divertimento(Map<String, Object> tmp){
-		//Copio le robe della mappa
-	}
-
 	@OneToMany(mappedBy = "divertimento")
 	private List<Foto> foto;
 
@@ -64,8 +62,9 @@ public class Divertimento {
 	@JoinColumn(name = "contributorAutorizzato_id")
 	private ContributorAutorizzato contributorAutorizzato;
 
-	@OneToOne
-	@JoinColumn(name = "localizzazione_id")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(referencedColumnName = "ID")
+	@JsonManagedReference
 	private Localizzazione localizzazione;
 
 	//endregion

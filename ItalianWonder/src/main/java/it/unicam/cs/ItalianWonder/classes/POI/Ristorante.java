@@ -1,5 +1,6 @@
 package it.unicam.cs.ItalianWonder.classes.POI;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import it.unicam.cs.ItalianWonder.classes.Localizzazione;
 import it.unicam.cs.ItalianWonder.classes.Recensione;
 import it.unicam.cs.ItalianWonder.classes.Salvare;
@@ -56,8 +57,9 @@ public class Ristorante {
 	@JoinColumn(name = "contributorAutorizzato_id")
 	private ContributorAutorizzato contributorAutorizzato;
 
-	@OneToOne
-	@JoinColumn(name = "localizzazione_id")
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(referencedColumnName = "ID")
+	@JsonManagedReference
 	private Localizzazione localizzazione;
 
 	//endregion

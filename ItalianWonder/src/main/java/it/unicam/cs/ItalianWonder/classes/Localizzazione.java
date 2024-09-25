@@ -1,5 +1,6 @@
 package it.unicam.cs.ItalianWonder.classes;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
 import it.unicam.cs.ItalianWonder.classes.POI.Itinerario;
 import it.unicam.cs.ItalianWonder.classes.POI.Ristorante;
@@ -30,17 +31,21 @@ public class Localizzazione {
 	private String lat;
 	private String lon;
 
-	@OneToOne(mappedBy = "localizzazione")
+	@OneToOne(mappedBy = "localizzazione", fetch = FetchType.LAZY)
+	@JsonBackReference
 	private Divertimento divertimento;
 
 	@ManyToMany(mappedBy = "localizzazioni")
+	@JsonBackReference
 	private List<Itinerario> itinerari;
 
 	@OneToOne(mappedBy = "localizzazione")
+	@JsonBackReference
 	private Ristorante ristorante;
 
-	@OneToMany(mappedBy = "localizzazione")
-	private List<Comune> comuni;
+	@OneToOne(mappedBy = "localizzazione")
+	@JsonBackReference
+	private Comune comune;
 
 	//endregion
 
@@ -107,12 +112,12 @@ public class Localizzazione {
 		this.itinerari = itinerari;
 	}
 
-	public List<Comune> getComuni() {
-		return comuni;
+	public Comune getComune() {
+		return comune;
 	}
 
-	public void setComuni(List<Comune> comuni) {
-		this.comuni = comuni;
+	public void setComune(Comune comuni) {
+		this.comune = comuni;
 	}
 
 	//endregion
