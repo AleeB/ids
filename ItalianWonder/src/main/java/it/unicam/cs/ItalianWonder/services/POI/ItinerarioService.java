@@ -22,12 +22,12 @@ public class ItinerarioService {
         return itinerarioRepository.findAll();
     }
 
-    public void addItinerario(Itinerario ristorante) {
-        itinerarioRepository.save(ristorante);
+    public void addItinerario(Itinerario itinerario) {
+        itinerarioRepository.save(itinerario);
     }
 
-    public void updateItinerario(Itinerario ristorante) {
-        itinerarioRepository.save(ristorante);
+    public void updateItinerario(Itinerario itinerario) {
+        itinerarioRepository.save(itinerario);
     }
 
     public void deleteItinerario(Long id) {
