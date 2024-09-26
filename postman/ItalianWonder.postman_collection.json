@@ -454,68 +454,6 @@
 			]
 		},
 		{
-			"name": "itinerario",
-			"item": [
-				{
-					"name": "addNewItinerario",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \n    \"itinerario\":{\n        \"turista\": {\n            \"userName\": \"mario.rossi\",\n            \"password\": \"3053332\"\n        }\n    },\n    \"currentTurista\": {\n        \"userName\": \"mario.rossi\",\n        \"password\": \"3053332\"\n    }\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "http://localhost:8080/api/v1/Itinerario/add"
-					},
-					"response": []
-				},
-				{
-					"name": "addItinerario",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"titolo\": \"tempio del valadier\",\n    \"lunghezza\": 1.25,\n    \"costo\": \"5\",\n    \"descrizione\": \"semplice camminata che sfocia in un bellissimo tempio scavato sulla roccia\",\n    \"approvazione\": false,\n    \"difficolta\": \"facile\",\n    \"contributor\":{\n        \"userName\": \"mario.rossi\",\n        \"password\": \"ciao\"\n    }\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "http://localhost:8080/api/v1/itinerario/add"
-					},
-					"response": []
-				},
-				{
-					"name": "getItinerarioByApprovazione",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
-					"request": {
-						"method": "GET",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "http://localhost:8080/api/v1/itinerario/getItinerarioByApprovazione"
-					},
-					"response": []
-				}
-			]
-		},
-		{
 			"name": "contest",
 			"item": [
 				{
@@ -596,6 +534,68 @@
 			]
 		},
 		{
+			"name": "itinerario",
+			"item": [
+				{
+					"name": "addNewItinerario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{ \n    \"itinerario\":{\n        \"turista\": {\n            \"userName\": \"mario.rossi\",\n            \"password\": \"3053332\"\n        }\n    },\n    \"currentTurista\": {\n        \"userName\": \"mario.rossi\",\n        \"password\": \"3053332\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/Itinerario/add"
+					},
+					"response": []
+				},
+				{
+					"name": "addItinerario",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {{contributor}},\n    \"data\": {\n        \"titolo\": \"tempio del valadier\",\n        \"lunghezza\": 1.25,\n        \"costo\": \"5\",\n        \"descrizione\": \"semplice camminata che sfocia in un bellissimo tempio scavato sulla roccia\",\n        \"approvazione\": false,\n        \"difficolta\": \"facile\",\n        \"contributor\": {{contributor}}\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/itinerario/add"
+					},
+					"response": []
+				},
+				{
+					"name": "getItinerarioByApprovazione",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:8080/api/v1/itinerario/getItinerarioByApprovazione"
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "initialize",
 			"request": {
 				"method": "POST",
@@ -635,27 +635,27 @@
 		},
 		{
 			"key": "turista",
-			"value": "{\"userName\": \"UsernameTurista1\",\n\"password\": \"\"}",
+			"value": "{\"userName\": \"UsernameTurista1\",\n\"password\": \"\",\n\"tipoUser\":\"Turista\"}",
 			"type": "string"
 		},
 		{
 			"key": "turistaAutorizzato",
-			"value": "{\"userName\": \"UsernameTuristaAutorizzato1\",\n\"password\": \"\"}",
+			"value": "{\"userName\": \"UsernameTuristaAutorizzato1\",\n\"password\": \"\",\n\"tipoUser\":\"TuristaAutorizzato\"}",
 			"type": "string"
 		},
 		{
 			"key": "contributor",
-			"value": "{\"userName\": \"UsernameContributor1\",\n\"password\": \"\"}",
+			"value": "{\"userName\": \"UsernameContributor1\",\n\"password\": \"\",\n\"tipoUser\":\"Contributor\"}",
 			"type": "string"
 		},
 		{
 			"key": "contributoAutorizzato",
-			"value": "{\"userName\": \"UsernameContributorAutorizzato1\",\n\"password\": \"\"}",
+			"value": "{\"userName\": \"UsernameContributorAutorizzato1\",\n\"password\": \"\",\n\"tipoUser\":\"ContributorAutorizzato\"}",
 			"type": "string"
 		},
 		{
 			"key": "curatore",
-			"value": "{\"userName\": \"UsernameCuratore1\",\n\"password\": \"\"}",
+			"value": "{\"userName\": \"UsernameCuratore1\",\n\"password\": \"\",\n\"tipoUser\":\"Curatore\"}",
 			"type": "string"
 		}
 	]
