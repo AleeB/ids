@@ -6,6 +6,7 @@ import it.unicam.cs.ItalianWonder.classes.Salvare;
 import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
 import it.unicam.cs.ItalianWonder.classes.mediator.ServiceMediator;
 import it.unicam.cs.ItalianWonder.classes.users.Contributor;
+import it.unicam.cs.ItalianWonder.classes.users.ContributorAutorizzato;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
 import java.util.ArrayList;
 import java.util.List;
@@ -54,9 +55,15 @@ public class DivertimentoController {
     public ResponseEntity<String> aggiungiDivertimento(@RequestBody BodyTemplate<Divertimento> body) {
         Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
         switch (user.getTipoUser()){
-            case Contributor -> body.getData().setApprovazione(false);
-            case ContributorAutorizzato,Curatore -> body.getData().setApprovazione(true);
-            default -> {
+            case Contributor: {
+                body.getData().setApprovazione(false);
+                body.getData().setContributor((Contributor) user);
+            }break;
+            case ContributorAutorizzato, Curatore: {
+                body.getData().setApprovazione(true);
+                body.getData().setContributorAutorizzato((ContributorAutorizzato) user);
+            }break;
+            default: {
                 return ResponseEntity.status(401).body("Non Autorizzato");
             }
         }
@@ -78,7 +85,7 @@ public class DivertimentoController {
         Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
         if(user.getTipoUser() != enumTipoUtente.Curatore)
             return ResponseEntity.status(401).body("Non Autorizzato");
-        serviceMediator.delete(body.getData().getID(),Divertimento.class);//Cambiare in ID
+        serviceMediator.delete(body.getData().getID(),Divertimento.class);
         return ResponseEntity.ok("Divertimento Eliminato");
     }
 }

@@ -7,6 +7,8 @@ import it.unicam.cs.ItalianWonder.classes.POI.Ristorante;
 import it.unicam.cs.ItalianWonder.classes.Salvare;
 import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
 import it.unicam.cs.ItalianWonder.classes.mediator.ServiceMediator;
+import it.unicam.cs.ItalianWonder.classes.users.Contributor;
+import it.unicam.cs.ItalianWonder.classes.users.ContributorAutorizzato;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
 import java.util.ArrayList;
 import java.util.List;
@@ -50,9 +52,15 @@ public class RistoranteController {
     public ResponseEntity<String> aggiungiRistorante(@RequestBody BodyTemplate<Ristorante> body) {
         Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
         switch (user.getTipoUser()){
-            case Contributor -> body.getData().setApprovazione(false);
-            case ContributorAutorizzato,Curatore -> body.getData().setApprovazione(true);
-            default -> {
+            case Contributor : {
+                body.getData().setApprovazione(false);
+                body.getData().setContributor((Contributor) user);
+            }break;
+            case ContributorAutorizzato, Curatore: {
+                body.getData().setApprovazione(true);
+                body.getData().setContributorAutorizzato((ContributorAutorizzato) user);
+            }break;
+            default: {
                 return ResponseEntity.status(401).body("Non Autorizzato");
             }
         }

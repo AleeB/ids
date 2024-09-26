@@ -4,6 +4,7 @@ import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
 import it.unicam.cs.ItalianWonder.classes.mediator.ServiceMediator;
 import it.unicam.cs.ItalianWonder.classes.users.Contributor;
 import it.unicam.cs.ItalianWonder.classes.users.ContributorAutorizzato;
+import it.unicam.cs.ItalianWonder.classes.users.Curatore;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
 import it.unicam.cs.ItalianWonder.classes.users.TuristaAutorizzato;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,11 @@ public class InitializerController {
 
   private final ServiceMediator serviceMediator;
 
-  Turista turista1, turistaAutorizzato1, contributor1, contributorAutorizzato1, curatore1;
+  Turista turista1;
+  TuristaAutorizzato turistaAutorizzato1;
+  Contributor contributor1;
+  ContributorAutorizzato contributorAutorizzato1;
+  Curatore curatore1;
 
   public InitializerController(ServiceMediator serviceMediator) {
     this.serviceMediator = serviceMediator;
@@ -39,7 +44,7 @@ public class InitializerController {
     turista1.setUserName("UsernameTurista1");
     turista1.setTipoUser(enumTipoUtente.Turista);
 
-    turistaAutorizzato1 = new Turista();
+    turistaAutorizzato1 = new TuristaAutorizzato();
     turistaAutorizzato1.setNome("NomeTuristaAutorizzato1");
     turistaAutorizzato1.setCognome("CognomeTuristaAutorizzato1");
     turistaAutorizzato1.setPassword("");
@@ -47,7 +52,7 @@ public class InitializerController {
     turistaAutorizzato1.setID_UserName("UsernameTuristaAutorizzato1");
     turistaAutorizzato1.setTipoUser(enumTipoUtente.TuristaAutorizzato);
 
-    contributor1 = new Turista();
+    contributor1 = new Contributor();
     contributor1.setNome("NomeContributor1");
     contributor1.setCognome("CognomeContributor1");
     contributor1.setPassword("");
@@ -55,7 +60,7 @@ public class InitializerController {
     contributor1.setID_UserName("UsernameContributor1");
     contributor1.setTipoUser(enumTipoUtente.Contributor);
 
-    contributorAutorizzato1 = new Turista();
+    contributorAutorizzato1 = new ContributorAutorizzato();
     contributorAutorizzato1.setNome("NomeContributorAutorizzato1");
     contributorAutorizzato1.setCognome("CognomeContributorAutorizzato1");
     contributorAutorizzato1.setPassword("");
@@ -63,7 +68,7 @@ public class InitializerController {
     contributorAutorizzato1.setID_UserName("UsernameContributorAutorizzato1");
     contributorAutorizzato1.setTipoUser(enumTipoUtente.ContributorAutorizzato);
 
-    curatore1 = new Turista();
+    curatore1 = new Curatore();
     curatore1.setNome("NomeCuratore1");
     curatore1.setCognome("CognomeCuratore1");
     curatore1.setPassword("");

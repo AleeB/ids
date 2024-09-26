@@ -1,5 +1,7 @@
 package it.unicam.cs.ItalianWonder.classes.users;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import it.unicam.cs.ItalianWonder.classes.Comune;
 import it.unicam.cs.ItalianWonder.classes.Contest;
 import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
@@ -14,6 +16,19 @@ import java.util.*;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@JsonTypeInfo(
+		use = JsonTypeInfo.Id.NAME,
+		include = JsonTypeInfo.As.EXISTING_PROPERTY,
+		property = "tipoUser", visible = true)
+@JsonSubTypes({
+		@JsonSubTypes.Type(value = Turista.class, name = "Turista"),
+		@JsonSubTypes.Type(value = TuristaAutorizzato.class, name = "TuristaAutorizzato"),
+		@JsonSubTypes.Type(value = Contributor.class, name = "Contributor"),
+		@JsonSubTypes.Type(value = ContributorAutorizzato.class, name = "ContributorAutorizzato"),
+		@JsonSubTypes.Type(value = Animatore.class, name = "Animatore"),
+		@JsonSubTypes.Type(value = Curatore.class, name = "Curatore"),
+		@JsonSubTypes.Type(value = GestoreDellaPiattaforma.class, name = "GestoreDellaPiattaforma"),
+})
 public class Turista{
 
 	//region Vars
