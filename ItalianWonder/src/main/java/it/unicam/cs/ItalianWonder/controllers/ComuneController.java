@@ -27,7 +27,7 @@ public class ComuneController {
       this.serviceMediator = mediator;
     }
 
-    @RequestMapping(value = "/getComuni", method = RequestMethod.POST)
+    @RequestMapping(value = "/getComuni", method = RequestMethod.GET)
     public ResponseEntity<List<Comune>> getAllComuni() {
         return ResponseEntity.ok(serviceMediator.get(Comune.class).stream().map(
             item->(Comune)item
@@ -43,7 +43,7 @@ public class ComuneController {
         return ResponseEntity.ok("Comune Aggiunto");
     }
 
-    @RequestMapping(value = "/modificaComune", method = RequestMethod.POST)
+    @RequestMapping(value = "/modificaComune", method = RequestMethod.PUT)
     public ResponseEntity<String> modificaComune(@RequestBody BodyTemplate<Comune> body) {
         Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
         if(user.getTipoUser() != enumTipoUtente.Curatore)
@@ -52,7 +52,7 @@ public class ComuneController {
         return ResponseEntity.ok("Comune Modificato");
     }
 
-    @RequestMapping(value = "/eliminaComune", method = RequestMethod.POST)
+    @RequestMapping(value = "/eliminaComune", method = RequestMethod.DELETE)
     public ResponseEntity<String> eliminaComune(@RequestBody BodyTemplate<Comune> body) {
         Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
         if(user.getTipoUser() != enumTipoUtente.Curatore)

@@ -1,5 +1,6 @@
 package it.unicam.cs.ItalianWonder.services.POI;
 
+import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
 import it.unicam.cs.ItalianWonder.classes.POI.Itinerario;
 import it.unicam.cs.ItalianWonder.classes.POI.Ristorante;
 import org.springframework.beans.factory.annotation.Autowired;

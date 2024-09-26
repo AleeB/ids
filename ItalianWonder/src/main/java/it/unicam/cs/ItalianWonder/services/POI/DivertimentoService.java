@@ -32,4 +32,8 @@ public class DivertimentoService {
   public void eliminaDivertimento(Long id) {
       divertimentoRepository.deleteById(id);
   }
+
+  public List<Divertimento> getDivertimentoByApprovazione(boolean approvazione) {
+      return divertimentoRepository.findByApprovazione(approvazione);
+  }
 }

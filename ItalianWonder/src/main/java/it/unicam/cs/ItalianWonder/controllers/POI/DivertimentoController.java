@@ -2,6 +2,7 @@ package it.unicam.cs.ItalianWonder.controllers.POI;
 
 import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
 import it.unicam.cs.ItalianWonder.classes.BodyTemplate;
+import it.unicam.cs.ItalianWonder.classes.POI.Itinerario;
 import it.unicam.cs.ItalianWonder.classes.Salvare;
 import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
 import it.unicam.cs.ItalianWonder.classes.mediator.ServiceMediator;
@@ -29,26 +30,27 @@ public class DivertimentoController {
       this.serviceMediator = salvareService;
     }
 
-    @RequestMapping(value = "/test", method = RequestMethod.POST)
-    public ResponseEntity<List<Divertimento>> getTest() {
-        List<Divertimento> tmp = new ArrayList<>();
-        Divertimento tmpD = new Divertimento();
-        Contributor c = new Contributor();
-        tmpD.setContributor(c);
-        tmp.add(tmpD);
-        return ResponseEntity.ok(tmp);
-        /*return ResponseEntity.ok(
-            mediator.get().stream()
-            .map(item-> (Divertimento)item).toList()
-        );*/
-    }
-
-    @RequestMapping(value = "/getDivertimenti", method = RequestMethod.POST)
+    @RequestMapping(value = "/getDivertimenti", method = RequestMethod.GET)
     public ResponseEntity<List<Divertimento>> getAllDivertimenti() {
         return ResponseEntity.ok(
             serviceMediator.get(Divertimento.class).stream()
                 .map(item-> (Divertimento)item).toList()
         );
+    }
+
+    @RequestMapping(value = "/getByApprovazione", method = RequestMethod.GET)
+    public List<Divertimento> getByApprovazione(@RequestBody BodyTemplate<Boolean> body){
+        Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
+        return switch (user.getTipoUser()){
+            case UserNonAutenticato, Turista, TuristaAutorizzato:
+                yield serviceMediator.get(Map.of("approvazione", true), Divertimento.class).stream().map(
+                    item->(Divertimento)item
+                ).toList();
+            case Contributor, ContributorAutorizzato, Animatore, Curatore, GestoreDellaPiattaforma:
+                yield serviceMediator.get(Map.of("approvazione", body.getData()), Divertimento.class).stream().map(
+                    item->(Divertimento)item
+                ).toList();
+        };
     }
 
     @RequestMapping(value = "/postDivertimento", method = RequestMethod.POST)
@@ -71,16 +73,16 @@ public class DivertimentoController {
         return ResponseEntity.ok("Divertimento Aggiunto");
     }
 
-    @RequestMapping(value = "/modificaDivertimento", method = RequestMethod.POST)
+    @RequestMapping(value = "/modificaDivertimento", method = RequestMethod.PUT)
     public ResponseEntity<String> modificaDivertimento(@RequestBody BodyTemplate<Divertimento> body) {
         Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
         if(user.getTipoUser() != enumTipoUtente.Curatore)
             return ResponseEntity.status(401).body("Non Autorizzato");
-        serviceMediator.update(body);
+        serviceMediator.update(body.getData());
         return ResponseEntity.ok("Divertimento Modificato");
     }
 
-    @RequestMapping(value = "/eliminaDivertimento", method = RequestMethod.POST)
+    @RequestMapping(value = "/eliminaDivertimento", method = RequestMethod.DELETE)
     public ResponseEntity<String> eliminaDivertimento(@RequestBody BodyTemplate<Divertimento> body) {
         Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
         if(user.getTipoUser() != enumTipoUtente.Curatore)

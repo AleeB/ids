@@ -32,4 +32,8 @@ public class RistoranteService {
   public void eliminaRistorante(Long id) {
       ristoranteRepository.deleteById(id);
   }
+
+  public List<Ristorante> getRistoranteByApprovazione(boolean approvazione){
+      return ristoranteRepository.findByApprovazione(approvazione);
+  }
 }

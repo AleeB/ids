@@ -11,10 +11,43 @@
 			"item": [
 				{
 					"name": "getDivertimenti",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
 						"url": "{{baseurl}}/divertimento/getDivertimenti"
+					},
+					"response": []
+				},
+				{
+					"name": "getByApprovazione",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {{turista}},\r\n    \"data\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseurl}}/divertimento/getByApprovazione"
 					},
 					"response": []
 				},
@@ -25,7 +58,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user\": {{contributor}},\r\n    \"data\": {\r\n        \"titolo\": \"Divertimento Test\",\r\n        \"tipo\": null,\r\n        \"dataInizio\": null,\r\n        \"dataFine\": null,\r\n        \"costo\": 0.0,\r\n        \"approvazione\": null,\r\n        \"foto\": null,\r\n        \"video\": null,\r\n        \"recensioni\": null,\r\n        \"contributor\": null,\r\n        \"contributorAutorizzato\": null,\r\n        \"localizzazione\": {\r\n            \"lat\": \"1\",\r\n            \"lon\": \"3\"\r\n        },\r\n        \"salvare\": null,\r\n        \"id\": 0\r\n    }\r\n}",
+							"raw": "{\r\n    \"user\": {{contributor}},\r\n    \"data\": {\r\n        \"titolo\": \"Divertimento Test2\",\r\n        \"tipo\": null,\r\n        \"dataInizio\": null,\r\n        \"dataFine\": null,\r\n        \"costo\": 0.0,\r\n        \"approvazione\": null,\r\n        \"foto\": null,\r\n        \"video\": null,\r\n        \"recensioni\": null,\r\n        \"contributor\": null,\r\n        \"contributorAutorizzato\": null,\r\n        \"localizzazione\": {\r\n            \"lat\": \"1\",\r\n            \"lon\": \"3\"\r\n        },\r\n        \"salvare\": null,\r\n        \"id\": 0\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -39,11 +72,11 @@
 				{
 					"name": "modificaDivertimento",
 					"request": {
-						"method": "POST",
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user\": {{curatore}},\r\n    \"data\": {\r\n        \"titolo\": \"Divertimento Test Modificato\",\r\n        \"tipo\": null,\r\n        \"dataInizio\": null,\r\n        \"dataFine\": null,\r\n        \"costo\": 0.0,\r\n        \"approvazione\": null,\r\n        \"foto\": null,\r\n        \"video\": null,\r\n        \"recensioni\": null,\r\n        \"contributor\": null,\r\n        \"contributorAutorizzato\": null,\r\n        \"localizzazione\": null,\r\n        \"salvare\": null,\r\n        \"id\": 0\r\n    }\r\n}",
+							"raw": "{\r\n    \"user\": {{curatore}},\r\n    \"data\": {\r\n        \"titolo\": \"Divertimento Test Modificato\",\r\n        \"tipo\": null,\r\n        \"dataInizio\": null,\r\n        \"dataFine\": null,\r\n        \"costo\": 0.0,\r\n        \"approvazione\": null,\r\n        \"foto\": null,\r\n        \"video\": null,\r\n        \"recensioni\": null,\r\n        \"contributor\": null,\r\n        \"contributorAutorizzato\": null,\r\n        \"localizzazione\": null,\r\n        \"salvare\": null,\r\n        \"id\": 1\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -57,7 +90,7 @@
 				{
 					"name": "eliminaDivertimento",
 					"request": {
-						"method": "POST",
+						"method": "DELETE",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -97,12 +130,36 @@
 			"item": [
 				{
 					"name": "getRistoranti",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": "{\r\n    \"user\": {{turista}},\r\n    \"data\": {\r\n        \"nome\": null,\r\n        \"numeroTelefono\": null,\r\n        \"valutazione\": 0,\r\n        \"costoMedio\": 0.0,\r\n        \"approvazione\": false,\r\n        \"foto\": null,\r\n        \"video\": null,\r\n        \"recensioni\": null,\r\n        \"contributor\": null,\r\n        \"contributorAutorizzato\": null,\r\n        \"localizzazione\": {\r\n            \"lat\":10,\r\n            \"lon\":20\r\n        },\r\n        \"id\": 0\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseurl}}/ristorante/getRistoranti"
+					},
+					"response": []
+				},
+				{
+					"name": "getByApprovazione",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user\": {{turista}},\r\n    \"data\": false\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -120,7 +177,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"user\": {{contributor}},\r\n    \"data\": {\r\n        \"nome\": \"Testorante\",\r\n        \"numeroTelefono\": null,\r\n        \"valutazione\": 0,\r\n        \"costoMedio\": 0.0,\r\n        \"approvazione\": false,\r\n        \"foto\": null,\r\n        \"video\": null,\r\n        \"recensioni\": null,\r\n        \"contributor\": null,\r\n        \"contributorAutorizzato\": null,\r\n                \"localizzazione\": {\r\n                    \"id\":0,\r\n            \"lat\":\"1\",\r\n            \"lon\":\"2\"\r\n        },\r\n        \"id\": 0\r\n    }\r\n}",
+							"raw": "{\r\n    \"user\": {{contributoAutorizzato}},\r\n    \"data\": {\r\n        \"nome\": \"Non approvato\",\r\n        \"numeroTelefono\": null,\r\n        \"valutazione\": 0,\r\n        \"costoMedio\": 0.0,\r\n        \"approvazione\": false,\r\n        \"foto\": null,\r\n        \"video\": null,\r\n        \"recensioni\": null,\r\n        \"contributor\": null,\r\n        \"contributorAutorizzato\": null,\r\n                \"localizzazione\": {\r\n                    \"id\":0,\r\n            \"lat\":\"1\",\r\n            \"lon\":\"2\"\r\n        },\r\n        \"id\": 0\r\n    }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -134,7 +191,7 @@
 				{
 					"name": "modificaRistorante",
 					"request": {
-						"method": "POST",
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -152,7 +209,7 @@
 				{
 					"name": "eliminaRIstorante",
 					"request": {
-						"method": "POST",
+						"method": "DELETE",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -192,8 +249,11 @@
 			"item": [
 				{
 					"name": "getComuni",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -229,7 +289,7 @@
 				{
 					"name": "modificaComune",
 					"request": {
-						"method": "POST",
+						"method": "PUT",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -247,7 +307,7 @@
 				{
 					"name": "eliminaComune",
 					"request": {
-						"method": "POST",
+						"method": "DELETE",
 						"header": [],
 						"body": {
 							"mode": "raw",
@@ -561,7 +621,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"user\": {{contributor}},\n    \"data\": {\n        \"titolo\": \"tempio del valadier\",\n        \"lunghezza\": 1.25,\n        \"costo\": \"5\",\n        \"descrizione\": \"semplice camminata che sfocia in un bellissimo tempio scavato sulla roccia\",\n        \"approvazione\": false,\n        \"difficolta\": \"facile\",\n        \"contributor\": {{contributor}}\n    }\n}",
+							"raw": "{\n    \"user\": {{contributor}},\n    \"data\": {\n        \"titolo\": \"tempio del valadier\",\n        \"lunghezza\": 1.25,\n        \"costo\": \"5\",\n        \"descrizione\": \"semplice camminata che sfocia in un bellissimo tempio scavato sulla roccia\",\n        \"approvazione\": false,\n        \"difficolta\": \"facile\",\n        \"contributor\": {{contributor}},\n        \"localizzazioni\":[\n            {\n                \"lat\":1,\n                \"lon\":2\n            }\n        ]\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"

@@ -49,6 +49,14 @@ public class Salvare implements ServiceMediator {
             return itinerarioService.getItinerarioByApprovazione(((boolean) data.get("approvazione")));
         }
 
+        if(type == Ristorante.class && data.containsKey("approvazione")){
+            return ristoranteService.getRistoranteByApprovazione(((boolean) data.get("approvazione")));
+        }
+
+        if(type == Divertimento.class && data.containsKey("approvazione")){
+            return divertimentoService.getDivertimentoByApprovazione(((boolean) data.get("approvazione")));
+        }
+
         System.err.println(type.toString() + " Get(..) Mediator Not Implemented");
         return List.of();
     }
