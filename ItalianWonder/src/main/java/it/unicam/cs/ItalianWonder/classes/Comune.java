@@ -61,13 +61,5 @@ public class Comune {
 
 	//endregion
 
-	//region Methods
-
-	public Comune mostraComuni() {
-		// TODO - implement Comune.mostraComuni
-		throw new UnsupportedOperationException();
-	}
-
-	//endregion
 
 }

@@ -122,10 +122,4 @@ public class Localizzazione {
 
 	//endregion
 
-	//region Methods
-
-
-
-	//endregion
-
 }

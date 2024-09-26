@@ -183,28 +183,4 @@ public class Divertimento {
 	}
 	//endregion
 
-	//region Methods
-
-	public void divertimento() {
-		// TODO - implement Divertimento.divertimento
-		throw new UnsupportedOperationException();
-	}
-
-	public boolean modificaCosto() {
-		// TODO - implement Divertimento.modificaCosto
-		throw new UnsupportedOperationException();
-	}
-
-	public boolean modificaDataInizioFine() {
-		// TODO - implement Divertimento.modificaDataInizioFine
-		throw new UnsupportedOperationException();
-	}
-
-	public boolean approvazione() {
-		// TODO - implement Divertimento.approvazione
-		throw new UnsupportedOperationException();
-	}
-
-	//endregion
-
 }

@@ -118,37 +118,9 @@ public class Contest {
 
 	//region Constr
 
-
-
-	//endregion
-
-	//region Methods
-
-	/**
-	 * 
-	 * @param idContest
-	 */
-	public List<Foto> mostraFotoContest(long idContest) {
-		// TODO - implement Contest.mostraFotoContest
-		throw new UnsupportedOperationException();
+	public Contest() {
 	}
 
-	/**
-	 * 
-	 * @param idContest
-	 */
-	public List<Foto> creaClassificaContest(long idContest) {
-		// TODO - implement Contest.creaClassificaContest
-		throw new UnsupportedOperationException();
-	}
-
-	/**
-	 * imposta la data di chiusura a datetime.now
-	 */
-	public boolean chiudiContest() {
-		// TODO - implement Contest.chiudiContest
-		throw new UnsupportedOperationException();
-	}
 
 	//endregion
 

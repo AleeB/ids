@@ -127,13 +127,5 @@ public class Recensione {
 
 	//endregion
 
-	//region Methods
-
-	public void verifica() {
-		// TODO - implement Recensione.verifica
-		throw new UnsupportedOperationException();
-	}
-
-	//endregion
 
 }

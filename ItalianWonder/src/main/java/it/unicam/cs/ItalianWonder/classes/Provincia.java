@@ -73,24 +73,4 @@ public class Provincia {
 
 	//endregion
 
-	//region Methods
-
-	protected List<Provincia> getProvinceFromFile(){
-		String nomeFile = "files/Province.dat";
-		ArrayList<Provincia> prov = new ArrayList<Provincia>();
-		try(BufferedReader br = new BufferedReader(new FileReader(nomeFile))) {
-			String[] line;
-			while (br.readLine() != null) {
-				line = br.readLine().split(";");
-				prov.add(new Provincia(line[0], line[1]));
-			}
-			br.close();
-			return prov;
-		} catch (Exception e) {
-			return null;
-		}
-	}
-
-	//endregion
-
 }

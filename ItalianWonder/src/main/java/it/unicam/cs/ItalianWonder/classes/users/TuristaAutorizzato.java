@@ -45,13 +45,4 @@ public class TuristaAutorizzato extends Turista {
 		super(tur);
 	}
 
-	//region Methods
-
-	public boolean salvaInformazione() {
-		// TODO - implement TuristaAutorizzato.salvaInformazione
-		throw new UnsupportedOperationException();
-	}
-
-	//endregion
-
 }

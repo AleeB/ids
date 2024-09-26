@@ -170,9 +170,5 @@ public class Foto {
 
 	//endregion
 
-	public boolean approvato(int idFoto) {
-		// TODO - implement Foto.approvato
-		throw new UnsupportedOperationException();
-	}
 
 }

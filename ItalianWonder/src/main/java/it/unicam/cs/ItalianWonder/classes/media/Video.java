@@ -173,18 +173,4 @@ public class Video {
 
 	//endregion
 
-	//region Methods
-
-	public void video() {
-		// TODO - implement Video.video
-		throw new UnsupportedOperationException();
-	}
-
-	public void approvato() {
-		// TODO - implement Video.approvato
-		throw new UnsupportedOperationException();
-	}
-
-	//endregion
-
 }

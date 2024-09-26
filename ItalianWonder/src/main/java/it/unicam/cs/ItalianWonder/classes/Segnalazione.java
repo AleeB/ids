@@ -119,13 +119,4 @@ public class Segnalazione {
 
 	//endregion
 
-	//region Methods
-
-	public boolean verifica() {
-		// TODO - implement Segnalazione.verifica
-		throw new UnsupportedOperationException();
-	}
-
-	//endregion
-
 }
