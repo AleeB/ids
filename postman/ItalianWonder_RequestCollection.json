@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "f5ea12fa-b526-46ce-8b06-9968a62f41bc",
+		"_postman_id": "65019cab-f0bb-466d-adcd-81eea42674e7",
 		"name": "ItalianWonder",
 		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
-		"_exporter_id": "35295146"
+		"_exporter_id": "31489217"
 	},
 	"item": [
 		{
@@ -597,31 +597,13 @@
 			"name": "itinerario",
 			"item": [
 				{
-					"name": "addNewItinerario",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{ \n    \"itinerario\":{\n        \"turista\": {\n            \"userName\": \"mario.rossi\",\n            \"password\": \"3053332\"\n        }\n    },\n    \"currentTurista\": {\n        \"userName\": \"mario.rossi\",\n        \"password\": \"3053332\"\n    }\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": "http://localhost:8080/api/v1/Itinerario/add"
-					},
-					"response": []
-				},
-				{
 					"name": "addItinerario",
 					"request": {
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"user\": {{contributor}},\n    \"data\": {\n        \"titolo\": \"tempio del valadier\",\n        \"lunghezza\": 1.25,\n        \"costo\": \"5\",\n        \"descrizione\": \"semplice camminata che sfocia in un bellissimo tempio scavato sulla roccia\",\n        \"approvazione\": false,\n        \"difficolta\": \"facile\",\n        \"contributor\": {{contributor}},\n        \"localizzazioni\":[\n            {\n                \"lat\":1,\n                \"lon\":2\n            }\n        ]\n    }\n}",
+							"raw": "{\n    \"user\": {{contributor}},\n    \"data\": {\n        \"titolo\": \"tempio del valadier\",\n        \"lunghezza\": 1.25,\n        \"costo\": \"5\",\n        \"descrizione\": \"semplice camminata che sfocia in un bellissimo tempio scavato sulla roccia\",\n        \"difficolta\": \"facile\",\n        \"localizzazioni\":[\n            {\n                \"lat\": 12.2314214,\n                \"lon\": 13.1231241\n        }\n        ]\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -642,14 +624,68 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "",
+							"raw": "{\n    \"data\": false,\n    \"user\":{{contributoAutorizzato}}\n}",
 							"options": {
 								"raw": {
 									"language": "json"
 								}
 							}
 						},
-						"url": "http://localhost:8080/api/v1/itinerario/getItinerarioByApprovazione"
+						"url": "http://localhost:8080/api/v1/itinerario/getByApprovazione"
+					},
+					"response": []
+				},
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {{curatore}},\n    \"data\": {\n        \"id\": 2,\n        \"titolo\": \"tempio di berre\",\n        \"lunghezza\": 1.25,\n        \"costo\": \"5\",\n        \"descrizione\": \"semplice camminata che sfocia in un bellissimo tempio scavato sulla roccia\",\n        \"approvazione\": false,\n        \"difficolta\": \"facile\",\n        \"localizzazioni\":[\n            {\n                \"lat\": 12.2314214,\n                \"lon\": 13.1231241\n        }\n        ]\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseurl}}/itinerario/update"
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {{curatore}},\n    \"data\":{\n        \"id\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseurl}}/itinerario/delete"
+					},
+					"response": []
+				},
+				{
+					"name": "approva",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"user\": {{contributor}},\n    \"data\":{\n        \"id\": 1\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{baseurl}}/itinerario/approve"
 					},
 					"response": []
 				}

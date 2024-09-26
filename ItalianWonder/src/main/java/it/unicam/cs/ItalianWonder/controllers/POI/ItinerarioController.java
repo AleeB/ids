@@ -27,13 +27,11 @@ public class ItinerarioController {
 
     private final ServiceMediator serviceMediator;
     private final TuristaService turistaService;
-    private final ItinerarioService itinerarioService;
 
     @Autowired
-    public ItinerarioController(ServiceMediator serviceMediator, TuristaService turistaService, ItinerarioService itinerarioService) {
+    public ItinerarioController(ServiceMediator serviceMediator, TuristaService turistaService) {
         this.serviceMediator = serviceMediator;
         this.turistaService = turistaService;
-        this.itinerarioService = itinerarioService;
     }
 
     @RequestMapping(value = "/get", method = RequestMethod.POST)
@@ -79,7 +77,7 @@ public class ItinerarioController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public ResponseEntity<String> updateItinerario(@RequestBody BodyTemplate<Ristorante> body) {
+    public ResponseEntity<String> updateItinerario(@RequestBody BodyTemplate<Itinerario> body) {
         Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
         if(user.getTipoUser() != enumTipoUtente.Curatore)
             return ResponseEntity.status(401).body("Non Autorizzato");
@@ -92,7 +90,7 @@ public class ItinerarioController {
         Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
         if(user.getTipoUser() != enumTipoUtente.Curatore)
             return ResponseEntity.status(401).body("Non Autorizzato");
-        serviceMediator.delete(body.getData().getID(), Ristorante.class);
+        serviceMediator.delete(body.getData().getID(), Itinerario.class);
         return ResponseEntity.ok("Itinerario Eliminato");
     }
 
@@ -104,7 +102,7 @@ public class ItinerarioController {
 
         body.getData().setApprovazione(true);
         serviceMediator.update(body.getData());
-        return ResponseEntity.ok("Itinerario Approvato! (Buon pranzo :) )");
+        return ResponseEntity.ok("Itinerario Approvato!");
     }
 
 }
