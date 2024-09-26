@@ -45,6 +45,10 @@ public class Salvare implements ServiceMediator {
             return turistaService.login(credenziali.getUserName(), credenziali.getPassword()).stream().toList();
         }
 
+        if(type == Itinerario.class && data.containsKey("approvazione")){
+            return itinerarioService.getItinerarioByApprovazione(((boolean) data.get("approvazione")));
+        }
+
         System.err.println(type.toString() + " Get(..) Mediator Not Implemented");
         return List.of();
     }

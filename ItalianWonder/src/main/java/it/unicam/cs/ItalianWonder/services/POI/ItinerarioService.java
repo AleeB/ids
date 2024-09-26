@@ -33,4 +33,8 @@ public class ItinerarioService {
     public void deleteItinerario(Long id) {
         itinerarioRepository.deleteById(id);
     }
+
+    public List<Itinerario> getItinerarioByApprovazione(boolean approvazione) {
+        return itinerarioRepository.findByApprovazione(approvazione).get();
+    }
 }

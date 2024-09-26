@@ -59,7 +59,7 @@ public class Itinerario {
 	@JoinColumn(name = "contributorAutorizzato_id")
 	private ContributorAutorizzato contributorAutorizzato;
 
-	@ManyToMany
+	@ManyToMany(cascade = CascadeType.ALL)
 	@JoinTable(
 			name = "itinerario_localizzazione",
 			joinColumns = @JoinColumn(name = "itinerario_id"),
@@ -167,11 +167,11 @@ public class Itinerario {
 		this.contributorAutorizzato = contributorAutorizzato;
 	}
 
-	public List<Localizzazione> getLocalizzazione() {
+	public List<Localizzazione> getLocalizzazioni() {
 		return localizzazioni;
 	}
 
-	public void setLocalizzazione(List<Localizzazione> localizzazioni) {
+	public void setLocalizzazioni(List<Localizzazione> localizzazioni) {
 		this.localizzazioni = localizzazioni;
 	}
 
