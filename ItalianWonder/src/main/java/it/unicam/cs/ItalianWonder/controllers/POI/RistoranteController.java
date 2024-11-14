@@ -1,31 +1,22 @@
 package it.unicam.cs.ItalianWonder.controllers.POI;
 
 import it.unicam.cs.ItalianWonder.classes.BodyTemplate;
-import it.unicam.cs.ItalianWonder.classes.Comune;
-import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
-import it.unicam.cs.ItalianWonder.classes.POI.Itinerario;
 import it.unicam.cs.ItalianWonder.classes.POI.Ristorante;
-import it.unicam.cs.ItalianWonder.classes.Salvare;
+import it.unicam.cs.ItalianWonder.classes.Salva;
 import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
 import it.unicam.cs.ItalianWonder.classes.mediator.ServiceMediator;
 import it.unicam.cs.ItalianWonder.classes.users.Contributor;
 import it.unicam.cs.ItalianWonder.classes.users.ContributorAutorizzato;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import it.unicam.cs.ItalianWonder.services.POI.RistoranteService;
 
 @RestController
 @RequestMapping(path = "api/v1/ristorante")
@@ -33,7 +24,7 @@ public class RistoranteController {
     private final ServiceMediator serviceMediator;
 
     @Autowired
-    public RistoranteController(Salvare serviceMediator) {
+    public RistoranteController(Salva serviceMediator) {
       this.serviceMediator = serviceMediator;
     }
 

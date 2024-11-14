@@ -2,11 +2,11 @@ package it.unicam.cs.ItalianWonder.controllers;
 
 import it.unicam.cs.ItalianWonder.classes.BodyTemplate;
 import it.unicam.cs.ItalianWonder.classes.Comune;
-import it.unicam.cs.ItalianWonder.classes.Salvare;
+import it.unicam.cs.ItalianWonder.classes.Salva;
 import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
 import it.unicam.cs.ItalianWonder.classes.mediator.ServiceMediator;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
-import java.util.Collections;
+
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -23,7 +23,7 @@ public class ComuneController {
     private final ServiceMediator serviceMediator;
 
     @Autowired
-    public ComuneController(Salvare mediator) {
+    public ComuneController(Salva mediator) {
       this.serviceMediator = mediator;
     }
 

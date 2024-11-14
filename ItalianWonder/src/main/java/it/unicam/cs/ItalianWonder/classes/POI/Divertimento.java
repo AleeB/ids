@@ -3,19 +3,15 @@ package it.unicam.cs.ItalianWonder.classes.POI;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import it.unicam.cs.ItalianWonder.classes.Localizzazione;
 import it.unicam.cs.ItalianWonder.classes.Recensione;
-import it.unicam.cs.ItalianWonder.classes.Salvare;
 import it.unicam.cs.ItalianWonder.classes.enums.enumTipoDivertimento;
 import it.unicam.cs.ItalianWonder.classes.media.Foto;
 import it.unicam.cs.ItalianWonder.classes.media.Video;
 import it.unicam.cs.ItalianWonder.classes.users.Contributor;
 import it.unicam.cs.ItalianWonder.classes.users.ContributorAutorizzato;
-import it.unicam.cs.ItalianWonder.classes.users.Turista;
-import it.unicam.cs.ItalianWonder.classes.users.UserNonAutenticato;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.*;
-import org.hibernate.annotations.Cascade;
 
 @Entity
 @Table

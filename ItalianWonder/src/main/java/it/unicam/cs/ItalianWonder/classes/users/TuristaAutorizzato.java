@@ -1,6 +1,5 @@
 package it.unicam.cs.ItalianWonder.classes.users;
 
-import it.unicam.cs.ItalianWonder.classes.Salvare;
 import it.unicam.cs.ItalianWonder.classes.media.Foto;
 import it.unicam.cs.ItalianWonder.classes.media.Video;
 import jakarta.persistence.*;

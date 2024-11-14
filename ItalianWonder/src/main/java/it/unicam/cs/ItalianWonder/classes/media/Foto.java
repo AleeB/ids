@@ -4,7 +4,7 @@ import it.unicam.cs.ItalianWonder.classes.Contest;
 import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
 import it.unicam.cs.ItalianWonder.classes.POI.Itinerario;
 import it.unicam.cs.ItalianWonder.classes.POI.Ristorante;
-import it.unicam.cs.ItalianWonder.classes.avereF;
+import it.unicam.cs.ItalianWonder.classes.ConteggioFoto;
 import it.unicam.cs.ItalianWonder.classes.users.Contributor;
 import it.unicam.cs.ItalianWonder.classes.users.ContributorAutorizzato;
 import it.unicam.cs.ItalianWonder.classes.users.TuristaAutorizzato;
@@ -66,7 +66,7 @@ public class Foto {
 
 	@OneToOne
 	@JoinColumn(name = "af_id")
-	private avereF af;
+	private ConteggioFoto af;
 
 	//endregion
 

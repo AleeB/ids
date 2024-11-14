@@ -2,17 +2,16 @@ package it.unicam.cs.ItalianWonder.controllers.POI;
 
 import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
 import it.unicam.cs.ItalianWonder.classes.BodyTemplate;
-import it.unicam.cs.ItalianWonder.classes.POI.Itinerario;
-import it.unicam.cs.ItalianWonder.classes.Salvare;
+import it.unicam.cs.ItalianWonder.classes.Salva;
 import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
 import it.unicam.cs.ItalianWonder.classes.mediator.ServiceMediator;
 import it.unicam.cs.ItalianWonder.classes.users.Contributor;
 import it.unicam.cs.ItalianWonder.classes.users.ContributorAutorizzato;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
-import java.util.ArrayList;
+
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -26,8 +25,8 @@ public class DivertimentoController {
     private final ServiceMediator serviceMediator;
 
     @Autowired
-    public DivertimentoController(Salvare salvareService) {
-      this.serviceMediator = salvareService;
+    public DivertimentoController(Salva salvaService) {
+      this.serviceMediator = salvaService;
     }
 
     @RequestMapping(value = "/getDivertimenti", method = RequestMethod.GET)

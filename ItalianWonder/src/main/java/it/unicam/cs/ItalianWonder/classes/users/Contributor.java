@@ -1,12 +1,9 @@
 package it.unicam.cs.ItalianWonder.classes.users;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
 import it.unicam.cs.ItalianWonder.classes.POI.Itinerario;
 import it.unicam.cs.ItalianWonder.classes.POI.Ristorante;
 import it.unicam.cs.ItalianWonder.classes.Recensione;
-import it.unicam.cs.ItalianWonder.classes.Salvare;
 import it.unicam.cs.ItalianWonder.classes.Segnalazione;
 import it.unicam.cs.ItalianWonder.classes.media.Foto;
 import it.unicam.cs.ItalianWonder.classes.media.Video;
