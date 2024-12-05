@@ -3,7 +3,7 @@ package it.unicam.cs.ItalianWonder.classes;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
 import it.unicam.cs.ItalianWonder.classes.POI.Itinerario;
-import it.unicam.cs.ItalianWonder.classes.POI.Ristorante;
+import it.unicam.cs.ItalianWonder.classes.POI.PuntoRistoro;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -40,8 +40,8 @@ public class Localizzazione {
 	private List<Itinerario> itinerari;
 
 	@OneToOne(mappedBy = "localizzazione")
-	@JsonBackReference(value = "jristorante")
-	private Ristorante ristorante;
+	@JsonBackReference(value = "jPuntoRistoro")
+	private PuntoRistoro puntoRistoro;
 
 	@OneToOne(mappedBy = "localizzazione")
 	@JsonBackReference(value = "jcomune")
@@ -96,12 +96,12 @@ public class Localizzazione {
 		this.divertimento = divertimento;
 	}
 
-	public Ristorante getRistorante() {
-		return ristorante;
+	public PuntoRistoro getPuntoRistoro() {
+		return puntoRistoro;
 	}
 
-	public void setRistorante(Ristorante ristorante) {
-		this.ristorante = ristorante;
+	public void setPuntoRistoro(PuntoRistoro puntoRistoro) {
+		this.puntoRistoro = puntoRistoro;
 	}
 
 	public List<Itinerario> getItinerari() {

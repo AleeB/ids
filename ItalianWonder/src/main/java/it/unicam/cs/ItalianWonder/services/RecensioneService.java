@@ -2,10 +2,9 @@ package it.unicam.cs.ItalianWonder.services;
 
 import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
 import it.unicam.cs.ItalianWonder.classes.POI.Itinerario;
-import it.unicam.cs.ItalianWonder.classes.POI.Ristorante;
+import it.unicam.cs.ItalianWonder.classes.POI.PuntoRistoro;
 import it.unicam.cs.ItalianWonder.classes.Recensione;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import it.unicam.cs.ItalianWonder.repositories.RecensioneRepository;
 
@@ -48,8 +47,8 @@ public class RecensioneService {
         return recensioneRepository.findByItinerario(itinerario);
     }
 
-    public Optional<List<Recensione>> getRecensioneByRistorante(Ristorante ristorante) {
-        return recensioneRepository.findByRistorante(ristorante);
+    public Optional<List<Recensione>> getRecensioneByPuntoRistoro(PuntoRistoro puntoRistoro) {
+        return recensioneRepository.findByPuntoRistoro(puntoRistoro);
     }
 
     public boolean updateRecensione(Recensione recensione) {

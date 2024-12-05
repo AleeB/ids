@@ -3,7 +3,7 @@ package it.unicam.cs.ItalianWonder.classes.media;
 import it.unicam.cs.ItalianWonder.classes.Contest;
 import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
 import it.unicam.cs.ItalianWonder.classes.POI.Itinerario;
-import it.unicam.cs.ItalianWonder.classes.POI.Ristorante;
+import it.unicam.cs.ItalianWonder.classes.POI.PuntoRistoro;
 import it.unicam.cs.ItalianWonder.classes.ConteggioVideo;
 import it.unicam.cs.ItalianWonder.classes.users.Contributor;
 import it.unicam.cs.ItalianWonder.classes.users.ContributorAutorizzato;
@@ -49,8 +49,8 @@ public class Video {
 	private Divertimento divertimento;
 
 	@ManyToOne
-	@JoinColumn(name = "ristorante_id")
-	private Ristorante ristorante;
+	@JoinColumn(name = "PuntoRistoro_id")
+	private PuntoRistoro puntoRistoro;
 
 	@ManyToOne
 	@JoinColumn(name = "turistaAutorizzato_id")
@@ -124,12 +124,12 @@ public class Video {
 		this.divertimento = divertimento;
 	}
 
-	public Ristorante getRistorante() {
-		return ristorante;
+	public PuntoRistoro getPuntoRistoro() {
+		return puntoRistoro;
 	}
 
-	public void setRistorante(Ristorante ristorante) {
-		this.ristorante = ristorante;
+	public void setPuntoRistoro(PuntoRistoro puntoRistoro) {
+		this.puntoRistoro = puntoRistoro;
 	}
 
 	public TuristaAutorizzato getTuristaAutorizzato() {

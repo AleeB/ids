@@ -2,7 +2,7 @@ package it.unicam.cs.ItalianWonder.controllers.POI;
 
 import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
 import it.unicam.cs.ItalianWonder.classes.BodyTemplate;
-import it.unicam.cs.ItalianWonder.classes.Salva;
+import it.unicam.cs.ItalianWonder.components.Mediator;
 import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
 import it.unicam.cs.ItalianWonder.classes.mediator.ServiceMediator;
 import it.unicam.cs.ItalianWonder.classes.users.Contributor;
@@ -25,8 +25,8 @@ public class DivertimentoController {
     private final ServiceMediator serviceMediator;
 
     @Autowired
-    public DivertimentoController(Salva salvaService) {
-      this.serviceMediator = salvaService;
+    public DivertimentoController(Mediator mediatorService) {
+      this.serviceMediator = mediatorService;
     }
 
     @RequestMapping(value = "/getDivertimenti", method = RequestMethod.GET)

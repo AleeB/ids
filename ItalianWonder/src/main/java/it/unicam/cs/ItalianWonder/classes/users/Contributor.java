@@ -2,7 +2,7 @@ package it.unicam.cs.ItalianWonder.classes.users;
 
 import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
 import it.unicam.cs.ItalianWonder.classes.POI.Itinerario;
-import it.unicam.cs.ItalianWonder.classes.POI.Ristorante;
+import it.unicam.cs.ItalianWonder.classes.POI.PuntoRistoro;
 import it.unicam.cs.ItalianWonder.classes.Recensione;
 import it.unicam.cs.ItalianWonder.classes.Segnalazione;
 import it.unicam.cs.ItalianWonder.classes.media.Foto;
@@ -27,7 +27,7 @@ public class Contributor extends Turista {
 	private List<Itinerario> itinerari;
 
 	@OneToMany(mappedBy = "contributor")
-	private List<Ristorante> ristoranti;
+	private List<PuntoRistoro> ristoranti;
 
 	@ManyToMany
 	@JoinTable(
@@ -89,11 +89,11 @@ public class Contributor extends Turista {
 		this.itinerari = itinerari;
 	}
 
-	public List<Ristorante> getRistoranti() {
+	public List<PuntoRistoro> getRistoranti() {
 		return ristoranti;
 	}
 
-	public void setRistoranti(List<Ristorante> ristoranti) {
+	public void setRistoranti(List<PuntoRistoro> ristoranti) {
 		this.ristoranti = ristoranti;
 	}
 

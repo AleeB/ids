@@ -25,7 +25,7 @@ public class ConteggioFoto {
 
 	private long numeroVoti;
 
-	@OneToOne(mappedBy = "af")
+	@OneToOne(mappedBy = "cf")
 	private Foto foto;
 
 	//endregion

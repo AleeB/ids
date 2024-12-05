@@ -55,7 +55,7 @@ public class SegnalazioneController {
                 List<Segnalazione> segnalazioniPOI = segnalazioneService.getSegnalazioneByTipo(enumTipoSegnalazione.foto);
                 segnalazioniPOI.addAll(segnalazioneService.getSegnalazioneByTipo(enumTipoSegnalazione.divertimento));
                 segnalazioniPOI.addAll(segnalazioneService.getSegnalazioneByTipo(enumTipoSegnalazione.itinerario));
-                segnalazioniPOI.addAll(segnalazioneService.getSegnalazioneByTipo(enumTipoSegnalazione.ristorante));
+                segnalazioniPOI.addAll(segnalazioneService.getSegnalazioneByTipo(enumTipoSegnalazione.PuntoRistoro));
                 yield ResponseEntity.ok().body(segnalazioniPOI);
             case GestoreDellaPiattaforma:
                 yield ResponseEntity.ok().body(segnalazioneService.getSegnalazioneByTipo(enumTipoSegnalazione.bug));
@@ -88,7 +88,7 @@ public class SegnalazioneController {
                 }
                 yield ResponseEntity.badRequest().body("this user does not have sufficient permissions");
             case Curatore:
-                if(segnalazione.getTipo().equals(enumTipoSegnalazione.divertimento) || segnalazione.getTipo().equals(enumTipoSegnalazione.itinerario) || segnalazione.getTipo().equals(enumTipoSegnalazione.ristorante)){
+                if(segnalazione.getTipo().equals(enumTipoSegnalazione.divertimento) || segnalazione.getTipo().equals(enumTipoSegnalazione.itinerario) || segnalazione.getTipo().equals(enumTipoSegnalazione.PuntoRistoro)){
                     segnalazioneService.delete(body.getData().getID());
                     yield ResponseEntity.ok().body("Segnalazione deleted");
                 }

@@ -2,12 +2,9 @@ package it.unicam.cs.ItalianWonder.classes;
 
 import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
 import it.unicam.cs.ItalianWonder.classes.POI.Itinerario;
-import it.unicam.cs.ItalianWonder.classes.POI.Ristorante;
+import it.unicam.cs.ItalianWonder.classes.POI.PuntoRistoro;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
-import it.unicam.cs.ItalianWonder.classes.users.UserNonAutenticato;
 import jakarta.persistence.*;
-
-import java.util.List;
 
 @Entity
 @Table
@@ -42,8 +39,8 @@ public class Recensione {
 	private Itinerario itinerario;
 
 	@ManyToOne
-	@JoinColumn(name = "ristorante_id")
-	private Ristorante ristorante;
+	@JoinColumn(name = "PuntoRistoro_id")
+	private PuntoRistoro puntoRistoro;
 
 	@ManyToOne
 	@JoinColumn(name = "turista_id")
@@ -101,12 +98,12 @@ public class Recensione {
 		this.itinerario = itinerario;
 	}
 
-	public Ristorante getRistorante() {
-		return ristorante;
+	public PuntoRistoro getPuntoRistoro() {
+		return puntoRistoro;
 	}
 
-	public void setRistorante(Ristorante ristorante) {
-		this.ristorante = ristorante;
+	public void setPuntoRistoro(PuntoRistoro puntoRistoro) {
+		this.puntoRistoro = puntoRistoro;
 	}
 
 	public Turista getTurista() {

@@ -2,7 +2,7 @@ package it.unicam.cs.ItalianWonder.controllers;
 import it.unicam.cs.ItalianWonder.classes.BodyTemplate;
 import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
 import it.unicam.cs.ItalianWonder.classes.POI.Itinerario;
-import it.unicam.cs.ItalianWonder.classes.POI.Ristorante;
+import it.unicam.cs.ItalianWonder.classes.POI.PuntoRistoro;
 import it.unicam.cs.ItalianWonder.classes.Recensione;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
 import it.unicam.cs.ItalianWonder.services.users.TuristaService;
@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import it.unicam.cs.ItalianWonder.services.RecensioneService;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 
 @RestController
@@ -85,8 +84,8 @@ public class RecensioneController {
                 return ResponseEntity.ok(rec);
             }
             return ResponseEntity.badRequest().body(Optional.empty());
-        } else if (POI instanceof Ristorante) {
-            Optional<List<Recensione>> rec = recensioneService.getRecensioneByRistorante(((Ristorante) POI));
+        } else if (POI instanceof PuntoRistoro) {
+            Optional<List<Recensione>> rec = recensioneService.getRecensioneByPuntoRistoro(((PuntoRistoro) POI));
             if(rec.isPresent()){
                 return ResponseEntity.ok(rec);
             }

@@ -1,13 +1,6 @@
 package it.unicam.cs.ItalianWonder.classes.users;
 
-import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
-import it.unicam.cs.ItalianWonder.classes.POI.Itinerario;
-import it.unicam.cs.ItalianWonder.classes.POI.Ristorante;
-import it.unicam.cs.ItalianWonder.classes.Comune;
-import it.unicam.cs.ItalianWonder.classes.Recensione;
 import jakarta.persistence.*;
-
-import java.util.*;
 
 @Entity
 @Table

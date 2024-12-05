@@ -2,7 +2,7 @@ package it.unicam.cs.ItalianWonder.controllers;
 
 import it.unicam.cs.ItalianWonder.classes.BodyTemplate;
 import it.unicam.cs.ItalianWonder.classes.Comune;
-import it.unicam.cs.ItalianWonder.classes.Salva;
+import it.unicam.cs.ItalianWonder.components.Mediator;
 import it.unicam.cs.ItalianWonder.classes.enums.enumTipoUtente;
 import it.unicam.cs.ItalianWonder.classes.mediator.ServiceMediator;
 import it.unicam.cs.ItalianWonder.classes.users.Turista;
@@ -23,7 +23,7 @@ public class ComuneController {
     private final ServiceMediator serviceMediator;
 
     @Autowired
-    public ComuneController(Salva mediator) {
+    public ComuneController(Mediator mediator) {
       this.serviceMediator = mediator;
     }
 

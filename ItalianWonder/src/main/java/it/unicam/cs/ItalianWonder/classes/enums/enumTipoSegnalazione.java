@@ -5,7 +5,7 @@ public enum enumTipoSegnalazione {
 	foto,
 	video,
 	bug,
-	ristorante,
+	PuntoRistoro,
 	itinerario,
 	divertimento
 }
