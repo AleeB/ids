@@ -1,5 +1,6 @@
 package it.unicam.cs.ItalianWonder.classes.users;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
 import it.unicam.cs.ItalianWonder.classes.POI.Itinerario;
 import it.unicam.cs.ItalianWonder.classes.POI.PuntoRistoro;
@@ -27,7 +28,7 @@ public class Contributor extends Turista {
 	private List<Itinerario> itinerari;
 
 	@OneToMany(mappedBy = "contributor")
-	private List<PuntoRistoro> ristoranti;
+	private List<PuntoRistoro> puntiRistoro;
 
 	@ManyToMany
 	@JoinTable(
@@ -89,12 +90,12 @@ public class Contributor extends Turista {
 		this.itinerari = itinerari;
 	}
 
-	public List<PuntoRistoro> getRistoranti() {
-		return ristoranti;
+	public List<PuntoRistoro> getPuntiRistoro() {
+		return puntiRistoro;
 	}
 
-	public void setRistoranti(List<PuntoRistoro> ristoranti) {
-		this.ristoranti = ristoranti;
+	public void setPuntiRistoro(List<PuntoRistoro> ristoranti) {
+		this.puntiRistoro = ristoranti;
 	}
 
 	public List<Segnalazione> getSegnalazioni() {

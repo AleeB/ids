@@ -12,6 +12,7 @@ import it.unicam.cs.ItalianWonder.classes.users.Turista;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping(path = "api/v1/PuntoRistoro")
+@RequestMapping(path = "api/v1/puntoRistoro")
 public class PuntoRistoroController {
     private final ServiceMediator serviceMediator;
 
@@ -28,7 +29,7 @@ public class PuntoRistoroController {
       this.serviceMediator = serviceMediator;
     }
 
-    @RequestMapping(value = "/getPuntoRistoro", method = RequestMethod.GET)
+    @RequestMapping(value = "/get", method = RequestMethod.GET)
     public ResponseEntity<List<PuntoRistoro>> getAllComuni() {
         return ResponseEntity.ok(serviceMediator.get(PuntoRistoro.class).stream().map(
             item->(PuntoRistoro)item
@@ -50,7 +51,7 @@ public class PuntoRistoroController {
         };
     }
 
-    @RequestMapping(value = "/postPuntoRistoro", method = RequestMethod.POST)
+    @RequestMapping(value = "/post", method = RequestMethod.POST)
     public ResponseEntity<String> aggiungiPuntoRistoro(@RequestBody BodyTemplate<PuntoRistoro> body) {
         Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
         switch (user.getTipoUser()){
@@ -70,7 +71,7 @@ public class PuntoRistoroController {
         return ResponseEntity.ok("PuntoRistoro Aggiunto");
     }
 
-    @RequestMapping(value = "/modificaPuntoRistoro", method = RequestMethod.PUT)
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
     public ResponseEntity<String> modificaPuntoRistoro(@RequestBody BodyTemplate<PuntoRistoro> body) {
         Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
         if(user.getTipoUser() != enumTipoUtente.Curatore)
@@ -79,7 +80,7 @@ public class PuntoRistoroController {
         return ResponseEntity.ok("PuntoRistoro Modificato");
     }
 
-    @RequestMapping(value = "/eliminaPuntoRistoro", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
     public ResponseEntity<String> eliminaPuntoRistoro(@RequestBody BodyTemplate<PuntoRistoro> body) {
         Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
         if(user.getTipoUser() != enumTipoUtente.Curatore)
@@ -88,7 +89,7 @@ public class PuntoRistoroController {
         return ResponseEntity.ok("PuntoRistoro Eliminato");
     }
 
-    @RequestMapping(value = "/approvaPuntoRistoro", method = RequestMethod.POST)
+    @RequestMapping(value = "/approve", method = RequestMethod.POST)
     public ResponseEntity<String> approvaDivertimento(@RequestBody BodyTemplate<PuntoRistoro> body) {
         Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
         if (user.getTipoUser() != enumTipoUtente.Curatore)
