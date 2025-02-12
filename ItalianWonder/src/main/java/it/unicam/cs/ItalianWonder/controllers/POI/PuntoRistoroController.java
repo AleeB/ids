@@ -90,13 +90,13 @@ public class PuntoRistoroController {
     }
 
     @RequestMapping(value = "/approve", method = RequestMethod.POST)
-    public ResponseEntity<String> approvaDivertimento(@RequestBody BodyTemplate<PuntoRistoro> body) {
+    public ResponseEntity<String> approvaPuntoRistoro(@RequestBody BodyTemplate<PuntoRistoro> body) {
         Turista user = (Turista) serviceMediator.get(Map.of("userCredentials", body.getUser()), Turista.class).get(0);
         if (user.getTipoUser() != enumTipoUtente.Curatore)
             return ResponseEntity.status(401).body("Non Autorizzato");
 
         body.getData().setApprovazione(true);
         serviceMediator.update(body.getData());
-        return ResponseEntity.ok("PuntoRistoro Approvato! (Buon pranzo :) )");
+        return ResponseEntity.ok("PuntoRistoro Approvato!");
     }
 }

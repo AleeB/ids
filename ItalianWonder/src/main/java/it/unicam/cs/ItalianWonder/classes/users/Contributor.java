@@ -1,5 +1,6 @@
 package it.unicam.cs.ItalianWonder.classes.users;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import it.unicam.cs.ItalianWonder.classes.POI.Divertimento;
 import it.unicam.cs.ItalianWonder.classes.POI.Itinerario;
@@ -22,12 +23,15 @@ public class Contributor extends Turista {
 	private List<Video> video;
 
 	@OneToMany(mappedBy = "contributor")
+	@JsonIgnore
 	private List<Divertimento> divertimenti;
 
 	@OneToMany(mappedBy = "contributor")
+	@JsonIgnore
 	private List<Itinerario> itinerari;
 
 	@OneToMany(mappedBy = "contributor")
+	@JsonIgnore
 	private List<PuntoRistoro> puntiRistoro;
 
 	@ManyToMany
